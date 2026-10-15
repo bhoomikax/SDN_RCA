@@ -1,0 +1,55 @@
+{
+  "distinct_timestamps": 56,
+  "iperf_log_bytes": {
+    "iperf_client.log": 338,
+    "iperf_server.log": 290
+  },
+  "logical_experiment_id": 3,
+  "note": "Telemetry timestamps are naive VM-local wall times; event timestamps retain their recorded -07:00 offset. Comparisons use the event's recorded local wall-clock component without altering either source.",
+  "phase_events": {
+    "fault": "2026-10-14T01:36:12.752691-07:00",
+    "normal": "2026-10-14T01:35:50.644628-07:00",
+    "recovery": "2026-10-14T01:36:32.917019-07:00"
+  },
+  "physical_run_id": 22,
+  "raw_run_directory": "/home/mininet/sdn_project/recollection_runs/physical_22_logical_3",
+  "result": "PASS",
+  "runtime_mapping_rows": 8,
+  "sha256": {
+    "iperf_client.log": "83261df41a207b9f7b72f2d137c485c6bbae848ab95b8654470a1ff72d84a17c",
+    "iperf_server.log": "27a7bfe3bb806eea8117cefd988245c21cb346cf2c959401b783d9a78cf16597",
+    "phase_events.csv": "b0fc142bb7a649c4de91083f7fad74f303e3e269f11be9a37cb346d130f4d8fd",
+    "run_metadata.json": "78c1ab1fcdd752831e0c4b90e06cfd9a401e08ace5356d82f919a0d601005216",
+    "runtime_port_mapping.csv": "ebfb86680cb1ac992cb4c45dceb70b6b7a9ea1222328991c5fb00e83d8a61dae",
+    "telemetry.csv": "ff4961070701316ae476542a6d8424e8cf8cf145e192dfec68debe34c0bb497c"
+  },
+  "status": "COMPLETE",
+  "switches": [
+    "s1",
+    "s2",
+    "s3",
+    "s4"
+  ],
+  "telemetry_first_wall_time": "2026-10-14T01:35:50.514877",
+  "telemetry_last_wall_time": "2026-10-14T01:36:54.677955",
+  "telemetry_rows": 672,
+  "unique_timestamp_switch_port_keys": 672,
+  "validated_s3_s4_mapping": [
+    {
+      "interface_name": "s3-eth2",
+      "link": "s3-s4",
+      "openflow_port": "2",
+      "peer_interface": "s4-eth1",
+      "peer_node": "s4",
+      "switch": "s3"
+    },
+    {
+      "interface_name": "s4-eth1",
+      "link": "s3-s4",
+      "openflow_port": "1",
+      "peer_interface": "s3-eth2",
+      "peer_node": "s3",
+      "switch": "s4"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+experiment_id,status,reason
+3,EXCLUDED,"phase event(s) outside telemetry range: fault,normal,recovery; byte-identical telemetry attributed only to experiment 4, whose in-range ordered phase log corroborates this recording"
+10,EXCLUDED,"phase event(s) outside telemetry range: fault,normal,recovery"
+20,INVALID,Known failed-invalid run; not a historical candidate input.
+22,PROVISIONAL,Missing trustworthy process completion evidence; excluded.

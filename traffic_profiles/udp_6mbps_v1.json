@@ -1,0 +1,14 @@
+{
+  "profile_id": "udp_6mbps_s2s3_10mbps_v1",
+  "protocol": "udp",
+  "offered_rate_mbps": 6.0,
+  "bottleneck_link": "s2-s3",
+  "bottleneck_capacity_mbps": 10.0,
+  "maximum_capacity_fraction": 0.7,
+  "payload_size_policy": "iperf2 default; no -l override",
+  "phase_durations_seconds": {
+    "normal": 20,
+    "fault": 20,
+    "recovery": 20
+  }
+}

@@ -1,0 +1,9 @@
+switch,openflow_port,interface_name,peer_node,peer_interface,link
+s1,1,s1-eth1,h1,h1-eth0,h1-s1
+s1,2,s1-eth2,s2,s2-eth1,s1-s2
+s2,1,s2-eth1,s1,s1-eth2,s1-s2
+s2,2,s2-eth2,s3,s3-eth1,s2-s3
+s3,1,s3-eth1,s2,s2-eth2,s2-s3
+s3,2,s3-eth2,s4,s4-eth1,s3-s4
+s4,1,s4-eth1,s3,s3-eth2,s3-s4
+s4,2,s4-eth2,h2,h2-eth0,h2-s4

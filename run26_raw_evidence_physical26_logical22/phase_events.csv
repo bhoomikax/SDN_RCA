@@ -1,0 +1,4 @@
+physical_run_id,logical_experiment_id,timestamp,phase,fault_type,fault_location
+26,22,2026-10-14T07:39:21.368718-07:00,normal,none,none
+26,22,2026-10-14T07:39:43.454367-07:00,fault,link_failure,s2-s3
+26,22,2026-10-14T07:40:03.534067-07:00,recovery,link_failure,s2-s3

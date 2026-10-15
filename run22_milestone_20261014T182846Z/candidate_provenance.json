@@ -1,0 +1,258 @@
+{
+  "added_run": {
+    "fault_link": "s3-s4",
+    "logical_experiment_id": 3,
+    "physical_run_id": 22,
+    "rows": 672
+  },
+  "commands": [
+    "python build_candidate.py",
+    "python evaluate_grouped_rca.py",
+    "python -m unittest -v test_grouped_rca.py",
+    "python -m unittest discover -q"
+  ],
+  "dataset_schema_note": "physical run ID 22 is represented as logical experiment_id 3 to preserve the established dataset schema; the physical/logical mapping is retained here",
+  "duplicate_key_check": "PASS",
+  "evaluation_protocol": "leave-one-logical-experiment-out, 18 folds; conditional first-10-second fault-window localization; not online detection",
+  "excluded_experiments": {
+    "10": "phase event(s) outside telemetry range: fault,normal,recovery",
+    "3": "phase event(s) outside telemetry range: fault,normal,recovery; byte-identical telemetry attributed only to experiment 4, whose in-range ordered phase log corroborates this recording"
+  },
+  "included_logical_experiments": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "input_rows": 11604,
+  "new_phase_boundary_rule": "normal through samples before the fault event; fault from fault event inclusive to recovery exclusive; recovery from recovery event inclusive",
+  "output_candidate_sha256": "e93409a6164f900012079320b01282675ad517ee376a2aa21df4f61d0e9d9b14",
+  "output_rows": 12276,
+  "per_experiment": {
+    "1": {
+      "fault_link": "s1-s2",
+      "phase_counts": {
+        "fault": 216,
+        "normal": 276,
+        "recovery": 168
+      },
+      "rows": 660
+    },
+    "11": {
+      "fault_link": "s1-s2",
+      "phase_counts": {
+        "fault": 240,
+        "normal": 288,
+        "recovery": 168
+      },
+      "rows": 696
+    },
+    "12": {
+      "fault_link": "s1-s2",
+      "phase_counts": {
+        "fault": 228,
+        "normal": 288,
+        "recovery": 168
+      },
+      "rows": 684
+    },
+    "13": {
+      "fault_link": "s1-s2",
+      "phase_counts": {
+        "fault": 216,
+        "normal": 288,
+        "recovery": 168
+      },
+      "rows": 672
+    },
+    "14": {
+      "fault_link": "s2-s3",
+      "phase_counts": {
+        "fault": 228,
+        "normal": 288,
+        "recovery": 168
+      },
+      "rows": 684
+    },
+    "15": {
+      "fault_link": "s2-s3",
+      "phase_counts": {
+        "fault": 228,
+        "normal": 288,
+        "recovery": 168
+      },
+      "rows": 684
+    },
+    "16": {
+      "fault_link": "s3-s4",
+      "phase_counts": {
+        "fault": 240,
+        "normal": 288,
+        "recovery": 168
+      },
+      "rows": 696
+    },
+    "17": {
+      "fault_link": "s3-s4",
+      "phase_counts": {
+        "fault": 228,
+        "normal": 288,
+        "recovery": 168
+      },
+      "rows": 684
+    },
+    "18": {
+      "fault_link": "s3-s4",
+      "phase_counts": {
+        "fault": 228,
+        "normal": 288,
+        "recovery": 168
+      },
+      "rows": 684
+    },
+    "19": {
+      "fault_link": "s3-s4",
+      "phase_counts": {
+        "fault": 216,
+        "normal": 288,
+        "recovery": 168
+      },
+      "rows": 672
+    },
+    "2": {
+      "fault_link": "s2-s3",
+      "phase_counts": {
+        "fault": 228,
+        "normal": 288,
+        "recovery": 168
+      },
+      "rows": 684
+    },
+    "3": {
+      "fault_link": "s3-s4",
+      "phase_counts": {
+        "fault": 204,
+        "normal": 228,
+        "recovery": 240
+      },
+      "rows": 672
+    },
+    "4": {
+      "fault_link": "s2-s3",
+      "phase_counts": {
+        "fault": 228,
+        "normal": 288,
+        "recovery": 168
+      },
+      "rows": 684
+    },
+    "5": {
+      "fault_link": "s2-s3",
+      "phase_counts": {
+        "fault": 228,
+        "normal": 288,
+        "recovery": 168
+      },
+      "rows": 684
+    },
+    "6": {
+      "fault_link": "s1-s2",
+      "phase_counts": {
+        "fault": 228,
+        "normal": 288,
+        "recovery": 168
+      },
+      "rows": 684
+    },
+    "7": {
+      "fault_link": "s3-s4",
+      "phase_counts": {
+        "fault": 228,
+        "normal": 288,
+        "recovery": 168
+      },
+      "rows": 684
+    },
+    "8": {
+      "fault_link": "s1-s2",
+      "phase_counts": {
+        "fault": 228,
+        "normal": 288,
+        "recovery": 168
+      },
+      "rows": 684
+    },
+    "9": {
+      "fault_link": "s2-s3",
+      "phase_counts": {
+        "fault": 228,
+        "normal": 288,
+        "recovery": 168
+      },
+      "rows": 684
+    }
+  },
+  "phase_counts": {
+    "fault": 4068,
+    "normal": 5112,
+    "recovery": 3096
+  },
+  "pre_normal_sample_rule": "the valid collector sample before the normal marker is retained as normal-condition data; it is the sample required before the runner can record that marker",
+  "raw_run_directory": "/home/mininet/sdn_project/recollection_runs/physical_22_logical_3",
+  "raw_run_sha256": {
+    "iperf_client.log": "83261df41a207b9f7b72f2d137c485c6bbae848ab95b8654470a1ff72d84a17c",
+    "iperf_server.log": "27a7bfe3bb806eea8117cefd988245c21cb346cf2c959401b783d9a78cf16597",
+    "phase_events.csv": "b0fc142bb7a649c4de91083f7fad74f303e3e269f11be9a37cb346d130f4d8fd",
+    "run_metadata.json": "78c1ab1fcdd752831e0c4b90e06cfd9a401e08ace5356d82f919a0d601005216",
+    "runtime_port_mapping.csv": "ebfb86680cb1ac992cb4c45dceb70b6b7a9ea1222328991c5fb00e83d8a61dae",
+    "telemetry.csv": "ff4961070701316ae476542a6d8424e8cf8cf145e192dfec68debe34c0bb497c"
+  },
+  "run22_samples_before_normal_marker": 12,
+  "run_mapping": {
+    "logical_experiment_id": 3,
+    "physical_run_id": 22
+  },
+  "schema": [
+    "timestamp",
+    "switch",
+    "port",
+    "rx_packets",
+    "rx_bytes",
+    "rx_dropped",
+    "tx_packets",
+    "tx_bytes",
+    "tx_dropped",
+    "rx_packet_rate",
+    "tx_packet_rate",
+    "rx_throughput_mbps",
+    "tx_throughput_mbps",
+    "experiment_id",
+    "phase",
+    "fault_type",
+    "fault_location"
+  ],
+  "software": {
+    "pandas": "3.0.6",
+    "python": "3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)]"
+  },
+  "source_audit_manifest_path": "/home/mininet/sdn_project/phase_reconciliation_20261014/audit_manifest.csv",
+  "source_audit_manifest_sha256": "80f12f94a7fb0dd6b648126d1021993e78616aad0daf2ab7f4c1d423c8e16d7c",
+  "source_candidate_path": "/home/mininet/sdn_project/phase_reconciliation_20261014/candidate_master_dataset.csv",
+  "source_candidate_sha256": "e9796f11603275e7f9a51f2195ede571637c3919905928b56879c5470102c5c2",
+  "timestamp_check": "PASS; run 22 events compared in the recorded VM-local wall-clock zone, with original timestamp strings retained semantically",
+  "validation": "PASS"
+}

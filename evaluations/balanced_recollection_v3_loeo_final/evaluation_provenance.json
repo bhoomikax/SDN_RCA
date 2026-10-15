@@ -1,0 +1,116 @@
+{
+  "dataset_path": "derived_datasets\\balanced_recollection_20261015_v3\\candidate_dataset.csv",
+  "dataset_sha256": "b63d04572b7b97b8451be33174c8813d76af53e3f49f40e5e41b682b1e19b29a",
+  "interpretation": "Conditional fault-window localization using oracle phase annotations; not online detection. Three candidate links mean Top-3 is nondiscriminative.",
+  "methods": {
+    "rf_baseline": {
+      "confusion_matrix_rows_actual_cols_predicted": [
+        [
+          6,
+          1,
+          1
+        ],
+        [
+          0,
+          7,
+          2
+        ],
+        [
+          0,
+          1,
+          7
+        ]
+      ],
+      "per_class": {
+        "s1-s2": {
+          "support": 8,
+          "top1_f1": 0.8571428571428571,
+          "top1_precision": 1.0,
+          "top1_recall": 0.75,
+          "top2_recall": 0.75,
+          "top3_recall": 1.0
+        },
+        "s2-s3": {
+          "support": 9,
+          "top1_f1": 0.7777777777777778,
+          "top1_precision": 0.7777777777777778,
+          "top1_recall": 0.7777777777777778,
+          "top2_recall": 0.8888888888888888,
+          "top3_recall": 1.0
+        },
+        "s3-s4": {
+          "support": 8,
+          "top1_f1": 0.7777777777777777,
+          "top1_precision": 0.7,
+          "top1_recall": 0.875,
+          "top2_recall": 1.0,
+          "top3_recall": 1.0
+        }
+      },
+      "support": 25,
+      "top1_accuracy": 0.8,
+      "top2_accuracy": 0.88,
+      "top3_accuracy": 1.0
+    },
+    "topology_link_ranker": {
+      "confusion_matrix_rows_actual_cols_predicted": [
+        [
+          6,
+          1,
+          1
+        ],
+        [
+          0,
+          2,
+          7
+        ],
+        [
+          3,
+          0,
+          5
+        ]
+      ],
+      "per_class": {
+        "s1-s2": {
+          "support": 8,
+          "top1_f1": 0.7058823529411765,
+          "top1_precision": 0.6666666666666666,
+          "top1_recall": 0.75,
+          "top2_recall": 0.875,
+          "top3_recall": 1.0
+        },
+        "s2-s3": {
+          "support": 9,
+          "top1_f1": 0.3333333333333333,
+          "top1_precision": 0.6666666666666666,
+          "top1_recall": 0.2222222222222222,
+          "top2_recall": 0.7777777777777778,
+          "top3_recall": 1.0
+        },
+        "s3-s4": {
+          "support": 8,
+          "top1_f1": 0.4761904761904762,
+          "top1_precision": 0.38461538461538464,
+          "top1_recall": 0.625,
+          "top2_recall": 1.0,
+          "top3_recall": 1.0
+        }
+      },
+      "support": 25,
+      "top1_accuracy": 0.52,
+      "top2_accuracy": 0.88,
+      "top3_accuracy": 1.0
+    }
+  },
+  "outputs": {
+    "feature_policy": "evaluations\\balanced_recollection_v3_loeo_final\\fold_feature_policy.csv",
+    "predictions": "evaluations\\balanced_recollection_v3_loeo_final\\grouped_evaluation.csv",
+    "splits": "evaluations\\balanced_recollection_v3_loeo_final\\split_assignments.csv",
+    "summary": "evaluations\\balanced_recollection_v3_loeo_final\\evaluation_summary.json"
+  },
+  "protocol": "leave-one-logical-experiment-out (18 folds), grouped by experiment_id; each fold has 17 train and 1 test experiment",
+  "python": "3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)]",
+  "reference_evaluator_path": "C:\\Users\\ASUS\\sdn-ml\\evaluate_grouped_rca_generalized.py",
+  "reference_evaluator_sha256": "edcc079dd880ecb19e9abf07d7f3c455ecd46637b52d739fb84c5aa678d6bab1",
+  "task": "conditional fault-window link localization with oracle phase boundaries; not online fault detection/localization"
+}

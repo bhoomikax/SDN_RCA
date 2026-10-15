@@ -1,0 +1,260 @@
+{
+  "active_training_features": [
+    "rx_packet_rate",
+    "tx_packet_rate",
+    "rx_throughput_mbps",
+    "tx_throughput_mbps"
+  ],
+  "candidate_dataset_sha256": "914fd551778b0eb918a1d74b1fc2476c0ab533909cab0d28a56303255a8bf916",
+  "checkpoint_sha256": {
+    "graph_only_seed_17": "9cba72e9279b7087073af588e6633030e095b5dc1ffb5d7af414c62bb63631d1",
+    "graph_only_seed_2026": "84944d76e62e406113331fbcb0870fc957e8000aecbb9872399baf7895a359e6",
+    "graph_only_seed_42": "3915d491e97e75729c164f7a3241ddea29be738e4e599962350f57491a72a521",
+    "graph_temporal_seed_17": "6d01c11fec5c7fa8da4e17171d0c5a08eced81c90217b7958e25e535aff12ffc",
+    "graph_temporal_seed_2026": "563f789aab629f0336a982aef2000720dfbf053d1920891f5862e9bbf6914342",
+    "graph_temporal_seed_42": "4f1e1b9316c288779eee8b987b4cdf11b7f2c051e48d04dd071b0fd1127152f2",
+    "temporal_only_seed_17": "7d0e76469e3591c6e65a588b71dfa9cf74b252f78deeb3b20d6217baa730aaf5",
+    "temporal_only_seed_2026": "3ed8f06ae6b0080613c3e3e2a728e9ff1f4e3e0b9a39b965db6cb29252f3aba8",
+    "temporal_only_seed_42": "8fdaddcce9d36916cc0025eac66d5b4dbfdcfd16bd248797162d18e062da42ea"
+  },
+  "class_support_test": {
+    "s1-s2": 2,
+    "s2-s3": 2,
+    "s3-s4": 2
+  },
+  "configuration": {
+    "epochs": 100,
+    "learning_rate": 0.01,
+    "seeds": [
+      17,
+      42,
+      2026
+    ],
+    "weight_decay": 0.001,
+    "window_seconds": 10
+  },
+  "constant_training_features_excluded": [],
+  "feature_label_separation": "fault location used only as target; excluded from tensors; phase used only to select the oracle-assisted fault window",
+  "feature_names": [
+    "rx_packet_rate",
+    "tx_packet_rate",
+    "rx_throughput_mbps",
+    "tx_throughput_mbps"
+  ],
+  "graph_schema_version": 2,
+  "graph_snapshot_sha256": "8236ffcf37857df9be1771ab641fa2355881d808b0578ab7526cef90e7977fdc",
+  "limitations": [
+    "13 training and 6 test experiments; exploratory neural results",
+    "same fixed split is small and results are uncertain",
+    "conditional localization only; not phase-blind online RCA",
+    "no test-label tuning; three seeds are initialization sensitivity, not independent data replications"
+  ],
+  "methods": {
+    "graph_only": {
+      "mean_mrr": 0.8888888888888888,
+      "mean_top1": 0.8333333333333334,
+      "mean_top2": 0.8333333333333334,
+      "per_class_across_seed_predictions": {
+        "s1-s2": {
+          "support_across_seeds": 6,
+          "top1_f1": 0.8,
+          "top1_precision": 0.6666666666666666,
+          "top1_recall": 1.0,
+          "top2_recall": 1.0
+        },
+        "s2-s3": {
+          "support_across_seeds": 6,
+          "top1_f1": 1.0,
+          "top1_precision": 1.0,
+          "top1_recall": 1.0,
+          "top2_recall": 1.0
+        },
+        "s3-s4": {
+          "support_across_seeds": 6,
+          "top1_f1": 0.6666666666666666,
+          "top1_precision": 1.0,
+          "top1_recall": 0.5,
+          "top2_recall": 0.5
+        }
+      },
+      "per_seed": [
+        {
+          "mrr": 0.8888888888888888,
+          "seed": 17,
+          "support": 6,
+          "top1": 0.8333333333333334,
+          "top2": 0.8333333333333334
+        },
+        {
+          "mrr": 0.8888888888888888,
+          "seed": 42,
+          "support": 6,
+          "top1": 0.8333333333333334,
+          "top2": 0.8333333333333334
+        },
+        {
+          "mrr": 0.8888888888888888,
+          "seed": 2026,
+          "support": 6,
+          "top1": 0.8333333333333334,
+          "top2": 0.8333333333333334
+        }
+      ],
+      "sd_top1": 0.0
+    },
+    "graph_temporal": {
+      "mean_mrr": 0.8148148148148148,
+      "mean_top1": 0.6666666666666666,
+      "mean_top2": 0.888888888888889,
+      "per_class_across_seed_predictions": {
+        "s1-s2": {
+          "support_across_seeds": 6,
+          "top1_f1": 0.8,
+          "top1_precision": 0.6666666666666666,
+          "top1_recall": 1.0,
+          "top2_recall": 1.0
+        },
+        "s2-s3": {
+          "support_across_seeds": 6,
+          "top1_f1": 0.6666666666666666,
+          "top1_precision": 1.0,
+          "top1_recall": 0.5,
+          "top2_recall": 1.0
+        },
+        "s3-s4": {
+          "support_across_seeds": 6,
+          "top1_f1": 0.5,
+          "top1_precision": 0.5,
+          "top1_recall": 0.5,
+          "top2_recall": 0.6666666666666666
+        }
+      },
+      "per_seed": [
+        {
+          "mrr": 0.8333333333333334,
+          "seed": 17,
+          "support": 6,
+          "top1": 0.6666666666666666,
+          "top2": 1.0
+        },
+        {
+          "mrr": 0.8055555555555555,
+          "seed": 42,
+          "support": 6,
+          "top1": 0.6666666666666666,
+          "top2": 0.8333333333333334
+        },
+        {
+          "mrr": 0.8055555555555555,
+          "seed": 2026,
+          "support": 6,
+          "top1": 0.6666666666666666,
+          "top2": 0.8333333333333334
+        }
+      ],
+      "sd_top1": 0.0
+    },
+    "temporal_only": {
+      "mean_mrr": 0.8240740740740741,
+      "mean_top1": 0.6666666666666666,
+      "mean_top2": 0.9444444444444444,
+      "per_class_across_seed_predictions": {
+        "s1-s2": {
+          "support_across_seeds": 6,
+          "top1_f1": 0.8,
+          "top1_precision": 0.6666666666666666,
+          "top1_recall": 1.0,
+          "top2_recall": 1.0
+        },
+        "s2-s3": {
+          "support_across_seeds": 6,
+          "top1_f1": 0.6666666666666666,
+          "top1_precision": 1.0,
+          "top1_recall": 0.5,
+          "top2_recall": 1.0
+        },
+        "s3-s4": {
+          "support_across_seeds": 6,
+          "top1_f1": 0.5,
+          "top1_precision": 0.5,
+          "top1_recall": 0.5,
+          "top2_recall": 0.8333333333333334
+        }
+      },
+      "per_seed": [
+        {
+          "mrr": 0.8333333333333334,
+          "seed": 17,
+          "support": 6,
+          "top1": 0.6666666666666666,
+          "top2": 1.0
+        },
+        {
+          "mrr": 0.8055555555555555,
+          "seed": 42,
+          "support": 6,
+          "top1": 0.6666666666666666,
+          "top2": 0.8333333333333334
+        },
+        {
+          "mrr": 0.8333333333333334,
+          "seed": 2026,
+          "support": 6,
+          "top1": 0.6666666666666666,
+          "top2": 1.0
+        }
+      ],
+      "sd_top1": 0.0
+    }
+  },
+  "normalization_fit": "training fault-window switch-node values only; host zero/missing values left at zero",
+  "online_detection": false,
+  "python": "3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)]",
+  "reference_same_split_results": {
+    "rf_baseline": {
+      "top1": 0.6666666666666666,
+      "top2": 1.0
+    },
+    "topology_link_ranker": {
+      "top1": 0.5,
+      "top2": 1.0
+    }
+  },
+  "simple_baselines": {
+    "majority_top1": 0.3333333333333333,
+    "majority_top2": 0.6666666666666666,
+    "training_majority_link_order": [
+      "s2-s3",
+      "s1-s2",
+      "s3-s4"
+    ],
+    "uniform_random_expected_mrr": 0.6111111111111112,
+    "uniform_random_expected_top1": 0.3333333333333333,
+    "uniform_random_expected_top2": 0.6666666666666666
+  },
+  "task": "conditional fault-window link localization; annotated phase selects first 10 seconds",
+  "test_experiment_ids": [
+    10,
+    11,
+    12,
+    15,
+    16,
+    18
+  ],
+  "torch": "2.14.0+cpu",
+  "train_experiment_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    13,
+    14,
+    17,
+    19
+  ]
+}

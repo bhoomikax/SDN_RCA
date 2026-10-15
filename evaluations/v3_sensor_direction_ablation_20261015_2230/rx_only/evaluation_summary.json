@@ -1,0 +1,920 @@
+{
+  "fit_scope": "Each fold's RF, means/stds, active-metric selection, topology threshold (training-normal 95th percentile), and port baselines use only the 24 training experiments. No held-out labels tune features, thresholds, or weights.",
+  "methods": {
+    "rf_baseline": {
+      "confusion_matrix_rows_actual_cols_predicted": [
+        [
+          4,
+          1,
+          3
+        ],
+        [
+          8,
+          1,
+          0
+        ],
+        [
+          7,
+          1,
+          0
+        ]
+      ],
+      "per_class": {
+        "s1-s2": {
+          "support": 8,
+          "top1_f1": 0.2962962962962963,
+          "top1_precision": 0.21052631578947367,
+          "top1_recall": 0.5,
+          "top2_recall": 0.875,
+          "top3_recall": 1.0
+        },
+        "s2-s3": {
+          "support": 9,
+          "top1_f1": 0.16666666666666666,
+          "top1_precision": 0.3333333333333333,
+          "top1_recall": 0.1111111111111111,
+          "top2_recall": 0.1111111111111111,
+          "top3_recall": 1.0
+        },
+        "s3-s4": {
+          "support": 8,
+          "top1_f1": 0.0,
+          "top1_precision": 0.0,
+          "top1_recall": 0.0,
+          "top2_recall": 0.875,
+          "top3_recall": 1.0
+        }
+      },
+      "support": 25,
+      "top1_accuracy": 0.2,
+      "top2_accuracy": 0.6,
+      "top3_accuracy": 1.0
+    },
+    "topology_link_ranker": {
+      "confusion_matrix_rows_actual_cols_predicted": [
+        [
+          8,
+          0,
+          0
+        ],
+        [
+          7,
+          0,
+          2
+        ],
+        [
+          7,
+          0,
+          1
+        ]
+      ],
+      "per_class": {
+        "s1-s2": {
+          "support": 8,
+          "top1_f1": 0.5333333333333333,
+          "top1_precision": 0.36363636363636365,
+          "top1_recall": 1.0,
+          "top2_recall": 1.0,
+          "top3_recall": 1.0
+        },
+        "s2-s3": {
+          "support": 9,
+          "top1_f1": 0.0,
+          "top1_precision": 0.0,
+          "top1_recall": 0.0,
+          "top2_recall": 0.2222222222222222,
+          "top3_recall": 1.0
+        },
+        "s3-s4": {
+          "support": 8,
+          "top1_f1": 0.18181818181818182,
+          "top1_precision": 0.3333333333333333,
+          "top1_recall": 0.125,
+          "top2_recall": 1.0,
+          "top3_recall": 1.0
+        }
+      },
+      "support": 25,
+      "top1_accuracy": 0.36,
+      "top2_accuracy": 0.72,
+      "top3_accuracy": 1.0
+    }
+  },
+  "model": {
+    "class_weight": "balanced",
+    "max_depth": 5,
+    "n_estimators": 300,
+    "type": "RandomForestClassifier"
+  },
+  "oracle_information": "phase labels select the first 10 seconds from the annotated fault phase; recovery telemetry is excluded; ground-truth fault_location is joined only after predictions for metrics",
+  "outputs": {
+    "fold_feature_policy": "C:\\Users\\ASUS\\sdn-ml\\evaluations\\v3_sensor_direction_ablation_20261015_2230\\rx_only\\fold_feature_policy.csv",
+    "predictions": "C:\\Users\\ASUS\\sdn-ml\\evaluations\\v3_sensor_direction_ablation_20261015_2230\\rx_only\\grouped_evaluation.csv",
+    "splits": "C:\\Users\\ASUS\\sdn-ml\\evaluations\\v3_sensor_direction_ablation_20261015_2230\\rx_only\\split_assignments.csv"
+  },
+  "per_experiment_predictions": [
+    {
+      "active_metrics": [
+        "rx_packet_rate",
+        "rx_throughput_mbps"
+      ],
+      "actual_link": "s1-s2",
+      "experiment_id": 1,
+      "fold": 1,
+      "rf_ranking": [
+        "s3-s4",
+        "s1-s2",
+        "s2-s3"
+      ],
+      "rf_scores": {
+        "s1-s2": 0.34140657954278536,
+        "s2-s3": 0.31608133909347025,
+        "s3-s4": 0.3425120813637436
+      },
+      "threshold": 2.139886676971837,
+      "topology_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "topology_scores": {
+        "s1-s2": 0.7499999999999999,
+        "s2-s3": 0.5833333333333333,
+        "s3-s4": 0.6666666666666666
+      }
+    },
+    {
+      "active_metrics": [
+        "rx_packet_rate",
+        "rx_throughput_mbps"
+      ],
+      "actual_link": "s2-s3",
+      "experiment_id": 2,
+      "fold": 2,
+      "rf_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "rf_scores": {
+        "s1-s2": 0.3497594779804529,
+        "s2-s3": 0.30872022557491646,
+        "s3-s4": 0.3415202964446298
+      },
+      "threshold": 2.1385483015851587,
+      "topology_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "topology_scores": {
+        "s1-s2": 0.7499999999999999,
+        "s2-s3": 0.5833333333333333,
+        "s3-s4": 0.6666666666666666
+      }
+    },
+    {
+      "active_metrics": [
+        "rx_packet_rate",
+        "rx_throughput_mbps"
+      ],
+      "actual_link": "s3-s4",
+      "experiment_id": 3,
+      "fold": 3,
+      "rf_ranking": [
+        "s2-s3",
+        "s1-s2",
+        "s3-s4"
+      ],
+      "rf_scores": {
+        "s1-s2": 0.21690576325530558,
+        "s2-s3": 0.7362644547799014,
+        "s3-s4": 0.04682978196479341
+      },
+      "threshold": 2.318221059067026,
+      "topology_ranking": [
+        "s3-s4",
+        "s1-s2",
+        "s2-s3"
+      ],
+      "topology_scores": {
+        "s1-s2": 0.6666666666666666,
+        "s2-s3": 0.5833333333333333,
+        "s3-s4": 0.7499999999999999
+      }
+    },
+    {
+      "active_metrics": [
+        "rx_packet_rate",
+        "rx_throughput_mbps"
+      ],
+      "actual_link": "s2-s3",
+      "experiment_id": 4,
+      "fold": 4,
+      "rf_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "rf_scores": {
+        "s1-s2": 0.3505700410575896,
+        "s2-s3": 0.3077919602993638,
+        "s3-s4": 0.34163799864304617
+      },
+      "threshold": 2.1385483015851587,
+      "topology_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "topology_scores": {
+        "s1-s2": 0.7499999999999999,
+        "s2-s3": 0.5833333333333333,
+        "s3-s4": 0.6666666666666666
+      }
+    },
+    {
+      "active_metrics": [
+        "rx_packet_rate",
+        "rx_throughput_mbps"
+      ],
+      "actual_link": "s2-s3",
+      "experiment_id": 5,
+      "fold": 5,
+      "rf_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "rf_scores": {
+        "s1-s2": 0.3505700410575896,
+        "s2-s3": 0.3077919602993638,
+        "s3-s4": 0.34163799864304617
+      },
+      "threshold": 2.1385483015851587,
+      "topology_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "topology_scores": {
+        "s1-s2": 0.7499999999999999,
+        "s2-s3": 0.5833333333333333,
+        "s3-s4": 0.6666666666666666
+      }
+    },
+    {
+      "active_metrics": [
+        "rx_packet_rate",
+        "rx_throughput_mbps"
+      ],
+      "actual_link": "s1-s2",
+      "experiment_id": 6,
+      "fold": 6,
+      "rf_ranking": [
+        "s3-s4",
+        "s1-s2",
+        "s2-s3"
+      ],
+      "rf_scores": {
+        "s1-s2": 0.33997345071907553,
+        "s2-s3": 0.3178904528850346,
+        "s3-s4": 0.3421360963958886
+      },
+      "threshold": 2.1385483015851587,
+      "topology_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "topology_scores": {
+        "s1-s2": 0.7499999999999999,
+        "s2-s3": 0.5833333333333333,
+        "s3-s4": 0.6666666666666666
+      }
+    },
+    {
+      "active_metrics": [
+        "rx_packet_rate",
+        "rx_throughput_mbps"
+      ],
+      "actual_link": "s3-s4",
+      "experiment_id": 7,
+      "fold": 7,
+      "rf_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "rf_scores": {
+        "s1-s2": 0.3478292427287243,
+        "s2-s3": 0.3170877972266784,
+        "s3-s4": 0.3350829600445969
+      },
+      "threshold": 2.1385483015851587,
+      "topology_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "topology_scores": {
+        "s1-s2": 0.7499999999999999,
+        "s2-s3": 0.5833333333333333,
+        "s3-s4": 0.6666666666666666
+      }
+    },
+    {
+      "active_metrics": [
+        "rx_packet_rate",
+        "rx_throughput_mbps"
+      ],
+      "actual_link": "s1-s2",
+      "experiment_id": 8,
+      "fold": 8,
+      "rf_ranking": [
+        "s3-s4",
+        "s1-s2",
+        "s2-s3"
+      ],
+      "rf_scores": {
+        "s1-s2": 0.34035911672183344,
+        "s2-s3": 0.3178904528850346,
+        "s3-s4": 0.3417504303931309
+      },
+      "threshold": 2.1385483015851587,
+      "topology_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "topology_scores": {
+        "s1-s2": 0.7499999999999999,
+        "s2-s3": 0.5833333333333333,
+        "s3-s4": 0.6666666666666666
+      }
+    },
+    {
+      "active_metrics": [
+        "rx_packet_rate",
+        "rx_throughput_mbps"
+      ],
+      "actual_link": "s2-s3",
+      "experiment_id": 9,
+      "fold": 9,
+      "rf_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "rf_scores": {
+        "s1-s2": 0.35587310709250036,
+        "s2-s3": 0.30155796380337,
+        "s3-s4": 0.3425689291041288
+      },
+      "threshold": 2.1385483015851587,
+      "topology_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "topology_scores": {
+        "s1-s2": 0.7499999999999999,
+        "s2-s3": 0.5833333333333333,
+        "s3-s4": 0.6666666666666666
+      }
+    },
+    {
+      "active_metrics": [
+        "rx_packet_rate",
+        "rx_throughput_mbps"
+      ],
+      "actual_link": "s2-s3",
+      "experiment_id": 10,
+      "fold": 10,
+      "rf_ranking": [
+        "s2-s3",
+        "s3-s4",
+        "s1-s2"
+      ],
+      "rf_scores": {
+        "s1-s2": 0.16113398384456062,
+        "s2-s3": 0.48507076517244446,
+        "s3-s4": 0.35379525098299475
+      },
+      "threshold": 2.303801685144126,
+      "topology_ranking": [
+        "s3-s4",
+        "s2-s3",
+        "s1-s2"
+      ],
+      "topology_scores": {
+        "s1-s2": 0.5833333333333333,
+        "s2-s3": 0.6666666666666666,
+        "s3-s4": 0.7499999999999999
+      }
+    },
+    {
+      "active_metrics": [
+        "rx_packet_rate",
+        "rx_throughput_mbps"
+      ],
+      "actual_link": "s1-s2",
+      "experiment_id": 11,
+      "fold": 11,
+      "rf_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "rf_scores": {
+        "s1-s2": 0.3474915133182227,
+        "s2-s3": 0.31218423670811274,
+        "s3-s4": 0.3403242499736639
+      },
+      "threshold": 2.1385483015851587,
+      "topology_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "topology_scores": {
+        "s1-s2": 0.7499999999999999,
+        "s2-s3": 0.5833333333333333,
+        "s3-s4": 0.6666666666666666
+      }
+    },
+    {
+      "active_metrics": [
+        "rx_packet_rate",
+        "rx_throughput_mbps"
+      ],
+      "actual_link": "s1-s2",
+      "experiment_id": 12,
+      "fold": 12,
+      "rf_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "rf_scores": {
+        "s1-s2": 0.3474915133182227,
+        "s2-s3": 0.31218423670811274,
+        "s3-s4": 0.3403242499736639
+      },
+      "threshold": 2.1385483015851587,
+      "topology_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "topology_scores": {
+        "s1-s2": 0.7499999999999999,
+        "s2-s3": 0.5833333333333333,
+        "s3-s4": 0.6666666666666666
+      }
+    },
+    {
+      "active_metrics": [
+        "rx_packet_rate",
+        "rx_throughput_mbps"
+      ],
+      "actual_link": "s1-s2",
+      "experiment_id": 13,
+      "fold": 13,
+      "rf_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "rf_scores": {
+        "s1-s2": 0.3474915133182227,
+        "s2-s3": 0.31218423670811274,
+        "s3-s4": 0.3403242499736639
+      },
+      "threshold": 2.1385483015851587,
+      "topology_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "topology_scores": {
+        "s1-s2": 0.7499999999999999,
+        "s2-s3": 0.5833333333333333,
+        "s3-s4": 0.6666666666666666
+      }
+    },
+    {
+      "active_metrics": [
+        "rx_packet_rate",
+        "rx_throughput_mbps"
+      ],
+      "actual_link": "s2-s3",
+      "experiment_id": 14,
+      "fold": 14,
+      "rf_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "rf_scores": {
+        "s1-s2": 0.3608848969539503,
+        "s2-s3": 0.2970693915305065,
+        "s3-s4": 0.3420457115155424
+      },
+      "threshold": 2.1385483015851587,
+      "topology_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "topology_scores": {
+        "s1-s2": 0.7499999999999999,
+        "s2-s3": 0.5833333333333333,
+        "s3-s4": 0.6666666666666666
+      }
+    },
+    {
+      "active_metrics": [
+        "rx_packet_rate",
+        "rx_throughput_mbps"
+      ],
+      "actual_link": "s2-s3",
+      "experiment_id": 15,
+      "fold": 15,
+      "rf_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "rf_scores": {
+        "s1-s2": 0.3608848969539503,
+        "s2-s3": 0.2970693915305065,
+        "s3-s4": 0.3420457115155424
+      },
+      "threshold": 2.1385483015851587,
+      "topology_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "topology_scores": {
+        "s1-s2": 0.7499999999999999,
+        "s2-s3": 0.5833333333333333,
+        "s3-s4": 0.6666666666666666
+      }
+    },
+    {
+      "active_metrics": [
+        "rx_packet_rate",
+        "rx_throughput_mbps"
+      ],
+      "actual_link": "s3-s4",
+      "experiment_id": 16,
+      "fold": 16,
+      "rf_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "rf_scores": {
+        "s1-s2": 0.36085988664471624,
+        "s2-s3": 0.3024636835896092,
+        "s3-s4": 0.33667642976567447
+      },
+      "threshold": 2.1385483015851587,
+      "topology_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "topology_scores": {
+        "s1-s2": 0.7499999999999999,
+        "s2-s3": 0.5833333333333333,
+        "s3-s4": 0.6666666666666666
+      }
+    },
+    {
+      "active_metrics": [
+        "rx_packet_rate",
+        "rx_throughput_mbps"
+      ],
+      "actual_link": "s3-s4",
+      "experiment_id": 17,
+      "fold": 17,
+      "rf_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "rf_scores": {
+        "s1-s2": 0.36085988664471624,
+        "s2-s3": 0.3024636835896092,
+        "s3-s4": 0.33667642976567447
+      },
+      "threshold": 2.1385483015851587,
+      "topology_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "topology_scores": {
+        "s1-s2": 0.7499999999999999,
+        "s2-s3": 0.5833333333333333,
+        "s3-s4": 0.6666666666666666
+      }
+    },
+    {
+      "active_metrics": [
+        "rx_packet_rate",
+        "rx_throughput_mbps"
+      ],
+      "actual_link": "s3-s4",
+      "experiment_id": 18,
+      "fold": 18,
+      "rf_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "rf_scores": {
+        "s1-s2": 0.36085988664471624,
+        "s2-s3": 0.3024636835896092,
+        "s3-s4": 0.33667642976567447
+      },
+      "threshold": 2.1385483015851587,
+      "topology_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "topology_scores": {
+        "s1-s2": 0.7499999999999999,
+        "s2-s3": 0.5833333333333333,
+        "s3-s4": 0.6666666666666666
+      }
+    },
+    {
+      "active_metrics": [
+        "rx_packet_rate",
+        "rx_throughput_mbps"
+      ],
+      "actual_link": "s3-s4",
+      "experiment_id": 19,
+      "fold": 19,
+      "rf_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "rf_scores": {
+        "s1-s2": 0.36085988664471624,
+        "s2-s3": 0.3024636835896092,
+        "s3-s4": 0.33667642976567447
+      },
+      "threshold": 2.1385483015851587,
+      "topology_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "topology_scores": {
+        "s1-s2": 0.7499999999999999,
+        "s2-s3": 0.5833333333333333,
+        "s3-s4": 0.6666666666666666
+      }
+    },
+    {
+      "active_metrics": [
+        "rx_packet_rate",
+        "rx_throughput_mbps"
+      ],
+      "actual_link": "s1-s2",
+      "experiment_id": 20,
+      "fold": 20,
+      "rf_ranking": [
+        "s2-s3",
+        "s3-s4",
+        "s1-s2"
+      ],
+      "rf_scores": {
+        "s1-s2": 0.15360609825605115,
+        "s2-s3": 0.5280153643525229,
+        "s3-s4": 0.3183785373914259
+      },
+      "threshold": 2.319438958820719,
+      "topology_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "topology_scores": {
+        "s1-s2": 0.7499999999999999,
+        "s2-s3": 0.5833333333333333,
+        "s3-s4": 0.6666666666666666
+      }
+    },
+    {
+      "active_metrics": [
+        "rx_packet_rate",
+        "rx_throughput_mbps"
+      ],
+      "actual_link": "s1-s2",
+      "experiment_id": 21,
+      "fold": 21,
+      "rf_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "rf_scores": {
+        "s1-s2": 0.35540208474925433,
+        "s2-s3": 0.3048691465595321,
+        "s3-s4": 0.3397287686912129
+      },
+      "threshold": 2.1646492134298314,
+      "topology_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "topology_scores": {
+        "s1-s2": 0.7499999999999999,
+        "s2-s3": 0.5833333333333333,
+        "s3-s4": 0.6666666666666666
+      }
+    },
+    {
+      "active_metrics": [
+        "rx_packet_rate",
+        "rx_throughput_mbps"
+      ],
+      "actual_link": "s2-s3",
+      "experiment_id": 22,
+      "fold": 22,
+      "rf_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "rf_scores": {
+        "s1-s2": 0.35866478790623996,
+        "s2-s3": 0.2991927196184162,
+        "s3-s4": 0.34214249247534306
+      },
+      "threshold": 2.2550879941004567,
+      "topology_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "topology_scores": {
+        "s1-s2": 0.7499999999999999,
+        "s2-s3": 0.5833333333333333,
+        "s3-s4": 0.6666666666666666
+      }
+    },
+    {
+      "active_metrics": [
+        "rx_packet_rate",
+        "rx_throughput_mbps"
+      ],
+      "actual_link": "s2-s3",
+      "experiment_id": 23,
+      "fold": 23,
+      "rf_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "rf_scores": {
+        "s1-s2": 0.4301684951839413,
+        "s2-s3": 0.23613304011015682,
+        "s3-s4": 0.3336984647059018
+      },
+      "threshold": 2.3106734172462917,
+      "topology_ranking": [
+        "s3-s4",
+        "s2-s3",
+        "s1-s2"
+      ],
+      "topology_scores": {
+        "s1-s2": 0.5833333333333333,
+        "s2-s3": 0.6666666666666666,
+        "s3-s4": 0.7499999999999999
+      }
+    },
+    {
+      "active_metrics": [
+        "rx_packet_rate",
+        "rx_throughput_mbps"
+      ],
+      "actual_link": "s3-s4",
+      "experiment_id": 24,
+      "fold": 24,
+      "rf_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "rf_scores": {
+        "s1-s2": 0.35648035096201036,
+        "s2-s3": 0.31165072229224533,
+        "s3-s4": 0.33186892674574353
+      },
+      "threshold": 2.2543112675980836,
+      "topology_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "topology_scores": {
+        "s1-s2": 0.7499999999999999,
+        "s2-s3": 0.5833333333333333,
+        "s3-s4": 0.6666666666666666
+      }
+    },
+    {
+      "active_metrics": [
+        "rx_packet_rate",
+        "rx_throughput_mbps"
+      ],
+      "actual_link": "s3-s4",
+      "experiment_id": 25,
+      "fold": 25,
+      "rf_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "rf_scores": {
+        "s1-s2": 0.35648035096201036,
+        "s2-s3": 0.31165072229224533,
+        "s3-s4": 0.33186892674574353
+      },
+      "threshold": 2.196740195333478,
+      "topology_ranking": [
+        "s1-s2",
+        "s3-s4",
+        "s2-s3"
+      ],
+      "topology_scores": {
+        "s1-s2": 0.7499999999999999,
+        "s2-s3": 0.5833333333333333,
+        "s3-s4": 0.6666666666666666
+      }
+    }
+  ],
+  "predictors": {
+    "constant_feature_policy": "fit on training-normal non-LOCAL port telemetry only; exclude metrics with no variation in that fold",
+    "forbidden_predictor_fields": [
+      "experiment_id",
+      "fault_location",
+      "fault_type",
+      "interface_name",
+      "label",
+      "logical_experiment_id",
+      "phase",
+      "physical_run_id",
+      "port",
+      "switch",
+      "target_link",
+      "timestamp"
+    ],
+    "raw_metrics_active_per_fold": [
+      "rx_packet_rate",
+      "rx_throughput_mbps"
+    ],
+    "rf_features": [
+      "s1_mean_anomaly",
+      "s1_max_anomaly",
+      "s1_persistence",
+      "s1_first_anomaly_seconds",
+      "s2_mean_anomaly",
+      "s2_max_anomaly",
+      "s2_persistence",
+      "s2_first_anomaly_seconds",
+      "s3_mean_anomaly",
+      "s3_max_anomaly",
+      "s3_persistence",
+      "s3_first_anomaly_seconds",
+      "s4_mean_anomaly",
+      "s4_max_anomaly",
+      "s4_persistence",
+      "s4_first_anomaly_seconds"
+    ],
+    "topology_features": "per-port absolute z-scores; candidate link endpoint mean, imbalance, threshold onset, and remote propagation margin; equal-weight rank aggregation retained"
+  },
+  "protocol": "leave-one-logical-experiment-out (25 folds), grouped by experiment_id; each fold has 24 train and 1 test experiment",
+  "random_seed": 42,
+  "ranking_weights": "Existing four-component equal-weight rank aggregation; unchanged.",
+  "software": {
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "python": "3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)]",
+    "scikit_learn": "1.9.1"
+  },
+  "task": "conditional fault-window link localization with oracle phase boundaries; not online fault detection/localization",
+  "tie_rule": "RF probability ties use lexical link order. Topology reproduces score, link-anomaly, endpoint-mean tie-breaks and stable candidate insertion order. score_ties reports exact score ties; top-k is membership in the first k ranked candidates.",
+  "top3_note": "All three configured candidate links are ranked, so Top-3 is necessarily 100% when no candidate is missing; report it for completeness, but it is not discriminative.",
+  "topology_mapping": "s3-s4 mapping runtime-verified for physical run 22; mappings for other candidate records remain setup-derived, since their datasets do not store runtime interface mapping. Other link endpoints use the existing inferred topology mapping."
+}

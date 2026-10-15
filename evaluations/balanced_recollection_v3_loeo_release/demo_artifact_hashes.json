@@ -1,0 +1,10 @@
+{
+  "hashes": {
+    "dataset": "b63d04572b7b97b8451be33174c8813d76af53e3f49f40e5e41b682b1e19b29a",
+    "predictions": "b23812871743ec4745cec20861738827e60e697612f2d096ef7c17589d280be5",
+    "summary": "6913d7f140bc4652473329dba974279ce5dce9dd39d50752f50f6385faf152f3",
+    "splits": "547c456364a24f4d2fbbb31fd16de4cb01ac5b57c7994f91264e26a1c1b95adc",
+    "feature_policy": "998acd80062d7871c6a9280a7c2b760e26cb43d2adfffe98c287866a0623b778"
+  },
+  "evaluation_dir": "evaluations\\balanced_recollection_v3_loeo_release"
+}

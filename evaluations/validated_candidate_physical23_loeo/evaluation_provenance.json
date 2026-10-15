@@ -1,0 +1,116 @@
+{
+  "dataset_path": "C:\\Users\\ASUS\\sdn-ml\\derived_datasets\\candidate_validated_through_physical23\\candidate_dataset.csv",
+  "dataset_sha256": "4c43bd0f01a401625e3b06ae01023753e470907a4ed75c8a41c838db54fd28f9",
+  "interpretation": "Conditional fault-window localization using oracle phase annotations; not online detection. Three candidate links mean Top-3 is nondiscriminative.",
+  "methods": {
+    "rf_baseline": {
+      "confusion_matrix_rows_actual_cols_predicted": [
+        [
+          5,
+          1,
+          0
+        ],
+        [
+          0,
+          6,
+          0
+        ],
+        [
+          1,
+          1,
+          4
+        ]
+      ],
+      "per_class": {
+        "s1-s2": {
+          "support": 6,
+          "top1_f1": 0.8333333333333334,
+          "top1_precision": 0.8333333333333334,
+          "top1_recall": 0.8333333333333334,
+          "top2_recall": 0.8333333333333334,
+          "top3_recall": 1.0
+        },
+        "s2-s3": {
+          "support": 6,
+          "top1_f1": 0.8571428571428571,
+          "top1_precision": 0.75,
+          "top1_recall": 1.0,
+          "top2_recall": 1.0,
+          "top3_recall": 1.0
+        },
+        "s3-s4": {
+          "support": 6,
+          "top1_f1": 0.8,
+          "top1_precision": 1.0,
+          "top1_recall": 0.6666666666666666,
+          "top2_recall": 0.8333333333333334,
+          "top3_recall": 1.0
+        }
+      },
+      "support": 18,
+      "top1_accuracy": 0.8333333333333334,
+      "top2_accuracy": 0.8888888888888888,
+      "top3_accuracy": 1.0
+    },
+    "topology_link_ranker": {
+      "confusion_matrix_rows_actual_cols_predicted": [
+        [
+          6,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          6
+        ],
+        [
+          1,
+          1,
+          4
+        ]
+      ],
+      "per_class": {
+        "s1-s2": {
+          "support": 6,
+          "top1_f1": 0.923076923076923,
+          "top1_precision": 0.8571428571428571,
+          "top1_recall": 1.0,
+          "top2_recall": 1.0,
+          "top3_recall": 1.0
+        },
+        "s2-s3": {
+          "support": 6,
+          "top1_f1": 0.0,
+          "top1_precision": 0.0,
+          "top1_recall": 0.0,
+          "top2_recall": 0.3333333333333333,
+          "top3_recall": 1.0
+        },
+        "s3-s4": {
+          "support": 6,
+          "top1_f1": 0.5,
+          "top1_precision": 0.4,
+          "top1_recall": 0.6666666666666666,
+          "top2_recall": 1.0,
+          "top3_recall": 1.0
+        }
+      },
+      "support": 18,
+      "top1_accuracy": 0.5555555555555556,
+      "top2_accuracy": 0.7777777777777778,
+      "top3_accuracy": 1.0
+    }
+  },
+  "outputs": {
+    "feature_policy": "C:\\Users\\ASUS\\sdn-ml\\evaluations\\validated_candidate_physical23_loeo\\fold_feature_policy.csv",
+    "predictions": "C:\\Users\\ASUS\\sdn-ml\\evaluations\\validated_candidate_physical23_loeo\\grouped_evaluation.csv",
+    "splits": "C:\\Users\\ASUS\\sdn-ml\\evaluations\\validated_candidate_physical23_loeo\\split_assignments.csv",
+    "summary": "C:\\Users\\ASUS\\sdn-ml\\evaluations\\validated_candidate_physical23_loeo\\evaluation_summary.json"
+  },
+  "protocol": "leave-one-logical-experiment-out (18 folds), grouped by experiment_id; each fold has 17 train and 1 test experiment",
+  "python": "3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)]",
+  "reference_evaluator_path": "C:\\Users\\ASUS\\sdn-ml\\run22_milestone_20261014T182846Z\\evaluate_grouped_rca.py",
+  "reference_evaluator_sha256": "84ea42d2c72d68f98309af2a425f305f3451ca6b9a47ca9c2d9751f09487448b",
+  "task": "conditional fault-window link localization with oracle phase boundaries; not online fault detection/localization"
+}

@@ -1,0 +1,226 @@
+{
+  "inventory_date": "2026-10-15",
+  "repository": "C:/Users/ASUS/sdn-ml",
+  "branch": "main",
+  "git_note": "Most project research files and results are untracked in this checkout. No cleanup/reset/commit was performed.",
+  "environments": {
+    "windows_python": "Python 3.13.7 in venv/",
+    "windows_core_packages": {
+      "pandas": "3.0.6",
+      "numpy": "2.5.3",
+      "scikit_learn": "1.9.1"
+    },
+    "ubuntu_project": "/home/mininet/sdn_project",
+    "ubuntu_python": "Python 3.8.5 (verified in prior VM audit)",
+    "ubuntu_components": {
+      "iperf": "2.0.13",
+      "Open_vSwitch": "2.13.1",
+      "Ryu": "project-local ryu-manager, listener 6633; not restarted"
+    }
+  },
+  "authoritative_or_protected": {
+    "historical_master_dataset": {
+      "path": "master_dataset.csv",
+      "sha256": "7fbfcc51dc3c5af122c28b52e558e3e037ad9367fde1b15bf0d25ff0faf9de64",
+      "policy": "immutable historical source"
+    },
+    "historical_clean_17_candidate": {
+      "path": "run22_milestone_20261014T182846Z/inputs/candidate_master_dataset.csv",
+      "sha256": "e9796f11603275e7f9a51f2195ede571637c3919905928b56879c5470102c5c2",
+      "rows": 11604,
+      "logical_experiments": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "policy": "read-only historical derived input; excludes logical 3 and 10"
+    },
+    "historical_audit_manifest": {
+      "path": "run22_milestone_20261014T182846Z/inputs/audit_manifest.csv",
+      "sha256": "80f12f94a7fb0dd6b648126d1021993e78616aad0daf2ab7f4c1d423c8e16d7c",
+      "policy": "read-only historical audit evidence"
+    },
+    "run_20": "FAILED_INVALID; raw artifacts preserved",
+    "run_22": {
+      "path": "/home/mininet/sdn_project/recollection_runs/physical_22_logical_3",
+      "disposition": "PROVISIONAL; excluded from primary data",
+      "artifact_hashes_verified_unchanged": true
+    },
+    "historical_evaluation_outputs": "Preserved; no overwrite or retraining performed"
+  },
+  "new_run_23": {
+    "vm_path": "/home/mininet/sdn_project/recollection_runs/physical_23_logical_3",
+    "local_raw_mirror": "run23_raw_evidence_physical23_logical3/",
+    "physical_run_id": 23,
+    "logical_experiment_id": 3,
+    "runner_status": "COMPLETE",
+    "telemetry_rows": 648,
+    "telemetry_timestamps": 54,
+    "switches": [
+      "s1",
+      "s2",
+      "s3",
+      "s4"
+    ],
+    "fault": "link_failure at s3-s4",
+    "phase_events": {
+      "normal": "2026-10-14T06:43:43.785064-07:00",
+      "fault": "2026-10-14T06:44:05.901475-07:00",
+      "recovery": "2026-10-14T06:44:26.010448-07:00"
+    },
+    "iperf": {
+      "client_return_code": 0,
+      "server_return_code": 0,
+      "requested_and_observed_seconds": 60,
+      "sent_datagrams": 133746,
+      "received_datagrams": 30379,
+      "lost_datagrams": 103367,
+      "client_server_receiver_reports_match": true
+    },
+    "runtime_target_mapping": [
+      {
+        "switch": "s3",
+        "port": "2",
+        "interface": "s3-eth2",
+        "peer": "s4-eth1"
+      },
+      {
+        "switch": "s4",
+        "port": "1",
+        "interface": "s4-eth1",
+        "peer": "s3-eth2"
+      }
+    ],
+    "disposition": "Runner-valid; awaiting dataset builder integrity checks; high packet loss is retained as observed outcome"
+  },
+  "existing_model_artifacts": [
+    "gcn_lstm.pth",
+    "gcn_multi.pth",
+    "graph_dataset.json",
+    "graph_dataset_multi.json"
+  ],
+  "existing_evaluation_files": [
+    "rca_results.csv",
+    "rca_loeo_results.csv",
+    "topology_link_rca_results.csv",
+    "temporal_rca_results.csv",
+    "run22_milestone_20261014T182846Z/grouped_evaluation.csv"
+  ],
+  "data_policy": "Raw and historical evidence is immutable; new data and evaluations use unique paths and separate provenance. Phase-selected windows are oracle-assisted conditional localization, not online detection.",
+  "final_candidate": {
+    "path": "derived_datasets/candidate_with_reaudited_physical21_and_physical23_v2/candidate_dataset.csv",
+    "sha256": "914fd551778b0eb918a1d74b1fc2476c0ab533909cab0d28a56303255a8bf916",
+    "rows": 12912,
+    "logical_experiments": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "physical_to_logical": {
+      "21": 10,
+      "23": 3
+    },
+    "run20": "FAILED_INVALID",
+    "run22": "PROVISIONAL"
+  },
+  "evaluation_results": {
+    "fixed_split": {
+      "path": "evaluations/recollected_13_6_split_v4",
+      "train_ids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        13,
+        14,
+        17,
+        19
+      ],
+      "test_ids": [
+        10,
+        11,
+        12,
+        15,
+        16,
+        18
+      ],
+      "rf_top1": "4/6",
+      "rf_top2": "6/6",
+      "topology_top1": "3/6",
+      "topology_top2": "6/6",
+      "task": "conditional localization; revised candidate"
+    },
+    "loeo": {
+      "path": "evaluations/validated_candidate_physical23_loeo",
+      "experiments": 18,
+      "rf_top1": "15/18",
+      "rf_top2": "16/18",
+      "topology_top1": "10/18",
+      "topology_top2": "14/18",
+      "task": "conditional localization; physical 21 excluded"
+    }
+  },
+  "current_code_hashes": {
+    "runner": "2661a68c0ba0a51f5a3bb9f4d34699f4124bc5f23d8c95a957b1a0a938daa62d",
+    "runner_tests": "a73386715fa2a230352a8f61e4d015888310af3723d71af89be5f922e6039e53",
+    "builder": "f95cb72abb506e20c2782775d51370be33d31198eaca27c730cad7aa43cb636f",
+    "evaluator": "475a50b6b34c56708e63edcf166ccc1bf48bbf0d2478b62da3eeec5addd4d501"
+  },
+  "verification": {
+    "windows_offline_tests": "52 passed",
+    "ubuntu_offline_tests": "44 passed; runner/test hashes matched Windows copies",
+    "master_dataset_sha256": "7fbfcc51dc3c5af122c28b52e558e3e037ad9367fde1b15bf0d25ff0faf9de64",
+    "live_experiment_this_completion": "none",
+    "syntax_checks": "passed for builder, evaluators, runner, and tests on Windows; runner/tests on Ubuntu",
+    "demo": "passed: read-only saved-result replay with provenance hashes"
+  },
+  "documentation_files": [
+    "README.md",
+    "docs/ARCHITECTURE.md",
+    "docs/RESEARCH_METHODOLOGY.md",
+    "docs/DATASET_CARD.md",
+    "docs/EXPERIMENT_PROTOCOL.md",
+    "docs/RESULTS.md",
+    "docs/LIMITATIONS.md",
+    "docs/DEMO_GUIDE.md",
+    "docs/REVIEW_PRESENTATION.md",
+    "docs/PAPER_DRAFT.md",
+    "demo_rca.py",
+    "test_demo_rca.py"
+  ]
+}

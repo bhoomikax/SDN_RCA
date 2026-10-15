@@ -1,0 +1,521 @@
+{
+  "audit_manifest_path": "C:\\Users\\ASUS\\sdn-ml\\run22_milestone_20261014T182846Z\\inputs\\audit_manifest.csv",
+  "dataset_path": "derived_datasets\\candidate_with_reaudited_physical21_and_physical23\\candidate_dataset.csv",
+  "dataset_sha256": "914fd551778b0eb918a1d74b1fc2476c0ab533909cab0d28a56303255a8bf916",
+  "duplicate_key_check": "PASS",
+  "excluded_historical_experiments": {
+    "10": "phase event(s) outside telemetry range: fault,normal,recovery",
+    "3": "phase event(s) outside telemetry range: fault,normal,recovery; byte-identical telemetry attributed only to experiment 4, whose in-range ordered phase log corroborates this recording"
+  },
+  "fault_link_rows": {
+    "s1-s2": 1356,
+    "s2-s3": 1572,
+    "s3-s4": 1332
+  },
+  "included_logical_experiments": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "input_candidate": {
+    "ids": [
+      1,
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "manifest_exclusions": {
+      "10": "phase event(s) outside telemetry range: fault,normal,recovery",
+      "3": "phase event(s) outside telemetry range: fault,normal,recovery; byte-identical telemetry attributed only to experiment 4, whose in-range ordered phase log corroborates this recording"
+    },
+    "manifest_sha256": "80f12f94a7fb0dd6b648126d1021993e78616aad0daf2ab7f4c1d423c8e16d7c",
+    "path": "C:\\Users\\ASUS\\sdn-ml\\run22_milestone_20261014T182846Z\\inputs\\candidate_master_dataset.csv",
+    "rows": 11604,
+    "sha256": "e9796f11603275e7f9a51f2195ede571637c3919905928b56879c5470102c5c2"
+  },
+  "phase_counts": {
+    "fault": 4260,
+    "normal": 5340,
+    "recovery": 3312
+  },
+  "physical_to_logical_mapping": {
+    "21": 10,
+    "23": 3
+  },
+  "recollected_runs": [
+    {
+      "admission_status": "VALID",
+      "distinct_timestamps": 54,
+      "fault_link": "s3-s4",
+      "forensic_reaudit": "not required",
+      "iperf_validation": {
+        "client_elapsed_seconds": 61.37587,
+        "client_observed_duration_seconds": 60.0,
+        "client_receiver_accounted_minus_sender_count": 0,
+        "client_receiver_lost_datagrams": 103367,
+        "client_receiver_observed_duration_seconds": 60.0,
+        "client_receiver_total_datagrams": 133746,
+        "client_returncode": 0,
+        "client_sent_datagrams": 133746,
+        "client_summary_valid": true,
+        "duration_tolerance_seconds": 2.0,
+        "duration_valid": true,
+        "receiver_delivered_datagrams": 30379,
+        "receiver_delivery_valid": true,
+        "receiver_reports_match": true,
+        "receiver_statistics_basis": "iperf2 UDP sequence-number-derived Lost/Total; not a raw socket recv count",
+        "requested_duration_seconds": 60.0,
+        "sequence_accounted_nonlost_datagrams": 30379,
+        "server_elapsed_seconds": 78.383226,
+        "server_mode": "iperf2 bounded server timeout (-t), followed by natural exit",
+        "server_observed_duration_seconds": 60.0,
+        "server_receiver_lost_datagrams": 103367,
+        "server_receiver_total_datagrams": 133746,
+        "server_returncode": 0,
+        "server_summary_valid": true
+      },
+      "logical_experiment_id": 3,
+      "original_failure": null,
+      "original_metadata_status": "COMPLETE",
+      "phase_events": {
+        "fault": "2026-10-14T06:44:05.901475-07:00",
+        "normal": "2026-10-14T06:43:43.785064-07:00",
+        "recovery": "2026-10-14T06:44:26.010448-07:00"
+      },
+      "raw_artifact_sha256": {
+        "iperf_client.log": "fc4172810e985216d788d7870314c193747f1ee747a58904bec91c808551aa3e",
+        "iperf_server.log": "f9b210f6f31a3ea69a76e5920bd5efdd9598b0588e0ac51da5c7abaed36d144e",
+        "phase_events.csv": "cb028656a0b23e47d44379b2f2d21df57d42ce19ca4972a37a3a1b8abd89ab05",
+        "run_metadata.json": "5740fa52ffb67579002d6c4831b39ed47b180f522a0ceaf8c896bd95cc86334c",
+        "runtime_port_mapping.csv": "ebfb86680cb1ac992cb4c45dceb70b6b7a9ea1222328991c5fb00e83d8a61dae",
+        "telemetry.csv": "70985e7693a57234c86b253bb5951ff9dbaa3b4a5430f0e4f1d13a3bb44f3a3f"
+      },
+      "recorded_iperf_summary_differences": {},
+      "runtime_port_mapping": [
+        {
+          "interface_name": "s1-eth1",
+          "link": "h1-s1",
+          "openflow_port": "1",
+          "peer_interface": "h1-eth0",
+          "peer_node": "h1",
+          "switch": "s1"
+        },
+        {
+          "interface_name": "s1-eth2",
+          "link": "s1-s2",
+          "openflow_port": "2",
+          "peer_interface": "s2-eth1",
+          "peer_node": "s2",
+          "switch": "s1"
+        },
+        {
+          "interface_name": "s2-eth1",
+          "link": "s1-s2",
+          "openflow_port": "1",
+          "peer_interface": "s1-eth2",
+          "peer_node": "s1",
+          "switch": "s2"
+        },
+        {
+          "interface_name": "s2-eth2",
+          "link": "s2-s3",
+          "openflow_port": "2",
+          "peer_interface": "s3-eth1",
+          "peer_node": "s3",
+          "switch": "s2"
+        },
+        {
+          "interface_name": "s3-eth1",
+          "link": "s2-s3",
+          "openflow_port": "1",
+          "peer_interface": "s2-eth2",
+          "peer_node": "s2",
+          "switch": "s3"
+        },
+        {
+          "interface_name": "s3-eth2",
+          "link": "s3-s4",
+          "openflow_port": "2",
+          "peer_interface": "s4-eth1",
+          "peer_node": "s4",
+          "switch": "s3"
+        },
+        {
+          "interface_name": "s4-eth1",
+          "link": "s3-s4",
+          "openflow_port": "1",
+          "peer_interface": "s3-eth2",
+          "peer_node": "s3",
+          "switch": "s4"
+        },
+        {
+          "interface_name": "s4-eth2",
+          "link": "h2-s4",
+          "openflow_port": "2",
+          "peer_interface": "h2-eth0",
+          "peer_node": "h2",
+          "switch": "s4"
+        }
+      ],
+      "source_physical_run_id": 23,
+      "target_mapping": [
+        {
+          "interface_name": "s3-eth2",
+          "link": "s3-s4",
+          "openflow_port": "2",
+          "peer_interface": "s4-eth1",
+          "peer_node": "s4",
+          "switch": "s3"
+        },
+        {
+          "interface_name": "s4-eth1",
+          "link": "s3-s4",
+          "openflow_port": "1",
+          "peer_interface": "s3-eth2",
+          "peer_node": "s3",
+          "switch": "s4"
+        }
+      ],
+      "telemetry_end": "2026-10-14T06:44:47.692854",
+      "telemetry_rows": 648,
+      "telemetry_start": "2026-10-14T06:43:43.643921"
+    },
+    {
+      "admission_status": "VALID",
+      "distinct_timestamps": 55,
+      "fault_link": "s2-s3",
+      "forensic_reaudit": "PASS; corrected iperf2 sequence-counter semantics",
+      "iperf_validation": {
+        "client_elapsed_seconds": 61.389226,
+        "client_observed_duration_seconds": 60.0,
+        "client_receiver_accounted_minus_sender_count": 1,
+        "client_receiver_lost_datagrams": 103188,
+        "client_receiver_observed_duration_seconds": 60.2,
+        "client_receiver_total_datagrams": 133748,
+        "client_returncode": 0,
+        "client_sent_datagrams": 133747,
+        "client_summary_valid": true,
+        "duration_tolerance_seconds": 2.0,
+        "duration_valid": true,
+        "receiver_delivered_datagrams": 30560,
+        "receiver_delivery_valid": true,
+        "receiver_reports_match": true,
+        "receiver_statistics_basis": "iperf2 UDP sequence-number-derived Lost/Total; not a raw socket recv count",
+        "requested_duration_seconds": 60.0,
+        "sequence_accounted_nonlost_datagrams": 30560,
+        "server_elapsed_seconds": 78.144632,
+        "server_mode": "iperf2 bounded server timeout (-t), followed by natural exit",
+        "server_observed_duration_seconds": 60.2,
+        "server_receiver_lost_datagrams": 103188,
+        "server_receiver_total_datagrams": 133748,
+        "server_returncode": 0,
+        "server_summary_valid": true
+      },
+      "logical_experiment_id": 10,
+      "original_failure": "ValueError: Client sent 133747 datagrams but receiver accounted for 133748",
+      "original_metadata_status": "FAILED_INVALID",
+      "phase_events": {
+        "fault": "2026-10-14T06:52:15.248602-07:00",
+        "normal": "2026-10-14T06:51:53.112091-07:00",
+        "recovery": "2026-10-14T06:52:35.355460-07:00"
+      },
+      "raw_artifact_sha256": {
+        "iperf_client.log": "4c29d89805b43aec7e965ce22e654f1eba346e9715e0a263dfe6e72ad9a394d1",
+        "iperf_server.log": "7c4fc55535b9fe1e628275a3bcb9e853d7e803c831d761fd9cc130e74377f19f",
+        "phase_events.csv": "876b03d46dc2427b025879b39b7b18efe3522c146d17e84cc6c08c840be01cee",
+        "run_metadata.json": "9971b60322e6afc82a6ab1215bdfa33d61151c785d6d9158af1fea77a858a69f",
+        "runtime_port_mapping.csv": "ebfb86680cb1ac992cb4c45dceb70b6b7a9ea1222328991c5fb00e83d8a61dae",
+        "telemetry.csv": "746d2dfde09064f9612432e3fd6314d676ad82d340f9dbf9baa3ba54889aadca"
+      },
+      "recorded_iperf_summary_differences": {
+        "client_observed_duration_seconds": {
+          "metadata": 60.2,
+          "reparsed_logs": 60.0
+        }
+      },
+      "runtime_port_mapping": [
+        {
+          "interface_name": "s1-eth1",
+          "link": "h1-s1",
+          "openflow_port": "1",
+          "peer_interface": "h1-eth0",
+          "peer_node": "h1",
+          "switch": "s1"
+        },
+        {
+          "interface_name": "s1-eth2",
+          "link": "s1-s2",
+          "openflow_port": "2",
+          "peer_interface": "s2-eth1",
+          "peer_node": "s2",
+          "switch": "s1"
+        },
+        {
+          "interface_name": "s2-eth1",
+          "link": "s1-s2",
+          "openflow_port": "1",
+          "peer_interface": "s1-eth2",
+          "peer_node": "s1",
+          "switch": "s2"
+        },
+        {
+          "interface_name": "s2-eth2",
+          "link": "s2-s3",
+          "openflow_port": "2",
+          "peer_interface": "s3-eth1",
+          "peer_node": "s3",
+          "switch": "s2"
+        },
+        {
+          "interface_name": "s3-eth1",
+          "link": "s2-s3",
+          "openflow_port": "1",
+          "peer_interface": "s2-eth2",
+          "peer_node": "s2",
+          "switch": "s3"
+        },
+        {
+          "interface_name": "s3-eth2",
+          "link": "s3-s4",
+          "openflow_port": "2",
+          "peer_interface": "s4-eth1",
+          "peer_node": "s4",
+          "switch": "s3"
+        },
+        {
+          "interface_name": "s4-eth1",
+          "link": "s3-s4",
+          "openflow_port": "1",
+          "peer_interface": "s3-eth2",
+          "peer_node": "s3",
+          "switch": "s4"
+        },
+        {
+          "interface_name": "s4-eth2",
+          "link": "h2-s4",
+          "openflow_port": "2",
+          "peer_interface": "h2-eth0",
+          "peer_node": "h2",
+          "switch": "s4"
+        }
+      ],
+      "source_physical_run_id": 21,
+      "target_mapping": [
+        {
+          "interface_name": "s2-eth2",
+          "link": "s2-s3",
+          "openflow_port": "2",
+          "peer_interface": "s3-eth1",
+          "peer_node": "s3",
+          "switch": "s2"
+        },
+        {
+          "interface_name": "s3-eth1",
+          "link": "s2-s3",
+          "openflow_port": "1",
+          "peer_interface": "s2-eth2",
+          "peer_node": "s2",
+          "switch": "s3"
+        }
+      ],
+      "telemetry_end": "2026-10-14T06:52:57.082061",
+      "telemetry_rows": 660,
+      "telemetry_start": "2026-10-14T06:51:52.899138"
+    }
+  ],
+  "rows": 12912,
+  "run_23": {
+    "admission_status": "VALID",
+    "distinct_timestamps": 54,
+    "fault_link": "s3-s4",
+    "forensic_reaudit": "not required",
+    "iperf_validation": {
+      "client_elapsed_seconds": 61.37587,
+      "client_observed_duration_seconds": 60.0,
+      "client_receiver_accounted_minus_sender_count": 0,
+      "client_receiver_lost_datagrams": 103367,
+      "client_receiver_observed_duration_seconds": 60.0,
+      "client_receiver_total_datagrams": 133746,
+      "client_returncode": 0,
+      "client_sent_datagrams": 133746,
+      "client_summary_valid": true,
+      "duration_tolerance_seconds": 2.0,
+      "duration_valid": true,
+      "receiver_delivered_datagrams": 30379,
+      "receiver_delivery_valid": true,
+      "receiver_reports_match": true,
+      "receiver_statistics_basis": "iperf2 UDP sequence-number-derived Lost/Total; not a raw socket recv count",
+      "requested_duration_seconds": 60.0,
+      "sequence_accounted_nonlost_datagrams": 30379,
+      "server_elapsed_seconds": 78.383226,
+      "server_mode": "iperf2 bounded server timeout (-t), followed by natural exit",
+      "server_observed_duration_seconds": 60.0,
+      "server_receiver_lost_datagrams": 103367,
+      "server_receiver_total_datagrams": 133746,
+      "server_returncode": 0,
+      "server_summary_valid": true
+    },
+    "logical_experiment_id": 3,
+    "original_failure": null,
+    "original_metadata_status": "COMPLETE",
+    "phase_events": {
+      "fault": "2026-10-14T06:44:05.901475-07:00",
+      "normal": "2026-10-14T06:43:43.785064-07:00",
+      "recovery": "2026-10-14T06:44:26.010448-07:00"
+    },
+    "raw_artifact_sha256": {
+      "iperf_client.log": "fc4172810e985216d788d7870314c193747f1ee747a58904bec91c808551aa3e",
+      "iperf_server.log": "f9b210f6f31a3ea69a76e5920bd5efdd9598b0588e0ac51da5c7abaed36d144e",
+      "phase_events.csv": "cb028656a0b23e47d44379b2f2d21df57d42ce19ca4972a37a3a1b8abd89ab05",
+      "run_metadata.json": "5740fa52ffb67579002d6c4831b39ed47b180f522a0ceaf8c896bd95cc86334c",
+      "runtime_port_mapping.csv": "ebfb86680cb1ac992cb4c45dceb70b6b7a9ea1222328991c5fb00e83d8a61dae",
+      "telemetry.csv": "70985e7693a57234c86b253bb5951ff9dbaa3b4a5430f0e4f1d13a3bb44f3a3f"
+    },
+    "recorded_iperf_summary_differences": {},
+    "runtime_port_mapping": [
+      {
+        "interface_name": "s1-eth1",
+        "link": "h1-s1",
+        "openflow_port": "1",
+        "peer_interface": "h1-eth0",
+        "peer_node": "h1",
+        "switch": "s1"
+      },
+      {
+        "interface_name": "s1-eth2",
+        "link": "s1-s2",
+        "openflow_port": "2",
+        "peer_interface": "s2-eth1",
+        "peer_node": "s2",
+        "switch": "s1"
+      },
+      {
+        "interface_name": "s2-eth1",
+        "link": "s1-s2",
+        "openflow_port": "1",
+        "peer_interface": "s1-eth2",
+        "peer_node": "s1",
+        "switch": "s2"
+      },
+      {
+        "interface_name": "s2-eth2",
+        "link": "s2-s3",
+        "openflow_port": "2",
+        "peer_interface": "s3-eth1",
+        "peer_node": "s3",
+        "switch": "s2"
+      },
+      {
+        "interface_name": "s3-eth1",
+        "link": "s2-s3",
+        "openflow_port": "1",
+        "peer_interface": "s2-eth2",
+        "peer_node": "s2",
+        "switch": "s3"
+      },
+      {
+        "interface_name": "s3-eth2",
+        "link": "s3-s4",
+        "openflow_port": "2",
+        "peer_interface": "s4-eth1",
+        "peer_node": "s4",
+        "switch": "s3"
+      },
+      {
+        "interface_name": "s4-eth1",
+        "link": "s3-s4",
+        "openflow_port": "1",
+        "peer_interface": "s3-eth2",
+        "peer_node": "s3",
+        "switch": "s4"
+      },
+      {
+        "interface_name": "s4-eth2",
+        "link": "h2-s4",
+        "openflow_port": "2",
+        "peer_interface": "h2-eth0",
+        "peer_node": "h2",
+        "switch": "s4"
+      }
+    ],
+    "source_physical_run_id": 23,
+    "target_mapping": [
+      {
+        "interface_name": "s3-eth2",
+        "link": "s3-s4",
+        "openflow_port": "2",
+        "peer_interface": "s4-eth1",
+        "peer_node": "s4",
+        "switch": "s3"
+      },
+      {
+        "interface_name": "s4-eth1",
+        "link": "s3-s4",
+        "openflow_port": "1",
+        "peer_interface": "s3-eth2",
+        "peer_node": "s3",
+        "switch": "s4"
+      }
+    ],
+    "telemetry_end": "2026-10-14T06:44:47.692854",
+    "telemetry_rows": 648,
+    "telemetry_start": "2026-10-14T06:43:43.643921"
+  },
+  "run_23_rows": 1308,
+  "schema": [
+    "timestamp",
+    "switch",
+    "port",
+    "rx_packets",
+    "rx_bytes",
+    "rx_dropped",
+    "tx_packets",
+    "tx_bytes",
+    "tx_dropped",
+    "rx_packet_rate",
+    "tx_packet_rate",
+    "rx_throughput_mbps",
+    "tx_throughput_mbps",
+    "experiment_id",
+    "phase",
+    "fault_type",
+    "fault_location"
+  ],
+  "software": {
+    "builder": "build_validated_candidate.py",
+    "python": "3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)]"
+  },
+  "source_rows": 11604,
+  "task_scope": "Conditional fault-window localization may use annotated fault phase to select windows. This dataset alone does not establish online detection.",
+  "time_policy": "Raw timestamp strings retained. Phase CSV stores VM local offset; the telemetry collector stores naive VM-local wall time. Phase assignment compares these local wall-clock values without rewriting either source. Samples before the normal marker remain normal-condition rows; fault is inclusive at its event and recovery is inclusive at its event.",
+  "validation": "PASS"
+}

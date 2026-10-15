@@ -1,0 +1,53 @@
+{
+  "dataset_path": "derived_datasets\\candidate_with_reaudited_physical21_and_physical23_v2\\candidate_dataset.csv",
+  "dataset_sha256": "914fd551778b0eb918a1d74b1fc2476c0ab533909cab0d28a56303255a8bf916",
+  "fit_scope": "RF and topology normal baselines use training runs only; test experiment labels are evaluated after rankings are produced.",
+  "methods": {
+    "rf_baseline": {
+      "test_support": 6,
+      "top1_accuracy": 0.6666666666666666,
+      "top2_accuracy": 1.0,
+      "top3_accuracy": 1.0
+    },
+    "topology_link_ranker": {
+      "test_support": 6,
+      "top1_accuracy": 0.5,
+      "top2_accuracy": 1.0,
+      "top3_accuracy": 1.0
+    }
+  },
+  "original_evaluator_path": "C:\\Users\\ASUS\\sdn-ml\\evaluate_topology_link_rca.py",
+  "original_evaluator_sha256": "475a50b6b34c56708e63edcf166ccc1bf48bbf0d2478b62da3eeec5addd4d501",
+  "python": "3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)]",
+  "results_csv": "evaluations\\recollected_13_6_split_v3\\topology_link_rca_results.csv",
+  "split": {
+    "run_mapping": {
+      "physical_21": 10,
+      "physical_23": 3
+    },
+    "test_logical_ids": [
+      10,
+      11,
+      12,
+      15,
+      16,
+      18
+    ],
+    "train_logical_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      13,
+      14,
+      17,
+      19
+    ]
+  },
+  "task": "Conditional fault localization; the evaluator uses annotated phase labels to select the fault window and is not an online detector."
+}
