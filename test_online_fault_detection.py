@@ -2,7 +2,12 @@ import unittest
 
 import pandas as pd
 
-from evaluate_online_fault_detection import METRICS, fit_training_normal, score_online_rows
+from evaluate_online_fault_detection import (
+    METRICS,
+    fit_training_normal,
+    observed_nonfault_hours,
+    score_online_rows,
+)
 
 
 class OnlineFaultDetectionTests(unittest.TestCase):
@@ -25,6 +30,23 @@ class OnlineFaultDetectionTests(unittest.TestCase):
         scored = score_online_rows(rows, METRICS, means, scales)
         self.assertEqual(len(scored), 1)
         self.assertNotIn("phase", scored.columns)
+
+    def test_nonfault_exposure_excludes_fault_window_and_phase_gaps(self):
+        scored = pd.DataFrame({
+            "timestamp": pd.date_range("2026-01-01", periods=6, freq="s"),
+            "phase": ["normal", "normal", "fault", "fault", "recovery", "recovery"],
+        })
+        self.assertAlmostEqual(observed_nonfault_hours(scored) * 3600, 2.0)
+
+    def test_nonfault_exposure_is_order_independent(self):
+        scored = pd.DataFrame({
+            "timestamp": pd.to_datetime([
+                "2026-01-01T00:00:03", "2026-01-01T00:00:00",
+                "2026-01-01T00:00:02", "2026-01-01T00:00:01",
+            ]),
+            "phase": ["recovery", "normal", "fault", "normal"],
+        })
+        self.assertAlmostEqual(observed_nonfault_hours(scored) * 3600, 1.0)
 
 
 if __name__ == "__main__":

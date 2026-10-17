@@ -1,0 +1,11 @@
+{
+  "status": "FAILED_INCOMPLETE",
+  "completed_folds": 25,
+  "completed_model_fits": 225,
+  "failure": "Output serialization raised KeyError: 'method' while writing the mean-seed ensemble CSV.",
+  "available_files": [
+    "per_seed_predictions.csv",
+    "mean_seed_ensemble_predictions.csv"
+  ],
+  "interpretation": "This directory is preserved as evidence of the failed first artifact-writing attempt. It is not a complete evaluation package; do not cite its partial files as validated results."
+}

@@ -1,6 +1,6 @@
 # Model cards
 
-These models address conditional link localization from telemetry in an annotated fault window. The phase annotation selects that window; none is an online detector. The 25-fold v3 LOEO comparison evaluates the RF and fixed topology ranker. The graph, temporal, and graph-temporal neural results below are exploratory results on the separate fixed 13/6 split.
+These models address conditional link localization from telemetry in an annotated fault window. The phase annotation selects that window; none is an online detector. The v3 grouped LOEO artifact package evaluates RF, topology ranking, and three neural paths on identical 25 experiment-held-out folds. All reported neural metrics remain exploratory; the small number of independent experiments and single topology do not support a superiority claim.
 
 ## Random Forest link classifier
 
@@ -23,7 +23,9 @@ These models address conditional link localization from telemetry in an annotate
 - **Window:** first ten seconds of the annotated fault interval. This is oracle-assisted conditional localization.
 - **Split:** fixed experiment split, 13 training / 6 test, three initialization seeds. Seed repeats do not increase independent support beyond six.
 - **Results:** graph-only mean Top-1/Top-2 5/6 / 5/6; temporal-only 4/6 / 5.67/6; graph-temporal 4/6 / 5.33/6. RF on the same split measured 4/6 / 6/6.
-- **Use limits:** exploratory only, very small held-out set and wide uncertainty. No v3 LOEO neural comparison was run, and these numbers do not show improvement over RF or establish causal propagation.
+- **Grouped v3 LOEO result:** at `evaluations/graph_temporal_v3_grouped_loeo_verified/`, the mean-score ensemble gives graph-only 20/25 Top-1 and 23/25 Top-2 (MRR 0.8867); temporal-only 18/25 and 21/25 (MRR 0.8333); graph-temporal 23/25 and 23/25 (MRR 0.9467). Same-fold RF is 20/25 and 22/25; topology ranker is 13/25 and 22/25.
+- **Fit/evaluation policy:** 25 LOEO folds, 24 train / 1 held out, three fixed initialization seeds, training-only normalization and feature policy. Independent artifact checks validated split membership, predictions, rank metrics, and hashes. The first failed serialization attempt is retained separately and excluded.
+- **Use limits:** these are exploratory, oracle-window conditional localization results on 25 independent experiments in one topology. Seed repeats do not add test support. A numerical advantage in this evaluation is not confirmatory evidence of general superiority and does not establish causal propagation or online detection. The earlier fixed 13/6 results above remain a distinct, small exploratory comparison.
 
 ## Baselines
 
@@ -33,5 +35,5 @@ Uniform random ranking has expected Top-1 1/3 and Top-2 2/3. A majority-prior ra
 
 - **Input:** current timestamp's numbered-port telemetry, scored with means/scales fitted on training-normal rows. The threshold is the 99th percentile of training-normal timestamp maximum anomaly scores. Prediction-time scoring does not read phase labels, fault annotations, or future samples.
 - **Evaluation:** 25-fold LOEO; training-phase labels select normal fit rows, while held-out phase annotations are joined afterward only to measure detection and false alarms. The future-invariance test passed.
-- **Result:** 0/25 fault windows detected, 6 false-alarm episodes, and 14.14 false alarms per observed nonfault hour. This negative baseline does not produce a root-cause link.
+- **Result:** 0/25 fault windows detected and 6 false-alarm episodes. Correcting the observed-nonfault exposure denominator gives 21.6581 false-alarm episodes per observed nonfault hour. The always-no-alarm comparator also detects 0/25 and has no false alarms, so this detector is not useful at the measured operating point. The old output remains preserved; corrected output is `evaluations/online_fault_detection_v3_exposure_audit/`.
 - **Use limits:** the threshold is a fixed exploratory choice, not selected from held-out results. No online detector improvement is claimed.

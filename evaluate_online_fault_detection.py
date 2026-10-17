@@ -61,6 +61,20 @@ def _alarm_edges(values):
     return result
 
 
+def observed_nonfault_hours(scored):
+    """Sum fully observed adjacent intervals within each nonfault phase segment."""
+    ordered = scored.sort_values("timestamp").reset_index(drop=True)
+    if len(ordered) < 2:
+        return 0.0
+    deltas = ordered.timestamp.diff().dt.total_seconds()
+    same_phase = ordered.phase.eq(ordered.phase.shift())
+    nonfault = ordered.phase.ne("fault") & same_phase
+    duration_seconds = float(deltas[nonfault].sum())
+    if not math.isfinite(duration_seconds) or duration_seconds < 0:
+        raise ValueError("Invalid nonfault observation duration")
+    return duration_seconds / 3600.0
+
+
 def evaluate(dataset, output_dir):
     dataset, output_dir = Path(dataset), Path(output_dir)
     if output_dir.exists():
@@ -107,11 +121,7 @@ def evaluate(dataset, output_dir):
         first_detection = detection.timestamp.min() if detected else pd.NaT
         delay = (first_detection - onset).total_seconds() if detected else None
         false_alarm_count = int((scored.alarm_episode & (scored.phase != "fault")).sum())
-        normal_duration_hours = max(
-            1.0 / 3600.0,
-            (scored.loc[scored.phase != "fault", "timestamp"].max()
-             - scored.loc[scored.phase != "fault", "timestamp"].min()).total_seconds() / 3600.0
-        ) if (scored.phase != "fault").any() else 1.0 / 3600.0
+        normal_duration_hours = observed_nonfault_hours(scored)
         experiment_results.append({
             "fold": fold, "experiment_id": held_out, "train_experiment_ids": ";".join(map(str, train_ids)),
             "fault_onset_for_scoring_only": onset.isoformat(),
@@ -157,6 +167,21 @@ def evaluate(dataset, output_dir):
         "false_alarm_episodes_per_nonfault_hour": fp / total_nonfault_hours if total_nonfault_hours else None,
         "median_detection_delay_seconds": float(np.median(delays)) if delays else None,
         "mean_detection_delay_seconds": float(np.mean(delays)) if delays else None,
+        "nonfault_exposure_method": (
+            "Sum of adjacent sample intervals within contiguous nonfault phase segments; "
+            "fault windows and phase-transition gaps are excluded conservatively."
+        ),
+        "simple_baselines": {
+            "always_no_alarm": {
+                "detected_experiments": 0,
+                "missed_experiments": len(experiment_results),
+                "false_alarm_episodes": 0,
+                "event_precision": 0.0,
+                "event_recall": 0.0,
+                "event_f1": 0.0,
+                "false_alarm_episodes_per_nonfault_hour": 0.0,
+            }
+        },
         "candidate_sha256": sha256(dataset), "evaluator_sha256": sha256(__file__),
         "python": sys.version,
         "limitations": ["one controlled topology and 25 runs", "phase annotations are evaluation oracle only",

@@ -30,6 +30,7 @@ LOGICAL_TO_PHYSICAL = {
     3: 23, 10: 21,
     20: 24, 21: 25, 22: 26, 23: 27, 24: 28, 25: 29,
     26: 30,
+    27: 31,
 }
 FAULT_LINK_BY_LOGICAL = {
     3: "s3-s4", 10: "s2-s3",
@@ -37,13 +38,18 @@ FAULT_LINK_BY_LOGICAL = {
     22: "s2-s3", 23: "s2-s3",
     24: "s3-s4", 25: "s3-s4",
     26: "s2-s3",
+    27: "s2-s3",
 }
-RUN_PURPOSE_BY_LOGICAL = {26: "traffic_profile_pilot_only"}
+RUN_PURPOSE_BY_LOGICAL = {
+    26: "traffic_profile_pilot_only",
+    27: "traffic_profile_pilot_retry_only",
+}
 FAULT_TYPE = "link_failure"
 PHASES = ("normal", "fault", "recovery")
 FIRST_SAMPLE_TIMEOUT_SECONDS = 15.0
 FIRST_SAMPLE_POLL_SECONDS = 0.05
 IPERF_SERVER_GRACE_SECONDS = 15.0
+IPERF_SERVER_WAIT_TIMEOUT_SECONDS = IPERF_SERVER_GRACE_SECONDS + 5.0
 IPERF_CLIENT_WAIT_GRACE_SECONDS = 15.0
 IPERF_PROCESS_CLEANUP_TIMEOUT_SECONDS = 5.0
 IPERF_DURATION_TOLERANCE_SECONDS = 2.0
@@ -143,11 +149,15 @@ def iperf_bandwidth_argument(rate_mbps):
 def get_iperf_version():
     completed = subprocess.run(
         ["iperf", "--version"],
-        check=True,
         capture_output=True,
         text=True,
     )
     version_output = "\n".join((completed.stdout, completed.stderr)).strip()
+    if completed.returncode not in (0, 1):
+        raise RuntimeError(
+            f"iperf version query exited with status {completed.returncode}: "
+            f"{version_output!r}"
+        )
     match = re.search(
         r"\biperf(?:\s+version)?\s+(2\.\d+(?:\.\d+)?)\b",
         version_output,
@@ -846,6 +856,7 @@ def run(logical_id, physical_id, normal_seconds=20, fault_seconds=20, recovery_s
         "server_mode": "iperf2 bounded server timeout (-t), followed by natural exit",
         "requested_duration_seconds": normal_seconds + fault_seconds + recovery_seconds,
         "duration_tolerance_seconds": IPERF_DURATION_TOLERANCE_SECONDS,
+        "server_wait_timeout_seconds": IPERF_SERVER_WAIT_TIMEOUT_SECONDS,
         "processes": iperf_records,
         "completion_valid": False,
     }
@@ -995,7 +1006,11 @@ def run(logical_id, physical_id, normal_seconds=20, fault_seconds=20, recovery_s
             })
             if client_returncode != 0:
                 raise RuntimeError(f"iperf client exited with status {client_returncode}")
-            server_returncode = iperf_server.wait(timeout=IPERF_SERVER_GRACE_SECONDS)
+            # iperf2 may exit several seconds after its bounded -t lifetime,
+            # including the client/server startup offset.
+            server_returncode = iperf_server.wait(
+                timeout=IPERF_SERVER_WAIT_TIMEOUT_SECONDS
+            )
             server_elapsed = time.monotonic() - server_started
             iperf_records["server"].update({
                 "returncode": server_returncode,

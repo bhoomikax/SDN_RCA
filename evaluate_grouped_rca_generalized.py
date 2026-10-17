@@ -365,7 +365,7 @@ def evaluate():
             "forbidden_predictor_fields": sorted(FORBIDDEN_PREDICTORS),
         },
         "fit_scope": f"Each fold's RF, means/stds, active-metric selection, topology threshold (training-normal 95th percentile), and port baselines use only the {len(ids) - 1} training experiments. No held-out labels tune features, thresholds, or weights.",
-        "topology_mapping": "s3-s4 mapping runtime-verified for physical run 22; mappings for other candidate records remain setup-derived, since their datasets do not store runtime interface mapping. Other link endpoints use the existing inferred topology mapping.",
+        "topology_mapping": "Added physical runs 21 and 23-29 carry independently validated captured runtime OVS switch-port mappings. Historical source runs have no captured runtime mapping and retain setup-inferred port assignments. Physical run 20 is invalid and run 22 remains provisional; neither is included.",
         "ranking_weights": "Existing four-component equal-weight rank aggregation; unchanged.",
         "tie_rule": "RF probability ties use lexical link order. Topology reproduces score, link-anomaly, endpoint-mean tie-breaks and stable candidate insertion order. score_ties reports exact score ties; top-k is membership in the first k ranked candidates.",
         "top3_note": "All three configured candidate links are ranked, so Top-3 is necessarily 100% when no candidate is missing; report it for completeness, but it is not discriminative.",

@@ -1,0 +1,187 @@
+{
+  "controller": "127.0.0.1:6633 reachable",
+  "existing_ovs_bridges": [],
+  "failed_at": "2026-10-15T11:36:50.408154-07:00",
+  "failure": "TimeoutExpired: Command '['mnexec', '-da', '26449', 'iperf', '-s', '-u', '-p', '5001', '-t', '75']' timed out after 15.0 seconds",
+  "fault_link": "s2-s3",
+  "fault_target_runtime_mapping": [
+    {
+      "interface_name": "s2-eth2",
+      "link": "s2-s3",
+      "openflow_port": "2",
+      "peer_interface": "s3-eth1",
+      "peer_node": "s3",
+      "switch": "s2"
+    },
+    {
+      "interface_name": "s3-eth1",
+      "link": "s2-s3",
+      "openflow_port": "1",
+      "peer_interface": "s2-eth2",
+      "peer_node": "s2",
+      "switch": "s3"
+    }
+  ],
+  "first_sample_observed_before_normal": "2026-10-15T18:35:32.801178+00:00",
+  "historical_experiment_files": "not used; output is isolated",
+  "iperf": {
+    "completion_valid": false,
+    "duration_tolerance_seconds": 2.0,
+    "processes": {
+      "client": {
+        "completed_at": "2026-10-15T11:36:35.407225-07:00",
+        "elapsed_seconds": 60.375542,
+        "pid": 26660,
+        "returncode": 0,
+        "started_at": "2026-10-15T11:35:35.043855-07:00",
+        "terminal_outcome": "exited"
+      },
+      "server": {
+        "completed_at": "2026-10-15T11:36:50.410375-07:00",
+        "elapsed_seconds": 77.401803,
+        "pid": 26649,
+        "returncode": 0,
+        "started_at": "2026-10-15T11:35:33.025899-07:00",
+        "terminal_outcome": "exited during cleanup"
+      }
+    },
+    "requested_duration_seconds": 60,
+    "server_mode": "iperf2 bounded server timeout (-t), followed by natural exit",
+    "summary_validation": {
+      "client_observed_duration_seconds": 58.9,
+      "client_summary_valid": true,
+      "duration_valid": true,
+      "failure": "TimeoutExpired: Command '['mnexec', '-da', '26449', 'iperf', '-s', '-u', '-p', '5001', '-t', '75']' timed out after 15.0 seconds",
+      "server_observed_duration_seconds": 58.9,
+      "server_summary_valid": true
+    }
+  },
+  "iperf_version": "2.0.13",
+  "logical_experiment_id": 26,
+  "output_dir": "/home/mininet/sdn_project/traffic_profile_pilot_20261017/recollection_runs/physical_30_logical_26",
+  "phase_durations_seconds": {
+    "fault": 20,
+    "normal": 20,
+    "recovery": 20
+  },
+  "phase_events": {
+    "fault": "2026-10-15T11:35:55.266423-07:00",
+    "normal": "2026-10-15T11:35:33.007101-07:00",
+    "recovery": "2026-10-15T11:36:15.382353-07:00"
+  },
+  "physical_run_id": 30,
+  "run_purpose": "traffic_profile_pilot_only",
+  "runtime_switch_port_mapping": [
+    {
+      "interface_name": "s1-eth1",
+      "link": "h1-s1",
+      "openflow_port": "1",
+      "peer_interface": "h1-eth0",
+      "peer_node": "h1",
+      "switch": "s1"
+    },
+    {
+      "interface_name": "s1-eth2",
+      "link": "s1-s2",
+      "openflow_port": "2",
+      "peer_interface": "s2-eth1",
+      "peer_node": "s2",
+      "switch": "s1"
+    },
+    {
+      "interface_name": "s2-eth1",
+      "link": "s1-s2",
+      "openflow_port": "1",
+      "peer_interface": "s1-eth2",
+      "peer_node": "s1",
+      "switch": "s2"
+    },
+    {
+      "interface_name": "s2-eth2",
+      "link": "s2-s3",
+      "openflow_port": "2",
+      "peer_interface": "s3-eth1",
+      "peer_node": "s3",
+      "switch": "s2"
+    },
+    {
+      "interface_name": "s3-eth1",
+      "link": "s2-s3",
+      "openflow_port": "1",
+      "peer_interface": "s2-eth2",
+      "peer_node": "s2",
+      "switch": "s3"
+    },
+    {
+      "interface_name": "s3-eth2",
+      "link": "s3-s4",
+      "openflow_port": "2",
+      "peer_interface": "s4-eth1",
+      "peer_node": "s4",
+      "switch": "s3"
+    },
+    {
+      "interface_name": "s4-eth1",
+      "link": "s3-s4",
+      "openflow_port": "1",
+      "peer_interface": "s3-eth2",
+      "peer_node": "s3",
+      "switch": "s4"
+    },
+    {
+      "interface_name": "s4-eth2",
+      "link": "h2-s4",
+      "openflow_port": "2",
+      "peer_interface": "h2-eth0",
+      "peer_node": "h2",
+      "switch": "s4"
+    }
+  ],
+  "started_at": "2026-10-15T11:35:22.585119-07:00",
+  "status": "FAILED_INVALID",
+  "topology": [
+    {
+      "left": "h1",
+      "params": {},
+      "right": "s1"
+    },
+    {
+      "left": "s1",
+      "params": {},
+      "right": "s2"
+    },
+    {
+      "left": "s2",
+      "params": {
+        "bw": 10,
+        "delay": "5ms"
+      },
+      "right": "s3"
+    },
+    {
+      "left": "s3",
+      "params": {},
+      "right": "s4"
+    },
+    {
+      "left": "s4",
+      "params": {},
+      "right": "h2"
+    }
+  ],
+  "traffic_profile": {
+    "bottleneck_capacity_mbps": 10.0,
+    "bottleneck_link": "s2-s3",
+    "maximum_capacity_fraction": 0.7,
+    "offered_rate_mbps": 6.0,
+    "payload_size_policy": "iperf2 default; no -l override",
+    "phase_durations_seconds": {
+      "fault": 20,
+      "normal": 20,
+      "recovery": 20
+    },
+    "profile_id": "udp_6mbps_s2s3_10mbps_v1",
+    "protocol": "udp",
+    "sha256": "35ddddc9b6a8903c5bfcdd4f58fdeba4de2b353ad9bf239e2f81db59aa42b384"
+  }
+}

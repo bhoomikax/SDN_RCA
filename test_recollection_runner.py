@@ -141,6 +141,7 @@ class FakeIperfProcess:
         self.role = role
         self.mode = mode
         self.command = command
+        self.wait_timeouts = []
         self.returncode = 2 if role == "server" and mode == "premature_server" else None
         self.pid = 100 if role == "client" else 101
         transfer_duration = 3
@@ -157,9 +158,17 @@ class FakeIperfProcess:
         return self.returncode
 
     def wait(self, timeout=None):
+        self.wait_timeouts.append(timeout)
         if self.mode in ("client_timeout", "cleanup_failure") and self.role == "client" and self.returncode is None:
             raise runner.subprocess.TimeoutExpired("iperf-client", timeout)
         if self.mode == "server_timeout" and self.role == "server" and self.returncode is None:
+            raise runner.subprocess.TimeoutExpired("iperf-server", timeout)
+        if (
+            self.mode == "server_delayed_exit"
+            and self.role == "server"
+            and self.returncode is None
+            and timeout < 18.0
+        ):
             raise runner.subprocess.TimeoutExpired("iperf-server", timeout)
         if self.returncode is None:
             self.returncode = 5 if (
@@ -333,14 +342,35 @@ class RecollectionRunnerTests(unittest.TestCase):
     def test_reserved_physical_mapping_is_explicit(self):
         self.assertEqual(LOGICAL_TO_PHYSICAL, {
             3: 23, 10: 21, 20: 24, 21: 25, 22: 26, 23: 27, 24: 28, 25: 29,
-            26: 30,
+            26: 30, 27: 31,
         })
         self.assertEqual(FAULT_LINK_BY_LOGICAL, {
             3: "s3-s4", 10: "s2-s3", 20: "s1-s2", 21: "s1-s2",
             22: "s2-s3", 23: "s2-s3", 24: "s3-s4", 25: "s3-s4",
-            26: "s2-s3",
+            26: "s2-s3", 27: "s2-s3",
         })
         self.assertEqual(runner.RUN_PURPOSE_BY_LOGICAL[26], "traffic_profile_pilot_only")
+        self.assertEqual(runner.RUN_PURPOSE_BY_LOGICAL[27], "traffic_profile_pilot_retry_only")
+
+    def test_server_natural_exit_grace_handles_delayed_iperf2_shutdown(self):
+        with tempfile.TemporaryDirectory() as directory:
+            out, error, _fault, net, _calls = self.run_mocked_orchestration(
+                directory, iperf_mode="server_delayed_exit"
+            )
+            self.assertIsNone(error)
+            metadata = json.loads((out / "run_metadata.json").read_text())
+            self.assertEqual(metadata["status"], "COMPLETE")
+            self.assertEqual(
+                metadata["iperf"]["server_wait_timeout_seconds"],
+                runner.IPERF_SERVER_WAIT_TIMEOUT_SECONDS,
+            )
+            server_process = next(
+                process for process in net.iperf_processes if process.role == "server"
+            )
+            self.assertEqual(
+                server_process.wait_timeouts,
+                [runner.IPERF_SERVER_WAIT_TIMEOUT_SECONDS],
+            )
 
     def test_run_rejects_phase_durations_different_from_profile(self):
         profile = runner.load_traffic_profile()
@@ -377,12 +407,12 @@ class RecollectionRunnerTests(unittest.TestCase):
             runner.subprocess,
             "run",
             return_value=SimpleNamespace(
-                stdout="iperf version 2.0.13", stderr="", returncode=0,
+                stdout="", stderr="iperf version 2.0.13", returncode=1,
             ),
         ) as run:
             self.assertEqual(runner.get_iperf_version(), "2.0.13")
         run.assert_called_once_with(
-            ["iperf", "--version"], check=True, capture_output=True, text=True,
+            ["iperf", "--version"], capture_output=True, text=True,
         )
         with mock.patch.object(
             runner.subprocess,
@@ -390,6 +420,13 @@ class RecollectionRunnerTests(unittest.TestCase):
             return_value=SimpleNamespace(stdout="iperf 3.14", stderr="", returncode=0),
         ):
             with self.assertRaisesRegex(RuntimeError, "Expected iperf2"):
+                runner.get_iperf_version()
+        with mock.patch.object(
+            runner.subprocess,
+            "run",
+            return_value=SimpleNamespace(stdout="", stderr="query failure", returncode=2),
+        ):
+            with self.assertRaisesRegex(RuntimeError, "exited with status 2"):
                 runner.get_iperf_version()
 
     def test_outputs_are_isolated_by_physical_and_logical_ids(self):

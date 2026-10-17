@@ -54,6 +54,7 @@ Read-only, saved-artifact demo (prints the existing six-test rankings and checks
 - `evaluate_topology_link_rca.py`: established RF and topology-link ranking implementation.
 - `evaluate_validated_candidate.py`: grouped leave-one-logical-experiment-out analysis.
 - `evaluate_online_fault_detection.py`: separate timestamp-causal anomaly baseline; current result is negative and it does not localize a link.
+- `evaluate_graph_temporal_grouped_loeo.py`: fold-isolated graph-only, temporal-only, graph-temporal, RF, and topology comparison on the v3 experiment groups.
 - `evaluate_recollected_fixed_split.py`: established 13/6 split membership on the current candidate.
 - `demo_rca.py`: read-only replay of a saved evaluation; it does not train or make a new prediction.
 - `demo_rca_v3.py`: hash-verified replay of one v3 LOEO result with its measured feature window; no training or live inference.
@@ -77,12 +78,15 @@ Reproduce the candidate, graph, and 25-fold RF/topology evaluation into fresh ou
 .\venv\Scripts\python.exe build_graph_multi.py --input derived_datasets\balanced_recollection_20261015_v3\candidate_dataset.csv --output derived_graphs\NEW_GRAPH_DIR\graph_dataset.json
 .\venv\Scripts\python.exe evaluate_validated_candidate.py --dataset derived_datasets\balanced_recollection_20261015_v3\candidate_dataset.csv --output-dir evaluations\NEW_EVALUATION_DIR
 .\venv\Scripts\python.exe evaluate_online_fault_detection.py --dataset derived_datasets\balanced_recollection_20261015_v3\candidate_dataset.csv --output-dir evaluations\NEW_DETECTION_DIR
+.\venv\Scripts\python.exe evaluate_graph_temporal_grouped_loeo.py --output-dir evaluations\NEW_GRAPH_TEMPORAL_LOEO_DIR
 .\venv\Scripts\python.exe -m unittest discover -v
 ```
 
-These commands use exclusive output paths and intentionally fail if a target exists. The measured v3 LOEO output is `evaluations/balanced_recollection_v3_loeo_release/`. Run 22 remains excluded despite its raw metadata saying `COMPLETE`, because trustworthy iperf process-completion evidence is absent. Localization remains conditional on the annotated fault window. A separate phase-blind online detector was evaluated but failed to detect any of the 25 held-out fault windows; see the results report.
+These commands use exclusive output paths and intentionally fail if a target exists. The measured v3 LOEO output is `evaluations/balanced_recollection_v3_loeo_release/`; the grouped graph/temporal command evaluates the three neural paths against RF/topology on identical held-out experiments. Run 22 remains excluded despite its raw metadata saying `COMPLETE`, because trustworthy iperf process-completion evidence is absent. Localization remains conditional on the annotated fault window. A separate phase-blind online detector was evaluated but failed to detect any of the 25 held-out fault windows; see the results report.
 
-The v3 candidate has an RX acquisition-era shift: all RX-derived fields are zero in its 17 historical source experiments, while all eight recollections have nonzero RX. The saved exploratory direction ablation and its limits are documented in the v3 dataset card and results. A versioned 6 Mbps UDP profile is prepared for a future pilot only; SSH authentication to the Mininet VM is currently denied, and the profile has not been deployed or validated. Do not treat it as a completed experiment or merge prospective output into v3.
+The v3 candidate has an RX acquisition-era shift: all RX-derived fields are zero in its 17 historical source experiments, while all eight recollections have nonzero RX. The saved exploratory direction ablation and its limits are documented in the v3 dataset card and results. A separate 6 Mbps UDP engineering pilot completed at logical 27 / physical 31 after the initial logical 26 / physical 30 attempt was preserved as `FAILED_INVALID`. Neither pilot is part of v3 or model evaluation. The independent audit and prospective repeatability protocol are in [the pilot audit](docs/TRAFFIC_PROFILE_PILOT_AUDIT.md), [the pilot protocol](docs/TRAFFIC_PROFILE_PILOT_PROTOCOL.md), and [the cohort protocol](docs/TRAFFIC_PROFILE_REPEATABILITY_PROTOCOL.md); hashes are in `PILOT_EVIDENCE_SHA256SUMS.txt`.
+
+The completed grouped v3 neural evaluation is preserved at `evaluations/graph_temporal_v3_grouped_loeo_verified/` and independently checked for all 25 24/1 experiment splits, 225 per-seed predictions, 75 score ensembles, prediction/rank consistency, summary metrics, and source/output hashes. Mean-score ensemble results: graph-only 20/25 Top-1 and 23/25 Top-2; temporal-only 18/25 and 21/25; graph-temporal 23/25 and 23/25. Same-fold RF scores 20/25 and 22/25; topology ranking scores 13/25 and 22/25. The three seed fits are not extra independent test cases. These small-sample results are exploratory and do not establish model superiority; all models use annotated fault windows, so these are not online or causal RCA results. The earlier serialization-failed attempt remains separately preserved and excluded. See [the v3 results](docs/RESULTS_BALANCED_V3.md) for intervals, provenance, and limitations.
 
 Replay a v3 held-out experiment from saved results, without training or inference:
 
@@ -91,3 +95,13 @@ Replay a v3 held-out experiment from saved results, without training or inferenc
 ```
 
 The replay checks hashes for the candidate, predictions, split, feature policy, and summary, then prints the selected experiment's annotated ten-second window, measured feature means, saved ranking, and retrospective label.
+
+To perform fresh grouped inference for that held-out experiment (refitting the fold on the other 24 experiments) and print descriptive measurement deltas:
+
+```powershell
+.\venv\Scripts\python.exe demo_rca_v3.py --mode fresh-inference --experiment-id 20 --method rf_baseline
+```
+
+This is offline held-out inference, not online detection. The fault window is selected using the annotated phase; displayed telemetry deltas are descriptive associations, not model attributions or causal evidence.
+
+The v3 online q99 detector remains unsuccessful: it detected 0/25 held-out fault windows and generated 21.6581 false-alarm episodes per observed nonfault hour after correcting the nonfault exposure denominator. An always-no-alarm comparator also detects 0/25, with no false alarms; the detector does not improve on this operating point. The corrected audit output is `evaluations/online_fault_detection_v3_exposure_audit/`. See the updated [results](docs/RESULTS_BALANCED_V3.md) and [limitations](docs/LIMITATIONS.md).

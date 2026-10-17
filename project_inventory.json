@@ -1,8 +1,8 @@
 {
-  "inventory_date": "2026-10-15",
+  "inventory_date": "2026-10-17",
   "repository": "C:/Users/ASUS/sdn-ml",
   "branch": "main",
-  "git_note": "Most project research files and results are untracked in this checkout. No cleanup/reset/commit was performed.",
+  "git_note": "The checkout contains pre-existing project changes plus this continuation's scoped changes. No reset or cleanup was performed.",
   "environments": {
     "windows_python": "Python 3.13.7 in venv/",
     "windows_core_packages": {
@@ -196,21 +196,30 @@
     }
   },
   "current_code_hashes": {
-    "runner": "8eaeb38485cb510adad22b52d37eb7956ee93014b7beb9a0239a38abe9c31f36",
-    "runner_tests": "566602369d1ee2ba1c03530eddb09a871435fdd9256e74ec4c6035adfb152688",
+    "runner": "f2608d18b6b9159c9d7579ccb5773bdedd7c7db10057e417a869e3b702fe5c6d",
+    "runner_tests": "a609c1f92379b5a9ae72f230abc9937053acad3351adf752aca3099a5ea7b8b0",
     "traffic_profile": "35ddddc9b6a8903c5bfcdd4f58fdeba4de2b353ad9bf239e2f81db59aa42b384",
     "builder": "3b60831ebb85866cc1c4b67f78cd8dfe396226aec3db89b8a28cbb3b7dc69766",
-    "evaluator": "475a50b6b34c56708e63edcf166ccc1bf48bbf0d2478b62da3eeec5addd4d501",
-    "generalized_grouped_evaluator": "3b3ae22718598f38984228b4f2668650382230bbceddc0c55d9de252caf73cc0",
-    "online_detector": "e51f7ec1ab1d13a6a371b6c2172adc6a12738b8719e367dba05dff8f0cea04fe"
+    "evaluator": "95bd00c3b7c80f7f48e19525d8911b545b4cb7d8619102b6febee41b4f8187b5",
+    "generalized_grouped_evaluator": "890f3d516d94b132d2758e848565f87575ad6836c33d74ff405df99255a9c220",
+    "v3_demo": "661234b8b0b3f2cea2b1de9601d2fd5047752b2cc44ea56f074200894331f62e",
+    "v3_demo_tests": "bc67412fc1c079ab6f0f0ec239c7c3f660443c657d748c2aba7a2400aaa7f793",
+    "online_detector": "c6f0a0a5b156822330632c6cb3aba9de0775bb31f2b6d125411b4e4745429e54",
+    "online_detector_tests": "7dbedad1b287636613ddd47b1299fbf8d167609aeeed7aca553a4654f14f58ac",
+    "graph_temporal_model": "3122eb02149783f7f9dc78bb445e59395b759bb92b0b806f1c34dff86c05861e",
+    "graph_temporal_grouped_evaluator": "f9be0bf170ff9a0a6291d6f15f4ec014bdca73505e31158841a162507599a4b0",
+    "graph_temporal_grouped_tests": "5267c8bc9867229c648297b47477421d59b3a91ff6c55798997a30758a40ef95",
+    "pilot_auditor": "4b4e14fd344d7c7caf440e11ddb4eadcd1afa5271bd039b389eb222ad076ece9",
+    "pilot_auditor_tests": "baa5b267598bd1452c94898aed0a3d3e461b580d1dd1791a53dda9c6bd8ce261"
   },
   "verification": {
-    "windows_offline_tests": "69 passed; runner subset 39 passed; py_compile passed",
-    "ubuntu_offline_tests": "44 passed on prior runner revision; latest profile/runner edits are not deployed or verified on VM",
+    "windows_offline_tests": "80 passed on final source with venv\\Scripts\\python.exe -m unittest discover -v",
+    "ubuntu_offline_tests": "44 passed in a prior full offline suite; 40 targeted runner tests passed on the deployed runner revision using Python 3.8.5. Latest-source VM access was denied; local WSL has Python 3.14.4 but lacks numpy and pandas",
     "master_dataset_sha256": "7fbfcc51dc3c5af122c28b52e558e3e037ad9367fde1b15bf0d25ff0faf9de64",
-    "live_experiments_this_completion": "none; SSH authentication to Mininet VM denied; no VM services changed",
-    "syntax_checks": "py_compile passed for latest runner and runner tests on Windows",
-    "demo": "v2 and v3 read-only saved-result replays passed with artifact hash checks"
+    "live_experiments_this_completion": "one isolated pilot repeat (logical 27 / physical 31) completed; first attempt logical 26 / physical 30 remains FAILED_INVALID; existing Ryu process was not restarted",
+    "syntax_checks": "Latest-source compilation and full Windows test results recorded in EXECUTION_LOG.md; prior runner syntax and 40 regression tests passed on VM Python 3.8.5",
+    "demo": "v3 saved replay and fresh LOEO inference passed; fresh ranking matches saved held-out result",
+    "evaluation_regeneration": "v3 predictions/splits/feature policy match saved release and summary matches apart from output paths; prior online-detector output reproduced, then its exposure rate was corrected in a separate non-overwriting audit"
   },
   "balanced_candidate_v3": {
     "path": "derived_datasets/balanced_recollection_20261015_v3/candidate_dataset.csv",
@@ -232,12 +241,94 @@
     }
   },
   "online_detection_v3": {
-    "path": "evaluations/online_fault_detection_v3_verified",
+    "path": "evaluations/online_fault_detection_v3_exposure_audit",
     "protocol": "25-fold LOEO; training-normal features and q99 threshold; training phase selects fit rows; held-out phase joined post-prediction for scoring",
     "detected_fault_windows": "0/25",
     "false_alarm_episodes": 6,
-    "false_alarm_episodes_per_nonfault_hour": 14.135742287198704,
-    "status": "negative simple baseline; not a useful detector"
+    "false_alarm_episodes_per_nonfault_hour": 21.658055001198196,
+    "no_alarm_comparator": {
+      "detected_fault_windows": "0/25",
+      "false_alarm_episodes": 0
+    },
+    "superseded_output": "evaluations/online_fault_detection_v3_verified",
+    "status": "failed baseline; dominated by no-alarm comparator at this operating point"
+  },
+  "graph_temporal_v3_grouped_loeo": {
+    "path": "evaluations/graph_temporal_v3_grouped_loeo_verified",
+    "protocol": "25 grouped LOEO folds; 24 training experiments and 1 held-out experiment per fold; training-only normalization and feature policy",
+    "methods": ["graph_only", "temporal_only", "graph_temporal"],
+    "seeds": [17, 42, 2026],
+    "same_fold_baselines": ["rf_baseline", "topology_link_ranker"],
+    "status": "complete; artifact hashes, all folds, splits, predictions, scores and summary metrics independently verified",
+    "independent_test_experiments": 25,
+    "per_seed_prediction_rows": 225,
+    "mean_score_ensemble_rows": 75,
+    "fault_window_snapshots": "9-10 per prediction; no imputation",
+    "mean_score_ensemble_metrics": {
+      "graph_only": {"top1": "20/25", "top2": "23/25", "mrr": 0.8866666666666667},
+      "temporal_only": {"top1": "18/25", "top2": "21/25", "mrr": 0.8333333333333334},
+      "graph_temporal": {"top1": "23/25", "top2": "23/25", "mrr": 0.9466666666666667}
+    },
+    "same_fold_baseline_metrics": {
+      "rf_baseline": {"top1": "20/25", "top2": "22/25", "mrr": 0.88},
+      "topology_link_ranker": {"top1": "13/25", "top2": "22/25", "mrr": 0.74}
+    },
+    "candidate_sha256": "b63d04572b7b97b8451be33174c8813d76af53e3f49f40e5e41b682b1e19b29a",
+    "graph_snapshot_sha256": "5d639c219c80ed592e8f28eec4d5d0d207316e2a325b02007664055900f4bea9",
+    "output_sha256": {
+      "fold_feature_policy.csv": "6ea60cebaf2bcb0512bb99d0d62f85d10dc012ca6c62411c54ba04f13ba805e9",
+      "mean_seed_ensemble_predictions.csv": "309ebbb7962dd05bdbe60213635104d6f6bba43eb2d0fa323daa3615f9bf4b70",
+      "per_seed_predictions.csv": "f2fed3b81cae7b5491198e0c1c54f93a3d05f7e26068710a61b3f46e390e0e63"
+    },
+    "failed_attempt": "evaluations/graph_temporal_v3_grouped_loeo/INCOMPLETE_ATTEMPT.json; preserved and excluded",
+    "task": "conditional fault-window localization; not online or causal RCA"
+  },
+  "latest_pilot": {
+    "profile": "traffic_profiles/udp_6mbps_v1.json",
+    "vm_deployment_directory": "/home/mininet/sdn_project/traffic_profile_pilot_20261017",
+    "physical_30_logical_26": "FAILED_INVALID; preserved and excluded; original bounded server-exit wait timed out",
+    "physical_31_logical_27": {
+      "status": "COMPLETE; single exploratory engineering pilot only; excluded from v3 and model evaluation",
+      "telemetry_rows": 672,
+      "switches": 4,
+      "normal_fault_recovery_seconds": [20, 20, 20],
+      "sender_mbps": 6.29,
+      "receiver_mbps_including_deliberate_outage": 4.22,
+      "receiver_lost_sequence_datagrams": 10900,
+      "receiver_total_sequence_datagrams": 32100,
+      "baseline_loss_separable": false,
+      "active_overlap_telemetry_mbps": {
+        "normal_s2_tx": 7.238,
+        "normal_s3_rx": 7.251,
+        "fault_s2_tx": 0.361,
+        "fault_s3_rx": 0.349,
+        "recovery_s2_tx": 7.363,
+        "recovery_s3_rx": 7.376
+      },
+      "criteria_status": "exploratory; declared after run 30 and before run 31",
+      "independent_cleanup_snapshot": false,
+      "runtime_fault_mapping": "s2-eth2/ofport 2 <-> s3-eth1/ofport 1",
+      "evidence_sha256_manifest": "PILOT_EVIDENCE_SHA256SUMS.txt",
+      "evidence_directories": [
+        "pilot_evidence_20261017_physical30_logical26",
+        "pilot_evidence_20261017_physical31_logical27"
+      ],
+      "clock_warning": "VM was not NTP-synchronized; only within-run ordering is established"
+    }
+  },
+  "prospective_low_load_cohort": {
+    "protocol": "docs/TRAFFIC_PROFILE_REPEATABILITY_PROTOCOL.md",
+    "planned_runs": 12,
+    "normal_only_controls": 3,
+    "fault_recovery_repetitions": 9,
+    "candidate_logical_id_range": [28, 39],
+    "candidate_physical_id_range": [32, 43],
+    "ids_are_reserved": false,
+    "runner_gaps": [
+      "normal-only acquisition mode",
+      "one-second receiver interval parsing and phase attribution"
+    ],
+    "status": "not run; VM SSH currently denied"
   },
   "documentation_files": [
     "README.md",
@@ -253,12 +344,21 @@
     "docs/DEMO_GUIDE.md",
     "docs/REVIEW_PRESENTATION.md",
     "docs/PAPER_DRAFT.md",
+    "docs/TRAFFIC_PROFILE_PILOT_AUDIT.md",
+    "docs/TRAFFIC_PROFILE_PILOT_PROTOCOL.md",
+    "docs/TRAFFIC_PROFILE_REPEATABILITY_PROTOCOL.md",
+    "PILOT_EVIDENCE_SHA256SUMS.txt",
     "demo_rca.py",
     "demo_rca_v3.py",
+    "test_demo_rca_v3.py",
     "build_experiment_admission_ledger.py",
     "evaluate_grouped_rca_generalized.py",
     "evaluate_online_fault_detection.py",
     "test_online_fault_detection.py",
+    "evaluate_graph_temporal_grouped_loeo.py",
+    "test_graph_temporal_grouped_loeo.py",
+    "audit_traffic_profile_pilot.py",
+    "test_audit_traffic_profile_pilot.py",
     "test_demo_rca.py"
   ]
 }

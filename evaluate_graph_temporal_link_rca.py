@@ -89,8 +89,10 @@ def prepare_examples(graph_path):
     return examples, feature_names, payload
 
 
-def fit_feature_policy(examples):
-    training = [examples[experiment_id] for experiment_id in TRAIN_IDS]
+def fit_feature_policy(examples, train_ids=None):
+    if train_ids is None:
+        train_ids = TRAIN_IDS
+    training = [examples[experiment_id] for experiment_id in train_ids]
     stacked = np.concatenate([
         np.concatenate([graph["x"][SWITCH_INDICES] for graph in item["sequence"]], axis=0)
         for item in training
@@ -182,7 +184,14 @@ def wilson_interval(successes, total, z=1.959963984540054):
     return [max(0.0, float(center - margin)), min(1.0, float(center + margin))]
 
 
-def train_and_predict(examples, active, means, stds, seed, model_name, output_dir):
+def train_and_predict(
+    examples, active, means, stds, seed, model_name, output_dir,
+    train_ids=None, test_ids=None, *, save_checkpoint=True, checkpoint_name=None,
+):
+    if train_ids is None:
+        train_ids = TRAIN_IDS
+    if test_ids is None:
+        test_ids = TEST_IDS
     random.seed(seed)
     np.random.seed(seed)
     torch.manual_seed(seed)
@@ -192,7 +201,7 @@ def train_and_predict(examples, active, means, stds, seed, model_name, output_di
     optimizer = torch.optim.Adam(model.parameters(), lr=0.01, weight_decay=1e-3)
     criterion = nn.CrossEntropyLoss()
     train_data = [(normalize_sequence(examples[exp_id]["sequence"], active, means, stds),
-                   examples[exp_id]["label"]) for exp_id in TRAIN_IDS]
+                   examples[exp_id]["label"]) for exp_id in train_ids]
     for _ in range(EPOCHS):
         model.train()
         order = list(range(len(train_data)))
@@ -206,7 +215,7 @@ def train_and_predict(examples, active, means, stds, seed, model_name, output_di
     model.eval()
     predictions = []
     with torch.no_grad():
-        for exp_id in TEST_IDS:
+        for exp_id in test_ids:
             sequence = normalize_sequence(examples[exp_id]["sequence"], active, means, stds)
             scores = torch.softmax(model(sequence), dim=0).cpu().numpy()
             ranked, rank = score_ranking(scores, examples[exp_id]["label"])
@@ -216,11 +225,17 @@ def train_and_predict(examples, active, means, stds, seed, model_name, output_di
                                 "rank3_link": LINKS[ranked[2]], "rank": rank,
                                 "top1_hit": rank == 1, "top2_hit": rank <= 2,
                                 "scores": scores.tolist(), "fault_window_snapshots": len(sequence)})
-    checkpoint = output_dir / f"{model_name}_seed_{seed}.pt"
-    torch.save({"state_dict": model.state_dict(), "input_features": active,
-                "feature_means": means.tolist(), "feature_stds": stds.tolist(),
-                "seed": seed, "model": model_name, "task": "conditional link localization"}, checkpoint)
-    return predictions, sha256(checkpoint)
+    checkpoint_hash = None
+    if save_checkpoint:
+        checkpoint = output_dir / (
+            checkpoint_name or f"{model_name}_seed_{seed}.pt"
+        )
+        torch.save({"state_dict": model.state_dict(), "input_features": active,
+                    "feature_means": means.tolist(), "feature_stds": stds.tolist(),
+                    "seed": seed, "model": model_name, "task": "conditional link localization",
+                    "train_experiment_ids": list(train_ids)}, checkpoint)
+        checkpoint_hash = sha256(checkpoint)
+    return predictions, checkpoint_hash
 
 
 def evaluate(graph_path, candidate_path, reference_path, output_dir):
