@@ -23,6 +23,7 @@ class ValidatedCandidateBuilderTests(unittest.TestCase):
         self.assertEqual(builder.APPROVED_RECOLLECTIONS[27], 23)
         self.assertEqual(builder.APPROVED_RECOLLECTIONS[28], 24)
         self.assertEqual(builder.APPROVED_RECOLLECTIONS[29], 25)
+        self.assertEqual(builder.APPROVED_RECOLLECTIONS[44], 40)
         self.assertEqual(len(set(builder.APPROVED_RECOLLECTIONS.values())), len(builder.APPROVED_RECOLLECTIONS))
 
     def test_run23_raw_evidence_passes_all_integrity_checks(self):
@@ -81,6 +82,9 @@ class ValidatedCandidateBuilderTests(unittest.TestCase):
             )
             with self.assertRaisesRegex(ValueError, "mapping CSV disagrees"):
                 builder.validate_run(raw)
+
+    def test_isolated_physical_45_mapping_is_explicit(self):
+        self.assertEqual(builder.APPROVED_RECOLLECTIONS[45], 41)
 
     def test_run21_can_only_pass_explicit_corrected_parser_reaudit(self):
         metadata_path = RUN21 / "run_metadata.json"

@@ -66,8 +66,13 @@ relabel, repair, or pool this attempt with run 31.
 The VM was previously observed with `NTPSynchronized=no`; cross-machine clock
 alignment is unverified. Interpret event/telemetry alignment only within the
 available run artifacts, not as a synchronized multi-host latency measurement.
-The current VM SSH attempt was denied (`Permission denied (publickey,password)`),
-so live cleanup state and any new physical execution could not be verified.
+The earlier VM SSH attempt without explicitly selecting the non-default key
+was denied (`Permission denied (publickey,password)`). A later read-only
+connection using the existing `mininet_vm_ed25519` key succeeded. It confirmed
+the controller is listening and there are no OVS bridges or active Mininet/
+iperf processes. It also confirmed `NTPSynchronized=no`. No new physical
+execution was launched because all runner-registered ID pairs have already
+been used and the prospective cohort still lacks required runner features.
 
 This evidence demonstrates that the runner produced a pilot artifact package
 and that telemetry reflected a link outage and recovery. It does not establish

@@ -342,13 +342,27 @@ class RecollectionRunnerTests(unittest.TestCase):
     def test_reserved_physical_mapping_is_explicit(self):
         self.assertEqual(LOGICAL_TO_PHYSICAL, {
             3: 23, 10: 21, 20: 24, 21: 25, 22: 26, 23: 27, 24: 28, 25: 29,
-            26: 30, 27: 31,
+            26: 30, 27: 31, 40: 44, 41: 45,
         })
+        self.assertEqual(
+            runner.run_directory(40, 44),
+            runner.RUN_ROOT / "physical_44_logical_40",
+        )
+        with self.assertRaises(ValueError):
+            runner.run_directory(40, 45)
+        self.assertEqual(
+            runner.run_directory(41, 45),
+            runner.RUN_ROOT / "physical_45_logical_41",
+        )
+        with self.assertRaises(ValueError):
+            runner.run_directory(41, 44)
         self.assertEqual(FAULT_LINK_BY_LOGICAL, {
             3: "s3-s4", 10: "s2-s3", 20: "s1-s2", 21: "s1-s2",
             22: "s2-s3", 23: "s2-s3", 24: "s3-s4", 25: "s3-s4",
-            26: "s2-s3", 27: "s2-s3",
+            26: "s2-s3", 27: "s2-s3", 40: "s2-s3", 41: "s2-s3",
         })
+        self.assertEqual(runner.RUN_PURPOSE_BY_LOGICAL[40], "isolated_live_demo_only")
+        self.assertEqual(runner.RUN_PURPOSE_BY_LOGICAL[41], "isolated_live_demo_only")
         self.assertEqual(runner.RUN_PURPOSE_BY_LOGICAL[26], "traffic_profile_pilot_only")
         self.assertEqual(runner.RUN_PURPOSE_BY_LOGICAL[27], "traffic_profile_pilot_retry_only")
 
@@ -700,6 +714,7 @@ class RecollectionRunnerTests(unittest.TestCase):
         self.assertEqual(result["client_sender_reported_mbps"], 1.05)
         self.assertEqual(result["client_receiver_reported_mbps"], 1.05)
         self.assertEqual(result["server_receiver_reported_mbps"], 1.05)
+        self.assertEqual(result["receiver_duration_difference_from_sender_seconds"], 0.0)
         for kwargs, error in (
             ({"client_returncode": 4, "server_returncode": 0,
               "client_log": good_client, "server_log": good_server}, "client exited with status 4"),
@@ -709,7 +724,7 @@ class RecollectionRunnerTests(unittest.TestCase):
               "client_log": "connected only", "server_log": good_server}, "Missing client log receiver"),
             ({"client_returncode": 0, "server_returncode": 0,
               "client_log": iperf_client_output(20), "server_log": iperf_server_output(20)},
-             "outside requested"),
+              "sender duration"),
             ({"client_returncode": 0, "server_returncode": 0,
               "client_log": good_client, "server_log": iperf_server_output(60, total=99)},
              "receiver summaries disagree"),
@@ -720,6 +735,40 @@ class RecollectionRunnerTests(unittest.TestCase):
             }
             with self.assertRaisesRegex(ValueError, error):
                 runner.validate_iperf_completion(**args)
+
+    def test_receiver_interval_may_be_shorter_than_sender_duration(self):
+        client_log = iperf_client_output(60, sent=32100, lost=11864, total=32100)
+        sender_section, report_marker, receiver_section = client_log.partition("Server Report:")
+        self.assertTrue(report_marker)
+        short_receiver = receiver_section.replace("0.0- 60.0 sec", "0.0- 57.3 sec", 1)
+        client_log = sender_section + report_marker + short_receiver
+        server_log = iperf_server_output(57.3, lost=11864, total=32100)
+
+        result = runner.validate_iperf_completion(
+            client_returncode=0, server_returncode=0,
+            client_log=client_log, server_log=server_log,
+            requested_duration=60, client_elapsed=60.827, server_elapsed=79.817,
+        )
+
+        self.assertTrue(result["duration_valid"])
+        self.assertEqual(result["client_observed_duration_seconds"], 60.0)
+        self.assertEqual(result["client_receiver_observed_duration_seconds"], 57.3)
+        self.assertEqual(result["server_observed_duration_seconds"], 57.3)
+        self.assertEqual(result["receiver_duration_difference_from_sender_seconds"], 2.7)
+        self.assertTrue(result["receiver_reports_match"])
+        self.assertEqual(result["sequence_accounted_nonlost_datagrams"], 20236)
+        self.assertEqual(runner.parse_iperf_final_duration(client_log, "client"), 60.0)
+        self.assertEqual(runner.parse_iperf_final_duration(client_log, "client_receiver"), 57.3)
+
+        short_sender_log = iperf_client_output(
+            57.3, sent=32100, lost=11864, total=32100
+        )
+        with self.assertRaisesRegex(ValueError, "sender duration"):
+            runner.validate_iperf_completion(
+                client_returncode=0, server_returncode=0,
+                client_log=short_sender_log, server_log=server_log,
+                requested_duration=60, client_elapsed=60.827, server_elapsed=79.817,
+            )
 
     def test_iperf_parser_accepts_padded_intervals_and_requires_receiver_delivery(self):
         client_log = iperf_client_output(4, sent=357, lost=0, total=357)

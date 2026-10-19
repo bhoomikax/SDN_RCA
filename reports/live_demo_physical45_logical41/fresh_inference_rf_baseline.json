@@ -1,0 +1,144 @@
+{
+  "mode": "fresh LOEO inference; model and preprocessing refit from training experiments",
+  "task": "conditional fault localization; annotated phase selects the first 10 seconds",
+  "dataset_sha256": "bf8e6154dcc74dd8524a9362bd2bb1669dba9fdd89fdb7a5cc49c334b3cb2f0c",
+  "experiment_id": 41,
+  "method": "rf_baseline",
+  "training_experiment_ids": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "training_experiment_count": 17,
+  "active_metrics": "tx_packet_rate;tx_throughput_mbps",
+  "ranking": [
+    "s2-s3",
+    "s1-s2",
+    "s3-s4"
+  ],
+  "scores": [
+    0.8233333333333334,
+    0.16666666666666666,
+    0.01
+  ],
+  "score_kind": "Uncalibrated RF class scores",
+  "topology_neighbors": {
+    "s2-s3": [
+      "s2",
+      "s3"
+    ],
+    "s1-s2": [
+      "s1",
+      "s2"
+    ],
+    "s3-s4": [
+      "s3",
+      "s4"
+    ]
+  },
+  "actual_link_retrospective_only": "s2-s3",
+  "top1_hit_retrospective_only": true,
+  "top2_hit_retrospective_only": true,
+  "measurement_evidence": {
+    "window_start": "2026-10-15T23:46:03.596101",
+    "window_end": "2026-10-15T23:46:13.439464",
+    "telemetry_rows": 108,
+    "switch_evidence": {
+      "s1": {
+        "training_normal_mean": {
+          "rx_packet_rate": 0.0,
+          "tx_packet_rate": 633.202703,
+          "rx_throughput_mbps": 0.0,
+          "tx_throughput_mbps": 7.653657
+        },
+        "fault_window_mean": {
+          "rx_packet_rate": 219.074074,
+          "tx_packet_rate": 219.074074,
+          "rx_throughput_mbps": 2.649049,
+          "tx_throughput_mbps": 2.649049
+        },
+        "fault_minus_baseline": {
+          "rx_packet_rate": 219.074074,
+          "tx_packet_rate": -414.128629,
+          "rx_throughput_mbps": 2.649049,
+          "tx_throughput_mbps": -5.004608
+        }
+      },
+      "s2": {
+        "training_normal_mean": {
+          "rx_packet_rate": 0.0,
+          "tx_packet_rate": 319.431204,
+          "rx_throughput_mbps": 0.0,
+          "tx_throughput_mbps": 3.858629
+        },
+        "fault_window_mean": {
+          "rx_packet_rate": 219.222222,
+          "tx_packet_rate": 15.222222,
+          "rx_throughput_mbps": 2.650841,
+          "tx_throughput_mbps": 0.184128
+        },
+        "fault_minus_baseline": {
+          "rx_packet_rate": 219.222222,
+          "tx_packet_rate": -304.208982,
+          "rx_throughput_mbps": 2.650841,
+          "tx_throughput_mbps": -3.674501
+        }
+      },
+      "s3": {
+        "training_normal_mean": {
+          "rx_packet_rate": 0.0,
+          "tx_packet_rate": 319.674447,
+          "rx_throughput_mbps": 0.0,
+          "tx_throughput_mbps": 3.861572
+        },
+        "fault_window_mean": {
+          "rx_packet_rate": 13.62963,
+          "tx_packet_rate": 13.62963,
+          "rx_throughput_mbps": 0.164864,
+          "tx_throughput_mbps": 0.164864
+        },
+        "fault_minus_baseline": {
+          "rx_packet_rate": 13.62963,
+          "tx_packet_rate": -306.044818,
+          "rx_throughput_mbps": 0.164864,
+          "tx_throughput_mbps": -3.696708
+        }
+      },
+      "s4": {
+        "training_normal_mean": {
+          "rx_packet_rate": 0.0,
+          "tx_packet_rate": 319.943489,
+          "rx_throughput_mbps": 0.0,
+          "tx_throughput_mbps": 3.864817
+        },
+        "fault_window_mean": {
+          "rx_packet_rate": 12.703704,
+          "tx_packet_rate": 12.703704,
+          "rx_throughput_mbps": 0.153664,
+          "tx_throughput_mbps": 0.153664
+        },
+        "fault_minus_baseline": {
+          "rx_packet_rate": 12.703704,
+          "tx_packet_rate": -307.239785,
+          "rx_throughput_mbps": 0.153664,
+          "tx_throughput_mbps": -3.711153
+        }
+      }
+    }
+  },
+  "explanation_boundary": "Telemetry deltas are descriptive associations, not model feature attributions or causal proof. Fault-window selection uses oracle phase labels."
+}

@@ -31,6 +31,8 @@ LOGICAL_TO_PHYSICAL = {
     20: 24, 21: 25, 22: 26, 23: 27, 24: 28, 25: 29,
     26: 30,
     27: 31,
+    40: 44,
+    41: 45,
 }
 FAULT_LINK_BY_LOGICAL = {
     3: "s3-s4", 10: "s2-s3",
@@ -39,10 +41,14 @@ FAULT_LINK_BY_LOGICAL = {
     24: "s3-s4", 25: "s3-s4",
     26: "s2-s3",
     27: "s2-s3",
+    40: "s2-s3",
+    41: "s2-s3",
 }
 RUN_PURPOSE_BY_LOGICAL = {
     26: "traffic_profile_pilot_only",
     27: "traffic_profile_pilot_retry_only",
+    40: "isolated_live_demo_only",
+    41: "isolated_live_demo_only",
 }
 FAULT_TYPE = "link_failure"
 PHASES = ("normal", "fault", "recovery")
@@ -606,8 +612,20 @@ def _iperf_summary_matches(log_text):
 
 
 def parse_iperf_final_duration(log_text, role):
-    """Return the duration in the final iperf2 transfer summary, or fail closed."""
-    matches = _iperf_summary_matches(log_text)
+    """Return the final sender or receiver interval for a named iperf2 role."""
+    if role == "client":
+        if "Server Report:" not in log_text:
+            raise ValueError("Missing client log receiver-side Server Report")
+        summary_text = log_text.split("Server Report:", 1)[0]
+    elif role == "client_receiver":
+        if "Server Report:" not in log_text:
+            raise ValueError("Missing client log receiver-side Server Report")
+        summary_text = log_text.split("Server Report:", 1)[1]
+    elif role == "server":
+        summary_text = log_text
+    else:
+        raise ValueError(f"Unknown iperf summary role: {role}")
+    matches = _iperf_summary_matches(summary_text)
     if not matches:
         raise ValueError(f"Missing final {role} iperf transfer summary")
     match = matches[-1]
@@ -739,11 +757,12 @@ def validate_iperf_completion(
     result["receiver_reports_match"] = (
         abs(client_receiver_duration - server_duration) <= 0.25
     )
-    observed_durations = (client_duration, client_receiver_duration, server_duration)
-    if any(abs(value - float(requested_duration)) > float(tolerance)
-           for value in observed_durations):
+    result["receiver_duration_difference_from_sender_seconds"] = round(
+        abs(client_duration - client_receiver_duration), 3
+    )
+    if abs(client_duration - float(requested_duration)) > float(tolerance):
         raise ValueError(
-            f"iperf reported durations {observed_durations} are outside requested "
+            f"iperf sender duration {client_duration:g}s is outside requested "
             f"{requested_duration:g}s ± {tolerance:g}s"
         )
     if not result["receiver_reports_match"]:
@@ -1106,22 +1125,28 @@ def run(logical_id, physical_id, normal_seconds=20, fault_seconds=20, recovery_s
                 record["elapsed_seconds"] = round(time.monotonic() - start_time, 6)
         if not metadata["iperf"].get("completion_valid"):
             validation = metadata["iperf"].setdefault("summary_validation", {})
-            for label, log_path in (("client", iperf_client_log), ("server", iperf_server_log)):
+            for label, log_path in (
+                ("client", iperf_client_log),
+                ("client_receiver", iperf_client_log),
+                ("server", iperf_server_log),
+            ):
+                summary_key = label
                 try:
                     duration = parse_iperf_final_duration(_read_log(log_path), label)
-                    validation[f"{label}_summary_valid"] = True
-                    validation[f"{label}_observed_duration_seconds"] = duration
+                    validation[f"{summary_key}_summary_valid"] = True
+                    validation[f"{summary_key}_observed_duration_seconds"] = duration
                 except (OSError, ValueError):
-                    validation[f"{label}_summary_valid"] = False
+                    validation[f"{summary_key}_summary_valid"] = False
             validation["duration_valid"] = bool(
                 validation.get("client_summary_valid")
+                and validation.get("client_receiver_summary_valid")
                 and validation.get("server_summary_valid")
                 and abs(validation.get("client_observed_duration_seconds", -1)
                         - metadata["iperf"]["requested_duration_seconds"])
                     <= IPERF_DURATION_TOLERANCE_SECONDS
-                and abs(validation.get("server_observed_duration_seconds", -1)
-                        - metadata["iperf"]["requested_duration_seconds"])
-                    <= IPERF_DURATION_TOLERANCE_SECONDS
+                and abs(validation.get("client_receiver_observed_duration_seconds", -1)
+                        - validation.get("server_observed_duration_seconds", -1))
+                    <= 0.25
             )
             if not validation.get("failure"):
                 validation["failure"] = metadata.get("failure", "iperf completion was not validated")

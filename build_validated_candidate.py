@@ -43,6 +43,8 @@ EXPECTED_SOURCE_IDS = set(range(1, 20)) - {3, 10}
 APPROVED_RECOLLECTIONS = {
     21: 10, 23: 3,
     24: 20, 25: 21, 26: 22, 27: 23, 28: 24, 29: 25,
+    44: 40,
+    45: 41,
 }
 
 

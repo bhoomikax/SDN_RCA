@@ -1,0 +1,6 @@
+# Direct Windows CPU dependencies verified with Python 3.13.7.
+numpy==2.5.3
+pandas==3.0.6
+scikit-learn==1.9.1
+torch==2.14.0
+torch-geometric==2.8.0.post1

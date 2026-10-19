@@ -22,7 +22,9 @@ These are conditional localization results, not online fault detection. Top-3 is
 
 ## Environment and commands
 
-The recorded Windows environment is Python 3.13.7 in `venv/`; core evaluation dependencies are pandas, NumPy, and scikit-learn. The Ubuntu testbed uses Python 3.8.5 and the VM-specific Mininet/Ryu/OVS stack. See [docs/DEMO_GUIDE.md](docs/DEMO_GUIDE.md) for short, non-destructive demo steps.
+The recorded Windows environment is Python 3.13.7 in `venv/`; verified direct dependencies are pinned in [requirements-windows.txt](requirements-windows.txt). The Ubuntu testbed uses Python 3.8.5 and the VM-specific Mininet/Ryu/OVS stack. See the [end-to-end runbook](docs/END_TO_END_RUNBOOK.md) for environment setup, safe VM checks, the supported offline pipeline, and live-run prerequisites; [the five-minute demo guide](docs/DEMO_GUIDE.md) describes the offline replay.
+
+Two isolated live-demo attempts were authorized. Logical 40 / physical 44 is preserved as `FAILED_INVALID` (receiver summary 57.3 s versus the then-required 60 ± 2 s) and is excluded from all graph/model inputs. After a targeted, regression-tested fix (sender duration still 60 ± 2 s; both receiver reports must agree), the final authorized attempt, logical 41 / physical 45, completed validly and was carried through candidate, graph, and held-out RF inference: Top-1 `s2-s3`, matching its retrospective label. It is one exploratory engineering run, separate from v3; see [its report](reports/live_demo_physical45_logical41/README.md). No further physical run is authorized.
 
 From the repository root on Windows:
 
@@ -57,7 +59,7 @@ Read-only, saved-artifact demo (prints the existing six-test rankings and checks
 - `evaluate_graph_temporal_grouped_loeo.py`: fold-isolated graph-only, temporal-only, graph-temporal, RF, and topology comparison on the v3 experiment groups.
 - `evaluate_recollected_fixed_split.py`: established 13/6 split membership on the current candidate.
 - `demo_rca.py`: read-only replay of a saved evaluation; it does not train or make a new prediction.
-- `demo_rca_v3.py`: hash-verified replay of one v3 LOEO result with its measured feature window; no training or live inference.
+- `demo_rca_v3.py`: `--mode saved-replay` (default) replays one hash-verified v3 LOEO result without training; `--mode fresh-inference` refits that experiment's fold on the other experiments and ranks the held-out experiment (`--dataset` selects a separate candidate, such as the live-demo one).
 - `gcn_model.py`, `gcn_lstm.py`, `train_gcn*.py`: phase classification experiments, not current link-localization comparators.
 - `docs/`: methodology, data card, protocol, results, limitations, demo, review outline, and paper draft.
 - `project_inventory.json`, `EXECUTION_LOG.md`: machine-readable inventory and chronological evidence log.
@@ -105,3 +107,5 @@ To perform fresh grouped inference for that held-out experiment (refitting the f
 This is offline held-out inference, not online detection. The fault window is selected using the annotated phase; displayed telemetry deltas are descriptive associations, not model attributions or causal evidence.
 
 The v3 online q99 detector remains unsuccessful: it detected 0/25 held-out fault windows and generated 21.6581 false-alarm episodes per observed nonfault hour after correcting the nonfault exposure denominator. An always-no-alarm comparator also detects 0/25, with no false alarms; the detector does not improve on this operating point. The corrected audit output is `evaluations/online_fault_detection_v3_exposure_audit/`. See the updated [results](docs/RESULTS_BALANCED_V3.md) and [limitations](docs/LIMITATIONS.md).
+
+**Live-run status:** the live → candidate → graph → inference path was exercised once on logical 41 / physical 45 (valid; Top-1 hit on `s2-s3`). Reproduce its derived artifacts and inference with the commands in [its report](reports/live_demo_physical45_logical41/README.md); the inference reads only preserved evidence and does not need the VM. Logical 40 / physical 44 remains `FAILED_INVALID`. All registered runner IDs are now consumed and no further physical run is authorized. A repeatability cohort still needs normal-only controls and phase-resolved receiver intervals.

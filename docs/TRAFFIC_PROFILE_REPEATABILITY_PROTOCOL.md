@@ -7,10 +7,12 @@ have been collected, and the candidate IDs below are not reserved or
 verified. Run a read-only VM inventory and ID preflight immediately before
 allocation. Do not include any cohort artifacts in frozen v3.
 
-The available runner does not currently support normal-only controls and the
-VM currently rejects SSH with `Permission denied (publickey,password)`. Extend
-and test the runner before collection; do not infer that a control is valid
-from the fault/recovery runner's status alone.
+The available runner does not currently support normal-only controls or
+phase-resolved one-second receiver interval loss. The VM is reachable when
+the existing non-default SSH key is selected explicitly, but all runner-
+registered ID pairs are already used. Extend and test the runner and reserve
+new IDs before collection; do not infer that a control is valid from the
+fault/recovery runner's status alone.
 
 ## Fixed design
 

@@ -15,6 +15,16 @@ For a v3 replay, run `.\venv\Scripts\python.exe demo_rca_v3.py --experiment-id 2
 
 Both modes were separately verified on the current source. They agree on the ranking `s2-s3 > s3-s4 > s1-s2`; the retrospective label is `s1-s2`, which is missed at Top-2. The grouped graph/temporal results and their complete artifact checks are reported in [the v3 results](RESULTS_BALANCED_V3.md).
 
+## Optional: the isolated live run (60 s)
+
+Show `reports/live_demo_physical45_logical41/README.md`. Then run, without the VM:
+
+```powershell
+.\venv\Scripts\python.exe demo_rca_v3.py --mode fresh-inference --experiment-id 41 --method rf_baseline --dataset derived_datasets\live_demo_physical45_logical41\candidate_dataset.csv
+```
+
+It ranks `s2-s3 > s1-s2 > s3-s4` and trains on 17 historical experiments without experiment 41. The retrospective label is `s2-s3`. Say clearly that this is one valid exploratory run, separate from v3, and not an accuracy estimate. The earlier attempt 40/44 is `FAILED_INVALID` and is not used.
+
 ## Optional offline verification
 
 From PowerShell at the repository root:
@@ -23,7 +33,7 @@ From PowerShell at the repository root:
 .\venv\Scripts\python.exe -m unittest discover -v
 ```
 
-The current Windows source suite passed 80 tests; see `EXECUTION_LOG.md` for the exact command and Ubuntu limitation. It is not needed during the five-minute presentation. Do not run experiment scripts during the demo. Evaluation rerun commands appear in the root README and write only to a new output directory.
+The current Windows source suite passed 82 tests; current-source runner tests (41) and compilation also passed on the Ubuntu VM. The VM's full project suite was not run. See `EXECUTION_LOG.md` and the [end-to-end runbook](END_TO_END_RUNBOOK.md) for exact commands and live-run limitations. This is not needed during the five-minute presentation. Do not run experiment scripts during the demo. Evaluation rerun commands appear in the root README and write only to a new output directory.
 
 ## Claims to make precisely
 
