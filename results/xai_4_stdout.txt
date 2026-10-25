@@ -1,0 +1,42 @@
+{
+  "rf_baseline": {
+    "label": "Random Forest",
+    "explained": 25,
+    "validation_pass_count": 25,
+    "validation_pass_rate": 1.0,
+    "top1_correct": 20,
+    "attribution_on_predicted_endpoints_rate": null
+  },
+  "topology_link_ranker": {
+    "label": "Topology ranker",
+    "explained": 25,
+    "validation_pass_count": 25,
+    "validation_pass_rate": 1.0,
+    "top1_correct": 13,
+    "attribution_on_predicted_endpoints_rate": null
+  },
+  "graph_only": {
+    "label": "GCN",
+    "explained": 25,
+    "validation_pass_count": 24,
+    "validation_pass_rate": 0.96,
+    "top1_correct": 20,
+    "attribution_on_predicted_endpoints_rate": 0.36
+  },
+  "temporal_only": {
+    "label": "LSTM",
+    "explained": 25,
+    "validation_pass_count": 23,
+    "validation_pass_rate": 0.92,
+    "top1_correct": 18,
+    "attribution_on_predicted_endpoints_rate": 0.16
+  },
+  "graph_temporal": {
+    "label": "GCN+LSTM",
+    "explained": 25,
+    "validation_pass_count": 22,
+    "validation_pass_rate": 0.88,
+    "top1_correct": 23,
+    "attribution_on_predicted_endpoints_rate": 0.32
+  }
+}

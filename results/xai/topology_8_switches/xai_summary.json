@@ -1,0 +1,952 @@
+{
+  "candidate_sha256": "1c38a653cddd6ec9523152763cffe8f2d44eca17beef3b67b271d018d82e3611",
+  "experiments_explained": [
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    120,
+    121,
+    123,
+    125,
+    126,
+    127
+  ],
+  "global_feature_importance": {
+    "neural_mean_abs_ig_per_switch": {
+      "graph_only": {
+        "s1": 0.27145083000262576,
+        "s2": 0.21572083048522472,
+        "s3": 0.21477238771816096,
+        "s4": 0.2146396548487246,
+        "s5": 0.21349105999494591,
+        "s6": 0.18658312999953827,
+        "s7": 0.15547439370614788,
+        "s8": 0.16313942149281502
+      },
+      "graph_temporal": {
+        "s1": 0.30520389539500076,
+        "s2": 0.3390919024435182,
+        "s3": 0.3798507107421756,
+        "s4": 0.36917523814675707,
+        "s5": 0.28752091065204394,
+        "s6": 0.21087946059803167,
+        "s7": 0.15466698802386722,
+        "s8": 0.1726100048981607
+      },
+      "temporal_only": {
+        "s1": 0.16470116982236505,
+        "s2": 0.2084597752739986,
+        "s3": 0.23687112672875324,
+        "s4": 0.21810190503795943,
+        "s5": 0.21843270740161339,
+        "s6": 0.1770740378803263,
+        "s7": 0.107069065173467,
+        "s8": 0.07624039084961017
+      }
+    },
+    "rf_mean_abs_shap_predicted_class": {
+      "s1_first_anomaly_seconds": 0.014776935874136185,
+      "s1_max_anomaly": 0.012187576444564365,
+      "s1_mean_anomaly": 0.017081988246986996,
+      "s1_persistence": 0.015983682984297858,
+      "s2_first_anomaly_seconds": 0.01848247469624033,
+      "s2_max_anomaly": 0.021103908451385087,
+      "s2_mean_anomaly": 0.02451704821929551,
+      "s2_persistence": 0.018465068149448226,
+      "s3_first_anomaly_seconds": 0.024319124994882743,
+      "s3_max_anomaly": 0.02498933888563827,
+      "s3_mean_anomaly": 0.024157151090372694,
+      "s3_persistence": 0.01916433973483595,
+      "s4_first_anomaly_seconds": 0.023331330310392154,
+      "s4_max_anomaly": 0.03378734492457136,
+      "s4_mean_anomaly": 0.030684521674300077,
+      "s4_persistence": 0.02572119553434385,
+      "s5_first_anomaly_seconds": 0.016091835638569706,
+      "s5_max_anomaly": 0.025622533666905655,
+      "s5_mean_anomaly": 0.03140521657624,
+      "s5_persistence": 0.020794860277337363,
+      "s6_first_anomaly_seconds": 0.005047604052051412,
+      "s6_max_anomaly": 0.022086943301557648,
+      "s6_mean_anomaly": 0.0214759743162883,
+      "s6_persistence": 0.011991452703262588,
+      "s7_first_anomaly_seconds": 0.0044385296107920585,
+      "s7_max_anomaly": 0.009112964347864348,
+      "s7_mean_anomaly": 0.010861146232679203,
+      "s7_persistence": 0.0035973303595309594,
+      "s8_first_anomaly_seconds": 0.006854723738612495,
+      "s8_max_anomaly": 0.0,
+      "s8_mean_anomaly": 0.009413858152502813,
+      "s8_persistence": 0.0044929019360758415
+    },
+    "rf_mean_impurity_importance": {
+      "s1_first_anomaly_seconds": 0.02665099244091777,
+      "s1_max_anomaly": 0.027364795631559743,
+      "s1_mean_anomaly": 0.03880330609514885,
+      "s1_persistence": 0.028456872835384475,
+      "s2_first_anomaly_seconds": 0.028217903764760178,
+      "s2_max_anomaly": 0.042076167961385726,
+      "s2_mean_anomaly": 0.04668796564826868,
+      "s2_persistence": 0.030065228717315123,
+      "s3_first_anomaly_seconds": 0.03693859011022542,
+      "s3_max_anomaly": 0.042462515820798935,
+      "s3_mean_anomaly": 0.0477690615742405,
+      "s3_persistence": 0.031350577899531926,
+      "s4_first_anomaly_seconds": 0.03514879454580244,
+      "s4_max_anomaly": 0.04596415919737073,
+      "s4_mean_anomaly": 0.056096908663384175,
+      "s4_persistence": 0.03124674955017515,
+      "s5_first_anomaly_seconds": 0.025785372574399872,
+      "s5_max_anomaly": 0.037070805227937334,
+      "s5_mean_anomaly": 0.055021575525189714,
+      "s5_persistence": 0.028987151741612354,
+      "s6_first_anomaly_seconds": 0.012392612052506836,
+      "s6_max_anomaly": 0.029337551244364563,
+      "s6_mean_anomaly": 0.051583115889732,
+      "s6_persistence": 0.032460389641739376,
+      "s7_first_anomaly_seconds": 0.01446375624727376,
+      "s7_max_anomaly": 0.02571691084155414,
+      "s7_mean_anomaly": 0.035816955803826135,
+      "s7_persistence": 0.006626435872660825,
+      "s8_first_anomaly_seconds": 0.015301157174864579,
+      "s8_max_anomaly": 0.0,
+      "s8_mean_anomaly": 0.026098711121205532,
+      "s8_persistence": 0.008036908584863152
+    }
+  },
+  "ig_steps": 512,
+  "link_port_mapping_basis": "recorded runtime OVS mapping: results\\topology_8_switches\\candidate\\link_port_mapping.csv",
+  "methods": {
+    "graph_only": {
+      "attribution_on_predicted_endpoints_rate": 0.125,
+      "explained": 24,
+      "label": "GCN",
+      "per_experiment": [
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 101,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 102,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 103,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 104,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 105,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 106,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 108,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 109,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 110,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 111,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 112,
+          "top1_correct": true,
+          "validation_pass": false
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 113,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 114,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 115,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 116,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 117,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 118,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 119,
+          "top1_correct": true,
+          "validation_pass": false
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 120,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 121,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 123,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 125,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 126,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 127,
+          "top1_correct": true,
+          "validation_pass": true
+        }
+      ],
+      "top1_correct": 23,
+      "validation_pass_count": 22,
+      "validation_pass_rate": 0.9166666666666666
+    },
+    "graph_temporal": {
+      "attribution_on_predicted_endpoints_rate": 0.3333333333333333,
+      "explained": 24,
+      "label": "GCN+LSTM",
+      "per_experiment": [
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 101,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 102,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 103,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 104,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 105,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 106,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 108,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 109,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 110,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 111,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 112,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 113,
+          "top1_correct": true,
+          "validation_pass": false
+        },
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 114,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 115,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 116,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 117,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 118,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 119,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 120,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 121,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 123,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 125,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 126,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 127,
+          "top1_correct": true,
+          "validation_pass": true
+        }
+      ],
+      "top1_correct": 22,
+      "validation_pass_count": 23,
+      "validation_pass_rate": 0.9583333333333334
+    },
+    "rf_baseline": {
+      "attribution_on_predicted_endpoints_rate": null,
+      "explained": 24,
+      "label": "Random Forest",
+      "per_experiment": [
+        {
+          "experiment_id": 101,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 102,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 103,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 104,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 105,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 106,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 108,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 109,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 110,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 111,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 112,
+          "top1_correct": true,
+          "validation_pass": false
+        },
+        {
+          "experiment_id": 113,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 114,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 115,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 116,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 117,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 118,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 119,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 120,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 121,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 123,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 125,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 126,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 127,
+          "top1_correct": true,
+          "validation_pass": true
+        }
+      ],
+      "top1_correct": 20,
+      "validation_pass_count": 23,
+      "validation_pass_rate": 0.9583333333333334
+    },
+    "temporal_only": {
+      "attribution_on_predicted_endpoints_rate": 0.375,
+      "explained": 24,
+      "label": "LSTM",
+      "per_experiment": [
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 101,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 102,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 103,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 104,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 105,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 106,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 108,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 109,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 110,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 111,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 112,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 113,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 114,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 115,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 116,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 117,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 118,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 119,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 120,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 121,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 123,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 125,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 126,
+          "top1_correct": true,
+          "validation_pass": false
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 127,
+          "top1_correct": true,
+          "validation_pass": true
+        }
+      ],
+      "top1_correct": 22,
+      "validation_pass_count": 23,
+      "validation_pass_rate": 0.9583333333333334
+    },
+    "topology_link_ranker": {
+      "attribution_on_predicted_endpoints_rate": null,
+      "explained": 24,
+      "label": "Topology ranker",
+      "per_experiment": [
+        {
+          "experiment_id": 101,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 102,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 103,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 104,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 105,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 106,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 108,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 109,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 110,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 111,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 112,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 113,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 114,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 115,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 116,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 117,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 118,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 119,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 120,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 121,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 123,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 125,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 126,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 127,
+          "top1_correct": false,
+          "validation_pass": true
+        }
+      ],
+      "top1_correct": 1,
+      "validation_pass_count": 24,
+      "validation_pass_rate": 1.0
+    }
+  },
+  "runtime_seconds": 18674.5,
+  "score_semantics": "All methods output uncalibrated ranking scores: RF vote fractions, softmax ensembles, and rank utilities.",
+  "software": {
+    "python": "3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)]",
+    "shap": "0.54.1",
+    "torch": "2.14.0+cpu"
+  },
+  "topology": {
+    "bottleneck_link": "s4-s5",
+    "bottleneck_params": {
+      "bw": 10,
+      "delay": "5ms"
+    },
+    "candidate_count": 7,
+    "candidate_links": [
+      "s1-s2",
+      "s2-s3",
+      "s3-s4",
+      "s4-s5",
+      "s5-s6",
+      "s6-s7",
+      "s7-s8"
+    ],
+    "hosts": [
+      "h1",
+      "h2"
+    ],
+    "kind": "linear",
+    "link_definitions": [
+      {
+        "left": "h1",
+        "params": {},
+        "right": "s1"
+      },
+      {
+        "left": "s1",
+        "params": {},
+        "right": "s2"
+      },
+      {
+        "left": "s2",
+        "params": {},
+        "right": "s3"
+      },
+      {
+        "left": "s3",
+        "params": {},
+        "right": "s4"
+      },
+      {
+        "left": "s4",
+        "params": {
+          "bw": 10,
+          "delay": "5ms"
+        },
+        "right": "s5"
+      },
+      {
+        "left": "s5",
+        "params": {},
+        "right": "s6"
+      },
+      {
+        "left": "s6",
+        "params": {},
+        "right": "s7"
+      },
+      {
+        "left": "s7",
+        "params": {},
+        "right": "s8"
+      },
+      {
+        "left": "s8",
+        "params": {},
+        "right": "h2"
+      }
+    ],
+    "switch_count": 8,
+    "switches": [
+      "s1",
+      "s2",
+      "s3",
+      "s4",
+      "s5",
+      "s6",
+      "s7",
+      "s8"
+    ]
+  },
+  "validation_criteria": {
+    "neural": "IG completeness relative gap < 5% (or abs < 1e-3) and zeroing top-2 |IG| switches drops the score >= mean random-2 drop (20 draws)",
+    "rf": "additivity |base+sum(SHAP)-proba| < 1e-6 and top-3 neutralization drop >= mean random-3 drop (20 draws)",
+    "topology_ranker": "rank_score recomputed as the mean of component utilities and ranking identical to the saved evaluation"
+  }
+}

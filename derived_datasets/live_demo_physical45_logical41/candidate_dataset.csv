@@ -1,3 +1,5 @@
+#This file contains the telemetry data collected during our separate live experiment.
+
 timestamp,switch,port,rx_packets,rx_bytes,rx_dropped,tx_packets,tx_bytes,tx_dropped,rx_packet_rate,tx_packet_rate,rx_throughput_mbps,tx_throughput_mbps,experiment_id,phase,fault_type,fault_location
 2026-10-06 10:21:24.755479,s1,LOCAL,0,0,0,0,0,0,0.0,0.0,0.0,0.0,1,normal,none,none
 2026-10-06 10:21:24.755479,s1,1,0,0,0,0,0,0,0.0,0.0,0.0,0.0,1,normal,none,none

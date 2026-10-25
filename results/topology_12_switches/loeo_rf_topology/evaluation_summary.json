@@ -1,0 +1,1152 @@
+{
+  "candidate_count": 11,
+  "candidate_links_without_experiments": [],
+  "class_support": {
+    "s1-s2": 2,
+    "s10-s11": 2,
+    "s11-s12": 2,
+    "s2-s3": 3,
+    "s3-s4": 2,
+    "s4-s5": 2,
+    "s5-s6": 2,
+    "s6-s7": 3,
+    "s7-s8": 3,
+    "s8-s9": 2,
+    "s9-s10": 3
+  },
+  "dataset_path": "results\\topology_12_switches\\candidate\\candidate_dataset.csv",
+  "dataset_sha256": "07ad31e771146c1d38de63a919631cf0a1610c114f087c5ccc0aff0f46ad0d60",
+  "experiment_ids": [
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    220,
+    224,
+    228,
+    229,
+    230,
+    231,
+    232,
+    233,
+    234,
+    235,
+    236,
+    237,
+    238,
+    239,
+    240,
+    241,
+    242,
+    243,
+    244
+  ],
+  "fit_scope": "Each fold's RF, means/stds, active-metric selection, topology threshold (training-normal 95th percentile), and port baselines use only the training experiments.",
+  "independent_test_experiments": 26,
+  "link_port_mapping_basis": "recorded runtime OVS mapping: results\\topology_12_switches\\candidate\\link_port_mapping.csv",
+  "link_ports": {
+    "s1-s2": [
+      [
+        "s1",
+        "2"
+      ],
+      [
+        "s2",
+        "1"
+      ]
+    ],
+    "s10-s11": [
+      [
+        "s10",
+        "2"
+      ],
+      [
+        "s11",
+        "1"
+      ]
+    ],
+    "s11-s12": [
+      [
+        "s11",
+        "2"
+      ],
+      [
+        "s12",
+        "1"
+      ]
+    ],
+    "s2-s3": [
+      [
+        "s2",
+        "2"
+      ],
+      [
+        "s3",
+        "1"
+      ]
+    ],
+    "s3-s4": [
+      [
+        "s3",
+        "2"
+      ],
+      [
+        "s4",
+        "1"
+      ]
+    ],
+    "s4-s5": [
+      [
+        "s4",
+        "2"
+      ],
+      [
+        "s5",
+        "1"
+      ]
+    ],
+    "s5-s6": [
+      [
+        "s5",
+        "2"
+      ],
+      [
+        "s6",
+        "1"
+      ]
+    ],
+    "s6-s7": [
+      [
+        "s6",
+        "2"
+      ],
+      [
+        "s7",
+        "1"
+      ]
+    ],
+    "s7-s8": [
+      [
+        "s7",
+        "2"
+      ],
+      [
+        "s8",
+        "1"
+      ]
+    ],
+    "s8-s9": [
+      [
+        "s8",
+        "2"
+      ],
+      [
+        "s9",
+        "1"
+      ]
+    ],
+    "s9-s10": [
+      [
+        "s9",
+        "2"
+      ],
+      [
+        "s10",
+        "1"
+      ]
+    ]
+  },
+  "methods": {
+    "rf_baseline": {
+      "adjacent_link_error_fraction": 0.7142857142857143,
+      "candidate_count": 11,
+      "chance_level": {
+        "note": "Top-k and MRR chance levels fall as the candidate count grows; compare across topologies against these, not raw percentages.",
+        "uniform_mrr": 0.27453430407975865,
+        "uniform_top1": 0.09090909090909091,
+        "uniform_top2": 0.18181818181818182,
+        "uniform_top3": 0.2727272727272727
+      },
+      "confusion_labels": [
+        "s1-s2",
+        "s2-s3",
+        "s3-s4",
+        "s4-s5",
+        "s5-s6",
+        "s6-s7",
+        "s7-s8",
+        "s8-s9",
+        "s9-s10",
+        "s10-s11",
+        "s11-s12"
+      ],
+      "confusion_matrix_rows_actual_cols_rank1": [
+        [
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2
+        ]
+      ],
+      "mean_rank": 1.6153846153846154,
+      "mean_reciprocal_rank": 0.8237179487179487,
+      "per_class": {
+        "s1-s2": {
+          "mean_rank": 1.0,
+          "support": 2,
+          "top1_f1": 0.6666666666666666,
+          "top1_precision": 0.5,
+          "top1_recall": 1.0,
+          "top2_recall": 1.0
+        },
+        "s10-s11": {
+          "mean_rank": 1.0,
+          "support": 2,
+          "top1_f1": 1.0,
+          "top1_precision": 1.0,
+          "top1_recall": 1.0,
+          "top2_recall": 1.0
+        },
+        "s11-s12": {
+          "mean_rank": 1.0,
+          "support": 2,
+          "top1_f1": 0.8,
+          "top1_precision": 0.6666666666666666,
+          "top1_recall": 1.0,
+          "top2_recall": 1.0
+        },
+        "s2-s3": {
+          "mean_rank": 2.3333333333333335,
+          "support": 3,
+          "top1_f1": 0.0,
+          "top1_precision": 0.0,
+          "top1_recall": 0.0,
+          "top2_recall": 0.6666666666666666
+        },
+        "s3-s4": {
+          "mean_rank": 1.0,
+          "support": 2,
+          "top1_f1": 0.8,
+          "top1_precision": 0.6666666666666666,
+          "top1_recall": 1.0,
+          "top2_recall": 1.0
+        },
+        "s4-s5": {
+          "mean_rank": 3.5,
+          "support": 2,
+          "top1_f1": 0.0,
+          "top1_precision": 0.0,
+          "top1_recall": 0.0,
+          "top2_recall": 0.0
+        },
+        "s5-s6": {
+          "mean_rank": 1.0,
+          "support": 2,
+          "top1_f1": 0.8,
+          "top1_precision": 0.6666666666666666,
+          "top1_recall": 1.0,
+          "top2_recall": 1.0
+        },
+        "s6-s7": {
+          "mean_rank": 1.0,
+          "support": 3,
+          "top1_f1": 0.8571428571428571,
+          "top1_precision": 0.75,
+          "top1_recall": 1.0,
+          "top2_recall": 1.0
+        },
+        "s7-s8": {
+          "mean_rank": 1.6666666666666667,
+          "support": 3,
+          "top1_f1": 0.8,
+          "top1_precision": 1.0,
+          "top1_recall": 0.6666666666666666,
+          "top2_recall": 0.6666666666666666
+        },
+        "s8-s9": {
+          "mean_rank": 1.0,
+          "support": 2,
+          "top1_f1": 0.8,
+          "top1_precision": 0.6666666666666666,
+          "top1_recall": 1.0,
+          "top2_recall": 1.0
+        },
+        "s9-s10": {
+          "mean_rank": 2.6666666666666665,
+          "support": 3,
+          "top1_f1": 0.8,
+          "top1_precision": 1.0,
+          "top1_recall": 0.6666666666666666,
+          "top2_recall": 0.6666666666666666
+        }
+      },
+      "support": 26,
+      "top1": 0.7307692307692307,
+      "top1_count": 19,
+      "top1_errors": [
+        {
+          "actual_link": "s2-s3",
+          "distance_in_links": 1,
+          "experiment_id": 202,
+          "rank": 2,
+          "rank1_link": "s1-s2"
+        },
+        {
+          "actual_link": "s4-s5",
+          "distance_in_links": 2,
+          "experiment_id": 204,
+          "rank": 3,
+          "rank1_link": "s6-s7"
+        },
+        {
+          "actual_link": "s9-s10",
+          "distance_in_links": 2,
+          "experiment_id": 220,
+          "rank": 6,
+          "rank1_link": "s11-s12"
+        },
+        {
+          "actual_link": "s2-s3",
+          "distance_in_links": 1,
+          "experiment_id": 224,
+          "rank": 3,
+          "rank1_link": "s1-s2"
+        },
+        {
+          "actual_link": "s2-s3",
+          "distance_in_links": 1,
+          "experiment_id": 235,
+          "rank": 2,
+          "rank1_link": "s3-s4"
+        },
+        {
+          "actual_link": "s4-s5",
+          "distance_in_links": 1,
+          "experiment_id": 237,
+          "rank": 4,
+          "rank1_link": "s5-s6"
+        },
+        {
+          "actual_link": "s7-s8",
+          "distance_in_links": 1,
+          "experiment_id": 240,
+          "rank": 3,
+          "rank1_link": "s8-s9"
+        }
+      ],
+      "top1_wilson95": [
+        0.5391695962082381,
+        0.8629555167798162
+      ],
+      "top2": 0.8076923076923077,
+      "top2_count": 21,
+      "top2_wilson95": [
+        0.6212374288068301,
+        0.9149293885105758
+      ],
+      "top3": 0.9230769230769231,
+      "top3_count": 24
+    },
+    "topology_link_ranker": {
+      "adjacent_link_error_fraction": 0.04,
+      "candidate_count": 11,
+      "chance_level": {
+        "note": "Top-k and MRR chance levels fall as the candidate count grows; compare across topologies against these, not raw percentages.",
+        "uniform_mrr": 0.27453430407975865,
+        "uniform_top1": 0.09090909090909091,
+        "uniform_top2": 0.18181818181818182,
+        "uniform_top3": 0.2727272727272727
+      },
+      "confusion_labels": [
+        "s1-s2",
+        "s2-s3",
+        "s3-s4",
+        "s4-s5",
+        "s5-s6",
+        "s6-s7",
+        "s7-s8",
+        "s8-s9",
+        "s9-s10",
+        "s10-s11",
+        "s11-s12"
+      ],
+      "confusion_matrix_rows_actual_cols_rank1": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "mean_rank": 6.769230769230769,
+      "mean_reciprocal_rank": 0.19979326229326233,
+      "per_class": {
+        "s1-s2": {
+          "mean_rank": 8.0,
+          "support": 2,
+          "top1_f1": 0.0,
+          "top1_precision": 0.0,
+          "top1_recall": 0.0,
+          "top2_recall": 0.0
+        },
+        "s10-s11": {
+          "mean_rank": 6.0,
+          "support": 2,
+          "top1_f1": 0.0,
+          "top1_precision": 0.0,
+          "top1_recall": 0.0,
+          "top2_recall": 0.0
+        },
+        "s11-s12": {
+          "mean_rank": 6.0,
+          "support": 2,
+          "top1_f1": 0.0,
+          "top1_precision": 0.0,
+          "top1_recall": 0.0,
+          "top2_recall": 0.0
+        },
+        "s2-s3": {
+          "mean_rank": 5.333333333333333,
+          "support": 3,
+          "top1_f1": 0.0,
+          "top1_precision": 0.0,
+          "top1_recall": 0.0,
+          "top2_recall": 0.0
+        },
+        "s3-s4": {
+          "mean_rank": 5.5,
+          "support": 2,
+          "top1_f1": 0.0,
+          "top1_precision": 0.0,
+          "top1_recall": 0.0,
+          "top2_recall": 0.0
+        },
+        "s4-s5": {
+          "mean_rank": 6.0,
+          "support": 2,
+          "top1_f1": 0.0,
+          "top1_precision": 0.0,
+          "top1_recall": 0.0,
+          "top2_recall": 0.0
+        },
+        "s5-s6": {
+          "mean_rank": 2.5,
+          "support": 2,
+          "top1_f1": 0.6666666666666666,
+          "top1_precision": 1.0,
+          "top1_recall": 0.5,
+          "top2_recall": 0.5
+        },
+        "s6-s7": {
+          "mean_rank": 11.0,
+          "support": 3,
+          "top1_f1": 0.0,
+          "top1_precision": 0.0,
+          "top1_recall": 0.0,
+          "top2_recall": 0.0
+        },
+        "s7-s8": {
+          "mean_rank": 10.0,
+          "support": 3,
+          "top1_f1": 0.0,
+          "top1_precision": 0.0,
+          "top1_recall": 0.0,
+          "top2_recall": 0.0
+        },
+        "s8-s9": {
+          "mean_rank": 9.0,
+          "support": 2,
+          "top1_f1": 0.0,
+          "top1_precision": 0.0,
+          "top1_recall": 0.0,
+          "top2_recall": 0.0
+        },
+        "s9-s10": {
+          "mean_rank": 3.6666666666666665,
+          "support": 3,
+          "top1_f1": 0.0,
+          "top1_precision": 0.0,
+          "top1_recall": 0.0,
+          "top2_recall": 0.3333333333333333
+        }
+      },
+      "support": 26,
+      "top1": 0.038461538461538464,
+      "top1_count": 1,
+      "top1_errors": [
+        {
+          "actual_link": "s1-s2",
+          "distance_in_links": 10,
+          "experiment_id": 201,
+          "rank": 8,
+          "rank1_link": "s11-s12"
+        },
+        {
+          "actual_link": "s2-s3",
+          "distance_in_links": 8,
+          "experiment_id": 202,
+          "rank": 5,
+          "rank1_link": "s10-s11"
+        },
+        {
+          "actual_link": "s3-s4",
+          "distance_in_links": 7,
+          "experiment_id": 203,
+          "rank": 5,
+          "rank1_link": "s10-s11"
+        },
+        {
+          "actual_link": "s4-s5",
+          "distance_in_links": 7,
+          "experiment_id": 204,
+          "rank": 6,
+          "rank1_link": "s11-s12"
+        },
+        {
+          "actual_link": "s6-s7",
+          "distance_in_links": 4,
+          "experiment_id": 206,
+          "rank": 11,
+          "rank1_link": "s10-s11"
+        },
+        {
+          "actual_link": "s7-s8",
+          "distance_in_links": 4,
+          "experiment_id": 207,
+          "rank": 11,
+          "rank1_link": "s11-s12"
+        },
+        {
+          "actual_link": "s9-s10",
+          "distance_in_links": 6,
+          "experiment_id": 220,
+          "rank": 5,
+          "rank1_link": "s3-s4"
+        },
+        {
+          "actual_link": "s2-s3",
+          "distance_in_links": 9,
+          "experiment_id": 224,
+          "rank": 6,
+          "rank1_link": "s11-s12"
+        },
+        {
+          "actual_link": "s6-s7",
+          "distance_in_links": 5,
+          "experiment_id": 228,
+          "rank": 11,
+          "rank1_link": "s11-s12"
+        },
+        {
+          "actual_link": "s7-s8",
+          "distance_in_links": 3,
+          "experiment_id": 229,
+          "rank": 8,
+          "rank1_link": "s10-s11"
+        },
+        {
+          "actual_link": "s8-s9",
+          "distance_in_links": 7,
+          "experiment_id": 230,
+          "rank": 9,
+          "rank1_link": "s1-s2"
+        },
+        {
+          "actual_link": "s9-s10",
+          "distance_in_links": 2,
+          "experiment_id": 231,
+          "rank": 4,
+          "rank1_link": "s7-s8"
+        },
+        {
+          "actual_link": "s10-s11",
+          "distance_in_links": 6,
+          "experiment_id": 232,
+          "rank": 7,
+          "rank1_link": "s4-s5"
+        },
+        {
+          "actual_link": "s11-s12",
+          "distance_in_links": 9,
+          "experiment_id": 233,
+          "rank": 6,
+          "rank1_link": "s2-s3"
+        },
+        {
+          "actual_link": "s1-s2",
+          "distance_in_links": 10,
+          "experiment_id": 234,
+          "rank": 8,
+          "rank1_link": "s11-s12"
+        },
+        {
+          "actual_link": "s2-s3",
+          "distance_in_links": 7,
+          "experiment_id": 235,
+          "rank": 5,
+          "rank1_link": "s9-s10"
+        },
+        {
+          "actual_link": "s3-s4",
+          "distance_in_links": 6,
+          "experiment_id": 236,
+          "rank": 6,
+          "rank1_link": "s9-s10"
+        },
+        {
+          "actual_link": "s4-s5",
+          "distance_in_links": 7,
+          "experiment_id": 237,
+          "rank": 6,
+          "rank1_link": "s11-s12"
+        },
+        {
+          "actual_link": "s5-s6",
+          "distance_in_links": 5,
+          "experiment_id": 238,
+          "rank": 4,
+          "rank1_link": "s10-s11"
+        },
+        {
+          "actual_link": "s6-s7",
+          "distance_in_links": 5,
+          "experiment_id": 239,
+          "rank": 11,
+          "rank1_link": "s11-s12"
+        },
+        {
+          "actual_link": "s7-s8",
+          "distance_in_links": 6,
+          "experiment_id": 240,
+          "rank": 11,
+          "rank1_link": "s1-s2"
+        },
+        {
+          "actual_link": "s8-s9",
+          "distance_in_links": 7,
+          "experiment_id": 241,
+          "rank": 9,
+          "rank1_link": "s1-s2"
+        },
+        {
+          "actual_link": "s9-s10",
+          "distance_in_links": 1,
+          "experiment_id": 242,
+          "rank": 2,
+          "rank1_link": "s10-s11"
+        },
+        {
+          "actual_link": "s10-s11",
+          "distance_in_links": 9,
+          "experiment_id": 243,
+          "rank": 5,
+          "rank1_link": "s1-s2"
+        },
+        {
+          "actual_link": "s11-s12",
+          "distance_in_links": 10,
+          "experiment_id": 244,
+          "rank": 6,
+          "rank1_link": "s1-s2"
+        }
+      ],
+      "top1_wilson95": [
+        0.006821984993543487,
+        0.18892778903034757
+      ],
+      "top2": 0.07692307692307693,
+      "top2_count": 2,
+      "top2_wilson95": [
+        0.0213550884722762,
+        0.2414155377162906
+      ],
+      "top3": 0.07692307692307693,
+      "top3_count": 2
+    }
+  },
+  "model": {
+    "class_weight": "balanced",
+    "max_depth": 5,
+    "n_estimators": 300,
+    "random_state": 42,
+    "type": "RandomForestClassifier"
+  },
+  "oracle_information": "phase labels select the first 10 seconds from the annotated fault phase; recovery telemetry is excluded; ground-truth fault_location is joined only after predictions",
+  "outputs": {
+    "fold_feature_policy": "fold_feature_policy.csv",
+    "predictions": "grouped_evaluation.csv",
+    "ranker_components": "topology_ranker_components.csv",
+    "splits": "split_assignments.csv"
+  },
+  "predictors": {
+    "constant_feature_policy": "fit on training-normal non-LOCAL port telemetry only; exclude metrics with no variation in that fold",
+    "forbidden_predictor_fields": [
+      "experiment_id",
+      "fault_location",
+      "fault_type",
+      "interface_name",
+      "label",
+      "logical_experiment_id",
+      "phase",
+      "physical_run_id",
+      "port",
+      "switch",
+      "target_link",
+      "timestamp"
+    ],
+    "raw_metrics": [
+      "rx_packet_rate",
+      "tx_packet_rate",
+      "rx_throughput_mbps",
+      "tx_throughput_mbps"
+    ],
+    "rf_features": [
+      "s1_mean_anomaly",
+      "s1_max_anomaly",
+      "s1_persistence",
+      "s1_first_anomaly_seconds",
+      "s2_mean_anomaly",
+      "s2_max_anomaly",
+      "s2_persistence",
+      "s2_first_anomaly_seconds",
+      "s3_mean_anomaly",
+      "s3_max_anomaly",
+      "s3_persistence",
+      "s3_first_anomaly_seconds",
+      "s4_mean_anomaly",
+      "s4_max_anomaly",
+      "s4_persistence",
+      "s4_first_anomaly_seconds",
+      "s5_mean_anomaly",
+      "s5_max_anomaly",
+      "s5_persistence",
+      "s5_first_anomaly_seconds",
+      "s6_mean_anomaly",
+      "s6_max_anomaly",
+      "s6_persistence",
+      "s6_first_anomaly_seconds",
+      "s7_mean_anomaly",
+      "s7_max_anomaly",
+      "s7_persistence",
+      "s7_first_anomaly_seconds",
+      "s8_mean_anomaly",
+      "s8_max_anomaly",
+      "s8_persistence",
+      "s8_first_anomaly_seconds",
+      "s9_mean_anomaly",
+      "s9_max_anomaly",
+      "s9_persistence",
+      "s9_first_anomaly_seconds",
+      "s10_mean_anomaly",
+      "s10_max_anomaly",
+      "s10_persistence",
+      "s10_first_anomaly_seconds",
+      "s11_mean_anomaly",
+      "s11_max_anomaly",
+      "s11_persistence",
+      "s11_first_anomaly_seconds",
+      "s12_mean_anomaly",
+      "s12_max_anomaly",
+      "s12_persistence",
+      "s12_first_anomaly_seconds"
+    ],
+    "topology_features": "per-port absolute z-scores; candidate link endpoint mean, imbalance, threshold onset, and remote propagation margin; equal-weight rank aggregation over all candidates"
+  },
+  "protocol": "leave-one-logical-experiment-out (26 folds), grouped by experiment_id; each fold has 25 train and 1 test experiment",
+  "score_semantics": "RF scores are RandomForest predict_proba outputs (vote fractions, uncalibrated). Topology scores are equal-weight rank utilities in (0, 1], not probabilities.",
+  "software": {
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "python": "3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)]",
+    "scikit_learn": "1.9.1"
+  },
+  "task": "conditional fault-window link localization with oracle phase boundaries; not online fault detection/localization",
+  "topology": {
+    "bottleneck_link": "s6-s7",
+    "bottleneck_params": {
+      "bw": 10,
+      "delay": "5ms"
+    },
+    "candidate_count": 11,
+    "candidate_links": [
+      "s1-s2",
+      "s2-s3",
+      "s3-s4",
+      "s4-s5",
+      "s5-s6",
+      "s6-s7",
+      "s7-s8",
+      "s8-s9",
+      "s9-s10",
+      "s10-s11",
+      "s11-s12"
+    ],
+    "hosts": [
+      "h1",
+      "h2"
+    ],
+    "kind": "linear",
+    "link_definitions": [
+      {
+        "left": "h1",
+        "params": {},
+        "right": "s1"
+      },
+      {
+        "left": "s1",
+        "params": {},
+        "right": "s2"
+      },
+      {
+        "left": "s2",
+        "params": {},
+        "right": "s3"
+      },
+      {
+        "left": "s3",
+        "params": {},
+        "right": "s4"
+      },
+      {
+        "left": "s4",
+        "params": {},
+        "right": "s5"
+      },
+      {
+        "left": "s5",
+        "params": {},
+        "right": "s6"
+      },
+      {
+        "left": "s6",
+        "params": {
+          "bw": 10,
+          "delay": "5ms"
+        },
+        "right": "s7"
+      },
+      {
+        "left": "s7",
+        "params": {},
+        "right": "s8"
+      },
+      {
+        "left": "s8",
+        "params": {},
+        "right": "s9"
+      },
+      {
+        "left": "s9",
+        "params": {},
+        "right": "s10"
+      },
+      {
+        "left": "s10",
+        "params": {},
+        "right": "s11"
+      },
+      {
+        "left": "s11",
+        "params": {},
+        "right": "s12"
+      },
+      {
+        "left": "s12",
+        "params": {},
+        "right": "h2"
+      }
+    ],
+    "switch_count": 12,
+    "switches": [
+      "s1",
+      "s2",
+      "s3",
+      "s4",
+      "s5",
+      "s6",
+      "s7",
+      "s8",
+      "s9",
+      "s10",
+      "s11",
+      "s12"
+    ]
+  }
+}

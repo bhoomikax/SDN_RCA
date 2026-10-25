@@ -20,6 +20,7 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
+from linear_topology import LinearTopology, SUPPORTED_SWITCH_COUNTS, registry_entry
 from telemetry import parse_port_interfaces
 from telemetry_pipeline import TELEMETRY_FIELDS
 
@@ -59,25 +60,47 @@ IPERF_SERVER_WAIT_TIMEOUT_SECONDS = IPERF_SERVER_GRACE_SECONDS + 5.0
 IPERF_CLIENT_WAIT_GRACE_SECONDS = 15.0
 IPERF_PROCESS_CLEANUP_TIMEOUT_SECONDS = 5.0
 IPERF_DURATION_TOLERANCE_SECONDS = 2.0
-SWITCHES = ("s1", "s2", "s3", "s4")
+SENDER_RATE_TOLERANCE = 0.10
+# The four-switch study topology stays the default; larger linear topologies
+# are selected explicitly with --switches and use their own ID registry.
+DEFAULT_TOPOLOGY = LinearTopology(4)
+SWITCHES = DEFAULT_TOPOLOGY.switches
 SAMPLE_NUMERIC_FIELDS = (
     "rx_packets", "rx_bytes", "rx_dropped", "tx_packets", "tx_bytes",
     "tx_dropped", "rx_packet_rate", "tx_packet_rate",
     "rx_throughput_mbps", "tx_throughput_mbps",
 )
-LINK_DEFINITIONS = (
-    ("h1", "s1", None),
-    ("s1", "s2", None),
-    ("s2", "s3", {"bw": 10, "delay": "5ms"}),
-    ("s3", "s4", None),
-    ("s4", "h2", None),
-)
+LINK_DEFINITIONS = DEFAULT_TOPOLOGY.link_definitions
 TRAFFIC_PROFILE_PATH = PROJECT / "traffic_profiles" / "udp_6mbps_v1.json"
+TRAFFIC_PROFILE_BY_SWITCH_COUNT = {
+    4: "udp_6mbps_v1.json",
+    8: "udp_6mbps_8sw_v1.json",
+    12: "udp_6mbps_12sw_v1.json",
+}
+
+
+def topology_for(switch_count=None):
+    if switch_count is None:
+        return DEFAULT_TOPOLOGY
+    count = int(switch_count)
+    if count not in SUPPORTED_SWITCH_COUNTS:
+        raise ValueError("Unsupported switch count %d; supported: %s" % (count, SUPPORTED_SWITCH_COUNTS))
+    return LinearTopology(count)
+
+
+def traffic_profile_path(topology=None):
+    topology = DEFAULT_TOPOLOGY if topology is None else topology
+    name = TRAFFIC_PROFILE_BY_SWITCH_COUNT.get(topology.switch_count)
+    if name is None:
+        raise ValueError("No frozen traffic profile for a %d-switch topology" % topology.switch_count)
+    # Anchor on the import-time constant so test patches of PROJECT behave as before.
+    return TRAFFIC_PROFILE_PATH.parent / name
 MAX_OFFERED_CAPACITY_FRACTION = 0.7
 
 
-def load_traffic_profile(path=None):
-    path = Path(path) if path is not None else TRAFFIC_PROFILE_PATH
+def load_traffic_profile(path=None, topology=None):
+    topology = DEFAULT_TOPOLOGY if topology is None else topology
+    path = Path(path) if path is not None else traffic_profile_path(topology)
     profile = json.loads(path.read_text(encoding="utf-8"))
     required = {
         "profile_id", "protocol", "offered_rate_mbps", "bottleneck_link",
@@ -89,9 +112,14 @@ def load_traffic_profile(path=None):
         raise ValueError(f"Traffic profile is missing fields: {sorted(missing)}")
     if profile["protocol"] != "udp":
         raise ValueError("The recollection runner currently requires a UDP traffic profile")
+    if profile["bottleneck_link"] != topology.bottleneck_link:
+        raise ValueError(
+            "Traffic profile bottleneck %r is not the topology bottleneck %r"
+            % (profile["bottleneck_link"], topology.bottleneck_link)
+        )
     bottlenecks = [
         float(params["bw"])
-        for left, right, params in LINK_DEFINITIONS
+        for left, right, params in topology.link_definitions
         if params and "-".join((left, right)) == profile["bottleneck_link"]
     ]
     if len(bottlenecks) != 1:
@@ -181,10 +209,27 @@ def now_iso():
     return datetime.now(timezone.utc).astimezone().isoformat(timespec="microseconds")
 
 
-def run_directory(logical_id, physical_id):
-    if LOGICAL_TO_PHYSICAL.get(int(logical_id)) != int(physical_id):
-        raise ValueError("Only the reserved logical/physical ID pairs are allowed")
-    return RUN_ROOT / f"physical_{int(physical_id)}_logical_{int(logical_id)}"
+def resolve_registry(logical_id, physical_id, switch_count=None):
+    """Return the registered fault link and purpose for an ID pair and topology."""
+    topology = topology_for(switch_count)
+    if topology.switch_count == 4:
+        if LOGICAL_TO_PHYSICAL.get(int(logical_id)) != int(physical_id):
+            raise ValueError("Only the reserved logical/physical ID pairs are allowed")
+        return {
+            "fault_link": FAULT_LINK_BY_LOGICAL[int(logical_id)],
+            "run_purpose": RUN_PURPOSE_BY_LOGICAL.get(int(logical_id), "candidate_recollection"),
+        }
+    entry = registry_entry(topology.switch_count, logical_id, physical_id)
+    return {"fault_link": entry["fault_link"], "run_purpose": entry["run_purpose"]}
+
+
+def run_directory(logical_id, physical_id, switch_count=None):
+    topology = topology_for(switch_count)
+    resolve_registry(logical_id, physical_id, topology.switch_count)
+    name = f"physical_{int(physical_id)}_logical_{int(logical_id)}"
+    if topology.switch_count == 4:
+        return RUN_ROOT / name
+    return RUN_ROOT / f"topology_{topology.switch_count}_switches" / name
 
 
 def assert_run_paths_available(output_dir, project, physical_id):
@@ -368,12 +413,14 @@ def finalize_run_metadata(metadata, rows, phase_events, expected_physical_id):
     return metadata
 
 
-def preflight(logical_id, physical_id):
+def preflight(logical_id, physical_id, switch_count=None):
     """Read-only checks; does not create files, start Mininet, or inject faults."""
     logical_id, physical_id = int(logical_id), int(physical_id)
-    output_dir = run_directory(logical_id, physical_id)
+    topology = topology_for(switch_count)
+    registered = resolve_registry(logical_id, physical_id, topology.switch_count)
+    output_dir = run_directory(logical_id, physical_id, topology.switch_count)
     assert_run_paths_available(output_dir, PROJECT, physical_id)
-    traffic_profile = load_traffic_profile()
+    traffic_profile = load_traffic_profile(topology=topology)
     iperf_version = get_iperf_version()
     if not (PROJECT / "telemetry.py").is_file():
         raise FileNotFoundError("telemetry.py is missing")
@@ -386,7 +433,7 @@ def preflight(logical_id, physical_id):
         text=True,
     )
     existing_bridges = set(ovs.stdout.split())
-    conflicts = sorted(existing_bridges.intersection(SWITCHES))
+    conflicts = sorted(existing_bridges.intersection(topology.switches))
     if conflicts:
         raise RuntimeError(f"Existing OVS bridges conflict with this topology: {conflicts}")
     controller = socket.socket()
@@ -398,8 +445,11 @@ def preflight(logical_id, physical_id):
     return {
         "logical_experiment_id": logical_id,
         "physical_run_id": physical_id,
-        "fault_link": FAULT_LINK_BY_LOGICAL[logical_id],
-        "run_purpose": RUN_PURPOSE_BY_LOGICAL.get(logical_id, "candidate_recollection"),
+        "fault_link": registered["fault_link"],
+        "run_purpose": registered["run_purpose"],
+        "switch_count": topology.switch_count,
+        "candidate_links": list(topology.candidate_links),
+        "topology_spec": topology.to_metadata(),
         "output_dir": str(output_dir),
         "controller": "127.0.0.1:6633 reachable",
         "existing_ovs_bridges": sorted(existing_bridges),
@@ -409,7 +459,8 @@ def preflight(logical_id, physical_id):
     }
 
 
-def _create_network():
+def _create_network(topology=None):
+    topology = DEFAULT_TOPOLOGY if topology is None else topology
     from mininet.link import TCLink
     from mininet.net import Mininet
     from mininet.node import OVSSwitch, RemoteController
@@ -423,14 +474,31 @@ def _create_network():
     net.addController("c0", controller=RemoteController, ip="127.0.0.1", port=6633)
     net.addHost("h1")
     net.addHost("h2")
-    for switch in SWITCHES:
+    for switch in topology.switches:
         net.addSwitch(switch, protocols="OpenFlow13")
-    for left, right, params in LINK_DEFINITIONS:
+    for left, right, params in topology.link_definitions:
         net.addLink(left, right, **(params or {}))
     return net
 
 
-def _runtime_mapping(net, output_path):
+_SWITCH_NAME_RE = re.compile(r"^s(\d+)$")
+
+
+def canonical_link_name(node_a, node_b):
+    """Name a link; switch pairs order numerically so s9-s10 is not 's10-s9'.
+
+    Host links keep the historical lexicographic order (h1-s1, h2-s4) so the
+    four-switch mapping output is unchanged.
+    """
+    left, right = _SWITCH_NAME_RE.match(str(node_a)), _SWITCH_NAME_RE.match(str(node_b))
+    if left and right:
+        ordered = sorted((str(node_a), str(node_b)), key=lambda name: int(name[1:]))
+        return "-".join(ordered)
+    return "-".join(sorted((str(node_a), str(node_b))))
+
+
+def _runtime_mapping(net, output_path, switches=None):
+    switches = tuple(SWITCHES if switches is None else switches)
     peers = {}
     for link in net.links:
         left, right = link.intf1, link.intf2
@@ -439,7 +507,7 @@ def _runtime_mapping(net, output_path):
 
     mapping_rows = []
     interface_to_port = {}
-    for switch in SWITCHES:
+    for switch in switches:
         completed = subprocess.run(
             ["ovs-ofctl", "-O", "OpenFlow13", "show", switch],
             check=True,
@@ -463,12 +531,12 @@ def _runtime_mapping(net, output_path):
                 "interface_name": interface,
                 "peer_node": peer[0],
                 "peer_interface": peer[1],
-                "link": "-".join(sorted((switch, peer[0]))),
+                "link": canonical_link_name(switch, peer[0]),
             })
     expected_interfaces = {
         (node, interface)
         for (node, interface), _peer in peers.items()
-        if node in SWITCHES
+        if node in switches
     }
     observed_interfaces = {
         (row["switch"], row["interface_name"]) for row in mapping_rows
@@ -489,9 +557,10 @@ def _runtime_mapping(net, output_path):
     return peers, interface_to_port, mapping_rows
 
 
-def _target_link(net, logical_id, peers, mapping_rows):
+def _target_link(net, logical_id, peers, mapping_rows, target=None):
     """Resolve the configured fault to one Mininet link and validate its OVS mapping."""
-    target = FAULT_LINK_BY_LOGICAL[int(logical_id)]
+    if target is None:
+        target = FAULT_LINK_BY_LOGICAL[int(logical_id)]
     expected_nodes = set(target.split("-"))
     matches = []
     for link in net.links:
@@ -771,6 +840,23 @@ def validate_iperf_completion(
     return result
 
 
+def validate_offered_rate(summary, offered_rate_mbps, tolerance=SENDER_RATE_TOLERANCE):
+    """Reject a run whose iperf sender did not execute the frozen offered load.
+
+    Observed on 2026-10-24: after a VM suspend, clients averaged ~3 Mbps against
+    the 6 Mbps profile while still satisfying the duration rules.
+    """
+    offered = float(offered_rate_mbps)
+    achieved = float(summary["client_sender_reported_mbps"])
+    if abs(achieved - offered) > float(tolerance) * offered:
+        raise ValueError(
+            "iperf sender achieved %.2f Mbps, outside %.0f%% of the %.1f Mbps offered load"
+            % (achieved, 100 * float(tolerance), offered)
+        )
+    summary["offered_rate_valid"] = True
+    return achieved
+
+
 def _stop_and_reap(process, label, timeout=IPERF_PROCESS_CLEANUP_TIMEOUT_SECONDS):
     """Boundedly terminate and reap an iperf child, preserving its exit code."""
     if process is None:
@@ -816,10 +902,12 @@ def _read_log(path):
         raise ValueError(f"Could not read iperf log {path}: {exc}") from exc
 
 
-def run(logical_id, physical_id, normal_seconds=20, fault_seconds=20, recovery_seconds=20):
+def run(logical_id, physical_id, normal_seconds=20, fault_seconds=20, recovery_seconds=20,
+        switch_count=None):
     if os.geteuid() != 0:
         raise PermissionError("Live Mininet runs must be launched as root")
-    checks = preflight(logical_id, physical_id)
+    topology = topology_for(switch_count)
+    checks = preflight(logical_id, physical_id, topology.switch_count)
     if min(normal_seconds, fault_seconds, recovery_seconds) < 1:
         raise ValueError("All phase durations must be positive")
     requested_phases = {
@@ -851,8 +939,9 @@ def run(logical_id, physical_id, normal_seconds=20, fault_seconds=20, recovery_s
         "started_at": now_iso(),
         "topology": [
             {"left": a, "right": b, "params": params or {}}
-            for a, b, params in LINK_DEFINITIONS
+            for a, b, params in topology.link_definitions
         ],
+        "topology_spec": topology.to_metadata(),
         "phase_durations_seconds": {
             "normal": normal_seconds, "fault": fault_seconds, "recovery": recovery_seconds
         },
@@ -883,11 +972,13 @@ def run(logical_id, physical_id, normal_seconds=20, fault_seconds=20, recovery_s
     fault_attempted = False
     clean_run = False
     try:
-        net = _create_network()
+        net = _create_network(topology)
         net.start()
-        peers, _interface_to_port, mapping_rows = _runtime_mapping(net, mapping_path)
+        peers, _interface_to_port, mapping_rows = _runtime_mapping(
+            net, mapping_path, topology.switches
+        )
         target, target_intfs, validated_target_mapping = _target_link(
-            net, logical_id, peers, mapping_rows
+            net, logical_id, peers, mapping_rows, target=checks["fault_link"]
         )
         metadata["fault_link"] = target
         metadata["runtime_switch_port_mapping"] = mapping_rows
@@ -899,8 +990,10 @@ def run(logical_id, physical_id, normal_seconds=20, fault_seconds=20, recovery_s
             sys.executable,
             "-c",
             "from telemetry import collect; import sys; "
-            "collect(sys.argv[1], int(sys.argv[2]), duration=float(sys.argv[3]))",
+            "collect(sys.argv[1], int(sys.argv[2]), duration=float(sys.argv[3]), "
+            "switches=tuple(sys.argv[4].split(',')))",
             str(telemetry_path), str(physical_id), str(collector_duration),
+            ",".join(topology.switches),
         ]
         collector = subprocess.Popen(command, cwd=str(PROJECT))
 
@@ -1052,6 +1145,10 @@ def run(logical_id, physical_id, normal_seconds=20, fault_seconds=20, recovery_s
                 server_elapsed=server_elapsed,
                 requested_bandwidth_mbps=checks["traffic_profile"]["offered_rate_mbps"],
             )
+            validate_offered_rate(
+                metadata["iperf"]["summary_validation"],
+                checks["traffic_profile"]["offered_rate_mbps"],
+            )
             metadata["iperf"]["completion_valid"] = True
             _write_metadata(metadata_path, metadata)
 
@@ -1174,19 +1271,78 @@ def run(logical_id, physical_id, normal_seconds=20, fault_seconds=20, recovery_s
     print(f"Run complete: {output_dir}")
 
 
+def verify_topology(switch_count=None, ping=True):
+    """Start the topology, capture its runtime mapping, ping, and stop. Writes nothing."""
+    import tempfile
+    if os.geteuid() != 0:
+        raise PermissionError("Live Mininet verification must be launched as root")
+    topology = topology_for(switch_count)
+    ovs = subprocess.run(["ovs-vsctl", "list-br"], check=True, capture_output=True, text=True)
+    conflicts = sorted(set(ovs.stdout.split()).intersection(topology.switches))
+    if conflicts:
+        raise RuntimeError(f"Existing OVS bridges conflict with this topology: {conflicts}")
+    from mininet.log import setLogLevel
+    setLogLevel("warning")
+    net = _create_network(topology)
+    result = {
+        "switch_count": topology.switch_count,
+        "candidate_links": list(topology.candidate_links),
+        "expected_candidate_count": topology.switch_count - 1,
+    }
+    try:
+        started = time.monotonic()
+        net.start()
+        result["start_seconds"] = round(time.monotonic() - started, 3)
+        with tempfile.TemporaryDirectory() as scratch:
+            mapping_path = Path(scratch) / "runtime_port_mapping.csv"
+            _peers, _interface_to_port, rows = _runtime_mapping(net, mapping_path, topology.switches)
+        links = sorted({row["link"] for row in rows})
+        inter_switch = [link for link in links if topology.is_candidate(link)]
+        result["observed_inter_switch_links"] = inter_switch
+        result["observed_inter_switch_link_count"] = len(inter_switch)
+        result["mapping_rows"] = rows
+        result["switch_count_observed"] = len({row["switch"] for row in rows})
+        result["host_count"] = len([node for node in ("h1", "h2") if net.get(node) is not None])
+        if ping:
+            sweep_started = time.monotonic()
+            for switch in topology.switches:
+                subprocess.run(["ovs-ofctl", "-O", "OpenFlow13", "dump-ports", switch],
+                               check=True, capture_output=True, text=True)
+                subprocess.run(["ovs-ofctl", "-O", "OpenFlow13", "show", switch],
+                               check=True, capture_output=True, text=True)
+            result["collector_sweep_seconds"] = round(time.monotonic() - sweep_started, 3)
+            result["ping_loss_percent"] = float(net.pingAll(timeout="2"))
+    finally:
+        net.stop()
+    result["post_stop_bridges"] = subprocess.run(
+        ["ovs-vsctl", "list-br"], check=True, capture_output=True, text=True
+    ).stdout.split()
+    return result
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--logical-id", type=int, choices=sorted(LOGICAL_TO_PHYSICAL), required=True)
-    parser.add_argument("--physical-id", type=int, required=True)
+    parser.add_argument("--switches", type=int, choices=SUPPORTED_SWITCH_COUNTS, default=4,
+                        help="linear topology size; 4 is the original study topology")
+    parser.add_argument("--logical-id", type=int)
+    parser.add_argument("--physical-id", type=int)
     parser.add_argument("--normal-seconds", type=int, default=20)
     parser.add_argument("--fault-seconds", type=int, default=20)
     parser.add_argument("--recovery-seconds", type=int, default=20)
     parser.add_argument("--run", action="store_true", help="explicitly launch Mininet and inject the configured link fault")
+    parser.add_argument("--verify-topology", action="store_true",
+                        help="start the topology, print its runtime mapping and ping result, stop; no run directory, no fault")
     args = parser.parse_args(argv)
+    if args.verify_topology:
+        print(json.dumps(verify_topology(args.switches), indent=2))
+        return
+    if args.logical_id is None or args.physical_id is None:
+        parser.error("--logical-id and --physical-id are required unless --verify-topology is used")
     if args.run:
-        run(args.logical_id, args.physical_id, args.normal_seconds, args.fault_seconds, args.recovery_seconds)
+        run(args.logical_id, args.physical_id, args.normal_seconds, args.fault_seconds,
+            args.recovery_seconds, switch_count=args.switches)
     else:
-        print(json.dumps(preflight(args.logical_id, args.physical_id), indent=2))
+        print(json.dumps(preflight(args.logical_id, args.physical_id, args.switches), indent=2))
         print("Preflight only: no files created, no Mininet started, no fault injected.")
 
 

@@ -53,10 +53,10 @@ def phase_events(normal=1, fault=2, recovery=3):
     )}
 
 
-def iperf_client_output(duration, sent=100, lost=0, total=100):
-    sender = f"[  3] 0.0- {duration:.1f} sec 512 KBytes 1.05 Mbits/sec\n"
+def iperf_client_output(duration, sent=100, lost=0, total=100, mbps="1.05"):
+    sender = f"[  3] 0.0- {duration:.1f} sec 512 KBytes {mbps} Mbits/sec\n"
     receiver = (
-        f"[  3] 0.0- {duration:.1f} sec 512 KBytes 1.05 Mbits/sec "
+        f"[  3] 0.0- {duration:.1f} sec 512 KBytes {mbps} Mbits/sec "
         f"0.136 ms {lost}/ {total} (0%)\n"
     )
     return (
@@ -65,10 +65,10 @@ def iperf_client_output(duration, sent=100, lost=0, total=100):
     )
 
 
-def iperf_server_output(duration, lost=0, total=100):
+def iperf_server_output(duration, lost=0, total=100, mbps="1.05"):
     return (
         "[ ID] Interval       Transfer     Bandwidth        Jitter   Lost/Total Datagrams\n"
-        + f"[  3] 0.0- {duration:.1f} sec 512 KBytes 1.05 Mbits/sec "
+        + f"[  3] 0.0- {duration:.1f} sec 512 KBytes {mbps} Mbits/sec "
         + f"0.136 ms {lost}/ {total} (0%)\n"
     )
 
@@ -148,8 +148,9 @@ class FakeIperfProcess:
         if mode == "missing_summary" and role == "client":
             output = "[ 3] local connected with peer\n"
         else:
-            output = (iperf_server_output(transfer_duration) if role == "server"
-                      else iperf_client_output(transfer_duration))
+            # A correctly paced 6 Mbps UDP client reports 6.29 Mbit/s in iperf2.
+            output = (iperf_server_output(transfer_duration, mbps="6.29") if role == "server"
+                      else iperf_client_output(transfer_duration, mbps="6.29"))
         if stdout is not None:
             stdout.write(output)
             stdout.flush()
@@ -252,7 +253,7 @@ class RecollectionRunnerTests(unittest.TestCase):
             net.stop = mock.Mock(side_effect=RuntimeError("mock stop failure"))
         popen_calls = []
 
-        def write_mapping(_net, path):
+        def write_mapping(_net, path, switches=None):
             actual_peers = {}
             for link in _net.links:
                 actual_peers[(link.intf1.node.name, link.intf1.name)] = (
@@ -272,7 +273,7 @@ class RecollectionRunnerTests(unittest.TestCase):
 
         def start_collector(command, cwd=None):
             popen_calls.append((command, cwd))
-            return FakeCollector(command[-3], int(command[-2]), collector_mode, sample_end)
+            return FakeCollector(command[3], int(command[4]), collector_mode, sample_end)
 
         original_record_normal = runner.record_normal_phase_after_sample
 
@@ -280,8 +281,8 @@ class RecollectionRunnerTests(unittest.TestCase):
             kwargs["timestamp_func"] = lambda: runner.now_iso()
             return original_record_normal(*args, **kwargs)
 
-        def preflight(logical_id, physical_id):
-            directory = runner.run_directory(logical_id, physical_id)
+        def preflight(logical_id, physical_id, switch_count=None):
+            directory = runner.run_directory(logical_id, physical_id, switch_count)
             runner.assert_run_paths_available(directory, project, physical_id)
             traffic_profile = runner.load_traffic_profile()
             traffic_profile["phase_durations_seconds"] = {
@@ -698,6 +699,15 @@ class RecollectionRunnerTests(unittest.TestCase):
                 if process.role == "client"
             )
             self.assertEqual(client_command[client_command.index("-b") + 1], "6M")
+
+    def test_offered_rate_rule_rejects_under_paced_sender(self):
+        summary = {"client_sender_reported_mbps": 6.29}
+        self.assertEqual(runner.validate_offered_rate(summary, 6.0), 6.29)
+        self.assertTrue(summary["offered_rate_valid"])
+        with self.assertRaisesRegex(ValueError, "achieved 3.02 Mbps"):
+            runner.validate_offered_rate({"client_sender_reported_mbps": 3.02}, 6.0)
+        with self.assertRaisesRegex(ValueError, "outside 10%"):
+            runner.validate_offered_rate({"client_sender_reported_mbps": 6.7}, 6.0)
 
     def test_iperf_process_and_final_summary_validation(self):
         good_client = iperf_client_output(60)

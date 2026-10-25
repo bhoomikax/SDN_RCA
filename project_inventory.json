@@ -1,435 +1,613 @@
 {
-  "inventory_date": "2026-10-19",
-  "repository": "C:/Users/ASUS/sdn-ml",
-  "branch": "main",
-  "git_note": "The checkout was clean at pushed commit 1c037ae2d264f26f2c24ac1ee72fcc63cfef6c6d at the start of this continuation. Current uncommitted changes include end-to-end documentation, the isolated-demo ID mappings (40/44, 41/45), the regression-tested iperf duration fix, preserved run 44 (failed) and run 45 (valid) evidence, and the separate run-45 candidate/graph/report; no reset, commit, or push was performed.",
-  "environments": {
-    "windows_python": "Python 3.13.7 in venv/",
-    "windows_dependency_manifest": "requirements-windows.txt; direct pins verified against the current CPU environment",
-    "windows_core_packages": {
-      "pandas": "3.0.6",
-      "numpy": "2.5.3",
-      "scikit_learn": "1.9.1"
-    },
-    "ubuntu_project": "/home/mininet/sdn_project",
-    "ubuntu_runner_deployment": "/home/mininet/sdn_project/traffic_profile_pilot_20261017",
-    "ubuntu_isolated_demo_deployment": "/home/mininet/sdn_project/live_demo_20261018_40_44 (run 44); /home/mininet/sdn_project/live_demo_20261018_41_45 (run 45, current source)",
-    "ubuntu_ssh_endpoint": "mininet@127.0.0.1:2222; existing mininet_vm_ed25519 key must be selected explicitly",
-    "ubuntu_python": "Python 3.8.5 (verified in prior VM audit)",
-    "ubuntu_components": {
-      "iperf": "2.0.13",
-      "Open_vSwitch": "2.13.1",
-      "Ryu": "project-local ryu-manager, listener 6633; not restarted"
-    }
+ "inventory_date": "2026-10-19",
+ "repository": "C:/Users/ASUS/sdn-ml",
+ "branch": "main",
+ "git_note": "The checkout was clean at pushed commit 1c037ae2d264f26f2c24ac1ee72fcc63cfef6c6d at the start of this continuation. Current uncommitted changes include end-to-end documentation, the isolated-demo ID mappings (40/44, 41/45), the regression-tested iperf duration fix, preserved run 44 (failed) and run 45 (valid) evidence, and the separate run-45 candidate/graph/report; no reset, commit, or push was performed.",
+ "environments": {
+  "windows_python": "Python 3.13.7 in venv/",
+  "windows_dependency_manifest": "requirements-windows.txt; direct pins verified against the current CPU environment",
+  "windows_core_packages": {
+   "pandas": "3.0.6",
+   "numpy": "2.5.3",
+   "scikit_learn": "1.9.1"
   },
-  "authoritative_or_protected": {
-    "historical_master_dataset": {
-      "path": "master_dataset.csv",
-      "sha256": "7fbfcc51dc3c5af122c28b52e558e3e037ad9367fde1b15bf0d25ff0faf9de64",
-      "policy": "immutable historical source"
-    },
-    "historical_clean_17_candidate": {
-      "path": "run22_milestone_20261014T182846Z/inputs/candidate_master_dataset.csv",
-      "sha256": "e9796f11603275e7f9a51f2195ede571637c3919905928b56879c5470102c5c2",
-      "rows": 11604,
-      "logical_experiments": [
-        1,
-        2,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        11,
-        12,
-        13,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19
-      ],
-      "policy": "read-only historical derived input; excludes logical 3 and 10"
-    },
-    "historical_audit_manifest": {
-      "path": "run22_milestone_20261014T182846Z/inputs/audit_manifest.csv",
-      "sha256": "80f12f94a7fb0dd6b648126d1021993e78616aad0daf2ab7f4c1d423c8e16d7c",
-      "policy": "read-only historical audit evidence"
-    },
-    "run_20": "FAILED_INVALID; raw artifacts preserved",
-    "run_22": {
-      "path": "/home/mininet/sdn_project/recollection_runs/physical_22_logical_3",
-      "disposition": "PROVISIONAL; excluded from primary data",
-      "artifact_hashes_verified_unchanged": true
-    },
-    "historical_evaluation_outputs": "Preserved; no overwrite or retraining performed"
+  "ubuntu_project": "/home/mininet/sdn_project",
+  "ubuntu_runner_deployment": "/home/mininet/sdn_project/traffic_profile_pilot_20261017",
+  "ubuntu_isolated_demo_deployment": "/home/mininet/sdn_project/live_demo_20261018_40_44 (run 44); /home/mininet/sdn_project/live_demo_20261018_41_45 (run 45, current source)",
+  "ubuntu_ssh_endpoint": "mininet@127.0.0.1:2222; existing mininet_vm_ed25519 key must be selected explicitly",
+  "ubuntu_python": "Python 3.8.5 (verified in prior VM audit)",
+  "ubuntu_components": {
+   "iperf": "2.0.13",
+   "Open_vSwitch": "2.13.1",
+   "Ryu": "project-local ryu-manager, listener 6633; not restarted"
+  }
+ },
+ "authoritative_or_protected": {
+  "historical_master_dataset": {
+   "path": "master_dataset.csv",
+   "sha256": "7fbfcc51dc3c5af122c28b52e558e3e037ad9367fde1b15bf0d25ff0faf9de64",
+   "policy": "immutable historical source"
   },
-  "new_run_23": {
-    "vm_path": "/home/mininet/sdn_project/recollection_runs/physical_23_logical_3",
-    "local_raw_mirror": "run23_raw_evidence_physical23_logical3/",
-    "physical_run_id": 23,
-    "logical_experiment_id": 3,
-    "runner_status": "COMPLETE",
-    "telemetry_rows": 648,
-    "telemetry_timestamps": 54,
-    "switches": [
-      "s1",
-      "s2",
-      "s3",
-      "s4"
-    ],
-    "fault": "link_failure at s3-s4",
-    "phase_events": {
-      "normal": "2026-10-14T06:43:43.785064-07:00",
-      "fault": "2026-10-14T06:44:05.901475-07:00",
-      "recovery": "2026-10-14T06:44:26.010448-07:00"
-    },
-    "iperf": {
-      "client_return_code": 0,
-      "server_return_code": 0,
-      "requested_and_observed_seconds": 60,
-      "sent_datagrams": 133746,
-      "received_datagrams": 30379,
-      "lost_datagrams": 103367,
-      "client_server_receiver_reports_match": true
-    },
-    "runtime_target_mapping": [
-      {
-        "switch": "s3",
-        "port": "2",
-        "interface": "s3-eth2",
-        "peer": "s4-eth1"
-      },
-      {
-        "switch": "s4",
-        "port": "1",
-        "interface": "s4-eth1",
-        "peer": "s3-eth2"
-      }
-    ],
-    "disposition": "Runner-valid; awaiting dataset builder integrity checks; high packet loss is retained as observed outcome"
+  "historical_clean_17_candidate": {
+   "path": "run22_milestone_20261014T182846Z/inputs/candidate_master_dataset.csv",
+   "sha256": "e9796f11603275e7f9a51f2195ede571637c3919905928b56879c5470102c5c2",
+   "rows": 11604,
+   "logical_experiments": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+   ],
+   "policy": "read-only historical derived input; excludes logical 3 and 10"
   },
-  "existing_model_artifacts": [
-    "gcn_lstm.pth",
-    "gcn_multi.pth",
-    "graph_dataset.json",
-    "graph_dataset_multi.json"
+  "historical_audit_manifest": {
+   "path": "run22_milestone_20261014T182846Z/inputs/audit_manifest.csv",
+   "sha256": "80f12f94a7fb0dd6b648126d1021993e78616aad0daf2ab7f4c1d423c8e16d7c",
+   "policy": "read-only historical audit evidence"
+  },
+  "run_20": "FAILED_INVALID; raw artifacts preserved",
+  "run_22": {
+   "path": "/home/mininet/sdn_project/recollection_runs/physical_22_logical_3",
+   "disposition": "PROVISIONAL; excluded from primary data",
+   "artifact_hashes_verified_unchanged": true
+  },
+  "historical_evaluation_outputs": "Preserved; no overwrite or retraining performed"
+ },
+ "new_run_23": {
+  "vm_path": "/home/mininet/sdn_project/recollection_runs/physical_23_logical_3",
+  "local_raw_mirror": "run23_raw_evidence_physical23_logical3/",
+  "physical_run_id": 23,
+  "logical_experiment_id": 3,
+  "runner_status": "COMPLETE",
+  "telemetry_rows": 648,
+  "telemetry_timestamps": 54,
+  "switches": [
+   "s1",
+   "s2",
+   "s3",
+   "s4"
   ],
-  "existing_evaluation_files": [
-    "rca_results.csv",
-    "rca_loeo_results.csv",
-    "topology_link_rca_results.csv",
-    "temporal_rca_results.csv",
-    "run22_milestone_20261014T182846Z/grouped_evaluation.csv"
+  "fault": "link_failure at s3-s4",
+  "phase_events": {
+   "normal": "2026-10-14T06:43:43.785064-07:00",
+   "fault": "2026-10-14T06:44:05.901475-07:00",
+   "recovery": "2026-10-14T06:44:26.010448-07:00"
+  },
+  "iperf": {
+   "client_return_code": 0,
+   "server_return_code": 0,
+   "requested_and_observed_seconds": 60,
+   "sent_datagrams": 133746,
+   "received_datagrams": 30379,
+   "lost_datagrams": 103367,
+   "client_server_receiver_reports_match": true
+  },
+  "runtime_target_mapping": [
+   {
+    "switch": "s3",
+    "port": "2",
+    "interface": "s3-eth2",
+    "peer": "s4-eth1"
+   },
+   {
+    "switch": "s4",
+    "port": "1",
+    "interface": "s4-eth1",
+    "peer": "s3-eth2"
+   }
   ],
-  "data_policy": "Raw and historical evidence is immutable; new data and evaluations use unique paths and separate provenance. Phase-selected windows are oracle-assisted conditional localization, not online detection.",
-  "final_candidate": {
-    "path": "derived_datasets/candidate_with_reaudited_physical21_and_physical23_v2/candidate_dataset.csv",
-    "sha256": "914fd551778b0eb918a1d74b1fc2476c0ab533909cab0d28a56303255a8bf916",
-    "rows": 12912,
-    "logical_experiments": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15,
-      16,
-      17,
-      18,
-      19
-    ],
-    "physical_to_logical": {
-      "21": 10,
-      "23": 3
-    },
-    "run20": "FAILED_INVALID",
-    "run22": "PROVISIONAL"
+  "disposition": "Runner-valid; awaiting dataset builder integrity checks; high packet loss is retained as observed outcome"
+ },
+ "existing_model_artifacts": [
+  "gcn_lstm.pth",
+  "gcn_multi.pth",
+  "graph_dataset.json",
+  "graph_dataset_multi.json"
+ ],
+ "existing_evaluation_files": [
+  "rca_results.csv",
+  "rca_loeo_results.csv",
+  "topology_link_rca_results.csv",
+  "temporal_rca_results.csv",
+  "run22_milestone_20261014T182846Z/grouped_evaluation.csv"
+ ],
+ "data_policy": "Raw and historical evidence is immutable; new data and evaluations use unique paths and separate provenance. Phase-selected windows are oracle-assisted conditional localization, not online detection.",
+ "final_candidate": {
+  "path": "derived_datasets/candidate_with_reaudited_physical21_and_physical23_v2/candidate_dataset.csv",
+  "sha256": "914fd551778b0eb918a1d74b1fc2476c0ab533909cab0d28a56303255a8bf916",
+  "rows": 12912,
+  "logical_experiments": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19
+  ],
+  "physical_to_logical": {
+   "21": 10,
+   "23": 3
   },
-  "evaluation_results": {
-    "fixed_split": {
-      "path": "evaluations/recollected_13_6_split_v4",
-      "train_ids": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        13,
-        14,
-        17,
-        19
-      ],
-      "test_ids": [
-        10,
-        11,
-        12,
-        15,
-        16,
-        18
-      ],
-      "rf_top1": "4/6",
-      "rf_top2": "6/6",
-      "topology_top1": "3/6",
-      "topology_top2": "6/6",
-      "task": "conditional localization; revised candidate"
-    },
-    "loeo": {
-      "path": "evaluations/validated_candidate_physical23_loeo",
-      "experiments": 18,
-      "rf_top1": "15/18",
-      "rf_top2": "16/18",
-      "topology_top1": "10/18",
-      "topology_top2": "14/18",
-      "task": "conditional localization; physical 21 excluded"
-    }
+  "run20": "FAILED_INVALID",
+  "run22": "PROVISIONAL"
+ },
+ "evaluation_results": {
+  "fixed_split": {
+   "path": "evaluations/recollected_13_6_split_v4",
+   "train_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    13,
+    14,
+    17,
+    19
+   ],
+   "test_ids": [
+    10,
+    11,
+    12,
+    15,
+    16,
+    18
+   ],
+   "rf_top1": "4/6",
+   "rf_top2": "6/6",
+   "topology_top1": "3/6",
+   "topology_top2": "6/6",
+   "task": "conditional localization; revised candidate"
   },
-  "current_code_hashes": {
-    "runner": "e9e33a3f85760a324806ce595dca050955595de2b9583dbe5f70461d3c6887e5",
-    "runner_tests": "bbcb3a1c9d114ad1eff0f27dd3ee7091bd5da93b24b1fea6a1f5aaa72b301d00",
-    "traffic_profile": "35ddddc9b6a8903c5bfcdd4f58fdeba4de2b353ad9bf239e2f81db59aa42b384",
-    "builder": "20dfab62a14dda5c67d4e91bd3012c6ec9136895580e76aa59bf479ac98f0b2b",
-    "builder_tests": "7d2ecd7c69ee2c6e6b709680f76a762a841afbd7d96762bd44946882b916514c",
-    "evaluator": "95bd00c3b7c80f7f48e19525d8911b545b4cb7d8619102b6febee41b4f8187b5",
-    "generalized_grouped_evaluator": "890f3d516d94b132d2758e848565f87575ad6836c33d74ff405df99255a9c220",
-    "v3_demo": "661234b8b0b3f2cea2b1de9601d2fd5047752b2cc44ea56f074200894331f62e",
-    "v3_demo_tests": "bc67412fc1c079ab6f0f0ec239c7c3f660443c657d748c2aba7a2400aaa7f793",
-    "online_detector": "c6f0a0a5b156822330632c6cb3aba9de0775bb31f2b6d125411b4e4745429e54",
-    "online_detector_tests": "7dbedad1b287636613ddd47b1299fbf8d167609aeeed7aca553a4654f14f58ac",
-    "graph_temporal_model": "3122eb02149783f7f9dc78bb445e59395b759bb92b0b806f1c34dff86c05861e",
-    "graph_temporal_grouped_evaluator": "f9be0bf170ff9a0a6291d6f15f4ec014bdca73505e31158841a162507599a4b0",
-    "graph_temporal_grouped_tests": "5267c8bc9867229c648297b47477421d59b3a91ff6c55798997a30758a40ef95",
-    "pilot_auditor": "4b4e14fd344d7c7caf440e11ddb4eadcd1afa5271bd039b389eb222ad076ece9",
-    "pilot_auditor_tests": "baa5b267598bd1452c94898aed0a3d3e461b580d1dd1791a53dda9c6bd8ce261"
+  "loeo": {
+   "path": "evaluations/validated_candidate_physical23_loeo",
+   "experiments": 18,
+   "rf_top1": "15/18",
+   "rf_top2": "16/18",
+   "topology_top1": "10/18",
+   "topology_top2": "14/18",
+   "task": "conditional localization; physical 21 excluded"
+  }
+ },
+ "current_code_hashes": {
+  "runner": "e9e33a3f85760a324806ce595dca050955595de2b9583dbe5f70461d3c6887e5",
+  "runner_tests": "bbcb3a1c9d114ad1eff0f27dd3ee7091bd5da93b24b1fea6a1f5aaa72b301d00",
+  "traffic_profile": "35ddddc9b6a8903c5bfcdd4f58fdeba4de2b353ad9bf239e2f81db59aa42b384",
+  "builder": "20dfab62a14dda5c67d4e91bd3012c6ec9136895580e76aa59bf479ac98f0b2b",
+  "builder_tests": "7d2ecd7c69ee2c6e6b709680f76a762a841afbd7d96762bd44946882b916514c",
+  "evaluator": "95bd00c3b7c80f7f48e19525d8911b545b4cb7d8619102b6febee41b4f8187b5",
+  "generalized_grouped_evaluator": "890f3d516d94b132d2758e848565f87575ad6836c33d74ff405df99255a9c220",
+  "v3_demo": "661234b8b0b3f2cea2b1de9601d2fd5047752b2cc44ea56f074200894331f62e",
+  "v3_demo_tests": "bc67412fc1c079ab6f0f0ec239c7c3f660443c657d748c2aba7a2400aaa7f793",
+  "online_detector": "c6f0a0a5b156822330632c6cb3aba9de0775bb31f2b6d125411b4e4745429e54",
+  "online_detector_tests": "7dbedad1b287636613ddd47b1299fbf8d167609aeeed7aca553a4654f14f58ac",
+  "graph_temporal_model": "3122eb02149783f7f9dc78bb445e59395b759bb92b0b806f1c34dff86c05861e",
+  "graph_temporal_grouped_evaluator": "f9be0bf170ff9a0a6291d6f15f4ec014bdca73505e31158841a162507599a4b0",
+  "graph_temporal_grouped_tests": "5267c8bc9867229c648297b47477421d59b3a91ff6c55798997a30758a40ef95",
+  "pilot_auditor": "4b4e14fd344d7c7caf440e11ddb4eadcd1afa5271bd039b389eb222ad076ece9",
+  "pilot_auditor_tests": "baa5b267598bd1452c94898aed0a3d3e461b580d1dd1791a53dda9c6bd8ce261"
+ },
+ "verification": {
+  "windows_offline_tests": "82 passed on final source (2026-10-19) with venv\\Scripts\\python.exe -m unittest discover -v",
+  "ubuntu_offline_tests": "41 current-source runner tests passed on Python 3.8.5 in /home/mininet/sdn_project/live_demo_20261018_41_45 (runner/test hashes match Windows); py_compile passed. Full project suite not run on Ubuntu. Local WSL Python 3.14.4 lacks numpy, pandas, sklearn, torch, torch_geometric, Mininet and Ryu.",
+  "master_dataset_sha256": "7fbfcc51dc3c5af122c28b52e558e3e037ad9367fde1b15bf0d25ff0faf9de64",
+  "live_experiments_this_completion": "physical 44/logical 40 attempted once after approval; FAILED_INVALID due iperf receiver duration 57.3s vs required 60s +/- 2s. Evidence preserved locally and on VM; excluded from candidate/model inputs. OVS bridge and Mininet/iperf cleanup verified. After the regression-tested sender-duration fix, final authorized physical 45/logical 41 completed validly and was carried to held-out RF inference (Top-1 s2-s3, matching label); see isolated_live_demo_final_41_45. No further physical run is authorized. Prior physical 31/logical 27 remains one COMPLETE exploratory pilot; physical 30/logical 26 remains FAILED_INVALID.",
+  "syntax_checks": "Latest-source compilation and full Windows test results recorded in EXECUTION_LOG.md; prior runner syntax and 40 regression tests passed on VM Python 3.8.5",
+  "demo": "v3 saved replay and fresh LOEO inference passed; fresh ranking matches saved held-out result",
+  "evaluation_regeneration": "v3 predictions/splits/feature policy match saved release and summary matches apart from output paths; prior online-detector output reproduced, then its exposure rate was corrected in a separate non-overwriting audit"
+ },
+ "balanced_candidate_v3": {
+  "path": "derived_datasets/balanced_recollection_20261015_v3/candidate_dataset.csv",
+  "sha256": "b63d04572b7b97b8451be33174c8813d76af53e3f49f40e5e41b682b1e19b29a",
+  "rows": 16956,
+  "logical_experiments": 25,
+  "physical_to_logical": {
+   "21": 10,
+   "23": 3,
+   "24": 20,
+   "25": 21,
+   "26": 22,
+   "27": 23,
+   "28": 24,
+   "29": 25
   },
-  "verification": {
-    "windows_offline_tests": "82 passed on final source (2026-10-19) with venv\\Scripts\\python.exe -m unittest discover -v",
-    "ubuntu_offline_tests": "41 current-source runner tests passed on Python 3.8.5 in /home/mininet/sdn_project/live_demo_20261018_41_45 (runner/test hashes match Windows); py_compile passed. Full project suite not run on Ubuntu. Local WSL Python 3.14.4 lacks numpy, pandas, sklearn, torch, torch_geometric, Mininet and Ryu.",
-    "master_dataset_sha256": "7fbfcc51dc3c5af122c28b52e558e3e037ad9367fde1b15bf0d25ff0faf9de64",
-    "live_experiments_this_completion": "physical 44/logical 40 attempted once after approval; FAILED_INVALID due iperf receiver duration 57.3s vs required 60s +/- 2s. Evidence preserved locally and on VM; excluded from candidate/model inputs. OVS bridge and Mininet/iperf cleanup verified. After the regression-tested sender-duration fix, final authorized physical 45/logical 41 completed validly and was carried to held-out RF inference (Top-1 s2-s3, matching label); see isolated_live_demo_final_41_45. No further physical run is authorized. Prior physical 31/logical 27 remains one COMPLETE exploratory pilot; physical 30/logical 26 remains FAILED_INVALID.",
-    "syntax_checks": "Latest-source compilation and full Windows test results recorded in EXECUTION_LOG.md; prior runner syntax and 40 regression tests passed on VM Python 3.8.5",
-    "demo": "v3 saved replay and fresh LOEO inference passed; fresh ranking matches saved held-out result",
-    "evaluation_regeneration": "v3 predictions/splits/feature policy match saved release and summary matches apart from output paths; prior online-detector output reproduced, then its exposure rate was corrected in a separate non-overwriting audit"
+  "admission_ledger": "derived_datasets/balanced_recollection_20261015_v3/experiment_admission_ledger_v2.csv",
+  "loeo": {
+   "path": "evaluations/balanced_recollection_v3_loeo_release",
+   "folds": 25,
+   "train_per_fold": 24,
+   "test_per_fold": 1,
+   "rf_top1": "20/25",
+   "rf_top2": "22/25",
+   "topology_top1": "13/25",
+   "topology_top2": "22/25",
+   "task": "conditional fault-window localization; not online detection"
+  }
+ },
+ "online_detection_v3": {
+  "path": "evaluations/online_fault_detection_v3_exposure_audit",
+  "protocol": "25-fold LOEO; training-normal features and q99 threshold; training phase selects fit rows; held-out phase joined post-prediction for scoring",
+  "detected_fault_windows": "0/25",
+  "false_alarm_episodes": 6,
+  "false_alarm_episodes_per_nonfault_hour": 21.658055001198196,
+  "no_alarm_comparator": {
+   "detected_fault_windows": "0/25",
+   "false_alarm_episodes": 0
   },
-  "balanced_candidate_v3": {
-    "path": "derived_datasets/balanced_recollection_20261015_v3/candidate_dataset.csv",
-    "sha256": "b63d04572b7b97b8451be33174c8813d76af53e3f49f40e5e41b682b1e19b29a",
-    "rows": 16956,
-    "logical_experiments": 25,
-    "physical_to_logical": {"21": 10, "23": 3, "24": 20, "25": 21, "26": 22, "27": 23, "28": 24, "29": 25},
-    "admission_ledger": "derived_datasets/balanced_recollection_20261015_v3/experiment_admission_ledger_v2.csv",
-    "loeo": {
-      "path": "evaluations/balanced_recollection_v3_loeo_release",
-      "folds": 25,
-      "train_per_fold": 24,
-      "test_per_fold": 1,
-      "rf_top1": "20/25",
-      "rf_top2": "22/25",
-      "topology_top1": "13/25",
-      "topology_top2": "22/25",
-      "task": "conditional fault-window localization; not online detection"
-    }
+  "superseded_output": "evaluations/online_fault_detection_v3_verified",
+  "status": "failed baseline; dominated by no-alarm comparator at this operating point"
+ },
+ "graph_temporal_v3_grouped_loeo": {
+  "path": "evaluations/graph_temporal_v3_grouped_loeo_verified",
+  "protocol": "25 grouped LOEO folds; 24 training experiments and 1 held-out experiment per fold; training-only normalization and feature policy",
+  "methods": [
+   "graph_only",
+   "temporal_only",
+   "graph_temporal"
+  ],
+  "seeds": [
+   17,
+   42,
+   2026
+  ],
+  "same_fold_baselines": [
+   "rf_baseline",
+   "topology_link_ranker"
+  ],
+  "status": "complete; artifact hashes, all folds, splits, predictions, scores and summary metrics independently verified",
+  "independent_test_experiments": 25,
+  "per_seed_prediction_rows": 225,
+  "mean_score_ensemble_rows": 75,
+  "fault_window_snapshots": "9-10 per prediction; no imputation",
+  "mean_score_ensemble_metrics": {
+   "graph_only": {
+    "top1": "20/25",
+    "top2": "23/25",
+    "mrr": 0.8866666666666667
+   },
+   "temporal_only": {
+    "top1": "18/25",
+    "top2": "21/25",
+    "mrr": 0.8333333333333334
+   },
+   "graph_temporal": {
+    "top1": "23/25",
+    "top2": "23/25",
+    "mrr": 0.9466666666666667
+   }
   },
-  "online_detection_v3": {
-    "path": "evaluations/online_fault_detection_v3_exposure_audit",
-    "protocol": "25-fold LOEO; training-normal features and q99 threshold; training phase selects fit rows; held-out phase joined post-prediction for scoring",
-    "detected_fault_windows": "0/25",
-    "false_alarm_episodes": 6,
-    "false_alarm_episodes_per_nonfault_hour": 21.658055001198196,
-    "no_alarm_comparator": {
-      "detected_fault_windows": "0/25",
-      "false_alarm_episodes": 0
-    },
-    "superseded_output": "evaluations/online_fault_detection_v3_verified",
-    "status": "failed baseline; dominated by no-alarm comparator at this operating point"
+  "same_fold_baseline_metrics": {
+   "rf_baseline": {
+    "top1": "20/25",
+    "top2": "22/25",
+    "mrr": 0.88
+   },
+   "topology_link_ranker": {
+    "top1": "13/25",
+    "top2": "22/25",
+    "mrr": 0.74
+   }
   },
-  "graph_temporal_v3_grouped_loeo": {
-    "path": "evaluations/graph_temporal_v3_grouped_loeo_verified",
-    "protocol": "25 grouped LOEO folds; 24 training experiments and 1 held-out experiment per fold; training-only normalization and feature policy",
-    "methods": ["graph_only", "temporal_only", "graph_temporal"],
-    "seeds": [17, 42, 2026],
-    "same_fold_baselines": ["rf_baseline", "topology_link_ranker"],
-    "status": "complete; artifact hashes, all folds, splits, predictions, scores and summary metrics independently verified",
-    "independent_test_experiments": 25,
-    "per_seed_prediction_rows": 225,
-    "mean_score_ensemble_rows": 75,
-    "fault_window_snapshots": "9-10 per prediction; no imputation",
-    "mean_score_ensemble_metrics": {
-      "graph_only": {"top1": "20/25", "top2": "23/25", "mrr": 0.8866666666666667},
-      "temporal_only": {"top1": "18/25", "top2": "21/25", "mrr": 0.8333333333333334},
-      "graph_temporal": {"top1": "23/25", "top2": "23/25", "mrr": 0.9466666666666667}
-    },
-    "same_fold_baseline_metrics": {
-      "rf_baseline": {"top1": "20/25", "top2": "22/25", "mrr": 0.88},
-      "topology_link_ranker": {"top1": "13/25", "top2": "22/25", "mrr": 0.74}
-    },
-    "candidate_sha256": "b63d04572b7b97b8451be33174c8813d76af53e3f49f40e5e41b682b1e19b29a",
-    "graph_snapshot_sha256": "5d639c219c80ed592e8f28eec4d5d0d207316e2a325b02007664055900f4bea9",
-    "output_sha256": {
-      "fold_feature_policy.csv": "6ea60cebaf2bcb0512bb99d0d62f85d10dc012ca6c62411c54ba04f13ba805e9",
-      "mean_seed_ensemble_predictions.csv": "309ebbb7962dd05bdbe60213635104d6f6bba43eb2d0fa323daa3615f9bf4b70",
-      "per_seed_predictions.csv": "f2fed3b81cae7b5491198e0c1c54f93a3d05f7e26068710a61b3f46e390e0e63"
-    },
-    "failed_attempt": "evaluations/graph_temporal_v3_grouped_loeo/INCOMPLETE_ATTEMPT.json; preserved and excluded",
-    "task": "conditional fault-window localization; not online or causal RCA"
+  "candidate_sha256": "b63d04572b7b97b8451be33174c8813d76af53e3f49f40e5e41b682b1e19b29a",
+  "graph_snapshot_sha256": "5d639c219c80ed592e8f28eec4d5d0d207316e2a325b02007664055900f4bea9",
+  "output_sha256": {
+   "fold_feature_policy.csv": "6ea60cebaf2bcb0512bb99d0d62f85d10dc012ca6c62411c54ba04f13ba805e9",
+   "mean_seed_ensemble_predictions.csv": "309ebbb7962dd05bdbe60213635104d6f6bba43eb2d0fa323daa3615f9bf4b70",
+   "per_seed_predictions.csv": "f2fed3b81cae7b5491198e0c1c54f93a3d05f7e26068710a61b3f46e390e0e63"
   },
-  "latest_pilot": {
-    "profile": "traffic_profiles/udp_6mbps_v1.json",
-    "vm_deployment_directory": "/home/mininet/sdn_project/traffic_profile_pilot_20261017",
-    "physical_30_logical_26": "FAILED_INVALID; preserved and excluded; original bounded server-exit wait timed out",
-    "physical_31_logical_27": {
-      "status": "COMPLETE; single exploratory engineering pilot only; excluded from v3 and model evaluation",
-      "telemetry_rows": 672,
-      "switches": 4,
-      "normal_fault_recovery_seconds": [20, 20, 20],
-      "sender_mbps": 6.29,
-      "receiver_mbps_including_deliberate_outage": 4.22,
-      "receiver_lost_sequence_datagrams": 10900,
-      "receiver_total_sequence_datagrams": 32100,
-      "baseline_loss_separable": false,
-      "active_overlap_telemetry_mbps": {
-        "normal_s2_tx": 7.238,
-        "normal_s3_rx": 7.251,
-        "fault_s2_tx": 0.361,
-        "fault_s3_rx": 0.349,
-        "recovery_s2_tx": 7.363,
-        "recovery_s3_rx": 7.376
-      },
-      "criteria_status": "exploratory; declared after run 30 and before run 31",
-      "independent_cleanup_snapshot": false,
-      "runtime_fault_mapping": "s2-eth2/ofport 2 <-> s3-eth1/ofport 1",
-      "evidence_sha256_manifest": "PILOT_EVIDENCE_SHA256SUMS.txt",
-      "evidence_directories": [
-        "pilot_evidence_20261017_physical30_logical26",
-        "pilot_evidence_20261017_physical31_logical27"
-      ],
-      "clock_warning": "VM was not NTP-synchronized; only within-run ordering is established"
-    }
+  "failed_attempt": "evaluations/graph_temporal_v3_grouped_loeo/INCOMPLETE_ATTEMPT.json; preserved and excluded",
+  "task": "conditional fault-window localization; not online or causal RCA"
+ },
+ "latest_pilot": {
+  "profile": "traffic_profiles/udp_6mbps_v1.json",
+  "vm_deployment_directory": "/home/mininet/sdn_project/traffic_profile_pilot_20261017",
+  "physical_30_logical_26": "FAILED_INVALID; preserved and excluded; original bounded server-exit wait timed out",
+  "physical_31_logical_27": {
+   "status": "COMPLETE; single exploratory engineering pilot only; excluded from v3 and model evaluation",
+   "telemetry_rows": 672,
+   "switches": 4,
+   "normal_fault_recovery_seconds": [
+    20,
+    20,
+    20
+   ],
+   "sender_mbps": 6.29,
+   "receiver_mbps_including_deliberate_outage": 4.22,
+   "receiver_lost_sequence_datagrams": 10900,
+   "receiver_total_sequence_datagrams": 32100,
+   "baseline_loss_separable": false,
+   "active_overlap_telemetry_mbps": {
+    "normal_s2_tx": 7.238,
+    "normal_s3_rx": 7.251,
+    "fault_s2_tx": 0.361,
+    "fault_s3_rx": 0.349,
+    "recovery_s2_tx": 7.363,
+    "recovery_s3_rx": 7.376
+   },
+   "criteria_status": "exploratory; declared after run 30 and before run 31",
+   "independent_cleanup_snapshot": false,
+   "runtime_fault_mapping": "s2-eth2/ofport 2 <-> s3-eth1/ofport 1",
+   "evidence_sha256_manifest": "PILOT_EVIDENCE_SHA256SUMS.txt",
+   "evidence_directories": [
+    "pilot_evidence_20261017_physical30_logical26",
+    "pilot_evidence_20261017_physical31_logical27"
+   ],
+   "clock_warning": "VM was not NTP-synchronized; only within-run ordering is established"
+  }
+ },
+ "prospective_low_load_cohort": {
+  "protocol": "docs/TRAFFIC_PROFILE_REPEATABILITY_PROTOCOL.md",
+  "planned_runs": 12,
+  "normal_only_controls": 3,
+  "fault_recovery_repetitions": 9,
+  "candidate_logical_id_range": [
+   28,
+   39
+  ],
+  "candidate_physical_id_range": [
+   32,
+   43
+  ],
+  "ids_are_reserved": false,
+  "runner_gaps": [
+   "normal-only acquisition mode",
+   "one-second receiver interval parsing and phase attribution"
+  ],
+  "status": "not run; SSH works with explicit existing key, but runner support and unique reserved assignments are missing"
+ },
+ "current_vm_read_only_status": {
+  "hostname": "mininet-vm",
+  "python": "3.8.5",
+  "mininet": "available",
+  "open_vswitch": "2.13.1",
+  "iperf": "2.0.13",
+  "passwordless_sudo": true,
+  "controller_process": "/home/mininet/.local/bin/ryu-manager controller.py",
+  "controller_listeners": [
+   "6633",
+   "6653"
+  ],
+  "ovs_bridges": [],
+  "active_mininet_or_iperf_processes": false,
+  "ntp_synchronized": false,
+  "controller_source_in_local_checkout": false,
+  "live_run_disposition": "physical 44/logical 40 FAILED_INVALID; physical 45/logical 41 COMPLETE. Rechecked 2026-10-19: no OVS bridges or Mininet/iperf processes, Ryu PID 2289 running; NTP unsynchronized"
+ },
+ "isolated_live_demo_20261018": {
+  "logical_experiment_id": 40,
+  "physical_run_id": 44,
+  "fault_link": "s2-s3",
+  "run_purpose": "isolated_live_demo_only",
+  "status": "FAILED_INVALID; preserved; excluded from v3 and model inputs",
+  "failure": "iperf reported durations 60.0, 57.3, 57.3 seconds against 60 seconds +/- 2 seconds",
+  "telemetry_rows": 636,
+  "telemetry_timestamps": 53,
+  "switch_coverage": [
+   "s1",
+   "s2",
+   "s3",
+   "s4"
+  ],
+  "runtime_fault_mapping": "s2-eth2/ofport 2 <-> s3-eth1/ofport 1",
+  "sender_mbps": 6.29,
+  "receiver_mbps": 4.15,
+  "receiver_sequence_loss": "11864/32100 (36.96%; includes deliberate outage; not baseline loss)",
+  "client_server_receiver_summaries_match": true,
+  "cleanup": "no OVS bridges, Mininet process, or iperf process remained; Ryu left running",
+  "clock_warning": "VM reported NTPSynchronized=no",
+  "local_evidence": "live_evidence_physical44_logical40/",
+  "evidence_sha256_manifest": "live_evidence_physical44_logical40/SHA256SUMS.txt"
+ },
+ "isolated_live_demo_final_41_45": {
+  "logical_experiment_id": 41,
+  "physical_run_id": 45,
+  "fault_link": "s2-s3",
+  "run_purpose": "isolated_live_demo_only",
+  "status": "COMPLETE; valid single exploratory engineering run; separate from v3; final authorized physical attempt",
+  "iperf": "sender 60.0s 6.29 Mbps; client/server receiver reports 58.3s 4.18 Mbps and 11378/32099 lost (whole run, includes outage)",
+  "duration_fix_note": "receiver span 58.3s would also have passed the earlier +/-2s receiver rule; the fix did not decide this outcome",
+  "telemetry_rows": 636,
+  "telemetry_timestamps": 53,
+  "runtime_fault_mapping": "s2-eth2/ofport 2 <-> s3-eth1/ofport 1",
+  "local_evidence": "live_evidence_physical45_logical41/",
+  "evidence_sha256_manifest": "live_evidence_physical45_logical41/SHA256SUMS.txt",
+  "vm_evidence": "/home/mininet/sdn_project/live_demo_20261018_41_45/recollection_runs/physical_45_logical_41/ (hash-identical)",
+  "candidate": "derived_datasets/live_demo_physical45_logical41/candidate_dataset.csv",
+  "candidate_sha256": "bf8e6154dcc74dd8524a9362bd2bb1669dba9fdd89fdb7a5cc49c334b3cb2f0c",
+  "candidate_composition": "protected clean-17 historical candidate plus logical 41; 12240 rows, 18 experiments",
+  "graph": "derived_graphs/live_demo_physical45_logical41/graph_dataset.json (1020 snapshots)",
+  "graph_sha256": "19b3cd9d872e5aab127389668f1728a12a2b98eed05385d109944520b17e80f4",
+  "inference_report": "reports/live_demo_physical45_logical41/fresh_inference_rf_baseline.json",
+  "ranking": [
+   "s2-s3",
+   "s1-s2",
+   "s3-s4"
+  ],
+  "retrospective_label": "s2-s3",
+  "training_experiment_count": 17,
+  "reproduction_check": "2026-10-19 scratch rebuild: candidate and inference byte-identical; graph/provenance differ only in recorded paths",
+  "derived_sha256_manifest": "reports/live_demo_physical45_logical41/SHA256SUMS.txt",
+  "cleanup": "no OVS bridges, Mininet process, or iperf process remained; Ryu left running",
+  "clock_warning": "VM reported NTPSynchronized=no"
+ },
+ "documentation_files": [
+  "README.md",
+  "docs/ARCHITECTURE.md",
+  "docs/RESEARCH_METHODOLOGY.md",
+  "docs/DATASET_CARD.md",
+  "docs/EXPERIMENT_PROTOCOL.md",
+  "docs/RESULTS.md",
+  "docs/DATASET_CARD_BALANCED_V3.md",
+  "docs/RESULTS_BALANCED_V3.md",
+  "docs/MODEL_CARDS.md",
+  "docs/LIMITATIONS.md",
+  "docs/DEMO_GUIDE.md",
+  "docs/REVIEW_PRESENTATION.md",
+  "docs/PAPER_DRAFT.md",
+  "docs/TRAFFIC_PROFILE_PILOT_AUDIT.md",
+  "docs/TRAFFIC_PROFILE_PILOT_PROTOCOL.md",
+  "docs/TRAFFIC_PROFILE_REPEATABILITY_PROTOCOL.md",
+  "docs/END_TO_END_RUNBOOK.md",
+  "reports/live_demo_physical45_logical41/README.md",
+  "requirements-windows.txt",
+  "PILOT_EVIDENCE_SHA256SUMS.txt",
+  "demo_rca.py",
+  "demo_rca_v3.py",
+  "test_demo_rca_v3.py",
+  "build_experiment_admission_ledger.py",
+  "evaluate_grouped_rca_generalized.py",
+  "evaluate_online_fault_detection.py",
+  "test_online_fault_detection.py",
+  "evaluate_graph_temporal_grouped_loeo.py",
+  "test_graph_temporal_grouped_loeo.py",
+  "audit_traffic_profile_pilot.py",
+  "test_audit_traffic_profile_pilot.py",
+  "test_demo_rca.py"
+ ],
+ "topology_scaling_20261024": {
+  "status": "complete: 8 switches 24 admitted of 25 targeted; 12 switches 26 admitted (every link 2-3 experiments) after approved VM recovery on 2026-10-25; all five models evaluated per topology; XAI validated; independent audit",
+  "code": [
+   "linear_topology.py",
+   "build_topology_candidate.py",
+   "evaluate_topology_loeo.py",
+   "graph_temporal_topology.py",
+   "evaluate_graph_temporal_topology_loeo.py",
+   "explain_rca.py",
+   "build_topology_comparison.py",
+   "run_topology_batch.py",
+   "cleanup_abandoned_run.py",
+   "experiment_runner_recollection.py (--switches)",
+   "telemetry.py (--switches)",
+   "build_graph_multi.py (--switches)",
+   "audit_topology_results.py"
+  ],
+  "tests": [
+   "test_linear_topology.py",
+   "test_topology_candidate_builder.py",
+   "test_evaluate_topology_loeo.py",
+   "test_explain_rca.py",
+   "test_frozen_artifacts.py",
+   "test_audit_topology_results.py"
+  ],
+  "vm_staging": "/home/mininet/sdn_project/topology_scaling_20261023",
+  "raw_evidence": {
+   "8": "raw_evidence/topology_8_switches (30 run dirs, SHA256SUMS.txt)",
+   "12": "raw_evidence/topology_12_switches (44 run dirs, SHA256SUMS.txt, batch and Ryu logs)"
   },
-  "prospective_low_load_cohort": {
-    "protocol": "docs/TRAFFIC_PROFILE_REPEATABILITY_PROTOCOL.md",
-    "planned_runs": 12,
-    "normal_only_controls": 3,
-    "fault_recovery_repetitions": 9,
-    "candidate_logical_id_range": [28, 39],
-    "candidate_physical_id_range": [32, 43],
-    "ids_are_reserved": false,
-    "runner_gaps": [
-      "normal-only acquisition mode",
-      "one-second receiver interval parsing and phase attribution"
-    ],
-    "status": "not run; SSH works with explicit existing key, but runner support and unique reserved assignments are missing"
+  "candidates": {
+   "8": {
+    "path": "results/topology_8_switches/candidate/candidate_dataset.csv",
+    "sha256": "1c38a653cddd6ec9523152763cffe8f2d44eca17beef3b67b271d018d82e3611",
+    "experiments": 24,
+    "rows": 30288
+   },
+   "12": {
+    "path": "results/topology_12_switches/candidate/candidate_dataset.csv",
+    "sha256": "07ad31e771146c1d38de63a919631cf0a1610c114f087c5ccc0aff0f46ad0d60",
+    "experiments": 26,
+    "rows": 44712
+   }
   },
-  "current_vm_read_only_status": {
-    "hostname": "mininet-vm",
-    "python": "3.8.5",
-    "mininet": "available",
-    "open_vswitch": "2.13.1",
-    "iperf": "2.0.13",
-    "passwordless_sudo": true,
-    "controller_process": "/home/mininet/.local/bin/ryu-manager controller.py",
-    "controller_listeners": ["6633", "6653"],
-    "ovs_bridges": [],
-    "active_mininet_or_iperf_processes": false,
-    "ntp_synchronized": false,
-    "controller_source_in_local_checkout": false,
-    "live_run_disposition": "physical 44/logical 40 FAILED_INVALID; physical 45/logical 41 COMPLETE. Rechecked 2026-10-19: no OVS bridges or Mininet/iperf processes, Ryu PID 2289 running; NTP unsynchronized"
+  "evaluations": {
+   "8": [
+    "results/topology_8_switches/loeo_rf_topology",
+    "results/topology_8_switches/loeo_neural"
+   ],
+   "12": [
+    "results/topology_12_switches/loeo_rf_topology",
+    "results/topology_12_switches/loeo_neural"
+   ],
+   "4_regression": [
+    "results/topology_4_switches_regression/loeo_rf_topology",
+    "results/topology_4_switches_regression/loeo_neural"
+   ]
   },
-  "isolated_live_demo_20261018": {
-    "logical_experiment_id": 40,
-    "physical_run_id": 44,
-    "fault_link": "s2-s3",
-    "run_purpose": "isolated_live_demo_only",
-    "status": "FAILED_INVALID; preserved; excluded from v3 and model inputs",
-    "failure": "iperf reported durations 60.0, 57.3, 57.3 seconds against 60 seconds +/- 2 seconds",
-    "telemetry_rows": 636,
-    "telemetry_timestamps": 53,
-    "switch_coverage": ["s1", "s2", "s3", "s4"],
-    "runtime_fault_mapping": "s2-eth2/ofport 2 <-> s3-eth1/ofport 1",
-    "sender_mbps": 6.29,
-    "receiver_mbps": 4.15,
-    "receiver_sequence_loss": "11864/32100 (36.96%; includes deliberate outage; not baseline loss)",
-    "client_server_receiver_summaries_match": true,
-    "cleanup": "no OVS bridges, Mininet process, or iperf process remained; Ryu left running",
-    "clock_warning": "VM reported NTPSynchronized=no",
-    "local_evidence": "live_evidence_physical44_logical40/",
-    "evidence_sha256_manifest": "live_evidence_physical44_logical40/SHA256SUMS.txt"
+  "xai": [
+   "results/xai/topology_4_switches",
+   "results/xai/topology_8_switches",
+   "results/xai/topology_12_switches"
+  ],
+  "comparison": "results/comparison_4_8_12",
+  "documentation": [
+   "docs/TOPOLOGY_SCALING_RUNBOOK.md",
+   "docs/RESULTS_TOPOLOGY_SCALING.md",
+   "docs/REVIEW_SUMMARY_TOPOLOGY_SCALING.md"
+  ],
+  "frozen_four_switch_artifacts": "unchanged; hashes pinned in test_frozen_artifacts.py",
+  "new_admission_rule": "iperf sender rate within 10% of the 6 Mbps profile (validate_offered_rate)",
+  "blockers": "none for the 12-switch dataset; remaining limits are methodological (n=26, 2-3 experiments per link, oracle windows, one emulated topology family). 12-switch IDs 245-260 unused.",
+  "audit": [
+   "results/audit/methodology_audit.json",
+   "results/audit/methodology_audit.md",
+   "results/audit/topology_ranker_8sw_investigation.md"
+  ],
+  "host_notes": "Windows sleep timeout is 5 min on AC; a temporary SetThreadExecutionState keep-awake process is used during collection. The VM runs the user's VS Code remote server (node, bursting CPU) which was left untouched.",
+  "final_verification_20261025": {
+   "unittest_discover": "115 tests OK (40.6 s)",
+   "py_compile": "exit 0",
+   "pip_check": "clean",
+   "git_diff_check": "exit 0",
+   "audit": "49/49 checks per topology, exit 0",
+   "frozen_hashes": "verified"
   },
-  "isolated_live_demo_final_41_45": {
-    "logical_experiment_id": 41,
-    "physical_run_id": 45,
-    "fault_link": "s2-s3",
-    "run_purpose": "isolated_live_demo_only",
-    "status": "COMPLETE; valid single exploratory engineering run; separate from v3; final authorized physical attempt",
-    "iperf": "sender 60.0s 6.29 Mbps; client/server receiver reports 58.3s 4.18 Mbps and 11378/32099 lost (whole run, includes outage)",
-    "duration_fix_note": "receiver span 58.3s would also have passed the earlier +/-2s receiver rule; the fix did not decide this outcome",
-    "telemetry_rows": 636,
-    "telemetry_timestamps": 53,
-    "runtime_fault_mapping": "s2-eth2/ofport 2 <-> s3-eth1/ofport 1",
-    "local_evidence": "live_evidence_physical45_logical41/",
-    "evidence_sha256_manifest": "live_evidence_physical45_logical41/SHA256SUMS.txt",
-    "vm_evidence": "/home/mininet/sdn_project/live_demo_20261018_41_45/recollection_runs/physical_45_logical_41/ (hash-identical)",
-    "candidate": "derived_datasets/live_demo_physical45_logical41/candidate_dataset.csv",
-    "candidate_sha256": "bf8e6154dcc74dd8524a9362bd2bb1669dba9fdd89fdb7a5cc49c334b3cb2f0c",
-    "candidate_composition": "protected clean-17 historical candidate plus logical 41; 12240 rows, 18 experiments",
-    "graph": "derived_graphs/live_demo_physical45_logical41/graph_dataset.json (1020 snapshots)",
-    "graph_sha256": "19b3cd9d872e5aab127389668f1728a12a2b98eed05385d109944520b17e80f4",
-    "inference_report": "reports/live_demo_physical45_logical41/fresh_inference_rf_baseline.json",
-    "ranking": ["s2-s3", "s1-s2", "s3-s4"],
-    "retrospective_label": "s2-s3",
-    "training_experiment_count": 17,
-    "reproduction_check": "2026-10-19 scratch rebuild: candidate and inference byte-identical; graph/provenance differ only in recorded paths",
-    "derived_sha256_manifest": "reports/live_demo_physical45_logical41/SHA256SUMS.txt",
-    "cleanup": "no OVS bridges, Mininet process, or iperf process remained; Ryu left running",
-    "clock_warning": "VM reported NTPSynchronized=no"
-  },
-  "documentation_files": [
-    "README.md",
-    "docs/ARCHITECTURE.md",
-    "docs/RESEARCH_METHODOLOGY.md",
-    "docs/DATASET_CARD.md",
-    "docs/EXPERIMENT_PROTOCOL.md",
-    "docs/RESULTS.md",
-    "docs/DATASET_CARD_BALANCED_V3.md",
-    "docs/RESULTS_BALANCED_V3.md",
-    "docs/MODEL_CARDS.md",
-    "docs/LIMITATIONS.md",
-    "docs/DEMO_GUIDE.md",
-    "docs/REVIEW_PRESENTATION.md",
-    "docs/PAPER_DRAFT.md",
-    "docs/TRAFFIC_PROFILE_PILOT_AUDIT.md",
-    "docs/TRAFFIC_PROFILE_PILOT_PROTOCOL.md",
-    "docs/TRAFFIC_PROFILE_REPEATABILITY_PROTOCOL.md",
-    "docs/END_TO_END_RUNBOOK.md",
-    "reports/live_demo_physical45_logical41/README.md",
-    "requirements-windows.txt",
-    "PILOT_EVIDENCE_SHA256SUMS.txt",
-    "demo_rca.py",
-    "demo_rca_v3.py",
-    "test_demo_rca_v3.py",
-    "build_experiment_admission_ledger.py",
-    "evaluate_grouped_rca_generalized.py",
-    "evaluate_online_fault_detection.py",
-    "test_online_fault_detection.py",
-    "evaluate_graph_temporal_grouped_loeo.py",
-    "test_graph_temporal_grouped_loeo.py",
-    "audit_traffic_profile_pilot.py",
-    "test_audit_traffic_profile_pilot.py",
-    "test_demo_rca.py"
-  ]
+  "backup": [
+   "C:/Users/ASUS/sdn-ml_backups/20261025T005215 (pre-recovery, 1,079 files, verified)",
+   "C:/Users/ASUS/sdn-ml_backups/20261025T210707 (final, 1,369 files, verified)"
+  ],
+  "vm_recovery_20261025": "documented `reboot` ineffective (systemd/dbus wedged); forced `sync; reboot -f`; post-reboot 0 lockups; Ryu restarted per runbook (PID 988); preflight passed; 17/17 valid runs after recovery",
+  "results_summary": {
+   "4": {
+    "RF": "20/25, 22/25, 0.880",
+    "topology_ranker": "13/25, 22/25, 0.740",
+    "GCN": "20/25, 23/25, 0.887",
+    "LSTM": "18/25, 21/25, 0.833",
+    "GCN+LSTM": "23/25, 23/25, 0.947"
+   },
+   "8": {
+    "RF": "20/24, 23/24, 0.910",
+    "topology_ranker": "1/24, 11/24, 0.412",
+    "GCN": "23/24, 23/24, 0.972",
+    "LSTM": "22/24, 23/24, 0.951",
+    "GCN+LSTM": "22/24, 22/24, 0.933"
+   },
+   "12": {
+    "RF": "19/26, 21/26, 0.824",
+    "topology_ranker": "1/26, 2/26, 0.200",
+    "GCN": "25/26, 26/26, 0.981",
+    "LSTM": "22/26, 23/26, 0.896",
+    "GCN+LSTM": "20/26, 23/26, 0.849"
+   },
+   "format": "Top-1, Top-2, MRR; experiment-level grouped LOEO; neural = 3-seed mean-score ensemble"
+  }
+ }
 }

@@ -173,8 +173,13 @@ def main(argv=None):
         help="unique telemetry CSV path supplied by the experiment runner",
     )
     parser.add_argument("--experiment-id", type=int, required=True)
+    parser.add_argument("--switches", default=",".join(SWITCHES),
+                        help="comma-separated switch names to poll (default: the four-switch topology)")
     args = parser.parse_args(argv)
-    rows = collect(args.output, args.experiment_id)
+    switches = tuple(name.strip() for name in args.switches.split(",") if name.strip())
+    if not switches:
+        raise ValueError("At least one switch name is required")
+    rows = collect(args.output, args.experiment_id, switches=switches)
     print(f"Collected {rows} port rows; saved to {args.output}", flush=True)
 
 

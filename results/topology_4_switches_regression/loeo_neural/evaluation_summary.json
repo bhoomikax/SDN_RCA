@@ -1,0 +1,2217 @@
+{
+  "architecture": {
+    "gcn_embedding": 12,
+    "gcn_hidden": 16,
+    "learning_rate": 0.01,
+    "lstm_hidden": 24,
+    "num_nodes": 6,
+    "weight_decay": 0.001
+  },
+  "candidate_count": 3,
+  "candidate_sha256": "b63d04572b7b97b8451be33174c8813d76af53e3f49f40e5e41b682b1e19b29a",
+  "checkpoint_sha256": {
+    "graph_only_fold01_heldout1_seed17.pt": "3524004b45b063d683e8bbec966bc21e53b9fd19f62a2610e4c8ac1385a9e2eb",
+    "graph_only_fold01_heldout1_seed2026.pt": "47f5e0782f4f35d25405aeda23676d998b46a7ae333a683ebc0582de90e8680a",
+    "graph_only_fold01_heldout1_seed42.pt": "fe3ee16f5a2cc227389755b2eecdb7ef7c87fcb352439cbc58d0ad3818a8034c",
+    "graph_only_fold02_heldout2_seed17.pt": "0da1ce2a94cef917f2ee193f60ff2871263aaf333bf4d2523126751709fac565",
+    "graph_only_fold02_heldout2_seed2026.pt": "d968a3bc18f29bbb683266ce87009de1f0789ebd0de52bdaf916eebc4459fe91",
+    "graph_only_fold02_heldout2_seed42.pt": "337af4fa735e8b7188c6ede858ead8f8a073bd8e4b8a33204d60d1f3d8262407",
+    "graph_only_fold03_heldout3_seed17.pt": "2ecc799d78ff84fe8476d2f3b2c2c6dbd3d978b97d32574382fd8c9dc78a693c",
+    "graph_only_fold03_heldout3_seed2026.pt": "3320f35cd7d11f96bf7884a82b0a9df45c76b92c0ef9202a01e9d1415d987fc6",
+    "graph_only_fold03_heldout3_seed42.pt": "c43edebf3518a6209104bee043823068bb48661892fb97cb3c6d1a592bc9d74d",
+    "graph_only_fold04_heldout4_seed17.pt": "542a767548c2030ac588d7054976063782a0b50434cce455b34890326e8bc53d",
+    "graph_only_fold04_heldout4_seed2026.pt": "dd260c873603107c26c56a8394b3b65988c22035741635089e99a331b2d0f4ee",
+    "graph_only_fold04_heldout4_seed42.pt": "0e22b8fc3c1e3f48c116482fbf09136be8d6585e21b4da359feff3e5a88ca6f2",
+    "graph_only_fold05_heldout5_seed17.pt": "7ff694effdc408ab2829643a6296e5ea641d1fe5d95ba6a1f99c5adfd3bab91c",
+    "graph_only_fold05_heldout5_seed2026.pt": "fea56df0731948a92a9f343d418a179bdbf3cce840297ac30a2ff1110d8977a6",
+    "graph_only_fold05_heldout5_seed42.pt": "a66a26efc7cc6d518e5504c247206f3219640d90e162c7130354adc6e88fec83",
+    "graph_only_fold06_heldout6_seed17.pt": "65f1e58f396bd1e7c66d84a34d7bbca66daff081783c0b82be512be753427458",
+    "graph_only_fold06_heldout6_seed2026.pt": "05ec764cd926d9b513876420df8ba9a1e426deb226cf9a748f757da0dac6cf7f",
+    "graph_only_fold06_heldout6_seed42.pt": "20e3cde3395d1a35c4553a33205c0a09d2dc5d579efc9c43fa24586c0ee66cd7",
+    "graph_only_fold07_heldout7_seed17.pt": "7b7e270b9aeefb03cd1e6ac089430a18be8b8467d906b5435645049fec69ceba",
+    "graph_only_fold07_heldout7_seed2026.pt": "68d3f8ee2fcaf69482141d1177f7ca395b78b52dfaf988efb5e461a0e5ab6082",
+    "graph_only_fold07_heldout7_seed42.pt": "16376c3c59818825aeca0de594a6034e537e9b63a6ff091e1f8720e29fabb05b",
+    "graph_only_fold08_heldout8_seed17.pt": "220f5a68fe172d2550c42cbc6b6060e3fc68c519b9fb53460f1ac54031a8e847",
+    "graph_only_fold08_heldout8_seed2026.pt": "63e58ab97c9a8c3bd9c5a7d8f1b13e7407690bb658314c02133842ea60455405",
+    "graph_only_fold08_heldout8_seed42.pt": "38c71cee19b5136a64f557727859c7f2bea36e47e798486837f204a56b00f66b",
+    "graph_only_fold09_heldout9_seed17.pt": "169ef559ef1eb65802177952ca9c694e1e727d024a8ac5273db2e691d4a8e7a8",
+    "graph_only_fold09_heldout9_seed2026.pt": "659f1eb5dbd440b338c1a4cdf178bdb05a42336080e9c6d5371d5f40e633abe7",
+    "graph_only_fold09_heldout9_seed42.pt": "018f8a5a4c06d7e6ce2e744f2d38e1b692f374a4c4230e5087f136aa318b2bd9",
+    "graph_only_fold10_heldout10_seed17.pt": "c462eedb179fdd2b309a802c6d42d89de57c24c6636251c6db57a3679d3fe89f",
+    "graph_only_fold10_heldout10_seed2026.pt": "bd2d3f417a4012a1c8e428dd74f79ffbd3814d88af6f06b10b11f2906946997c",
+    "graph_only_fold10_heldout10_seed42.pt": "9bd7c6c68b25b1a664e94a1e2d7b33edec79ddffa209d0ff153527aa697df13a",
+    "graph_only_fold11_heldout11_seed17.pt": "62eb17fd71d03a9f21182563810ad6aa9b404e76ed75252cc79117371906256c",
+    "graph_only_fold11_heldout11_seed2026.pt": "2de23893f213b9672d779478fddc9a3a6dfb8af2f3e5f4e95021d8d886165291",
+    "graph_only_fold11_heldout11_seed42.pt": "d2485793122cf878a9a9844176847f5412cc4e4cc0713dc2f7609bc99c5a9bfe",
+    "graph_only_fold12_heldout12_seed17.pt": "0c682d11e930ceba466f2461cd747ce819c079503af7a1d9d3d155ad00f773e4",
+    "graph_only_fold12_heldout12_seed2026.pt": "3c2b64a464681c8bdaa9970b179255e78972415edafa38e8d2bea2a086812b66",
+    "graph_only_fold12_heldout12_seed42.pt": "061f88b5485626cd4dc5f36ea67f88287a67d2266b9546481c9221362e6a1fd7",
+    "graph_only_fold13_heldout13_seed17.pt": "83e7519c4289273d167353ebc7493d25dae20dd4bcca0e0c126e4d3a31083f8c",
+    "graph_only_fold13_heldout13_seed2026.pt": "a19d370f4676befe7ccffbf731a7aecc353dffd151bf675f31993bbd5c270091",
+    "graph_only_fold13_heldout13_seed42.pt": "b6d4d1119fc1512983afdea756460b7673a0b768152ca75cd26b75dedd9fda3a",
+    "graph_only_fold14_heldout14_seed17.pt": "0b2f52744a3d0c8b50929c471256fb74f75d768322bdf394d98c1d9463b04565",
+    "graph_only_fold14_heldout14_seed2026.pt": "2882f4eb2580b414ea52db0e0b45204f360d4198c20619840e7cb47c73f671ab",
+    "graph_only_fold14_heldout14_seed42.pt": "0c8cf9173590ce4787ff6f0156387f1407b70fe0411e3fdbab976475433e0c60",
+    "graph_only_fold15_heldout15_seed17.pt": "af546c2f11abf6e285f81d609d0e2eab50480a3bfa77e1c1f5bcc545fb1220c7",
+    "graph_only_fold15_heldout15_seed2026.pt": "4b08e51cab82dc4f8d5dd354699f759da41edbb1e626449d08347079fb17c038",
+    "graph_only_fold15_heldout15_seed42.pt": "caf0b8383ed4f83c221ede0cfe5486508499264ac5d754facf331e23ce9b23de",
+    "graph_only_fold16_heldout16_seed17.pt": "c2c177c04d931f1728911a609127316adde89bfcf02128b2ba0843e126131a6e",
+    "graph_only_fold16_heldout16_seed2026.pt": "9b031888a41c6ccff91dc0fdb6cc5cf43ff12fcbc2749ceb8078f93689f623c1",
+    "graph_only_fold16_heldout16_seed42.pt": "1e4c55da9fc2a4bed4ddd988c3d98a0785d51aa9e75106865b136fb31e213791",
+    "graph_only_fold17_heldout17_seed17.pt": "28c2e3ba4bc730f760bae8e2e133a294b7337f34686c4a26b4b04a662d2ebe06",
+    "graph_only_fold17_heldout17_seed2026.pt": "7cfaeac4dc406095e73098ec5dcc35053cba3d600f16160f5d004ebf64ef2584",
+    "graph_only_fold17_heldout17_seed42.pt": "f0755fd19e040f52600997df756f702042c39a96758ec3dd8a38e93724530300",
+    "graph_only_fold18_heldout18_seed17.pt": "8f47569dd25cc339f7a0b2a5280954e228fd0ebb962c147474f50b63a2792dc1",
+    "graph_only_fold18_heldout18_seed2026.pt": "eafda1bda1ae22a61e4ea7d19c7550c27927e9c14ae281d4c8a416309b91d1c8",
+    "graph_only_fold18_heldout18_seed42.pt": "c40cfb14995b909ba8d5dc32e1a75cfbf103397c8bb093bd4dca788971c75f90",
+    "graph_only_fold19_heldout19_seed17.pt": "113bb4f5234e776784e8ee89bb85a3dd52bbed1ca57cfce5fee070fd7ec7d24f",
+    "graph_only_fold19_heldout19_seed2026.pt": "0385fd77a20e154aa2f0576962c020236d2b5b220b36a80c7c3b8768e9296de8",
+    "graph_only_fold19_heldout19_seed42.pt": "95075a154b255de29e91165affad437281867d36608be0a917e0e8554c2af4e1",
+    "graph_only_fold20_heldout20_seed17.pt": "2884171a7f4915cbd8d10df9ae293fd2c2c236c4261e66f63d4edb7ccae8a68f",
+    "graph_only_fold20_heldout20_seed2026.pt": "c6e93e0871e0499ec3cfef80afa1c08912d49ccf36692b4ef07616b142b1a02c",
+    "graph_only_fold20_heldout20_seed42.pt": "6354921404f2c44e331af7d12f2b374b9c7006aba2ae234e82a3fb218fe75e84",
+    "graph_only_fold21_heldout21_seed17.pt": "4189b96ac6b0302fe30d09c22e71d0cee9d5f980aa579780b061903071c8dc83",
+    "graph_only_fold21_heldout21_seed2026.pt": "564b510d22715929065cbb4b183bc718b55b161a829aef9e077113b02ab196c8",
+    "graph_only_fold21_heldout21_seed42.pt": "77faa97e53ffe1246ad2305b7cb1b8b3edaed7660aa495118dab5eb7c16a1ac5",
+    "graph_only_fold22_heldout22_seed17.pt": "d6fb0d3292dd0d5ae0f2a610bdceffbe0a18a381b1b4410ffa46ebc96e1d1830",
+    "graph_only_fold22_heldout22_seed2026.pt": "6daf589577634d7598858d4d9170604b9b9ee5518dcce3128aca59dfb397d006",
+    "graph_only_fold22_heldout22_seed42.pt": "3b106b6e390684ebbfc8a394e9ef7621089f0e030b0902e12e9c2f486e407c12",
+    "graph_only_fold23_heldout23_seed17.pt": "8e39eddc714e37fa9b4eebbca7bc8e50861f6b0f9600abeb82930b35dccb2478",
+    "graph_only_fold23_heldout23_seed2026.pt": "f21a8bb95b9c0432a055f7c8479971b22310fa84824de4e86e83958f3d056706",
+    "graph_only_fold23_heldout23_seed42.pt": "e91bff2af84ab52abfedbe569825d9efca8e12b9c62cb9016b9aadda32a9d264",
+    "graph_only_fold24_heldout24_seed17.pt": "9f03044524ab4c953a19f19a0522fdde9052f17312914d62841ab4fc3448774b",
+    "graph_only_fold24_heldout24_seed2026.pt": "73cf80728548a62da142fa233250038fe6c1aa73e17595492c91ea3459cbaa56",
+    "graph_only_fold24_heldout24_seed42.pt": "820b96d18ac8d1dd8a6cc93d0b7d63406f252aa3566b5498ce40e4a5c30becf7",
+    "graph_only_fold25_heldout25_seed17.pt": "503ebf515940b8e8dabb56a298779749d68e6f8202736682f461e10fc58c3461",
+    "graph_only_fold25_heldout25_seed2026.pt": "a811cbf62edd85793d31857607c3fcf0cb3b9f9cf7fbbeeaeb3ea4070485efe6",
+    "graph_only_fold25_heldout25_seed42.pt": "c6e5f6fb31d54f1e05ac509791ff658ae59353d2afde74611e7d11444b91732b",
+    "graph_temporal_fold01_heldout1_seed17.pt": "bfb554da9bf02e2d73b948e211c2f92fa500d946ab09cfd315b86d9db01a1a7f",
+    "graph_temporal_fold01_heldout1_seed2026.pt": "54b19b8e74217553898a0407811e5cb5e9b0ed257bb84ba1ca377e27748d4cda",
+    "graph_temporal_fold01_heldout1_seed42.pt": "1b651b538bb7b67b427a6e8e489951b427300b5ece8096f27cab5980dc20cb82",
+    "graph_temporal_fold02_heldout2_seed17.pt": "2c8dc66d7af6ea47d3e28faa306147157fadf1ee1b0572dd8cb9ea03da138a7b",
+    "graph_temporal_fold02_heldout2_seed2026.pt": "4441ab00ba35206b522b856f42c5556923ca5e819eee0d4585baf6a63f26606f",
+    "graph_temporal_fold02_heldout2_seed42.pt": "d92b578e0efefa7b99fd6b2a70e64a48ce69f0d4ea45b6eb46d1bc0d59dc7539",
+    "graph_temporal_fold03_heldout3_seed17.pt": "21685a20b9c439a82896d71dbdf97b7ed6ddc86b004b97ed7d1a9a2d8a77e1aa",
+    "graph_temporal_fold03_heldout3_seed2026.pt": "e8a9773b1fcdbaa7d9cb4ec687a5500c01326c6e22103b1f3aed8b43c9ce78b0",
+    "graph_temporal_fold03_heldout3_seed42.pt": "d09bfd3a08880ea22c1fb25c1e82f5711e8c48e948e6dada1370730c6c7683f8",
+    "graph_temporal_fold04_heldout4_seed17.pt": "6a16ada9608e9556c21b6a110dd1886acefc83d00335f72642fb5e3dde3e65a4",
+    "graph_temporal_fold04_heldout4_seed2026.pt": "9e3fe5ed02df295d12bd06ca03426f40aadfec1f508462230297962ad685378d",
+    "graph_temporal_fold04_heldout4_seed42.pt": "d3b5eae424f0dd38e6d91ce7ecdccfceeb22947ee427463f6ea5ccfa643d45fd",
+    "graph_temporal_fold05_heldout5_seed17.pt": "318be739b277bca046693be388864b6650c1aa3dd98e58b90e8158b309af63b9",
+    "graph_temporal_fold05_heldout5_seed2026.pt": "93312680cad066df125e3159dafc84ba0ffcf8113307a5ecf473605d2bb0d7ec",
+    "graph_temporal_fold05_heldout5_seed42.pt": "b9226ff82f2b759b8bbfa47a47a014a72ea10e351ef2203bb2c4ef12a41a1eeb",
+    "graph_temporal_fold06_heldout6_seed17.pt": "41c12560e3c9259037464fe9e9e4102b62d0a129eeebb51f8bb3ce0a20cc99fb",
+    "graph_temporal_fold06_heldout6_seed2026.pt": "b6b13414ff078a2298f78825015ab67a519dad57f45d8a36a38f88baf9d78cd1",
+    "graph_temporal_fold06_heldout6_seed42.pt": "755afb702c6ec0ff1871951bfde22828b958033143c98d71d59b28cc3548e3dd",
+    "graph_temporal_fold07_heldout7_seed17.pt": "282e758fd1be13ac12c40da0398063778351a82987d9c6e26c78f6bf3058aa28",
+    "graph_temporal_fold07_heldout7_seed2026.pt": "04c79a28cf31085b32e7045f6fdd3c5f5ed86d1f55222bd82a68f7445bb6beb1",
+    "graph_temporal_fold07_heldout7_seed42.pt": "483b1c5d019d17cc4f4667d267a0fa1c6c9efd507b590526743d5768128d2a0e",
+    "graph_temporal_fold08_heldout8_seed17.pt": "4c96d51ab3bc7cf093f7ddb644ce817633c2244d2075b32ceca108565db5e30b",
+    "graph_temporal_fold08_heldout8_seed2026.pt": "4e459948e07e112bc515a6d6a7a25d5c964d51a27c0c16f45fda7e3529438467",
+    "graph_temporal_fold08_heldout8_seed42.pt": "6046f8d3fa0d068a8fe15c828b3178117441c78c675896761dbec192cd138e5f",
+    "graph_temporal_fold09_heldout9_seed17.pt": "65c8b398843e1f98ca3486d739ec264278e6e9e48dc4da96fa1101570b47475a",
+    "graph_temporal_fold09_heldout9_seed2026.pt": "fbee936ae941cb528827ba575144eeab9dcef5b0eaac37190046efa3335c8d6c",
+    "graph_temporal_fold09_heldout9_seed42.pt": "9c0a94102b0bbd590b2e4fe24d7d555a28a32695bb0ded4d5a5f839644b2510c",
+    "graph_temporal_fold10_heldout10_seed17.pt": "85c3a478dbc3661f05bd88c046c67f4b1cc1a5a456ec3d5512ba88ef2361235a",
+    "graph_temporal_fold10_heldout10_seed2026.pt": "763d7e0d7deeea09de03ad1e6b0c8986a59c1f439ac5e62d61d2f6e68dc5e376",
+    "graph_temporal_fold10_heldout10_seed42.pt": "ae645df0d2b238e822e26653e3f69f1c9fcaffe0ddcab8536c7ada497b0d1b28",
+    "graph_temporal_fold11_heldout11_seed17.pt": "456246606d6bf1da0ee921893d43b5b5e4ede52bbc8ec044768c1c68dcbcc978",
+    "graph_temporal_fold11_heldout11_seed2026.pt": "6268535242b8808be8ac7d7bfb9582654ca23e4ac85d62138c59d03b738f05a1",
+    "graph_temporal_fold11_heldout11_seed42.pt": "d6682c21f9f513211b887a7755bcbaaf14b929924508fee7a5192933a1a99586",
+    "graph_temporal_fold12_heldout12_seed17.pt": "19b5addf208bf252cae41629bf408c6c9047bfc2ae63e4f2816dc98a32059aab",
+    "graph_temporal_fold12_heldout12_seed2026.pt": "54962fceedad5b259c38040f4161250f5db10ccf9107d04f3b2ce3310d5a8dac",
+    "graph_temporal_fold12_heldout12_seed42.pt": "9205843fddcd7400095005e0b2bbae759f26f813f661834bb31c77ca40e112f9",
+    "graph_temporal_fold13_heldout13_seed17.pt": "b92fa3fe6f3c7b9f10a3053e5dda59d54190b66b457b1598cf47fc65698045a4",
+    "graph_temporal_fold13_heldout13_seed2026.pt": "96260030496487cd487ee6d0823652c92779b75a4cac67d9dc0d66709d63722d",
+    "graph_temporal_fold13_heldout13_seed42.pt": "4cab45c9207f5910c02b97e548def01464de40238c8dc6c3c594b4a525920b6e",
+    "graph_temporal_fold14_heldout14_seed17.pt": "fb0cd6489c90aa03f7d66f81385c8a883a1962a04c93d6852bd64bc62dcd09f9",
+    "graph_temporal_fold14_heldout14_seed2026.pt": "4c3c2676a7720d08206c2d168423f48a7b4759f95299b1407a4403e5724271af",
+    "graph_temporal_fold14_heldout14_seed42.pt": "a7f0ce2835022adbd2faca8260f3feeb3414fb138459d571daf3ec181947722b",
+    "graph_temporal_fold15_heldout15_seed17.pt": "29a37a03bc8df77d2df1a736758e4681804796f0b1a30fffc2a49054b9c32c8a",
+    "graph_temporal_fold15_heldout15_seed2026.pt": "ba4bc6d862cceb585c17f0fb5a906f551944e89fef6f22d7d9c92852d2406196",
+    "graph_temporal_fold15_heldout15_seed42.pt": "f010b06b110e77698aa4abdb18347b0e39e97358d0848999c32a74290a169e0c",
+    "graph_temporal_fold16_heldout16_seed17.pt": "83f8101a48d2f0c53b3d2f7e11bb7dcc4f17585954a549f535edf894117059ff",
+    "graph_temporal_fold16_heldout16_seed2026.pt": "95c269d2770d5b75efee0fb904516ee2c54aeb760fcee121fd690c0ef027b2f9",
+    "graph_temporal_fold16_heldout16_seed42.pt": "206e2ca4abe6205a52956f47bfe9388aadc51b71640bd42ae6f38ec18fde98a4",
+    "graph_temporal_fold17_heldout17_seed17.pt": "6244fe4a8a0fed15d1a404844af6741413aaa7b300164e25b86a0d8ee17154ba",
+    "graph_temporal_fold17_heldout17_seed2026.pt": "20af043746c1985de24134b70bb1346cf9146bbd00a319ba19c8a4ed74a4e282",
+    "graph_temporal_fold17_heldout17_seed42.pt": "bd7113f466ea11a279371fc180c940ff2ec2909073f95b43eef84de384966fe0",
+    "graph_temporal_fold18_heldout18_seed17.pt": "80ecbe0797bd4b3e4785b1075bd8fd4718bd27954d8327b08e379dd834aeb0fd",
+    "graph_temporal_fold18_heldout18_seed2026.pt": "323657182561440229a8acc1813f19515ac40a53dbb203da29784c95060a8002",
+    "graph_temporal_fold18_heldout18_seed42.pt": "b5354879782dfa256ca86dec6c1a1adcf892633441c2cc66b04381ac6317ab44",
+    "graph_temporal_fold19_heldout19_seed17.pt": "a778f2e26af49492277a762199f0c6fff7515e4c2107b5888624b5f3683b9529",
+    "graph_temporal_fold19_heldout19_seed2026.pt": "f6cff2272d1e1a16092304d1a8b9118354b4bd03b952e32bc363f04fe1e47a32",
+    "graph_temporal_fold19_heldout19_seed42.pt": "37166de63f4458144023d593fac22a84406dce4a854fe4f8fe50829212da8400",
+    "graph_temporal_fold20_heldout20_seed17.pt": "6c4ceb9dd8768ff24efa227620b01a464b4aa5e252c771e0a1bc07ec80b9f79c",
+    "graph_temporal_fold20_heldout20_seed2026.pt": "40aff764ddb7a683589c65e050fc88ece183fde89192e84aeae973820e9fa8be",
+    "graph_temporal_fold20_heldout20_seed42.pt": "e94ba6c79f27edf66dc85445f86435dd75993a5acabf97209699acf0ba5d758a",
+    "graph_temporal_fold21_heldout21_seed17.pt": "a01a9013a8c216aa3a4a61c8aea66940f2f7e9452596a650d496008f5c6e2917",
+    "graph_temporal_fold21_heldout21_seed2026.pt": "56618a92fda55f2495ea072bea9c0de960a26e4890d8a3cdda4543e145016c35",
+    "graph_temporal_fold21_heldout21_seed42.pt": "dc0de9aa2df438b89dd5487807e6334b9ecc90b5fa03e83ea4f19339f5c4cb1f",
+    "graph_temporal_fold22_heldout22_seed17.pt": "56a4144d03039958ad1da485406495f432042ce8bde62b4a0b1b795269842a83",
+    "graph_temporal_fold22_heldout22_seed2026.pt": "e6c3d4085077ef1a00c60d99b145cc37b042dc31b4c8fef0349393db7438ef0c",
+    "graph_temporal_fold22_heldout22_seed42.pt": "ed6cd0d567c0c043a2c0a2600bec2fcc98e32d00423fdbc58af8dedc67be1ac6",
+    "graph_temporal_fold23_heldout23_seed17.pt": "8303c84a85adf4924dc28be3e4b035d7cae2a31870607b1fdac841cc49b88e64",
+    "graph_temporal_fold23_heldout23_seed2026.pt": "3f4e9b94270051ef1b4d91ae74f174f85a6657020db9bd340a668cc63037a73d",
+    "graph_temporal_fold23_heldout23_seed42.pt": "ca0ea1e1c577cf4eab7b194b0e3ef36846265b94fa1ec80334884ab1ed1e5eef",
+    "graph_temporal_fold24_heldout24_seed17.pt": "4e9f945b5512ab1db1642e5d48533e445eb3660a1bb0aae256811fe28bfea68c",
+    "graph_temporal_fold24_heldout24_seed2026.pt": "71abe5bf842d7708d2291838aabb287547070a1b2fa4625bbd463382fd4ab021",
+    "graph_temporal_fold24_heldout24_seed42.pt": "4ef8b4c63392aae83098900eb51c3f7a8c61f0e0493023b64d4bef34b5b5a5d5",
+    "graph_temporal_fold25_heldout25_seed17.pt": "6bc6fd0161632062f33a588644b02f88ae6e88414bce0f86f0b0b0244a1a701b",
+    "graph_temporal_fold25_heldout25_seed2026.pt": "4b05aff03b3f6ca4573852c1b46930cbac1c19f7c0c83e94d85f7368c1950b78",
+    "graph_temporal_fold25_heldout25_seed42.pt": "f6c0f0fa794c8c47a81967bc0584ac9fe3adeafa69e2b31c7a3b7072ac94c7f5",
+    "temporal_only_fold01_heldout1_seed17.pt": "4740fb759c14aeb043090677729a57fdadcba5942a3bfbdc9a2b54983ad249c3",
+    "temporal_only_fold01_heldout1_seed2026.pt": "60c8ec023c52d68a2e4592b47621379280141cb0db2a23e6a5ebd2f231773add",
+    "temporal_only_fold01_heldout1_seed42.pt": "cd1284408dd38b573f02d8980241d793a091729bc0510ac4dd7b0536abad6230",
+    "temporal_only_fold02_heldout2_seed17.pt": "78b24ed3e00873be82c90a27c7bdea924d320e97083f54af66e842495ae77904",
+    "temporal_only_fold02_heldout2_seed2026.pt": "065d75bae726f7f7d706c233af8f7bdaef8f6ee48aacdd905ad9bdd60709a06a",
+    "temporal_only_fold02_heldout2_seed42.pt": "bf5e027e8f887e9150711322a267d80bad8ef64403f7b36e483bcfdbe235f755",
+    "temporal_only_fold03_heldout3_seed17.pt": "5092eb41a7307cfb8601ea74d20d8c4c6f7a78219d2687b5ffe8b91dc33a59b7",
+    "temporal_only_fold03_heldout3_seed2026.pt": "be6c79875e166e0097832fb578f1f75e072282d822fb6dd642b420fe1f1bf6ce",
+    "temporal_only_fold03_heldout3_seed42.pt": "1ab22b59d4b96b0b35a05c363bfd1fa29c8a2d7255627f51963ba41b77860245",
+    "temporal_only_fold04_heldout4_seed17.pt": "3233c7d1c642fab3eebdea411411ed90ea7118e053784f5c3827564a88ebfd78",
+    "temporal_only_fold04_heldout4_seed2026.pt": "7d41f054feca544f77d453417377aff22c849a9d3ad5b98d736989503c5c68f9",
+    "temporal_only_fold04_heldout4_seed42.pt": "da497429525e20b8f65f47d9620d42970b6ad45dfb71621082cc02864eec6320",
+    "temporal_only_fold05_heldout5_seed17.pt": "e4d3c5c416651b83d0f48494c27ba1c9d3f7bcc14cd8af1bf60266b7feadd5ac",
+    "temporal_only_fold05_heldout5_seed2026.pt": "7a2354cc0477d00f5c5efa8d9074f7c5bfc8978e4e4f5d2d2d6864185fffbfbf",
+    "temporal_only_fold05_heldout5_seed42.pt": "a9e0e0445a297b29c1c7d87c9b0da22bc1e83d25c94d71e6088cf5230ce91f23",
+    "temporal_only_fold06_heldout6_seed17.pt": "75b9eba78a87041f69c29761cf0f2961347ae7b4af5364f9a012f0da93b60593",
+    "temporal_only_fold06_heldout6_seed2026.pt": "5c5e5e2497c63b61f7a41ab70457c31038c584659c654776f0e82af75e562003",
+    "temporal_only_fold06_heldout6_seed42.pt": "6af535dd55556a8a6e10bfb9061d3714d1f9d381b5654e4fe0fdf4bc6338c7b8",
+    "temporal_only_fold07_heldout7_seed17.pt": "4c10d851953c1903e658faf953f03c72f44d045c9708e0a5186a8dc7910096b7",
+    "temporal_only_fold07_heldout7_seed2026.pt": "4db7e04a8eef08bcb6febf4d7bc3574c5ae5cc061b9fb07a594ee5229d56c67a",
+    "temporal_only_fold07_heldout7_seed42.pt": "590b16edc94845b3aef8ae74f4df85dec462b69cf560ad70b7831ae70171c479",
+    "temporal_only_fold08_heldout8_seed17.pt": "ee75b5674d1e2f5fc1be20528206afe557b3afc98b3cc61ef4510cfdf9fb4811",
+    "temporal_only_fold08_heldout8_seed2026.pt": "d15d68316d250ff1b607f8e24fc0fa2f1c09db1e786102b353a8cfbeca1c35d1",
+    "temporal_only_fold08_heldout8_seed42.pt": "7b03d0b8a09c8e5fcf37551037dbd4ba64ed6a10a5fd0864a5969f93218bf11f",
+    "temporal_only_fold09_heldout9_seed17.pt": "0b7c8615f4600642d1248ddcc18d7d06c1c5dd44ae8d8dc2c1e6d68fb210c882",
+    "temporal_only_fold09_heldout9_seed2026.pt": "0d9162523c81cddd9ca08710ac0447541903348b9afb075cbc0133ec6f96d6d4",
+    "temporal_only_fold09_heldout9_seed42.pt": "16c0ff8227a31447b200ba4416c2395431246461b2a3ad189ee9bacd24614710",
+    "temporal_only_fold10_heldout10_seed17.pt": "aab024c71daef445893adb41168d1d4c9a7949c9fc0fec5b7647c180b2386ea7",
+    "temporal_only_fold10_heldout10_seed2026.pt": "f2c0e76c59ac1cfa47a9b8d00b3c9b9cd3dce2d771877cd5388b7daaf3b32aae",
+    "temporal_only_fold10_heldout10_seed42.pt": "251e728b014b22ea99ca7cdb90f55d93fff93f88089b367fecff9926a51139eb",
+    "temporal_only_fold11_heldout11_seed17.pt": "493345c35ba280b389ef6b7530859dc42c9fffe717589b3c2dad4201e1c50030",
+    "temporal_only_fold11_heldout11_seed2026.pt": "3646953114ab5a8da0de4b9406e61ae90dcd7a266a7ccb319c4130ed655073b8",
+    "temporal_only_fold11_heldout11_seed42.pt": "a3604d697dae470e6aed6ad8cd920d22cc12871772e3be771d7b777bac695ac4",
+    "temporal_only_fold12_heldout12_seed17.pt": "f8ec16e3441cf146184148fa2ebd30a2aaca21146996cdc73081fb1ff2057fe0",
+    "temporal_only_fold12_heldout12_seed2026.pt": "98a3862cf43a87d5eb76b96edd935a86437d32d415356e4920126dd6283c9415",
+    "temporal_only_fold12_heldout12_seed42.pt": "892fca911a85d0286f9a8e0b6c3bb6ea90f275b5c5ee48a17683dbec4c30ebad",
+    "temporal_only_fold13_heldout13_seed17.pt": "24cc5fecf6675201f83cc423f1df48ac83e340f3d8b6978ea678493ba855b3d8",
+    "temporal_only_fold13_heldout13_seed2026.pt": "f280386ad27763ae3ef688374e9d3651b0336351f83d2a40dc5845f213252241",
+    "temporal_only_fold13_heldout13_seed42.pt": "c4c432da49706724be81057d67c571f1ce3ccfa7f9414717238fa543c8a6a5b3",
+    "temporal_only_fold14_heldout14_seed17.pt": "3c021282ee9670f1fff5604fee42b20168608c1c6c45a98e456baac316d74700",
+    "temporal_only_fold14_heldout14_seed2026.pt": "42c6d81b5a973f640ae4e132f029cd372c8aacff3205102a77348cfea4854878",
+    "temporal_only_fold14_heldout14_seed42.pt": "6273cc7e1f4e6f79773283afab52e4974a9cad2521bb678574756c54d346c142",
+    "temporal_only_fold15_heldout15_seed17.pt": "893fea0ca0901ff5002a126a6edd711143d1097bf57289b22a25fb8e41ce4cc2",
+    "temporal_only_fold15_heldout15_seed2026.pt": "3fd9d437f6f160c9b91015e90f4e8d7d07da86e654058a0dc07e4c5d821c01e2",
+    "temporal_only_fold15_heldout15_seed42.pt": "c3d5a309642e443cb73f656d54aa31136e32f475d1dbf4b58e6ee0902b99882d",
+    "temporal_only_fold16_heldout16_seed17.pt": "b0d1358f9e4aed1725fec7d64896d35a90c1289baa1447395b18af39e9a2e67b",
+    "temporal_only_fold16_heldout16_seed2026.pt": "696055146961d2c082469bf0c05548429af6e36f6dbaf4b8e1dfe96beec6d9ef",
+    "temporal_only_fold16_heldout16_seed42.pt": "833103c05940213f9eeb678729bd3654010db99c8dd64d8076af916c37ed921f",
+    "temporal_only_fold17_heldout17_seed17.pt": "44a7e3002f2b49132348a3e1b278a7b879ab3ca0430f8828b39d316483d6a5da",
+    "temporal_only_fold17_heldout17_seed2026.pt": "b04d9e1d33e2622771f5bb4d8d6bcd1d30caff67b56c1851421062b9178f2564",
+    "temporal_only_fold17_heldout17_seed42.pt": "1ea30e6faed17c077c282293eb1c1740fefa931cf53fd9698540323c32c6945c",
+    "temporal_only_fold18_heldout18_seed17.pt": "ff9bac5342543dac7a15d1fe0c350694f30017f1af40bd1ac1cf7f79f6684ed2",
+    "temporal_only_fold18_heldout18_seed2026.pt": "e531631a96747a6386594431a4728093e5babad225ac47399ba2add0a572de92",
+    "temporal_only_fold18_heldout18_seed42.pt": "dbde89b15ab6f520eeaf772b2158bc68cdfe3d66939b8b89fa3a71c9344d9fa5",
+    "temporal_only_fold19_heldout19_seed17.pt": "42120d28b430bc49f986dba5ea4c609d1fdd646f2c684cba8e69242ffcb0e3b8",
+    "temporal_only_fold19_heldout19_seed2026.pt": "5620a88fe743580e7b317515dab028e7361b4c409f0696b00b7754bbe1112f50",
+    "temporal_only_fold19_heldout19_seed42.pt": "532efd0f6f98838667b6ef7ba3fdbea3f80473ec27cb80972cf661c7577ca0d7",
+    "temporal_only_fold20_heldout20_seed17.pt": "09715e0cff1f0d63c36d341f72ee15d91a5dc120d6447b4096d36f41370a3259",
+    "temporal_only_fold20_heldout20_seed2026.pt": "aedf28c670aeeaa61fe3b3959b1d4cc87de4e2e35aa0dcfabe53183f321ebad9",
+    "temporal_only_fold20_heldout20_seed42.pt": "9dbc9df7a5b8609ab33613240a642f86e157727173e20c1fe39d6b030ef0acaa",
+    "temporal_only_fold21_heldout21_seed17.pt": "251591ed6cc2625f46b3ad590d8774783fafd88edd63cf9662f81a9a7f667eee",
+    "temporal_only_fold21_heldout21_seed2026.pt": "b98d1f1b7ffdb881f0438e6186d37704194cd0a0624c2a7e63698db0bb28b9e3",
+    "temporal_only_fold21_heldout21_seed42.pt": "aa6e97fba02c030bfae7f6cf579d401c43c751312a88aff5b850335b96d28f1f",
+    "temporal_only_fold22_heldout22_seed17.pt": "b991ec1e0b66898ae054dba4396acc6e9374a95516f3f258f5b535423a6541de",
+    "temporal_only_fold22_heldout22_seed2026.pt": "de7f0689982bcb84571baf5e6671bf89b30f561711930577f60c074905268730",
+    "temporal_only_fold22_heldout22_seed42.pt": "0d217dc2c30d016be279af18d5a8bbcf1338aba40bc0806ada5ba2c42f0f5a3f",
+    "temporal_only_fold23_heldout23_seed17.pt": "2bdc720fcc612eadec89b0d78c509c8372248a15fbecda69f5840d8438e8ac8e",
+    "temporal_only_fold23_heldout23_seed2026.pt": "75e9abee28db833c273330af0e585f05d1c9371daac2289192c37c4765ea181b",
+    "temporal_only_fold23_heldout23_seed42.pt": "1c6ad391d9c42751f12beb9adedda46611d5c7126a6cb32a302b558862e1b1a4",
+    "temporal_only_fold24_heldout24_seed17.pt": "41c04412893cf88440aa223dfb0b47388c7cdb5ae42aa65d6a740be8b0662810",
+    "temporal_only_fold24_heldout24_seed2026.pt": "f65a07bacb098024d43200e69c358d352ecb28d58c51941ca0101c76fb48887f",
+    "temporal_only_fold24_heldout24_seed42.pt": "4b0d4ec5a91d6f77129ef3ecca3ad93562616ab818860a4f5610e1ab63ebba95",
+    "temporal_only_fold25_heldout25_seed17.pt": "ab1f0a1912461b386d97a42e5c9384099d7f0967b39e6900433c33432dd7bbf4",
+    "temporal_only_fold25_heldout25_seed2026.pt": "ab3fd78b50cf4227e20470f80ed8a7c7ee7f79f2946bacfe062475d24c820a09",
+    "temporal_only_fold25_heldout25_seed42.pt": "0d56be6cdf8b498238af45e0bbf028bbc569b80a41ff9ad25f3c379717156e98"
+  },
+  "checkpoints_saved": true,
+  "class_support": {
+    "s1-s2": 8,
+    "s2-s3": 9,
+    "s3-s4": 8
+  },
+  "epochs": 100,
+  "experiment_count": 25,
+  "experiment_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25
+  ],
+  "graph_snapshot_sha256": "5d639c219c80ed592e8f28eec4d5d0d207316e2a325b02007664055900f4bea9",
+  "independent_test_experiments": 25,
+  "limitations": [
+    "25 independent experiments from one controlled 4-switch topology",
+    "initialization seeds are repeated fits, not independent test experiments",
+    "conditional localization with oracle fault-window selection",
+    "no claim of causal propagation or operational root-cause identification",
+    "Top-k chance level is k/3 and random MRR is 0.611 for 3 candidates"
+  ],
+  "methods": {
+    "graph_only": {
+      "label": "GCN",
+      "mean_fit_seconds": 42.511718033344174,
+      "mean_score_ensemble_metrics": {
+        "adjacent_link_error_fraction": 0.4,
+        "candidate_count": 3,
+        "chance_level": {
+          "note": "Top-k and MRR chance levels fall as the candidate count grows; compare across topologies against these, not raw percentages.",
+          "uniform_mrr": 0.611111111111111,
+          "uniform_top1": 0.3333333333333333,
+          "uniform_top2": 0.6666666666666666,
+          "uniform_top3": 1.0
+        },
+        "confusion_labels": [
+          "s1-s2",
+          "s2-s3",
+          "s3-s4"
+        ],
+        "confusion_matrix_rows_actual_cols_rank1": [
+          [
+            7,
+            0,
+            1
+          ],
+          [
+            0,
+            8,
+            1
+          ],
+          [
+            2,
+            1,
+            5
+          ]
+        ],
+        "mean_rank": 1.28,
+        "mean_reciprocal_rank": 0.8866666666666667,
+        "per_class": {
+          "s1-s2": {
+            "mean_rank": 1.25,
+            "support": 8,
+            "top1_f1": 0.823529411764706,
+            "top1_precision": 0.7777777777777778,
+            "top1_recall": 0.875,
+            "top2_recall": 0.875
+          },
+          "s2-s3": {
+            "mean_rank": 1.2222222222222223,
+            "support": 9,
+            "top1_f1": 0.8888888888888888,
+            "top1_precision": 0.8888888888888888,
+            "top1_recall": 0.8888888888888888,
+            "top2_recall": 0.8888888888888888
+          },
+          "s3-s4": {
+            "mean_rank": 1.375,
+            "support": 8,
+            "top1_f1": 0.6666666666666666,
+            "top1_precision": 0.7142857142857143,
+            "top1_recall": 0.625,
+            "top2_recall": 1.0
+          }
+        },
+        "support": 25,
+        "top1": 0.8,
+        "top1_count": 20,
+        "top1_errors": [
+          {
+            "actual_link": "s3-s4",
+            "distance_in_links": 1,
+            "experiment_id": 3,
+            "rank": 2,
+            "rank1_link": "s2-s3"
+          },
+          {
+            "actual_link": "s1-s2",
+            "distance_in_links": 2,
+            "experiment_id": 21,
+            "rank": 3,
+            "rank1_link": "s3-s4"
+          },
+          {
+            "actual_link": "s2-s3",
+            "distance_in_links": 1,
+            "experiment_id": 22,
+            "rank": 3,
+            "rank1_link": "s3-s4"
+          },
+          {
+            "actual_link": "s3-s4",
+            "distance_in_links": 2,
+            "experiment_id": 24,
+            "rank": 2,
+            "rank1_link": "s1-s2"
+          },
+          {
+            "actual_link": "s3-s4",
+            "distance_in_links": 2,
+            "experiment_id": 25,
+            "rank": 2,
+            "rank1_link": "s1-s2"
+          }
+        ],
+        "top1_wilson95": [
+          0.6086904963045967,
+          0.9113941531319742
+        ],
+        "top2": 0.92,
+        "top2_count": 23,
+        "top2_wilson95": [
+          0.7503389104960468,
+          0.9777795987151524
+        ],
+        "top3": 1.0,
+        "top3_count": 25
+      },
+      "mean_seed_mrr": 0.8688888888888889,
+      "mean_seed_top1": 0.7733333333333333,
+      "mean_seed_top2": 0.8933333333333333,
+      "sd_seed_top1": 0.023094010767585053,
+      "seed_metrics": {
+        "17": {
+          "adjacent_link_error_fraction": 0.4,
+          "candidate_count": 3,
+          "chance_level": {
+            "note": "Top-k and MRR chance levels fall as the candidate count grows; compare across topologies against these, not raw percentages.",
+            "uniform_mrr": 0.611111111111111,
+            "uniform_top1": 0.3333333333333333,
+            "uniform_top2": 0.6666666666666666,
+            "uniform_top3": 1.0
+          },
+          "confusion_labels": [
+            "s1-s2",
+            "s2-s3",
+            "s3-s4"
+          ],
+          "confusion_matrix_rows_actual_cols_rank1": [
+            [
+              7,
+              0,
+              1
+            ],
+            [
+              0,
+              8,
+              1
+            ],
+            [
+              2,
+              1,
+              5
+            ]
+          ],
+          "mean_rank": 1.28,
+          "mean_reciprocal_rank": 0.8866666666666667,
+          "per_class": {
+            "s1-s2": {
+              "mean_rank": 1.25,
+              "support": 8,
+              "top1_f1": 0.823529411764706,
+              "top1_precision": 0.7777777777777778,
+              "top1_recall": 0.875,
+              "top2_recall": 0.875
+            },
+            "s2-s3": {
+              "mean_rank": 1.2222222222222223,
+              "support": 9,
+              "top1_f1": 0.8888888888888888,
+              "top1_precision": 0.8888888888888888,
+              "top1_recall": 0.8888888888888888,
+              "top2_recall": 0.8888888888888888
+            },
+            "s3-s4": {
+              "mean_rank": 1.375,
+              "support": 8,
+              "top1_f1": 0.6666666666666666,
+              "top1_precision": 0.7142857142857143,
+              "top1_recall": 0.625,
+              "top2_recall": 1.0
+            }
+          },
+          "support": 25,
+          "top1": 0.8,
+          "top1_count": 20,
+          "top1_errors": [
+            {
+              "actual_link": "s3-s4",
+              "distance_in_links": 1,
+              "experiment_id": 3,
+              "rank": 2,
+              "rank1_link": "s2-s3"
+            },
+            {
+              "actual_link": "s1-s2",
+              "distance_in_links": 2,
+              "experiment_id": 21,
+              "rank": 3,
+              "rank1_link": "s3-s4"
+            },
+            {
+              "actual_link": "s2-s3",
+              "distance_in_links": 1,
+              "experiment_id": 22,
+              "rank": 3,
+              "rank1_link": "s3-s4"
+            },
+            {
+              "actual_link": "s3-s4",
+              "distance_in_links": 2,
+              "experiment_id": 24,
+              "rank": 2,
+              "rank1_link": "s1-s2"
+            },
+            {
+              "actual_link": "s3-s4",
+              "distance_in_links": 2,
+              "experiment_id": 25,
+              "rank": 2,
+              "rank1_link": "s1-s2"
+            }
+          ],
+          "top1_wilson95": [
+            0.6086904963045967,
+            0.9113941531319742
+          ],
+          "top2": 0.92,
+          "top2_count": 23,
+          "top2_wilson95": [
+            0.7503389104960468,
+            0.9777795987151524
+          ],
+          "top3": 1.0,
+          "top3_count": 25
+        },
+        "2026": {
+          "adjacent_link_error_fraction": 0.3333333333333333,
+          "candidate_count": 3,
+          "chance_level": {
+            "note": "Top-k and MRR chance levels fall as the candidate count grows; compare across topologies against these, not raw percentages.",
+            "uniform_mrr": 0.611111111111111,
+            "uniform_top1": 0.3333333333333333,
+            "uniform_top2": 0.6666666666666666,
+            "uniform_top3": 1.0
+          },
+          "confusion_labels": [
+            "s1-s2",
+            "s2-s3",
+            "s3-s4"
+          ],
+          "confusion_matrix_rows_actual_cols_rank1": [
+            [
+              7,
+              0,
+              1
+            ],
+            [
+              0,
+              8,
+              1
+            ],
+            [
+              3,
+              1,
+              4
+            ]
+          ],
+          "mean_rank": 1.32,
+          "mean_reciprocal_rank": 0.8666666666666667,
+          "per_class": {
+            "s1-s2": {
+              "mean_rank": 1.25,
+              "support": 8,
+              "top1_f1": 0.7777777777777777,
+              "top1_precision": 0.7,
+              "top1_recall": 0.875,
+              "top2_recall": 0.875
+            },
+            "s2-s3": {
+              "mean_rank": 1.2222222222222223,
+              "support": 9,
+              "top1_f1": 0.8888888888888888,
+              "top1_precision": 0.8888888888888888,
+              "top1_recall": 0.8888888888888888,
+              "top2_recall": 0.8888888888888888
+            },
+            "s3-s4": {
+              "mean_rank": 1.5,
+              "support": 8,
+              "top1_f1": 0.5714285714285715,
+              "top1_precision": 0.6666666666666666,
+              "top1_recall": 0.5,
+              "top2_recall": 1.0
+            }
+          },
+          "support": 25,
+          "top1": 0.76,
+          "top1_count": 19,
+          "top1_errors": [
+            {
+              "actual_link": "s3-s4",
+              "distance_in_links": 1,
+              "experiment_id": 3,
+              "rank": 2,
+              "rank1_link": "s2-s3"
+            },
+            {
+              "actual_link": "s3-s4",
+              "distance_in_links": 2,
+              "experiment_id": 16,
+              "rank": 2,
+              "rank1_link": "s1-s2"
+            },
+            {
+              "actual_link": "s1-s2",
+              "distance_in_links": 2,
+              "experiment_id": 21,
+              "rank": 3,
+              "rank1_link": "s3-s4"
+            },
+            {
+              "actual_link": "s2-s3",
+              "distance_in_links": 1,
+              "experiment_id": 22,
+              "rank": 3,
+              "rank1_link": "s3-s4"
+            },
+            {
+              "actual_link": "s3-s4",
+              "distance_in_links": 2,
+              "experiment_id": 24,
+              "rank": 2,
+              "rank1_link": "s1-s2"
+            },
+            {
+              "actual_link": "s3-s4",
+              "distance_in_links": 2,
+              "experiment_id": 25,
+              "rank": 2,
+              "rank1_link": "s1-s2"
+            }
+          ],
+          "top1_wilson95": [
+            0.5657031664457093,
+            0.8850368630659855
+          ],
+          "top2": 0.92,
+          "top2_count": 23,
+          "top2_wilson95": [
+            0.7503389104960468,
+            0.9777795987151524
+          ],
+          "top3": 1.0,
+          "top3_count": 25
+        },
+        "42": {
+          "adjacent_link_error_fraction": 0.5,
+          "candidate_count": 3,
+          "chance_level": {
+            "note": "Top-k and MRR chance levels fall as the candidate count grows; compare across topologies against these, not raw percentages.",
+            "uniform_mrr": 0.611111111111111,
+            "uniform_top1": 0.3333333333333333,
+            "uniform_top2": 0.6666666666666666,
+            "uniform_top3": 1.0
+          },
+          "confusion_labels": [
+            "s1-s2",
+            "s2-s3",
+            "s3-s4"
+          ],
+          "confusion_matrix_rows_actual_cols_rank1": [
+            [
+              7,
+              0,
+              1
+            ],
+            [
+              0,
+              7,
+              2
+            ],
+            [
+              2,
+              1,
+              5
+            ]
+          ],
+          "mean_rank": 1.4,
+          "mean_reciprocal_rank": 0.8533333333333333,
+          "per_class": {
+            "s1-s2": {
+              "mean_rank": 1.25,
+              "support": 8,
+              "top1_f1": 0.823529411764706,
+              "top1_precision": 0.7777777777777778,
+              "top1_recall": 0.875,
+              "top2_recall": 0.875
+            },
+            "s2-s3": {
+              "mean_rank": 1.3333333333333333,
+              "support": 9,
+              "top1_f1": 0.823529411764706,
+              "top1_precision": 0.875,
+              "top1_recall": 0.7777777777777778,
+              "top2_recall": 0.8888888888888888
+            },
+            "s3-s4": {
+              "mean_rank": 1.625,
+              "support": 8,
+              "top1_f1": 0.625,
+              "top1_precision": 0.625,
+              "top1_recall": 0.625,
+              "top2_recall": 0.75
+            }
+          },
+          "support": 25,
+          "top1": 0.76,
+          "top1_count": 19,
+          "top1_errors": [
+            {
+              "actual_link": "s3-s4",
+              "distance_in_links": 1,
+              "experiment_id": 3,
+              "rank": 2,
+              "rank1_link": "s2-s3"
+            },
+            {
+              "actual_link": "s2-s3",
+              "distance_in_links": 1,
+              "experiment_id": 10,
+              "rank": 2,
+              "rank1_link": "s3-s4"
+            },
+            {
+              "actual_link": "s1-s2",
+              "distance_in_links": 2,
+              "experiment_id": 21,
+              "rank": 3,
+              "rank1_link": "s3-s4"
+            },
+            {
+              "actual_link": "s2-s3",
+              "distance_in_links": 1,
+              "experiment_id": 22,
+              "rank": 3,
+              "rank1_link": "s3-s4"
+            },
+            {
+              "actual_link": "s3-s4",
+              "distance_in_links": 2,
+              "experiment_id": 24,
+              "rank": 3,
+              "rank1_link": "s1-s2"
+            },
+            {
+              "actual_link": "s3-s4",
+              "distance_in_links": 2,
+              "experiment_id": 25,
+              "rank": 3,
+              "rank1_link": "s1-s2"
+            }
+          ],
+          "top1_wilson95": [
+            0.5657031664457093,
+            0.8850368630659855
+          ],
+          "top2": 0.84,
+          "top2_count": 21,
+          "top2_wilson95": [
+            0.6534637839282114,
+            0.9359654854332355
+          ],
+          "top3": 1.0,
+          "top3_count": 25
+        }
+      },
+      "total_fit_seconds": 3188.378852500813
+    },
+    "graph_temporal": {
+      "label": "GCN+LSTM",
+      "mean_fit_seconds": 18.094428088000665,
+      "mean_score_ensemble_metrics": {
+        "adjacent_link_error_fraction": 0.5,
+        "candidate_count": 3,
+        "chance_level": {
+          "note": "Top-k and MRR chance levels fall as the candidate count grows; compare across topologies against these, not raw percentages.",
+          "uniform_mrr": 0.611111111111111,
+          "uniform_top1": 0.3333333333333333,
+          "uniform_top2": 0.6666666666666666,
+          "uniform_top3": 1.0
+        },
+        "confusion_labels": [
+          "s1-s2",
+          "s2-s3",
+          "s3-s4"
+        ],
+        "confusion_matrix_rows_actual_cols_rank1": [
+          [
+            8,
+            0,
+            0
+          ],
+          [
+            0,
+            8,
+            1
+          ],
+          [
+            1,
+            0,
+            7
+          ]
+        ],
+        "mean_rank": 1.16,
+        "mean_reciprocal_rank": 0.9466666666666668,
+        "per_class": {
+          "s1-s2": {
+            "mean_rank": 1.0,
+            "support": 8,
+            "top1_f1": 0.9411764705882353,
+            "top1_precision": 0.8888888888888888,
+            "top1_recall": 1.0,
+            "top2_recall": 1.0
+          },
+          "s2-s3": {
+            "mean_rank": 1.2222222222222223,
+            "support": 9,
+            "top1_f1": 0.9411764705882353,
+            "top1_precision": 1.0,
+            "top1_recall": 0.8888888888888888,
+            "top2_recall": 0.8888888888888888
+          },
+          "s3-s4": {
+            "mean_rank": 1.25,
+            "support": 8,
+            "top1_f1": 0.875,
+            "top1_precision": 0.875,
+            "top1_recall": 0.875,
+            "top2_recall": 0.875
+          }
+        },
+        "support": 25,
+        "top1": 0.92,
+        "top1_count": 23,
+        "top1_errors": [
+          {
+            "actual_link": "s3-s4",
+            "distance_in_links": 2,
+            "experiment_id": 16,
+            "rank": 3,
+            "rank1_link": "s1-s2"
+          },
+          {
+            "actual_link": "s2-s3",
+            "distance_in_links": 1,
+            "experiment_id": 22,
+            "rank": 3,
+            "rank1_link": "s3-s4"
+          }
+        ],
+        "top1_wilson95": [
+          0.7503389104960468,
+          0.9777795987151524
+        ],
+        "top2": 0.92,
+        "top2_count": 23,
+        "top2_wilson95": [
+          0.7503389104960468,
+          0.9777795987151524
+        ],
+        "top3": 1.0,
+        "top3_count": 25
+      },
+      "mean_seed_mrr": 0.9066666666666667,
+      "mean_seed_top1": 0.84,
+      "mean_seed_top2": 0.9199999999999999,
+      "sd_seed_top1": 0.06928203230275509,
+      "seed_metrics": {
+        "17": {
+          "adjacent_link_error_fraction": 0.6666666666666666,
+          "candidate_count": 3,
+          "chance_level": {
+            "note": "Top-k and MRR chance levels fall as the candidate count grows; compare across topologies against these, not raw percentages.",
+            "uniform_mrr": 0.611111111111111,
+            "uniform_top1": 0.3333333333333333,
+            "uniform_top2": 0.6666666666666666,
+            "uniform_top3": 1.0
+          },
+          "confusion_labels": [
+            "s1-s2",
+            "s2-s3",
+            "s3-s4"
+          ],
+          "confusion_matrix_rows_actual_cols_rank1": [
+            [
+              7,
+              0,
+              1
+            ],
+            [
+              0,
+              8,
+              1
+            ],
+            [
+              1,
+              3,
+              4
+            ]
+          ],
+          "mean_rank": 1.4,
+          "mean_reciprocal_rank": 0.8533333333333333,
+          "per_class": {
+            "s1-s2": {
+              "mean_rank": 1.25,
+              "support": 8,
+              "top1_f1": 0.875,
+              "top1_precision": 0.875,
+              "top1_recall": 0.875,
+              "top2_recall": 0.875
+            },
+            "s2-s3": {
+              "mean_rank": 1.2222222222222223,
+              "support": 9,
+              "top1_f1": 0.7999999999999999,
+              "top1_precision": 0.7272727272727273,
+              "top1_recall": 0.8888888888888888,
+              "top2_recall": 0.8888888888888888
+            },
+            "s3-s4": {
+              "mean_rank": 1.75,
+              "support": 8,
+              "top1_f1": 0.5714285714285715,
+              "top1_precision": 0.6666666666666666,
+              "top1_recall": 0.5,
+              "top2_recall": 0.75
+            }
+          },
+          "support": 25,
+          "top1": 0.76,
+          "top1_count": 19,
+          "top1_errors": [
+            {
+              "actual_link": "s3-s4",
+              "distance_in_links": 1,
+              "experiment_id": 7,
+              "rank": 2,
+              "rank1_link": "s2-s3"
+            },
+            {
+              "actual_link": "s3-s4",
+              "distance_in_links": 2,
+              "experiment_id": 16,
+              "rank": 2,
+              "rank1_link": "s1-s2"
+            },
+            {
+              "actual_link": "s1-s2",
+              "distance_in_links": 2,
+              "experiment_id": 21,
+              "rank": 3,
+              "rank1_link": "s3-s4"
+            },
+            {
+              "actual_link": "s2-s3",
+              "distance_in_links": 1,
+              "experiment_id": 22,
+              "rank": 3,
+              "rank1_link": "s3-s4"
+            },
+            {
+              "actual_link": "s3-s4",
+              "distance_in_links": 1,
+              "experiment_id": 24,
+              "rank": 3,
+              "rank1_link": "s2-s3"
+            },
+            {
+              "actual_link": "s3-s4",
+              "distance_in_links": 1,
+              "experiment_id": 25,
+              "rank": 3,
+              "rank1_link": "s2-s3"
+            }
+          ],
+          "top1_wilson95": [
+            0.5657031664457093,
+            0.8850368630659855
+          ],
+          "top2": 0.84,
+          "top2_count": 21,
+          "top2_wilson95": [
+            0.6534637839282114,
+            0.9359654854332355
+          ],
+          "top3": 1.0,
+          "top3_count": 25
+        },
+        "2026": {
+          "adjacent_link_error_fraction": 1.0,
+          "candidate_count": 3,
+          "chance_level": {
+            "note": "Top-k and MRR chance levels fall as the candidate count grows; compare across topologies against these, not raw percentages.",
+            "uniform_mrr": 0.611111111111111,
+            "uniform_top1": 0.3333333333333333,
+            "uniform_top2": 0.6666666666666666,
+            "uniform_top3": 1.0
+          },
+          "confusion_labels": [
+            "s1-s2",
+            "s2-s3",
+            "s3-s4"
+          ],
+          "confusion_matrix_rows_actual_cols_rank1": [
+            [
+              8,
+              0,
+              0
+            ],
+            [
+              0,
+              8,
+              1
+            ],
+            [
+              0,
+              2,
+              6
+            ]
+          ],
+          "mean_rank": 1.16,
+          "mean_reciprocal_rank": 0.9333333333333335,
+          "per_class": {
+            "s1-s2": {
+              "mean_rank": 1.0,
+              "support": 8,
+              "top1_f1": 1.0,
+              "top1_precision": 1.0,
+              "top1_recall": 1.0,
+              "top2_recall": 1.0
+            },
+            "s2-s3": {
+              "mean_rank": 1.2222222222222223,
+              "support": 9,
+              "top1_f1": 0.8421052631578948,
+              "top1_precision": 0.8,
+              "top1_recall": 0.8888888888888888,
+              "top2_recall": 0.8888888888888888
+            },
+            "s3-s4": {
+              "mean_rank": 1.25,
+              "support": 8,
+              "top1_f1": 0.7999999999999999,
+              "top1_precision": 0.8571428571428571,
+              "top1_recall": 0.75,
+              "top2_recall": 1.0
+            }
+          },
+          "support": 25,
+          "top1": 0.88,
+          "top1_count": 22,
+          "top1_errors": [
+            {
+              "actual_link": "s3-s4",
+              "distance_in_links": 1,
+              "experiment_id": 3,
+              "rank": 2,
+              "rank1_link": "s2-s3"
+            },
+            {
+              "actual_link": "s3-s4",
+              "distance_in_links": 1,
+              "experiment_id": 16,
+              "rank": 2,
+              "rank1_link": "s2-s3"
+            },
+            {
+              "actual_link": "s2-s3",
+              "distance_in_links": 1,
+              "experiment_id": 22,
+              "rank": 3,
+              "rank1_link": "s3-s4"
+            }
+          ],
+          "top1_wilson95": [
+            0.7004420607907267,
+            0.9583318284955964
+          ],
+          "top2": 0.96,
+          "top2_count": 24,
+          "top2_wilson95": [
+            0.8045593626380625,
+            0.9929037664980127
+          ],
+          "top3": 1.0,
+          "top3_count": 25
+        },
+        "42": {
+          "adjacent_link_error_fraction": 0.6666666666666666,
+          "candidate_count": 3,
+          "chance_level": {
+            "note": "Top-k and MRR chance levels fall as the candidate count grows; compare across topologies against these, not raw percentages.",
+            "uniform_mrr": 0.611111111111111,
+            "uniform_top1": 0.3333333333333333,
+            "uniform_top2": 0.6666666666666666,
+            "uniform_top3": 1.0
+          },
+          "confusion_labels": [
+            "s1-s2",
+            "s2-s3",
+            "s3-s4"
+          ],
+          "confusion_matrix_rows_actual_cols_rank1": [
+            [
+              8,
+              0,
+              0
+            ],
+            [
+              0,
+              7,
+              2
+            ],
+            [
+              1,
+              0,
+              7
+            ]
+          ],
+          "mean_rank": 1.16,
+          "mean_reciprocal_rank": 0.9333333333333335,
+          "per_class": {
+            "s1-s2": {
+              "mean_rank": 1.0,
+              "support": 8,
+              "top1_f1": 0.9411764705882353,
+              "top1_precision": 0.8888888888888888,
+              "top1_recall": 1.0,
+              "top2_recall": 1.0
+            },
+            "s2-s3": {
+              "mean_rank": 1.3333333333333333,
+              "support": 9,
+              "top1_f1": 0.8750000000000001,
+              "top1_precision": 1.0,
+              "top1_recall": 0.7777777777777778,
+              "top2_recall": 0.8888888888888888
+            },
+            "s3-s4": {
+              "mean_rank": 1.125,
+              "support": 8,
+              "top1_f1": 0.823529411764706,
+              "top1_precision": 0.7777777777777778,
+              "top1_recall": 0.875,
+              "top2_recall": 1.0
+            }
+          },
+          "support": 25,
+          "top1": 0.88,
+          "top1_count": 22,
+          "top1_errors": [
+            {
+              "actual_link": "s2-s3",
+              "distance_in_links": 1,
+              "experiment_id": 5,
+              "rank": 2,
+              "rank1_link": "s3-s4"
+            },
+            {
+              "actual_link": "s3-s4",
+              "distance_in_links": 2,
+              "experiment_id": 16,
+              "rank": 2,
+              "rank1_link": "s1-s2"
+            },
+            {
+              "actual_link": "s2-s3",
+              "distance_in_links": 1,
+              "experiment_id": 22,
+              "rank": 3,
+              "rank1_link": "s3-s4"
+            }
+          ],
+          "top1_wilson95": [
+            0.7004420607907267,
+            0.9583318284955964
+          ],
+          "top2": 0.96,
+          "top2_count": 24,
+          "top2_wilson95": [
+            0.8045593626380625,
+            0.9929037664980127
+          ],
+          "top3": 1.0,
+          "top3_count": 25
+        }
+      },
+      "total_fit_seconds": 1357.0821066000499
+    },
+    "temporal_only": {
+      "label": "LSTM",
+      "mean_fit_seconds": 2.6430718733246126,
+      "mean_score_ensemble_metrics": {
+        "adjacent_link_error_fraction": 0.42857142857142855,
+        "candidate_count": 3,
+        "chance_level": {
+          "note": "Top-k and MRR chance levels fall as the candidate count grows; compare across topologies against these, not raw percentages.",
+          "uniform_mrr": 0.611111111111111,
+          "uniform_top1": 0.3333333333333333,
+          "uniform_top2": 0.6666666666666666,
+          "uniform_top3": 1.0
+        },
+        "confusion_labels": [
+          "s1-s2",
+          "s2-s3",
+          "s3-s4"
+        ],
+        "confusion_matrix_rows_actual_cols_rank1": [
+          [
+            6,
+            1,
+            1
+          ],
+          [
+            1,
+            8,
+            0
+          ],
+          [
+            3,
+            1,
+            4
+          ]
+        ],
+        "mean_rank": 1.44,
+        "mean_reciprocal_rank": 0.8333333333333335,
+        "per_class": {
+          "s1-s2": {
+            "mean_rank": 1.5,
+            "support": 8,
+            "top1_f1": 0.6666666666666665,
+            "top1_precision": 0.6,
+            "top1_recall": 0.75,
+            "top2_recall": 0.75
+          },
+          "s2-s3": {
+            "mean_rank": 1.2222222222222223,
+            "support": 9,
+            "top1_f1": 0.8421052631578948,
+            "top1_precision": 0.8,
+            "top1_recall": 0.8888888888888888,
+            "top2_recall": 0.8888888888888888
+          },
+          "s3-s4": {
+            "mean_rank": 1.625,
+            "support": 8,
+            "top1_f1": 0.6153846153846154,
+            "top1_precision": 0.8,
+            "top1_recall": 0.5,
+            "top2_recall": 0.875
+          }
+        },
+        "support": 25,
+        "top1": 0.72,
+        "top1_count": 18,
+        "top1_errors": [
+          {
+            "actual_link": "s3-s4",
+            "distance_in_links": 1,
+            "experiment_id": 3,
+            "rank": 3,
+            "rank1_link": "s2-s3"
+          },
+          {
+            "actual_link": "s3-s4",
+            "distance_in_links": 2,
+            "experiment_id": 16,
+            "rank": 2,
+            "rank1_link": "s1-s2"
+          },
+          {
+            "actual_link": "s1-s2",
+            "distance_in_links": 1,
+            "experiment_id": 20,
+            "rank": 3,
+            "rank1_link": "s2-s3"
+          },
+          {
+            "actual_link": "s1-s2",
+            "distance_in_links": 2,
+            "experiment_id": 21,
+            "rank": 3,
+            "rank1_link": "s3-s4"
+          },
+          {
+            "actual_link": "s2-s3",
+            "distance_in_links": 1,
+            "experiment_id": 22,
+            "rank": 3,
+            "rank1_link": "s1-s2"
+          },
+          {
+            "actual_link": "s3-s4",
+            "distance_in_links": 2,
+            "experiment_id": 24,
+            "rank": 2,
+            "rank1_link": "s1-s2"
+          },
+          {
+            "actual_link": "s3-s4",
+            "distance_in_links": 2,
+            "experiment_id": 25,
+            "rank": 2,
+            "rank1_link": "s1-s2"
+          }
+        ],
+        "top1_wilson95": [
+          0.5242339480963842,
+          0.8571614614904344
+        ],
+        "top2": 0.84,
+        "top2_count": 21,
+        "top2_wilson95": [
+          0.6534637839282114,
+          0.9359654854332355
+        ],
+        "top3": 1.0,
+        "top3_count": 25
+      },
+      "mean_seed_mrr": 0.8222222222222221,
+      "mean_seed_top1": 0.7066666666666667,
+      "mean_seed_top2": 0.8133333333333334,
+      "sd_seed_top1": 0.046188021535170036,
+      "seed_metrics": {
+        "17": {
+          "adjacent_link_error_fraction": 0.375,
+          "candidate_count": 3,
+          "chance_level": {
+            "note": "Top-k and MRR chance levels fall as the candidate count grows; compare across topologies against these, not raw percentages.",
+            "uniform_mrr": 0.611111111111111,
+            "uniform_top1": 0.3333333333333333,
+            "uniform_top2": 0.6666666666666666,
+            "uniform_top3": 1.0
+          },
+          "confusion_labels": [
+            "s1-s2",
+            "s2-s3",
+            "s3-s4"
+          ],
+          "confusion_matrix_rows_actual_cols_rank1": [
+            [
+              6,
+              0,
+              2
+            ],
+            [
+              1,
+              7,
+              1
+            ],
+            [
+              3,
+              1,
+              4
+            ]
+          ],
+          "mean_rank": 1.56,
+          "mean_reciprocal_rank": 0.7999999999999998,
+          "per_class": {
+            "s1-s2": {
+              "mean_rank": 1.5,
+              "support": 8,
+              "top1_f1": 0.6666666666666665,
+              "top1_precision": 0.6,
+              "top1_recall": 0.75,
+              "top2_recall": 0.75
+            },
+            "s2-s3": {
+              "mean_rank": 1.3333333333333333,
+              "support": 9,
+              "top1_f1": 0.823529411764706,
+              "top1_precision": 0.875,
+              "top1_recall": 0.7777777777777778,
+              "top2_recall": 0.8888888888888888
+            },
+            "s3-s4": {
+              "mean_rank": 1.875,
+              "support": 8,
+              "top1_f1": 0.5333333333333333,
+              "top1_precision": 0.5714285714285714,
+              "top1_recall": 0.5,
+              "top2_recall": 0.625
+            }
+          },
+          "support": 25,
+          "top1": 0.68,
+          "top1_count": 17,
+          "top1_errors": [
+            {
+              "actual_link": "s3-s4",
+              "distance_in_links": 1,
+              "experiment_id": 3,
+              "rank": 3,
+              "rank1_link": "s2-s3"
+            },
+            {
+              "actual_link": "s2-s3",
+              "distance_in_links": 1,
+              "experiment_id": 14,
+              "rank": 2,
+              "rank1_link": "s3-s4"
+            },
+            {
+              "actual_link": "s3-s4",
+              "distance_in_links": 2,
+              "experiment_id": 16,
+              "rank": 2,
+              "rank1_link": "s1-s2"
+            },
+            {
+              "actual_link": "s1-s2",
+              "distance_in_links": 2,
+              "experiment_id": 20,
+              "rank": 3,
+              "rank1_link": "s3-s4"
+            },
+            {
+              "actual_link": "s1-s2",
+              "distance_in_links": 2,
+              "experiment_id": 21,
+              "rank": 3,
+              "rank1_link": "s3-s4"
+            },
+            {
+              "actual_link": "s2-s3",
+              "distance_in_links": 1,
+              "experiment_id": 22,
+              "rank": 3,
+              "rank1_link": "s1-s2"
+            },
+            {
+              "actual_link": "s3-s4",
+              "distance_in_links": 2,
+              "experiment_id": 24,
+              "rank": 3,
+              "rank1_link": "s1-s2"
+            },
+            {
+              "actual_link": "s3-s4",
+              "distance_in_links": 2,
+              "experiment_id": 25,
+              "rank": 3,
+              "rank1_link": "s1-s2"
+            }
+          ],
+          "top1_wilson95": [
+            0.48410269273102247,
+            0.8279480969309202
+          ],
+          "top2": 0.76,
+          "top2_count": 19,
+          "top2_wilson95": [
+            0.5657031664457093,
+            0.8850368630659855
+          ],
+          "top3": 1.0,
+          "top3_count": 25
+        },
+        "2026": {
+          "adjacent_link_error_fraction": 0.5,
+          "candidate_count": 3,
+          "chance_level": {
+            "note": "Top-k and MRR chance levels fall as the candidate count grows; compare across topologies against these, not raw percentages.",
+            "uniform_mrr": 0.611111111111111,
+            "uniform_top1": 0.3333333333333333,
+            "uniform_top2": 0.6666666666666666,
+            "uniform_top3": 1.0
+          },
+          "confusion_labels": [
+            "s1-s2",
+            "s2-s3",
+            "s3-s4"
+          ],
+          "confusion_matrix_rows_actual_cols_rank1": [
+            [
+              7,
+              1,
+              0
+            ],
+            [
+              1,
+              8,
+              0
+            ],
+            [
+              3,
+              1,
+              4
+            ]
+          ],
+          "mean_rank": 1.32,
+          "mean_reciprocal_rank": 0.8666666666666667,
+          "per_class": {
+            "s1-s2": {
+              "mean_rank": 1.25,
+              "support": 8,
+              "top1_f1": 0.7368421052631579,
+              "top1_precision": 0.6363636363636364,
+              "top1_recall": 0.875,
+              "top2_recall": 0.875
+            },
+            "s2-s3": {
+              "mean_rank": 1.2222222222222223,
+              "support": 9,
+              "top1_f1": 0.8421052631578948,
+              "top1_precision": 0.8,
+              "top1_recall": 0.8888888888888888,
+              "top2_recall": 0.8888888888888888
+            },
+            "s3-s4": {
+              "mean_rank": 1.5,
+              "support": 8,
+              "top1_f1": 0.6666666666666666,
+              "top1_precision": 1.0,
+              "top1_recall": 0.5,
+              "top2_recall": 1.0
+            }
+          },
+          "support": 25,
+          "top1": 0.76,
+          "top1_count": 19,
+          "top1_errors": [
+            {
+              "actual_link": "s3-s4",
+              "distance_in_links": 1,
+              "experiment_id": 3,
+              "rank": 2,
+              "rank1_link": "s2-s3"
+            },
+            {
+              "actual_link": "s3-s4",
+              "distance_in_links": 2,
+              "experiment_id": 16,
+              "rank": 2,
+              "rank1_link": "s1-s2"
+            },
+            {
+              "actual_link": "s1-s2",
+              "distance_in_links": 1,
+              "experiment_id": 20,
+              "rank": 3,
+              "rank1_link": "s2-s3"
+            },
+            {
+              "actual_link": "s2-s3",
+              "distance_in_links": 1,
+              "experiment_id": 22,
+              "rank": 3,
+              "rank1_link": "s1-s2"
+            },
+            {
+              "actual_link": "s3-s4",
+              "distance_in_links": 2,
+              "experiment_id": 24,
+              "rank": 2,
+              "rank1_link": "s1-s2"
+            },
+            {
+              "actual_link": "s3-s4",
+              "distance_in_links": 2,
+              "experiment_id": 25,
+              "rank": 2,
+              "rank1_link": "s1-s2"
+            }
+          ],
+          "top1_wilson95": [
+            0.5657031664457093,
+            0.8850368630659855
+          ],
+          "top2": 0.92,
+          "top2_count": 23,
+          "top2_wilson95": [
+            0.7503389104960468,
+            0.9777795987151524
+          ],
+          "top3": 1.0,
+          "top3_count": 25
+        },
+        "42": {
+          "adjacent_link_error_fraction": 0.375,
+          "candidate_count": 3,
+          "chance_level": {
+            "note": "Top-k and MRR chance levels fall as the candidate count grows; compare across topologies against these, not raw percentages.",
+            "uniform_mrr": 0.611111111111111,
+            "uniform_top1": 0.3333333333333333,
+            "uniform_top2": 0.6666666666666666,
+            "uniform_top3": 1.0
+          },
+          "confusion_labels": [
+            "s1-s2",
+            "s2-s3",
+            "s3-s4"
+          ],
+          "confusion_matrix_rows_actual_cols_rank1": [
+            [
+              6,
+              0,
+              2
+            ],
+            [
+              0,
+              7,
+              2
+            ],
+            [
+              3,
+              1,
+              4
+            ]
+          ],
+          "mean_rank": 1.56,
+          "mean_reciprocal_rank": 0.7999999999999998,
+          "per_class": {
+            "s1-s2": {
+              "mean_rank": 1.5,
+              "support": 8,
+              "top1_f1": 0.7058823529411765,
+              "top1_precision": 0.6666666666666666,
+              "top1_recall": 0.75,
+              "top2_recall": 0.75
+            },
+            "s2-s3": {
+              "mean_rank": 1.3333333333333333,
+              "support": 9,
+              "top1_f1": 0.823529411764706,
+              "top1_precision": 0.875,
+              "top1_recall": 0.7777777777777778,
+              "top2_recall": 0.8888888888888888
+            },
+            "s3-s4": {
+              "mean_rank": 1.875,
+              "support": 8,
+              "top1_f1": 0.5,
+              "top1_precision": 0.5,
+              "top1_recall": 0.5,
+              "top2_recall": 0.625
+            }
+          },
+          "support": 25,
+          "top1": 0.68,
+          "top1_count": 17,
+          "top1_errors": [
+            {
+              "actual_link": "s3-s4",
+              "distance_in_links": 1,
+              "experiment_id": 3,
+              "rank": 3,
+              "rank1_link": "s2-s3"
+            },
+            {
+              "actual_link": "s3-s4",
+              "distance_in_links": 2,
+              "experiment_id": 16,
+              "rank": 2,
+              "rank1_link": "s1-s2"
+            },
+            {
+              "actual_link": "s1-s2",
+              "distance_in_links": 2,
+              "experiment_id": 20,
+              "rank": 3,
+              "rank1_link": "s3-s4"
+            },
+            {
+              "actual_link": "s1-s2",
+              "distance_in_links": 2,
+              "experiment_id": 21,
+              "rank": 3,
+              "rank1_link": "s3-s4"
+            },
+            {
+              "actual_link": "s2-s3",
+              "distance_in_links": 1,
+              "experiment_id": 22,
+              "rank": 3,
+              "rank1_link": "s3-s4"
+            },
+            {
+              "actual_link": "s2-s3",
+              "distance_in_links": 1,
+              "experiment_id": 23,
+              "rank": 2,
+              "rank1_link": "s3-s4"
+            },
+            {
+              "actual_link": "s3-s4",
+              "distance_in_links": 2,
+              "experiment_id": 24,
+              "rank": 3,
+              "rank1_link": "s1-s2"
+            },
+            {
+              "actual_link": "s3-s4",
+              "distance_in_links": 2,
+              "experiment_id": 25,
+              "rank": 3,
+              "rank1_link": "s1-s2"
+            }
+          ],
+          "top1_wilson95": [
+            0.48410269273102247,
+            0.8279480969309202
+          ],
+          "top2": 0.76,
+          "top2_count": 19,
+          "top2_wilson95": [
+            0.5657031664457093,
+            0.8850368630659855
+          ],
+          "top3": 1.0,
+          "top3_count": 25
+        }
+      },
+      "total_fit_seconds": 198.23039049934596
+    }
+  },
+  "normalization_and_feature_selection": "Per-fold active features, means, and standard deviations fit from training experiments' annotated fault-window switch-node telemetry only.",
+  "online_detection": false,
+  "oracle_information": "Annotated phase selects the first ten seconds for each example. Ground-truth link is a target only.",
+  "output_sha256": {
+    "fold_feature_policy.csv": "6ea60cebaf2bcb0512bb99d0d62f85d10dc012ca6c62411c54ba04f13ba805e9",
+    "mean_seed_ensemble_predictions.csv": "b78d2e33829cf723e099d0eaea8d850804179bf9a66fdf4c8c432028413ad422",
+    "per_seed_predictions.csv": "0f21607ad6afa99575081bf566fbdf0c11bcee678fa0a80da61a9087b0964be2"
+  },
+  "protocol": "leave-one-logical-experiment-out (25 folds); held-out experiment excluded from training and normalization",
+  "runtime": {
+    "python": "3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)]",
+    "torch": "2.14.0+cpu",
+    "torch_threads": 1,
+    "total_seconds": 4743.9
+  },
+  "same_fold_reference_baselines": {
+    "rf_baseline": {
+      "adjacent_link_error_fraction": 0.8,
+      "candidate_count": 3,
+      "chance_level": {
+        "note": "Top-k and MRR chance levels fall as the candidate count grows; compare across topologies against these, not raw percentages.",
+        "uniform_mrr": 0.611111111111111,
+        "uniform_top1": 0.3333333333333333,
+        "uniform_top2": 0.6666666666666666,
+        "uniform_top3": 1.0
+      },
+      "confusion_labels": [
+        "s1-s2",
+        "s2-s3",
+        "s3-s4"
+      ],
+      "confusion_matrix_rows_actual_cols_rank1": [
+        [
+          6,
+          1,
+          1
+        ],
+        [
+          0,
+          7,
+          2
+        ],
+        [
+          0,
+          1,
+          7
+        ]
+      ],
+      "mean_rank": 1.32,
+      "mean_reciprocal_rank": 0.88,
+      "per_class": {
+        "s1-s2": {
+          "mean_rank": 1.5,
+          "support": 8,
+          "top1_f1": 0.8571428571428571,
+          "top1_precision": 1.0,
+          "top1_recall": 0.75,
+          "top2_recall": 0.75
+        },
+        "s2-s3": {
+          "mean_rank": 1.3333333333333333,
+          "support": 9,
+          "top1_f1": 0.7777777777777778,
+          "top1_precision": 0.7777777777777778,
+          "top1_recall": 0.7777777777777778,
+          "top2_recall": 0.8888888888888888
+        },
+        "s3-s4": {
+          "mean_rank": 1.125,
+          "support": 8,
+          "top1_f1": 0.7777777777777777,
+          "top1_precision": 0.7,
+          "top1_recall": 0.875,
+          "top2_recall": 1.0
+        }
+      },
+      "support": 25,
+      "top1": 0.8,
+      "top1_count": 20,
+      "top1_errors": [
+        {
+          "actual_link": "s3-s4",
+          "distance_in_links": 1,
+          "experiment_id": 16,
+          "rank": 2,
+          "rank1_link": "s2-s3"
+        },
+        {
+          "actual_link": "s1-s2",
+          "distance_in_links": 1,
+          "experiment_id": 20,
+          "rank": 3,
+          "rank1_link": "s2-s3"
+        },
+        {
+          "actual_link": "s1-s2",
+          "distance_in_links": 2,
+          "experiment_id": 21,
+          "rank": 3,
+          "rank1_link": "s3-s4"
+        },
+        {
+          "actual_link": "s2-s3",
+          "distance_in_links": 1,
+          "experiment_id": 22,
+          "rank": 3,
+          "rank1_link": "s3-s4"
+        },
+        {
+          "actual_link": "s2-s3",
+          "distance_in_links": 1,
+          "experiment_id": 23,
+          "rank": 2,
+          "rank1_link": "s3-s4"
+        }
+      ],
+      "top1_wilson95": [
+        0.6086904963045967,
+        0.9113941531319742
+      ],
+      "top2": 0.88,
+      "top2_count": 22,
+      "top2_wilson95": [
+        0.7004420607907267,
+        0.9583318284955964
+      ],
+      "top3": 1.0,
+      "top3_count": 25
+    },
+    "topology_link_ranker": {
+      "adjacent_link_error_fraction": 0.6666666666666666,
+      "candidate_count": 3,
+      "chance_level": {
+        "note": "Top-k and MRR chance levels fall as the candidate count grows; compare across topologies against these, not raw percentages.",
+        "uniform_mrr": 0.611111111111111,
+        "uniform_top1": 0.3333333333333333,
+        "uniform_top2": 0.6666666666666666,
+        "uniform_top3": 1.0
+      },
+      "confusion_labels": [
+        "s1-s2",
+        "s2-s3",
+        "s3-s4"
+      ],
+      "confusion_matrix_rows_actual_cols_rank1": [
+        [
+          6,
+          1,
+          1
+        ],
+        [
+          0,
+          2,
+          7
+        ],
+        [
+          3,
+          0,
+          5
+        ]
+      ],
+      "mean_rank": 1.6,
+      "mean_reciprocal_rank": 0.74,
+      "per_class": {
+        "s1-s2": {
+          "mean_rank": 1.375,
+          "support": 8,
+          "top1_f1": 0.7058823529411765,
+          "top1_precision": 0.6666666666666666,
+          "top1_recall": 0.75,
+          "top2_recall": 0.875
+        },
+        "s2-s3": {
+          "mean_rank": 2.0,
+          "support": 9,
+          "top1_f1": 0.3333333333333333,
+          "top1_precision": 0.6666666666666666,
+          "top1_recall": 0.2222222222222222,
+          "top2_recall": 0.7777777777777778
+        },
+        "s3-s4": {
+          "mean_rank": 1.375,
+          "support": 8,
+          "top1_f1": 0.4761904761904762,
+          "top1_precision": 0.38461538461538464,
+          "top1_recall": 0.625,
+          "top2_recall": 1.0
+        }
+      },
+      "support": 25,
+      "top1": 0.52,
+      "top1_count": 13,
+      "top1_errors": [
+        {
+          "actual_link": "s2-s3",
+          "distance_in_links": 1,
+          "experiment_id": 2,
+          "rank": 2,
+          "rank1_link": "s3-s4"
+        },
+        {
+          "actual_link": "s3-s4",
+          "distance_in_links": 2,
+          "experiment_id": 3,
+          "rank": 2,
+          "rank1_link": "s1-s2"
+        },
+        {
+          "actual_link": "s2-s3",
+          "distance_in_links": 1,
+          "experiment_id": 4,
+          "rank": 2,
+          "rank1_link": "s3-s4"
+        },
+        {
+          "actual_link": "s2-s3",
+          "distance_in_links": 1,
+          "experiment_id": 5,
+          "rank": 2,
+          "rank1_link": "s3-s4"
+        },
+        {
+          "actual_link": "s2-s3",
+          "distance_in_links": 1,
+          "experiment_id": 9,
+          "rank": 3,
+          "rank1_link": "s3-s4"
+        },
+        {
+          "actual_link": "s2-s3",
+          "distance_in_links": 1,
+          "experiment_id": 14,
+          "rank": 2,
+          "rank1_link": "s3-s4"
+        },
+        {
+          "actual_link": "s2-s3",
+          "distance_in_links": 1,
+          "experiment_id": 15,
+          "rank": 2,
+          "rank1_link": "s3-s4"
+        },
+        {
+          "actual_link": "s3-s4",
+          "distance_in_links": 2,
+          "experiment_id": 16,
+          "rank": 2,
+          "rank1_link": "s1-s2"
+        },
+        {
+          "actual_link": "s3-s4",
+          "distance_in_links": 2,
+          "experiment_id": 19,
+          "rank": 2,
+          "rank1_link": "s1-s2"
+        },
+        {
+          "actual_link": "s1-s2",
+          "distance_in_links": 1,
+          "experiment_id": 20,
+          "rank": 3,
+          "rank1_link": "s2-s3"
+        },
+        {
+          "actual_link": "s1-s2",
+          "distance_in_links": 2,
+          "experiment_id": 21,
+          "rank": 2,
+          "rank1_link": "s3-s4"
+        },
+        {
+          "actual_link": "s2-s3",
+          "distance_in_links": 1,
+          "experiment_id": 22,
+          "rank": 3,
+          "rank1_link": "s3-s4"
+        }
+      ],
+      "top1_wilson95": [
+        0.3349851695035678,
+        0.6996871404588704
+      ],
+      "top2": 0.88,
+      "top2_count": 22,
+      "top2_wilson95": [
+        0.7004420607907267,
+        0.9583318284955964
+      ],
+      "top3": 1.0,
+      "top3_count": 25
+    }
+  },
+  "score_semantics": "Softmax outputs averaged over seeds; uncalibrated ranking scores, not calibrated probabilities.",
+  "seeds": [
+    17,
+    42,
+    2026
+  ],
+  "split_assignments": [
+    {
+      "active_features": "rx_packet_rate;tx_packet_rate;rx_throughput_mbps;tx_throughput_mbps",
+      "fold": 1,
+      "held_out_experiment_id": 1,
+      "train_experiment_ids": "2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23;24;25"
+    },
+    {
+      "active_features": "rx_packet_rate;tx_packet_rate;rx_throughput_mbps;tx_throughput_mbps",
+      "fold": 2,
+      "held_out_experiment_id": 2,
+      "train_experiment_ids": "1;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23;24;25"
+    },
+    {
+      "active_features": "rx_packet_rate;tx_packet_rate;rx_throughput_mbps;tx_throughput_mbps",
+      "fold": 3,
+      "held_out_experiment_id": 3,
+      "train_experiment_ids": "1;2;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23;24;25"
+    },
+    {
+      "active_features": "rx_packet_rate;tx_packet_rate;rx_throughput_mbps;tx_throughput_mbps",
+      "fold": 4,
+      "held_out_experiment_id": 4,
+      "train_experiment_ids": "1;2;3;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23;24;25"
+    },
+    {
+      "active_features": "rx_packet_rate;tx_packet_rate;rx_throughput_mbps;tx_throughput_mbps",
+      "fold": 5,
+      "held_out_experiment_id": 5,
+      "train_experiment_ids": "1;2;3;4;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23;24;25"
+    },
+    {
+      "active_features": "rx_packet_rate;tx_packet_rate;rx_throughput_mbps;tx_throughput_mbps",
+      "fold": 6,
+      "held_out_experiment_id": 6,
+      "train_experiment_ids": "1;2;3;4;5;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23;24;25"
+    },
+    {
+      "active_features": "rx_packet_rate;tx_packet_rate;rx_throughput_mbps;tx_throughput_mbps",
+      "fold": 7,
+      "held_out_experiment_id": 7,
+      "train_experiment_ids": "1;2;3;4;5;6;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23;24;25"
+    },
+    {
+      "active_features": "rx_packet_rate;tx_packet_rate;rx_throughput_mbps;tx_throughput_mbps",
+      "fold": 8,
+      "held_out_experiment_id": 8,
+      "train_experiment_ids": "1;2;3;4;5;6;7;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23;24;25"
+    },
+    {
+      "active_features": "rx_packet_rate;tx_packet_rate;rx_throughput_mbps;tx_throughput_mbps",
+      "fold": 9,
+      "held_out_experiment_id": 9,
+      "train_experiment_ids": "1;2;3;4;5;6;7;8;10;11;12;13;14;15;16;17;18;19;20;21;22;23;24;25"
+    },
+    {
+      "active_features": "rx_packet_rate;tx_packet_rate;rx_throughput_mbps;tx_throughput_mbps",
+      "fold": 10,
+      "held_out_experiment_id": 10,
+      "train_experiment_ids": "1;2;3;4;5;6;7;8;9;11;12;13;14;15;16;17;18;19;20;21;22;23;24;25"
+    },
+    {
+      "active_features": "rx_packet_rate;tx_packet_rate;rx_throughput_mbps;tx_throughput_mbps",
+      "fold": 11,
+      "held_out_experiment_id": 11,
+      "train_experiment_ids": "1;2;3;4;5;6;7;8;9;10;12;13;14;15;16;17;18;19;20;21;22;23;24;25"
+    },
+    {
+      "active_features": "rx_packet_rate;tx_packet_rate;rx_throughput_mbps;tx_throughput_mbps",
+      "fold": 12,
+      "held_out_experiment_id": 12,
+      "train_experiment_ids": "1;2;3;4;5;6;7;8;9;10;11;13;14;15;16;17;18;19;20;21;22;23;24;25"
+    },
+    {
+      "active_features": "rx_packet_rate;tx_packet_rate;rx_throughput_mbps;tx_throughput_mbps",
+      "fold": 13,
+      "held_out_experiment_id": 13,
+      "train_experiment_ids": "1;2;3;4;5;6;7;8;9;10;11;12;14;15;16;17;18;19;20;21;22;23;24;25"
+    },
+    {
+      "active_features": "rx_packet_rate;tx_packet_rate;rx_throughput_mbps;tx_throughput_mbps",
+      "fold": 14,
+      "held_out_experiment_id": 14,
+      "train_experiment_ids": "1;2;3;4;5;6;7;8;9;10;11;12;13;15;16;17;18;19;20;21;22;23;24;25"
+    },
+    {
+      "active_features": "rx_packet_rate;tx_packet_rate;rx_throughput_mbps;tx_throughput_mbps",
+      "fold": 15,
+      "held_out_experiment_id": 15,
+      "train_experiment_ids": "1;2;3;4;5;6;7;8;9;10;11;12;13;14;16;17;18;19;20;21;22;23;24;25"
+    },
+    {
+      "active_features": "rx_packet_rate;tx_packet_rate;rx_throughput_mbps;tx_throughput_mbps",
+      "fold": 16,
+      "held_out_experiment_id": 16,
+      "train_experiment_ids": "1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;17;18;19;20;21;22;23;24;25"
+    },
+    {
+      "active_features": "rx_packet_rate;tx_packet_rate;rx_throughput_mbps;tx_throughput_mbps",
+      "fold": 17,
+      "held_out_experiment_id": 17,
+      "train_experiment_ids": "1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;18;19;20;21;22;23;24;25"
+    },
+    {
+      "active_features": "rx_packet_rate;tx_packet_rate;rx_throughput_mbps;tx_throughput_mbps",
+      "fold": 18,
+      "held_out_experiment_id": 18,
+      "train_experiment_ids": "1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;19;20;21;22;23;24;25"
+    },
+    {
+      "active_features": "rx_packet_rate;tx_packet_rate;rx_throughput_mbps;tx_throughput_mbps",
+      "fold": 19,
+      "held_out_experiment_id": 19,
+      "train_experiment_ids": "1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;20;21;22;23;24;25"
+    },
+    {
+      "active_features": "rx_packet_rate;tx_packet_rate;rx_throughput_mbps;tx_throughput_mbps",
+      "fold": 20,
+      "held_out_experiment_id": 20,
+      "train_experiment_ids": "1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;21;22;23;24;25"
+    },
+    {
+      "active_features": "rx_packet_rate;tx_packet_rate;rx_throughput_mbps;tx_throughput_mbps",
+      "fold": 21,
+      "held_out_experiment_id": 21,
+      "train_experiment_ids": "1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;22;23;24;25"
+    },
+    {
+      "active_features": "rx_packet_rate;tx_packet_rate;rx_throughput_mbps;tx_throughput_mbps",
+      "fold": 22,
+      "held_out_experiment_id": 22,
+      "train_experiment_ids": "1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;23;24;25"
+    },
+    {
+      "active_features": "rx_packet_rate;tx_packet_rate;rx_throughput_mbps;tx_throughput_mbps",
+      "fold": 23,
+      "held_out_experiment_id": 23,
+      "train_experiment_ids": "1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;24;25"
+    },
+    {
+      "active_features": "rx_packet_rate;tx_packet_rate;rx_throughput_mbps;tx_throughput_mbps",
+      "fold": 24,
+      "held_out_experiment_id": 24,
+      "train_experiment_ids": "1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23;25"
+    },
+    {
+      "active_features": "rx_packet_rate;tx_packet_rate;rx_throughput_mbps;tx_throughput_mbps",
+      "fold": 25,
+      "held_out_experiment_id": 25,
+      "train_experiment_ids": "1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23;24"
+    }
+  ],
+  "task": "conditional fault-window link localization; phase selects first ten seconds",
+  "test_count_per_fold": 1,
+  "topology": {
+    "bottleneck_link": "s2-s3",
+    "bottleneck_params": {
+      "bw": 10,
+      "delay": "5ms"
+    },
+    "candidate_count": 3,
+    "candidate_links": [
+      "s1-s2",
+      "s2-s3",
+      "s3-s4"
+    ],
+    "hosts": [
+      "h1",
+      "h2"
+    ],
+    "kind": "linear",
+    "link_definitions": [
+      {
+        "left": "h1",
+        "params": {},
+        "right": "s1"
+      },
+      {
+        "left": "s1",
+        "params": {},
+        "right": "s2"
+      },
+      {
+        "left": "s2",
+        "params": {
+          "bw": 10,
+          "delay": "5ms"
+        },
+        "right": "s3"
+      },
+      {
+        "left": "s3",
+        "params": {},
+        "right": "s4"
+      },
+      {
+        "left": "s4",
+        "params": {},
+        "right": "h2"
+      }
+    ],
+    "switch_count": 4,
+    "switches": [
+      "s1",
+      "s2",
+      "s3",
+      "s4"
+    ]
+  },
+  "train_count_per_fold": 24
+}

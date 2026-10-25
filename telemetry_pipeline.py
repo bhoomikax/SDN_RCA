@@ -1,5 +1,6 @@
 """Shared paths and input validation for per-experiment telemetry files."""
 
+import re
 from pathlib import Path
 
 import numpy as np
@@ -35,6 +36,16 @@ PHASE_FIELDS = (
 
 EXPECTED_PHASES = ("normal", "fault", "recovery")
 VALID_LINKS = {"s1-s2", "s2-s3", "s3-s4"}
+_LINK_PATTERN = re.compile(r"^s(\d+)-s(\d+)$")
+
+
+def is_adjacent_switch_link(link):
+    """True for an inter-switch link name s<i>-s<i+1> of any linear topology."""
+    match = _LINK_PATTERN.match(str(link))
+    if not match:
+        return False
+    left, right = int(match.group(1)), int(match.group(2))
+    return left >= 1 and right == left + 1
 
 
 def experiment_paths(output_dir, experiment_id):
@@ -160,6 +171,6 @@ def read_phase_csv(path, experiment_id):
     ].astype(str).str.strip().str.lower()
     if len(fault_locations) != 2 or fault_locations.nunique() != 1:
         raise ValueError(f"Phase CSV {path} has inconsistent fault locations")
-    if fault_locations.iloc[0] not in VALID_LINKS:
+    if not is_adjacent_switch_link(fault_locations.iloc[0]):
         raise ValueError(f"Phase CSV {path} has an unknown fault link")
     return frame

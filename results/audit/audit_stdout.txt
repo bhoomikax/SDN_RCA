@@ -1,0 +1,70 @@
+# Methodology audit (recomputed from per-experiment artifacts)
+
+## 4 switches (frozen v3 via regression outputs): 25 experiments, 3 candidates, dataset b63d04572b7b
+
+- Checks passed: 49/49
+- Class support: {'s1-s2': 8, 's2-s3': 9, 's3-s4': 8}
+- Experiments whose fault link is unseen in training: 0 (none)
+- Top-1 on seen vs unseen classes: RF 20/25 seen, 0/0 unseen; Topology ranker 13/25 seen, 0/0 unseen; GCN 20/25 seen, 0/0 unseen; LSTM 18/25 seen, 0/0 unseen; GCN+LSTM 23/25 seen, 0/0 unseen
+- XAI validation pass counts: {'graph_only': '24/25', 'graph_temporal': '22/25', 'rf_baseline': '25/25', 'temporal_only': '23/25', 'topology_link_ranker': '25/25'}
+- XAI failed checks: {'graph_temporal': [{'experiment_id': 3, 'failed': ['perturbation_pass']}, {'experiment_id': 7, 'failed': ['completeness_pass']}, {'experiment_id': 17, 'failed': ['perturbation_pass']}], 'graph_only': [{'experiment_id': 10, 'failed': ['perturbation_pass']}], 'temporal_only': [{'experiment_id': 11, 'failed': ['perturbation_pass']}, {'experiment_id': 18, 'failed': ['perturbation_pass']}]}
+
+| A | B | A right, B wrong | B right, A wrong | both right | both wrong | exact sign test p |
+|---|---|---:|---:|---:|---:|---:|
+| RF | Topology ranker | 8 | 1 | 12 | 4 | 0.039 |
+| RF | GCN | 3 | 3 | 17 | 2 | 1.000 |
+| RF | LSTM | 3 | 1 | 17 | 4 | 0.625 |
+| RF | GCN+LSTM | 0 | 3 | 20 | 2 | 0.250 |
+| Topology ranker | GCN | 2 | 9 | 11 | 3 | 0.065 |
+| Topology ranker | LSTM | 2 | 7 | 11 | 5 | 0.180 |
+| Topology ranker | GCN+LSTM | 0 | 10 | 13 | 2 | 0.002 |
+| GCN | LSTM | 2 | 0 | 18 | 5 | 0.500 |
+| GCN | GCN+LSTM | 1 | 4 | 19 | 1 | 0.375 |
+| LSTM | GCN+LSTM | 0 | 5 | 18 | 2 | 0.062 |
+
+## 8 switches: 24 experiments, 7 candidates, dataset 1c38a653cddd
+
+- Checks passed: 49/49
+- Class support: {'s1-s2': 3, 's2-s3': 4, 's3-s4': 3, 's4-s5': 4, 's5-s6': 4, 's6-s7': 4, 's7-s8': 2}
+- Experiments whose fault link is unseen in training: 0 (none)
+- Top-1 on seen vs unseen classes: RF 20/24 seen, 0/0 unseen; Topology ranker 1/24 seen, 0/0 unseen; GCN 23/24 seen, 0/0 unseen; LSTM 22/24 seen, 0/0 unseen; GCN+LSTM 22/24 seen, 0/0 unseen
+- XAI validation pass counts: {'graph_only': '22/24', 'graph_temporal': '23/24', 'rf_baseline': '23/24', 'temporal_only': '23/24', 'topology_link_ranker': '24/24'}
+- XAI failed checks: {'graph_only': [{'experiment_id': 112, 'failed': ['perturbation_pass']}, {'experiment_id': 119, 'failed': ['perturbation_pass']}], 'rf_baseline': [{'experiment_id': 112, 'failed': ['perturbation_pass']}], 'graph_temporal': [{'experiment_id': 113, 'failed': ['perturbation_pass']}], 'temporal_only': [{'experiment_id': 126, 'failed': ['perturbation_pass']}]}
+
+| A | B | A right, B wrong | B right, A wrong | both right | both wrong | exact sign test p |
+|---|---|---:|---:|---:|---:|---:|
+| RF | Topology ranker | 20 | 1 | 0 | 3 | 0.000 |
+| RF | GCN | 0 | 3 | 20 | 1 | 0.250 |
+| RF | LSTM | 0 | 2 | 20 | 2 | 0.500 |
+| RF | GCN+LSTM | 0 | 2 | 20 | 2 | 0.500 |
+| Topology ranker | GCN | 1 | 23 | 0 | 0 | 0.000 |
+| Topology ranker | LSTM | 1 | 22 | 0 | 1 | 0.000 |
+| Topology ranker | GCN+LSTM | 1 | 22 | 0 | 1 | 0.000 |
+| GCN | LSTM | 1 | 0 | 22 | 1 | 1.000 |
+| GCN | GCN+LSTM | 1 | 0 | 22 | 1 | 1.000 |
+| LSTM | GCN+LSTM | 0 | 0 | 22 | 2 | 1.000 |
+
+## 12 switches: 26 experiments, 11 candidates, dataset 07ad31e77114
+
+- Checks passed: 49/49
+- Class support: {'s1-s2': 2, 's2-s3': 3, 's3-s4': 2, 's4-s5': 2, 's5-s6': 2, 's6-s7': 3, 's7-s8': 3, 's8-s9': 2, 's9-s10': 3, 's10-s11': 2, 's11-s12': 2}
+- Experiments whose fault link is unseen in training: 0 (none)
+- Top-1 on seen vs unseen classes: RF 19/26 seen, 0/0 unseen; Topology ranker 1/26 seen, 0/0 unseen; GCN 25/26 seen, 0/0 unseen; LSTM 22/26 seen, 0/0 unseen; GCN+LSTM 20/26 seen, 0/0 unseen
+- XAI validation pass counts: {'graph_only': '24/26', 'graph_temporal': '25/26', 'rf_baseline': '26/26', 'temporal_only': '25/26', 'topology_link_ranker': '26/26'}
+- XAI failed checks: {'graph_only': [{'experiment_id': 205, 'failed': ['perturbation_pass']}, {'experiment_id': 238, 'failed': ['perturbation_pass']}], 'graph_temporal': [{'experiment_id': 231, 'failed': ['perturbation_pass']}], 'temporal_only': [{'experiment_id': 239, 'failed': ['perturbation_pass']}]}
+
+| A | B | A right, B wrong | B right, A wrong | both right | both wrong | exact sign test p |
+|---|---|---:|---:|---:|---:|---:|
+| RF | Topology ranker | 18 | 0 | 1 | 7 | 0.000 |
+| RF | GCN | 0 | 6 | 19 | 1 | 0.031 |
+| RF | LSTM | 0 | 3 | 19 | 4 | 0.250 |
+| RF | GCN+LSTM | 2 | 3 | 17 | 4 | 1.000 |
+| Topology ranker | GCN | 0 | 24 | 1 | 1 | 0.000 |
+| Topology ranker | LSTM | 0 | 21 | 1 | 4 | 0.000 |
+| Topology ranker | GCN+LSTM | 0 | 19 | 1 | 6 | 0.000 |
+| GCN | LSTM | 3 | 0 | 22 | 1 | 0.250 |
+| GCN | GCN+LSTM | 5 | 0 | 20 | 1 | 0.062 |
+| LSTM | GCN+LSTM | 2 | 0 | 20 | 4 | 0.500 |
+
+No paired comparison is corrected for multiple testing; with n <= 25 experiments the sign test has little power, and p-values near or above 0.05 do not support a superiority claim.
+

@@ -1,4 +1,6 @@
 {
+  "//": "This file represents the network graph and its link information used for the experiment,",
+
   "schema_version": 2,
   "source_path": "derived_datasets\\live_demo_physical45_logical41\\candidate_dataset.csv",
   "source_sha256": "bf8e6154dcc74dd8524a9362bd2bb1669dba9fdd89fdb7a5cc49c334b3cb2f0c",

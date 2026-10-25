@@ -1,0 +1,470 @@
+{
+  "candidate_count": 3,
+  "candidate_links_without_experiments": [],
+  "class_support": {
+    "s1-s2": 8,
+    "s2-s3": 9,
+    "s3-s4": 8
+  },
+  "dataset_path": "derived_datasets\\balanced_recollection_20261015_v3\\candidate_dataset.csv",
+  "dataset_sha256": "b63d04572b7b97b8451be33174c8813d76af53e3f49f40e5e41b682b1e19b29a",
+  "experiment_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25
+  ],
+  "fit_scope": "Each fold's RF, means/stds, active-metric selection, topology threshold (training-normal 95th percentile), and port baselines use only the training experiments.",
+  "independent_test_experiments": 25,
+  "link_port_mapping_basis": "static setup-inferred mapping (historical four-switch data)",
+  "link_ports": {
+    "s1-s2": [
+      [
+        "s1",
+        "2"
+      ],
+      [
+        "s2",
+        "1"
+      ]
+    ],
+    "s2-s3": [
+      [
+        "s2",
+        "2"
+      ],
+      [
+        "s3",
+        "1"
+      ]
+    ],
+    "s3-s4": [
+      [
+        "s3",
+        "2"
+      ],
+      [
+        "s4",
+        "1"
+      ]
+    ]
+  },
+  "methods": {
+    "rf_baseline": {
+      "adjacent_link_error_fraction": 0.8,
+      "candidate_count": 3,
+      "chance_level": {
+        "note": "Top-k and MRR chance levels fall as the candidate count grows; compare across topologies against these, not raw percentages.",
+        "uniform_mrr": 0.611111111111111,
+        "uniform_top1": 0.3333333333333333,
+        "uniform_top2": 0.6666666666666666,
+        "uniform_top3": 1.0
+      },
+      "confusion_labels": [
+        "s1-s2",
+        "s2-s3",
+        "s3-s4"
+      ],
+      "confusion_matrix_rows_actual_cols_rank1": [
+        [
+          6,
+          1,
+          1
+        ],
+        [
+          0,
+          7,
+          2
+        ],
+        [
+          0,
+          1,
+          7
+        ]
+      ],
+      "mean_rank": 1.32,
+      "mean_reciprocal_rank": 0.88,
+      "per_class": {
+        "s1-s2": {
+          "mean_rank": 1.5,
+          "support": 8,
+          "top1_f1": 0.8571428571428571,
+          "top1_precision": 1.0,
+          "top1_recall": 0.75,
+          "top2_recall": 0.75
+        },
+        "s2-s3": {
+          "mean_rank": 1.3333333333333333,
+          "support": 9,
+          "top1_f1": 0.7777777777777778,
+          "top1_precision": 0.7777777777777778,
+          "top1_recall": 0.7777777777777778,
+          "top2_recall": 0.8888888888888888
+        },
+        "s3-s4": {
+          "mean_rank": 1.125,
+          "support": 8,
+          "top1_f1": 0.7777777777777777,
+          "top1_precision": 0.7,
+          "top1_recall": 0.875,
+          "top2_recall": 1.0
+        }
+      },
+      "support": 25,
+      "top1": 0.8,
+      "top1_count": 20,
+      "top1_errors": [
+        {
+          "actual_link": "s3-s4",
+          "distance_in_links": 1,
+          "experiment_id": 16,
+          "rank": 2,
+          "rank1_link": "s2-s3"
+        },
+        {
+          "actual_link": "s1-s2",
+          "distance_in_links": 1,
+          "experiment_id": 20,
+          "rank": 3,
+          "rank1_link": "s2-s3"
+        },
+        {
+          "actual_link": "s1-s2",
+          "distance_in_links": 2,
+          "experiment_id": 21,
+          "rank": 3,
+          "rank1_link": "s3-s4"
+        },
+        {
+          "actual_link": "s2-s3",
+          "distance_in_links": 1,
+          "experiment_id": 22,
+          "rank": 3,
+          "rank1_link": "s3-s4"
+        },
+        {
+          "actual_link": "s2-s3",
+          "distance_in_links": 1,
+          "experiment_id": 23,
+          "rank": 2,
+          "rank1_link": "s3-s4"
+        }
+      ],
+      "top1_wilson95": [
+        0.6086904963045967,
+        0.9113941531319742
+      ],
+      "top2": 0.88,
+      "top2_count": 22,
+      "top2_wilson95": [
+        0.7004420607907267,
+        0.9583318284955964
+      ],
+      "top3": 1.0,
+      "top3_count": 25
+    },
+    "topology_link_ranker": {
+      "adjacent_link_error_fraction": 0.6666666666666666,
+      "candidate_count": 3,
+      "chance_level": {
+        "note": "Top-k and MRR chance levels fall as the candidate count grows; compare across topologies against these, not raw percentages.",
+        "uniform_mrr": 0.611111111111111,
+        "uniform_top1": 0.3333333333333333,
+        "uniform_top2": 0.6666666666666666,
+        "uniform_top3": 1.0
+      },
+      "confusion_labels": [
+        "s1-s2",
+        "s2-s3",
+        "s3-s4"
+      ],
+      "confusion_matrix_rows_actual_cols_rank1": [
+        [
+          6,
+          1,
+          1
+        ],
+        [
+          0,
+          2,
+          7
+        ],
+        [
+          3,
+          0,
+          5
+        ]
+      ],
+      "mean_rank": 1.6,
+      "mean_reciprocal_rank": 0.74,
+      "per_class": {
+        "s1-s2": {
+          "mean_rank": 1.375,
+          "support": 8,
+          "top1_f1": 0.7058823529411765,
+          "top1_precision": 0.6666666666666666,
+          "top1_recall": 0.75,
+          "top2_recall": 0.875
+        },
+        "s2-s3": {
+          "mean_rank": 2.0,
+          "support": 9,
+          "top1_f1": 0.3333333333333333,
+          "top1_precision": 0.6666666666666666,
+          "top1_recall": 0.2222222222222222,
+          "top2_recall": 0.7777777777777778
+        },
+        "s3-s4": {
+          "mean_rank": 1.375,
+          "support": 8,
+          "top1_f1": 0.4761904761904762,
+          "top1_precision": 0.38461538461538464,
+          "top1_recall": 0.625,
+          "top2_recall": 1.0
+        }
+      },
+      "support": 25,
+      "top1": 0.52,
+      "top1_count": 13,
+      "top1_errors": [
+        {
+          "actual_link": "s2-s3",
+          "distance_in_links": 1,
+          "experiment_id": 2,
+          "rank": 2,
+          "rank1_link": "s3-s4"
+        },
+        {
+          "actual_link": "s3-s4",
+          "distance_in_links": 2,
+          "experiment_id": 3,
+          "rank": 2,
+          "rank1_link": "s1-s2"
+        },
+        {
+          "actual_link": "s2-s3",
+          "distance_in_links": 1,
+          "experiment_id": 4,
+          "rank": 2,
+          "rank1_link": "s3-s4"
+        },
+        {
+          "actual_link": "s2-s3",
+          "distance_in_links": 1,
+          "experiment_id": 5,
+          "rank": 2,
+          "rank1_link": "s3-s4"
+        },
+        {
+          "actual_link": "s2-s3",
+          "distance_in_links": 1,
+          "experiment_id": 9,
+          "rank": 3,
+          "rank1_link": "s3-s4"
+        },
+        {
+          "actual_link": "s2-s3",
+          "distance_in_links": 1,
+          "experiment_id": 14,
+          "rank": 2,
+          "rank1_link": "s3-s4"
+        },
+        {
+          "actual_link": "s2-s3",
+          "distance_in_links": 1,
+          "experiment_id": 15,
+          "rank": 2,
+          "rank1_link": "s3-s4"
+        },
+        {
+          "actual_link": "s3-s4",
+          "distance_in_links": 2,
+          "experiment_id": 16,
+          "rank": 2,
+          "rank1_link": "s1-s2"
+        },
+        {
+          "actual_link": "s3-s4",
+          "distance_in_links": 2,
+          "experiment_id": 19,
+          "rank": 2,
+          "rank1_link": "s1-s2"
+        },
+        {
+          "actual_link": "s1-s2",
+          "distance_in_links": 1,
+          "experiment_id": 20,
+          "rank": 3,
+          "rank1_link": "s2-s3"
+        },
+        {
+          "actual_link": "s1-s2",
+          "distance_in_links": 2,
+          "experiment_id": 21,
+          "rank": 2,
+          "rank1_link": "s3-s4"
+        },
+        {
+          "actual_link": "s2-s3",
+          "distance_in_links": 1,
+          "experiment_id": 22,
+          "rank": 3,
+          "rank1_link": "s3-s4"
+        }
+      ],
+      "top1_wilson95": [
+        0.3349851695035678,
+        0.6996871404588704
+      ],
+      "top2": 0.88,
+      "top2_count": 22,
+      "top2_wilson95": [
+        0.7004420607907267,
+        0.9583318284955964
+      ],
+      "top3": 1.0,
+      "top3_count": 25
+    }
+  },
+  "model": {
+    "class_weight": "balanced",
+    "max_depth": 5,
+    "n_estimators": 300,
+    "random_state": 42,
+    "type": "RandomForestClassifier"
+  },
+  "oracle_information": "phase labels select the first 10 seconds from the annotated fault phase; recovery telemetry is excluded; ground-truth fault_location is joined only after predictions",
+  "outputs": {
+    "fold_feature_policy": "fold_feature_policy.csv",
+    "predictions": "grouped_evaluation.csv",
+    "ranker_components": "topology_ranker_components.csv",
+    "splits": "split_assignments.csv"
+  },
+  "predictors": {
+    "constant_feature_policy": "fit on training-normal non-LOCAL port telemetry only; exclude metrics with no variation in that fold",
+    "forbidden_predictor_fields": [
+      "experiment_id",
+      "fault_location",
+      "fault_type",
+      "interface_name",
+      "label",
+      "logical_experiment_id",
+      "phase",
+      "physical_run_id",
+      "port",
+      "switch",
+      "target_link",
+      "timestamp"
+    ],
+    "raw_metrics": [
+      "rx_packet_rate",
+      "tx_packet_rate",
+      "rx_throughput_mbps",
+      "tx_throughput_mbps"
+    ],
+    "rf_features": [
+      "s1_mean_anomaly",
+      "s1_max_anomaly",
+      "s1_persistence",
+      "s1_first_anomaly_seconds",
+      "s2_mean_anomaly",
+      "s2_max_anomaly",
+      "s2_persistence",
+      "s2_first_anomaly_seconds",
+      "s3_mean_anomaly",
+      "s3_max_anomaly",
+      "s3_persistence",
+      "s3_first_anomaly_seconds",
+      "s4_mean_anomaly",
+      "s4_max_anomaly",
+      "s4_persistence",
+      "s4_first_anomaly_seconds"
+    ],
+    "topology_features": "per-port absolute z-scores; candidate link endpoint mean, imbalance, threshold onset, and remote propagation margin; equal-weight rank aggregation over all candidates"
+  },
+  "protocol": "leave-one-logical-experiment-out (25 folds), grouped by experiment_id; each fold has 24 train and 1 test experiment",
+  "score_semantics": "RF scores are RandomForest predict_proba outputs (vote fractions, uncalibrated). Topology scores are equal-weight rank utilities in (0, 1], not probabilities.",
+  "software": {
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "python": "3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)]",
+    "scikit_learn": "1.9.1"
+  },
+  "task": "conditional fault-window link localization with oracle phase boundaries; not online fault detection/localization",
+  "topology": {
+    "bottleneck_link": "s2-s3",
+    "bottleneck_params": {
+      "bw": 10,
+      "delay": "5ms"
+    },
+    "candidate_count": 3,
+    "candidate_links": [
+      "s1-s2",
+      "s2-s3",
+      "s3-s4"
+    ],
+    "hosts": [
+      "h1",
+      "h2"
+    ],
+    "kind": "linear",
+    "link_definitions": [
+      {
+        "left": "h1",
+        "params": {},
+        "right": "s1"
+      },
+      {
+        "left": "s1",
+        "params": {},
+        "right": "s2"
+      },
+      {
+        "left": "s2",
+        "params": {
+          "bw": 10,
+          "delay": "5ms"
+        },
+        "right": "s3"
+      },
+      {
+        "left": "s3",
+        "params": {},
+        "right": "s4"
+      },
+      {
+        "left": "s4",
+        "params": {},
+        "right": "h2"
+      }
+    ],
+    "switch_count": 4,
+    "switches": [
+      "s1",
+      "s2",
+      "s3",
+      "s4"
+    ]
+  }
+}

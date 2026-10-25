@@ -1,0 +1,27 @@
+{
+  "candidate_count": 3,
+  "dataset_path": "derived_datasets\\balanced_recollection_20261015_v3\\candidate_dataset.csv",
+  "dataset_sha256": "b63d04572b7b97b8451be33174c8813d76af53e3f49f40e5e41b682b1e19b29a",
+  "evaluator_path": "C:\\Users\\ASUS\\sdn-ml\\evaluate_topology_loeo.py",
+  "evaluator_sha256": "dd323995a271f74d96231ccd4d4b91c73af781828fda66370ec80fbb72bea004",
+  "methods": {
+    "rf_baseline": {
+      "mean_reciprocal_rank": 0.88,
+      "support": 25,
+      "top1_count": 20,
+      "top2_count": 22,
+      "top3_count": 25
+    },
+    "topology_link_ranker": {
+      "mean_reciprocal_rank": 0.74,
+      "support": 25,
+      "top1_count": 13,
+      "top2_count": 22,
+      "top3_count": 25
+    }
+  },
+  "protocol": "leave-one-logical-experiment-out (25 folds), grouped by experiment_id; each fold has 24 train and 1 test experiment",
+  "python": "3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)]",
+  "switch_count": 4,
+  "task": "conditional fault-window link localization with oracle phase boundaries; not online fault detection/localization"
+}

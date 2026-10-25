@@ -1,0 +1,4 @@
+run_dir,metadata_status,status,reason
+raw_evidence\topology_8_switches\physical_1107_logical_107,FAILED_INVALID,EXCLUDED,"ValueError: run metadata status is 'FAILED_INVALID', not COMPLETE"
+raw_evidence\topology_8_switches\physical_1122_logical_122,COMPLETE,EXCLUDED,"ValueError: iperf sender achieved 3.02 Mbps, outside 10% of the 6.0 Mbps profile (traffic execution invalid)"
+raw_evidence\topology_8_switches\physical_1124_logical_124,FAILED_INVALID,EXCLUDED,"ValueError: run metadata status is 'FAILED_INVALID', not COMPLETE"

@@ -1,3 +1,5 @@
+#This is our main demo script that runs the pipeline and performs faulty-link ranking.
+
 """Replay saved v3 results or freshly refit one experiment-grouped LOEO fold."""
 
 import argparse

@@ -15,12 +15,15 @@ from datetime import datetime
 import numpy as np
 import pandas as pd
 
+from linear_topology import LinearTopology
+
 
 ROOT = Path(__file__).resolve().parent
 DEFAULT_INPUT = ROOT / "master_dataset.csv"
 DEFAULT_OUTPUT = ROOT / "graph_dataset_multi_portsum_v1.json"
-NODES = ["h1", "s1", "s2", "s3", "s4", "h2"]
-EDGES = [["h1", "s1"], ["s1", "s2"], ["s2", "s3"], ["s3", "s4"], ["s4", "h2"]]
+DEFAULT_TOPOLOGY = LinearTopology(4)
+NODES = list(DEFAULT_TOPOLOGY.nodes)
+EDGES = [list(edge) for edge in DEFAULT_TOPOLOGY.edges]
 FEATURE_COLUMNS = ["rx_packet_rate", "tx_packet_rate", "rx_throughput_mbps", "tx_throughput_mbps"]
 REQUIRED_COLUMNS = {
     "experiment_id", "timestamp", "switch", "port", "phase", "fault_type", "fault_location",
@@ -28,7 +31,10 @@ REQUIRED_COLUMNS = {
 }
 
 
-def build_snapshots(frame: pd.DataFrame):
+def build_snapshots(frame: pd.DataFrame, topology=None):
+    topology = DEFAULT_TOPOLOGY if topology is None else topology
+    nodes = list(topology.nodes)
+    edges = [list(edge) for edge in topology.edges]
     missing = REQUIRED_COLUMNS - set(frame.columns)
     if missing:
         raise ValueError(f"Input missing required columns: {sorted(missing)}")
@@ -67,7 +73,7 @@ def build_snapshots(frame: pd.DataFrame):
     if data["port_number"].isna().any():
         bad = sorted(data.loc[data["port_number"].isna(), "port_text"].unique().tolist())
         raise ValueError(f"Non-LOCAL ports must be numeric: {bad}")
-    unknown_switches = set(data["switch"]) - set(NODES)
+    unknown_switches = set(data["switch"]) - set(nodes)
     if unknown_switches:
         raise ValueError(f"Switches are outside the configured topology: {sorted(unknown_switches)}")
     key = ["experiment_id", "timestamp", "switch", "port_number"]
@@ -80,8 +86,8 @@ def build_snapshots(frame: pd.DataFrame):
             values = time_df[label].astype(str).str.strip().unique()
             if len(values) != 1:
                 raise ValueError(f"Inconsistent {label} at experiment {experiment_id}, {timestamp}")
-        node_features = {node: [0.0] * len(FEATURE_COLUMNS) for node in NODES}
-        node_port_counts = {node: 0 for node in NODES}
+        node_features = {node: [0.0] * len(FEATURE_COLUMNS) for node in nodes}
+        node_port_counts = {node: 0 for node in nodes}
         for switch, switch_df in time_df.groupby("switch", sort=False):
             # Sum all observed numbered switch ports; never select an arbitrary
             # first row (which was usually the all-zero LOCAL port).
@@ -91,8 +97,8 @@ def build_snapshots(frame: pd.DataFrame):
         snapshots.append({
             "experiment_id": int(experiment_id),
             "timestamp": timestamp.isoformat(sep=" "),
-            "nodes": NODES,
-            "edges": EDGES,
+            "nodes": nodes,
+            "edges": edges,
             "node_features": node_features,
             "node_port_counts": node_port_counts,
             "phase": str(time_df["phase"].iloc[0]),
@@ -104,19 +110,21 @@ def build_snapshots(frame: pd.DataFrame):
     return snapshots
 
 
-def build(input_path: Path, output_path: Path):
+def build(input_path: Path, output_path: Path, topology=None):
+    topology = DEFAULT_TOPOLOGY if topology is None else topology
     input_path, output_path = Path(input_path), Path(output_path)
     if not input_path.is_file():
         raise FileNotFoundError(input_path)
     if output_path.exists():
         raise FileExistsError(f"Refusing to overwrite graph artifact: {output_path}")
     frame = pd.read_csv(input_path)
-    snapshots = build_snapshots(frame)
+    snapshots = build_snapshots(frame, topology)
     payload = {
         "schema_version": 2,
         "source_path": str(input_path),
         "source_sha256": hashlib.sha256(input_path.read_bytes()).hexdigest(),
         "feature_names": FEATURE_COLUMNS,
+        "topology": topology.to_metadata(),
         "port_aggregation": "sum over all numbered non-LOCAL ports per switch and timestamp",
         "host_feature_policy": "zero-filled; host telemetry is unavailable in the source schema",
         "topology_mapping_confidence": "static configured topology; historical runtime port mappings are unavailable",
@@ -133,8 +141,10 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", type=Path, default=DEFAULT_INPUT)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--switches", type=int, default=4,
+                        help="linear topology switch count for node/edge layout (default 4)")
     args = parser.parse_args(argv)
-    payload = build(args.input, args.output)
+    payload = build(args.input, args.output, LinearTopology(args.switches))
     print(f"Created {args.output}: {len(payload['snapshots'])} snapshots; source SHA-256 {payload['source_sha256']}")
 
 

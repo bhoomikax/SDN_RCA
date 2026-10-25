@@ -1,0 +1,507 @@
+{
+  "candidate_links": [
+    "s1-s2",
+    "s2-s3",
+    "s3-s4",
+    "s4-s5",
+    "s5-s6",
+    "s6-s7",
+    "s7-s8",
+    "s8-s9",
+    "s9-s10",
+    "s10-s11",
+    "s11-s12"
+  ],
+  "completed_at": "2026-10-19T19:39:27.690824-07:00",
+  "controller": "127.0.0.1:6633 reachable",
+  "existing_ovs_bridges": [],
+  "fault_link": "s4-s5",
+  "fault_target_runtime_mapping": [
+    {
+      "interface_name": "s4-eth2",
+      "link": "s4-s5",
+      "openflow_port": "2",
+      "peer_interface": "s5-eth1",
+      "peer_node": "s5",
+      "switch": "s4"
+    },
+    {
+      "interface_name": "s5-eth1",
+      "link": "s4-s5",
+      "openflow_port": "1",
+      "peer_interface": "s4-eth2",
+      "peer_node": "s4",
+      "switch": "s5"
+    }
+  ],
+  "first_sample_observed_before_normal": "2026-10-20T02:38:08.378203+00:00",
+  "historical_experiment_files": "not used; output is isolated",
+  "iperf": {
+    "completion_valid": true,
+    "duration_tolerance_seconds": 2.0,
+    "processes": {
+      "client": {
+        "completed_at": "2026-10-19T19:39:10.871361-07:00",
+        "elapsed_seconds": 60.176687,
+        "pid": 87941,
+        "returncode": 0,
+        "started_at": "2026-10-19T19:38:10.699468-07:00",
+        "terminal_outcome": "exited"
+      },
+      "server": {
+        "completed_at": "2026-10-19T19:39:27.628857-07:00",
+        "elapsed_seconds": 78.941806,
+        "pid": 87914,
+        "returncode": 0,
+        "started_at": "2026-10-19T19:38:08.690302-07:00",
+        "terminal_outcome": "exited"
+      }
+    },
+    "requested_duration_seconds": 60,
+    "server_mode": "iperf2 bounded server timeout (-t), followed by natural exit",
+    "server_wait_timeout_seconds": 20.0,
+    "summary_validation": {
+      "client_elapsed_seconds": 60.17668700998183,
+      "client_observed_duration_seconds": 60.0,
+      "client_receiver_accounted_minus_sender_count": 0,
+      "client_receiver_lost_datagrams": 10945,
+      "client_receiver_observed_duration_seconds": 58.2,
+      "client_receiver_reported_mbps": 4.28,
+      "client_receiver_total_datagrams": 32100,
+      "client_returncode": 0,
+      "client_sender_reported_mbps": 6.29,
+      "client_sent_datagrams": 32100,
+      "client_summary_valid": true,
+      "duration_tolerance_seconds": 2.0,
+      "duration_valid": true,
+      "receiver_delivered_datagrams": 21155,
+      "receiver_delivery_valid": true,
+      "receiver_duration_difference_from_sender_seconds": 1.8,
+      "receiver_reports_match": true,
+      "receiver_statistics_basis": "iperf2 UDP sequence-number-derived Lost/Total; not a raw socket recv count",
+      "requested_bandwidth_mbps": 6.0,
+      "requested_duration_seconds": 60.0,
+      "sequence_accounted_nonlost_datagrams": 21155,
+      "server_elapsed_seconds": 78.94180565897841,
+      "server_mode": "iperf2 bounded server timeout (-t), followed by natural exit",
+      "server_observed_duration_seconds": 58.2,
+      "server_receiver_lost_datagrams": 10945,
+      "server_receiver_reported_mbps": 4.28,
+      "server_receiver_total_datagrams": 32100,
+      "server_returncode": 0,
+      "server_summary_valid": true
+    }
+  },
+  "iperf_version": "2.0.13",
+  "logical_experiment_id": 204,
+  "output_dir": "/home/mininet/sdn_project/topology_scaling_20261023/recollection_runs/topology_12_switches/physical_1204_logical_204",
+  "phase_durations_seconds": {
+    "fault": 20,
+    "normal": 20,
+    "recovery": 20
+  },
+  "phase_events": {
+    "fault": "2026-10-19T19:38:30.764810-07:00",
+    "normal": "2026-10-19T19:38:08.684081-07:00",
+    "recovery": "2026-10-19T19:38:50.844702-07:00"
+  },
+  "physical_run_id": 1204,
+  "run_purpose": "topology_12_switches_candidate",
+  "runtime_switch_port_mapping": [
+    {
+      "interface_name": "s1-eth1",
+      "link": "h1-s1",
+      "openflow_port": "1",
+      "peer_interface": "h1-eth0",
+      "peer_node": "h1",
+      "switch": "s1"
+    },
+    {
+      "interface_name": "s1-eth2",
+      "link": "s1-s2",
+      "openflow_port": "2",
+      "peer_interface": "s2-eth1",
+      "peer_node": "s2",
+      "switch": "s1"
+    },
+    {
+      "interface_name": "s2-eth1",
+      "link": "s1-s2",
+      "openflow_port": "1",
+      "peer_interface": "s1-eth2",
+      "peer_node": "s1",
+      "switch": "s2"
+    },
+    {
+      "interface_name": "s2-eth2",
+      "link": "s2-s3",
+      "openflow_port": "2",
+      "peer_interface": "s3-eth1",
+      "peer_node": "s3",
+      "switch": "s2"
+    },
+    {
+      "interface_name": "s3-eth1",
+      "link": "s2-s3",
+      "openflow_port": "1",
+      "peer_interface": "s2-eth2",
+      "peer_node": "s2",
+      "switch": "s3"
+    },
+    {
+      "interface_name": "s3-eth2",
+      "link": "s3-s4",
+      "openflow_port": "2",
+      "peer_interface": "s4-eth1",
+      "peer_node": "s4",
+      "switch": "s3"
+    },
+    {
+      "interface_name": "s4-eth1",
+      "link": "s3-s4",
+      "openflow_port": "1",
+      "peer_interface": "s3-eth2",
+      "peer_node": "s3",
+      "switch": "s4"
+    },
+    {
+      "interface_name": "s4-eth2",
+      "link": "s4-s5",
+      "openflow_port": "2",
+      "peer_interface": "s5-eth1",
+      "peer_node": "s5",
+      "switch": "s4"
+    },
+    {
+      "interface_name": "s5-eth1",
+      "link": "s4-s5",
+      "openflow_port": "1",
+      "peer_interface": "s4-eth2",
+      "peer_node": "s4",
+      "switch": "s5"
+    },
+    {
+      "interface_name": "s5-eth2",
+      "link": "s5-s6",
+      "openflow_port": "2",
+      "peer_interface": "s6-eth1",
+      "peer_node": "s6",
+      "switch": "s5"
+    },
+    {
+      "interface_name": "s6-eth1",
+      "link": "s5-s6",
+      "openflow_port": "1",
+      "peer_interface": "s5-eth2",
+      "peer_node": "s5",
+      "switch": "s6"
+    },
+    {
+      "interface_name": "s6-eth2",
+      "link": "s6-s7",
+      "openflow_port": "2",
+      "peer_interface": "s7-eth1",
+      "peer_node": "s7",
+      "switch": "s6"
+    },
+    {
+      "interface_name": "s7-eth1",
+      "link": "s6-s7",
+      "openflow_port": "1",
+      "peer_interface": "s6-eth2",
+      "peer_node": "s6",
+      "switch": "s7"
+    },
+    {
+      "interface_name": "s7-eth2",
+      "link": "s7-s8",
+      "openflow_port": "2",
+      "peer_interface": "s8-eth1",
+      "peer_node": "s8",
+      "switch": "s7"
+    },
+    {
+      "interface_name": "s8-eth1",
+      "link": "s7-s8",
+      "openflow_port": "1",
+      "peer_interface": "s7-eth2",
+      "peer_node": "s7",
+      "switch": "s8"
+    },
+    {
+      "interface_name": "s8-eth2",
+      "link": "s8-s9",
+      "openflow_port": "2",
+      "peer_interface": "s9-eth1",
+      "peer_node": "s9",
+      "switch": "s8"
+    },
+    {
+      "interface_name": "s9-eth1",
+      "link": "s8-s9",
+      "openflow_port": "1",
+      "peer_interface": "s8-eth2",
+      "peer_node": "s8",
+      "switch": "s9"
+    },
+    {
+      "interface_name": "s9-eth2",
+      "link": "s9-s10",
+      "openflow_port": "2",
+      "peer_interface": "s10-eth1",
+      "peer_node": "s10",
+      "switch": "s9"
+    },
+    {
+      "interface_name": "s10-eth1",
+      "link": "s9-s10",
+      "openflow_port": "1",
+      "peer_interface": "s9-eth2",
+      "peer_node": "s9",
+      "switch": "s10"
+    },
+    {
+      "interface_name": "s10-eth2",
+      "link": "s10-s11",
+      "openflow_port": "2",
+      "peer_interface": "s11-eth1",
+      "peer_node": "s11",
+      "switch": "s10"
+    },
+    {
+      "interface_name": "s11-eth1",
+      "link": "s10-s11",
+      "openflow_port": "1",
+      "peer_interface": "s10-eth2",
+      "peer_node": "s10",
+      "switch": "s11"
+    },
+    {
+      "interface_name": "s11-eth2",
+      "link": "s11-s12",
+      "openflow_port": "2",
+      "peer_interface": "s12-eth1",
+      "peer_node": "s12",
+      "switch": "s11"
+    },
+    {
+      "interface_name": "s12-eth1",
+      "link": "s11-s12",
+      "openflow_port": "1",
+      "peer_interface": "s11-eth2",
+      "peer_node": "s11",
+      "switch": "s12"
+    },
+    {
+      "interface_name": "s12-eth2",
+      "link": "h2-s12",
+      "openflow_port": "2",
+      "peer_interface": "h2-eth0",
+      "peer_node": "h2",
+      "switch": "s12"
+    }
+  ],
+  "started_at": "2026-10-19T19:38:03.965138-07:00",
+  "status": "COMPLETE",
+  "switch_count": 12,
+  "telemetry_end": "2026-10-20T02:39:12.169879+00:00",
+  "telemetry_rows": 1728,
+  "telemetry_start": "2026-10-20T02:38:08.378203+00:00",
+  "topology": [
+    {
+      "left": "h1",
+      "params": {},
+      "right": "s1"
+    },
+    {
+      "left": "s1",
+      "params": {},
+      "right": "s2"
+    },
+    {
+      "left": "s2",
+      "params": {},
+      "right": "s3"
+    },
+    {
+      "left": "s3",
+      "params": {},
+      "right": "s4"
+    },
+    {
+      "left": "s4",
+      "params": {},
+      "right": "s5"
+    },
+    {
+      "left": "s5",
+      "params": {},
+      "right": "s6"
+    },
+    {
+      "left": "s6",
+      "params": {
+        "bw": 10,
+        "delay": "5ms"
+      },
+      "right": "s7"
+    },
+    {
+      "left": "s7",
+      "params": {},
+      "right": "s8"
+    },
+    {
+      "left": "s8",
+      "params": {},
+      "right": "s9"
+    },
+    {
+      "left": "s9",
+      "params": {},
+      "right": "s10"
+    },
+    {
+      "left": "s10",
+      "params": {},
+      "right": "s11"
+    },
+    {
+      "left": "s11",
+      "params": {},
+      "right": "s12"
+    },
+    {
+      "left": "s12",
+      "params": {},
+      "right": "h2"
+    }
+  ],
+  "topology_spec": {
+    "bottleneck_link": "s6-s7",
+    "bottleneck_params": {
+      "bw": 10,
+      "delay": "5ms"
+    },
+    "candidate_count": 11,
+    "candidate_links": [
+      "s1-s2",
+      "s2-s3",
+      "s3-s4",
+      "s4-s5",
+      "s5-s6",
+      "s6-s7",
+      "s7-s8",
+      "s8-s9",
+      "s9-s10",
+      "s10-s11",
+      "s11-s12"
+    ],
+    "hosts": [
+      "h1",
+      "h2"
+    ],
+    "kind": "linear",
+    "link_definitions": [
+      {
+        "left": "h1",
+        "params": {},
+        "right": "s1"
+      },
+      {
+        "left": "s1",
+        "params": {},
+        "right": "s2"
+      },
+      {
+        "left": "s2",
+        "params": {},
+        "right": "s3"
+      },
+      {
+        "left": "s3",
+        "params": {},
+        "right": "s4"
+      },
+      {
+        "left": "s4",
+        "params": {},
+        "right": "s5"
+      },
+      {
+        "left": "s5",
+        "params": {},
+        "right": "s6"
+      },
+      {
+        "left": "s6",
+        "params": {
+          "bw": 10,
+          "delay": "5ms"
+        },
+        "right": "s7"
+      },
+      {
+        "left": "s7",
+        "params": {},
+        "right": "s8"
+      },
+      {
+        "left": "s8",
+        "params": {},
+        "right": "s9"
+      },
+      {
+        "left": "s9",
+        "params": {},
+        "right": "s10"
+      },
+      {
+        "left": "s10",
+        "params": {},
+        "right": "s11"
+      },
+      {
+        "left": "s11",
+        "params": {},
+        "right": "s12"
+      },
+      {
+        "left": "s12",
+        "params": {},
+        "right": "h2"
+      }
+    ],
+    "switch_count": 12,
+    "switches": [
+      "s1",
+      "s2",
+      "s3",
+      "s4",
+      "s5",
+      "s6",
+      "s7",
+      "s8",
+      "s9",
+      "s10",
+      "s11",
+      "s12"
+    ]
+  },
+  "traffic_profile": {
+    "bottleneck_capacity_mbps": 10.0,
+    "bottleneck_link": "s6-s7",
+    "derived_from": "udp_6mbps_v1.json; identical load, phases, and bottleneck capacity; bottleneck moved to the middle link of the 12-switch linear topology",
+    "maximum_capacity_fraction": 0.7,
+    "offered_rate_mbps": 6.0,
+    "payload_size_policy": "iperf2 default; no -l override",
+    "phase_durations_seconds": {
+      "fault": 20,
+      "normal": 20,
+      "recovery": 20
+    },
+    "profile_id": "udp_6mbps_s6s7_10mbps_12sw_v1",
+    "protocol": "udp",
+    "sha256": "d8fb7daff110d99eb25f26bc0dcacda672f5c6edd01abb8d9675d0f231cb577f"
+  }
+}

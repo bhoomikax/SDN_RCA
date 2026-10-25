@@ -1,0 +1,15 @@
+link,switch,openflow_port,interface_name
+s1-s2,s1,2,s1-eth2
+s1-s2,s2,1,s2-eth1
+s2-s3,s2,2,s2-eth2
+s2-s3,s3,1,s3-eth1
+s3-s4,s3,2,s3-eth2
+s3-s4,s4,1,s4-eth1
+s4-s5,s4,2,s4-eth2
+s4-s5,s5,1,s5-eth1
+s5-s6,s5,2,s5-eth2
+s5-s6,s6,1,s6-eth1
+s6-s7,s6,2,s6-eth2
+s6-s7,s7,1,s7-eth1
+s7-s8,s7,2,s7-eth2
+s7-s8,s8,1,s8-eth1

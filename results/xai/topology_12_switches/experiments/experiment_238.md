@@ -1,0 +1,58 @@
+# Explanation report: experiment 238 (12-switch topology)
+
+Ground-truth faulty link: **s5-s6**. Candidate links: 11. All scores are uncalibrated ranking scores (not probabilities). The fault window is selected with the annotated phase (oracle); attributions are associations with the model score, not causal proof.
+
+## Random Forest
+
+- Predicted ranking: s5-s6 (0.492) > s4-s5 (0.195) > s1-s2 (0.102) > s2-s3 (0.085) > s7-s8 (0.049) > s6-s7 (0.041) > s9-s10 (0.024) > s8-s9 (0.009) > s10-s11 (0.002) > s3-s4 (0.001) > s11-s12 (0.000)
+- Ground truth: s5-s6; Top-1 CORRECT; rank of truth 1
+- Relevant switches/ports: predicted s5 port 2, s6 port 1; truth s5 port 2, s6 port 1
+- Method: shap.TreeExplainer exact Shapley values on the refit held-out-fold RandomForest (48 features)
+- Score semantics: RandomForest predict_proba vote fractions; uncalibrated ranking scores, not calibrated probabilities
+- Main supporting features for predicted s5-s6: s1_mean_anomaly (SHAP +0.038, value 1.36); s2_mean_anomaly (SHAP +0.027, value 1.38); s3_mean_anomaly (SHAP +0.026, value 1.40)
+- Validation: additivity error 3.8e-16 (pass); top-3 neutralization drop 0.133 vs random 0.039 (pass)
+- Limitations: Attribution is to RF anomaly-statistic features, not raw counters; features are z-score summaries per switch. SHAP explains the model's vote fraction, not a causal effect of the link on telemetry. Classes absent from the training fold cannot receive attribution.
+
+## Topology ranker
+
+- Predicted ranking: s10-s11 (0.727) > s11-s12 (0.682) > s9-s10 (0.682) > s5-s6 (0.659) > s8-s9 (0.636) > s7-s8 (0.568) > s6-s7 (0.500) > s2-s3 (0.409) > s3-s4 (0.386) > s4-s5 (0.386) > s1-s2 (0.364)
+- Ground truth: s5-s6; Top-1 INCORRECT; rank of truth 4
+- Relevant switches/ports: predicted s10 port 2, s11 port 1; truth s5 port 2, s6 port 1
+- Method: Transparent heuristic: four components ranked across all candidates with equal-weight utilities; leave-one-component-out sensitivity
+- Score semantics: Equal-weight mean of rank utilities in (0, 1]; not a probability
+- Predicted link components: link_anomaly=1.042 (utility 0.91); endpoint_imbalance=0.005 (utility 0.91); pair_onset_seconds=999.000 (utility 0.55); propagation_margin_seconds=-10.000 (utility 0.55)
+- Endpoint anomaly: s10:2=1.042, s11:1=1.047; deciding components: ['link_anomaly', 'endpoint_imbalance']
+- Limitations: Exposure of a fixed heuristic, not a learned attribution. Onset times are relative to the annotated fault start (oracle window). Component ties produce averaged ranks; ties are listed in the evaluation's score_ties column.
+
+## GCN
+
+- Predicted ranking: s5-s6 (0.911) > s6-s7 (0.046) > s4-s5 (0.028) > s7-s8 (0.007) > s8-s9 (0.002) > s10-s11 (0.002) > s1-s2 (0.001) > s2-s3 (0.001) > s11-s12 (0.001) > s9-s10 (0.001) > s3-s4 (0.000)
+- Ground truth: s5-s6; Top-1 CORRECT; rank of truth 1
+- Relevant switches/ports: predicted s5 port 2, s6 port 1; truth s5 port 2, s6 port 1
+- Method: Integrated gradients (512 steps) on the normalized fault-window graph sequence through the 3-seed mean-softmax ensemble; node/edge/timestep occlusion
+- Score semantics: Mean softmax over seeds; uncalibrated ranking scores, not calibrated probabilities
+- Main supporting switch/feature attributions: s5 tx_throughput_mbps (IG +0.089); s5 tx_packet_rate (IG +0.069); s12 rx_packet_rate (IG +0.066)
+- Validation: IG completeness gap 2.9e-04 (pass); zeroing top-2 switches ['s2', 's7'] drops score 0.092 vs random 0.152 (FAIL)
+- Limitations: Attributions are to normalized switch-level port-sum telemetry, not raw counters or individual ports. IG baseline is the training-mean fault-window state; a different baseline changes attributions. GNNExplainer (PyG) was not applied: it expects a single-graph forward(x, edge_index); these models consume a graph sequence. Explanations describe the ensemble's score function, not a causal mechanism in the network.
+
+## LSTM
+
+- Predicted ranking: s5-s6 (0.927) > s1-s2 (0.030) > s4-s5 (0.023) > s2-s3 (0.013) > s9-s10 (0.002) > s6-s7 (0.002) > s3-s4 (0.001) > s7-s8 (0.001) > s11-s12 (0.001) > s8-s9 (0.001) > s10-s11 (0.000)
+- Ground truth: s5-s6; Top-1 CORRECT; rank of truth 1
+- Relevant switches/ports: predicted s5 port 2, s6 port 1; truth s5 port 2, s6 port 1
+- Method: Integrated gradients (512 steps) on the normalized fault-window graph sequence through the 3-seed mean-softmax ensemble; node/edge/timestep occlusion
+- Score semantics: Mean softmax over seeds; uncalibrated ranking scores, not calibrated probabilities
+- Main supporting switch/feature attributions: s1 rx_throughput_mbps (IG +0.045); s1 rx_packet_rate (IG +0.043); s10 rx_throughput_mbps (IG +0.043)
+- Validation: IG completeness gap 4.7e-04 (pass); zeroing top-2 switches ['s10', 's1'] drops score 0.097 vs random 0.041 (pass)
+- Limitations: Attributions are to normalized switch-level port-sum telemetry, not raw counters or individual ports. IG baseline is the training-mean fault-window state; a different baseline changes attributions. GNNExplainer (PyG) was not applied: it expects a single-graph forward(x, edge_index); these models consume a graph sequence. Explanations describe the ensemble's score function, not a causal mechanism in the network.
+
+## GCN+LSTM
+
+- Predicted ranking: s5-s6 (0.623) > s2-s3 (0.141) > s4-s5 (0.072) > s1-s2 (0.070) > s3-s4 (0.062) > s9-s10 (0.014) > s6-s7 (0.011) > s7-s8 (0.003) > s8-s9 (0.003) > s10-s11 (0.001) > s11-s12 (0.001)
+- Ground truth: s5-s6; Top-1 CORRECT; rank of truth 1
+- Relevant switches/ports: predicted s5 port 2, s6 port 1; truth s5 port 2, s6 port 1
+- Method: Integrated gradients (512 steps) on the normalized fault-window graph sequence through the 3-seed mean-softmax ensemble; node/edge/timestep occlusion
+- Score semantics: Mean softmax over seeds; uncalibrated ranking scores, not calibrated probabilities
+- Main supporting switch/feature attributions: s3 tx_throughput_mbps (IG +0.047); s3 tx_packet_rate (IG +0.046); s2 tx_throughput_mbps (IG +0.042)
+- Validation: IG completeness gap 5.1e-04 (pass); zeroing top-2 switches ['s3', 's2'] drops score 0.089 vs random 0.038 (pass)
+- Limitations: Attributions are to normalized switch-level port-sum telemetry, not raw counters or individual ports. IG baseline is the training-mean fault-window state; a different baseline changes attributions. GNNExplainer (PyG) was not applied: it expects a single-graph forward(x, edge_index); these models consume a graph sequence. Explanations describe the ensemble's score function, not a causal mechanism in the network.

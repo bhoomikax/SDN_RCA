@@ -1,0 +1,20 @@
+{
+  "graph_only": {
+    "support": 24,
+    "top1_count": 23,
+    "top2_count": 23,
+    "mean_reciprocal_rank": 0.9722222222222222
+  },
+  "temporal_only": {
+    "support": 24,
+    "top1_count": 22,
+    "top2_count": 23,
+    "mean_reciprocal_rank": 0.9513888888888888
+  },
+  "graph_temporal": {
+    "support": 24,
+    "top1_count": 22,
+    "top2_count": 22,
+    "mean_reciprocal_rank": 0.9333333333333332
+  }
+}

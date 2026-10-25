@@ -64,6 +64,10 @@ Read-only, saved-artifact demo (prints the existing six-test rankings and checks
 - `docs/`: methodology, data card, protocol, results, limitations, demo, review outline, and paper draft.
 - `project_inventory.json`, `EXECUTION_LOG.md`: machine-readable inventory and chronological evidence log.
 
+## Topology scaling (8 and 12 switches) and explainability
+
+`linear_topology.py` generalizes the linear topology to N switches (N-1 candidate links, bottleneck on the middle link); the runner, collector, graph builder, and new evaluators (`evaluate_topology_loeo.py`, `evaluate_graph_temporal_topology_loeo.py`) take `--switches`. `build_topology_candidate.py` admits new raw runs under the existing validation rules, `explain_rca.py` produces validated SHAP / integrated-gradient / heuristic-component explanations, and `build_topology_comparison.py` assembles the 4/8/12 comparison. Commands, results, and limitations: [topology scaling runbook](docs/TOPOLOGY_SCALING_RUNBOOK.md), [topology scaling results](docs/RESULTS_TOPOLOGY_SCALING.md), and the [review summary](docs/REVIEW_SUMMARY_TOPOLOGY_SCALING.md); `audit_topology_results.py` recomputes every reported number from per-experiment artifacts. The four-switch artifacts above are frozen; `test_frozen_artifacts.py` checks their hashes.
+
 ## Research integrity
 
 Raw experiment evidence, historical datasets, checkpoints, and previous result files are retained. New derived datasets and evaluations use distinct paths and provenance. Never describe phase-oracle localization as online detection, or phase-classification accuracy as RCA accuracy. See [docs/LIMITATIONS.md](docs/LIMITATIONS.md) and [docs/DATASET_CARD.md](docs/DATASET_CARD.md).

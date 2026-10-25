@@ -1,0 +1,1454 @@
+{
+  "graph_only": {
+    "attribution_concentrated_on_predicted_endpoints": false,
+    "explained_class": "s2-s3",
+    "explanation_method": "Integrated gradients (512 steps) on the normalized fault-window graph sequence through the 3-seed mean-softmax ensemble; node/edge/timestep occlusion",
+    "fault_window_snapshots": 8,
+    "fold": {
+      "active_features": [
+        "rx_packet_rate",
+        "tx_packet_rate",
+        "rx_throughput_mbps",
+        "tx_throughput_mbps"
+      ],
+      "train_experiment_ids": [
+        101,
+        103,
+        104,
+        105,
+        106,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        123,
+        125,
+        126,
+        127
+      ]
+    },
+    "ground_truth": "s2-s3",
+    "ig_per_feature_signed": {
+      "rx_packet_rate": 0.2918122410774231,
+      "rx_throughput_mbps": 0.3183896839618683,
+      "tx_packet_rate": 0.17275702953338623,
+      "tx_throughput_mbps": 0.1816997081041336
+    },
+    "ig_per_switch_abs": {
+      "s1": 0.29146987199783325,
+      "s2": 0.05571972578763962,
+      "s3": 0.17654746770858765,
+      "s4": 0.22257615625858307,
+      "s5": 0.17608684301376343,
+      "s6": 0.07666405290365219,
+      "s7": 0.03308143466711044,
+      "s8": 0.06908614188432693
+    },
+    "ig_per_switch_signed": {
+      "s1": 0.29146987199783325,
+      "s2": -0.02735770121216774,
+      "s3": 0.17654746770858765,
+      "s4": 0.22257615625858307,
+      "s5": 0.17608684301376343,
+      "s6": 0.07666405290365219,
+      "s7": 0.03308143466711044,
+      "s8": 0.015590540133416653
+    },
+    "ig_per_timestep_signed": [
+      0.08255718648433685,
+      0.12583822011947632,
+      0.1261642724275589,
+      0.12681344151496887,
+      0.12582539021968842,
+      0.1260761022567749,
+      0.12564432621002197,
+      0.12573972344398499
+    ],
+    "label": "GCN",
+    "limitations": [
+      "Attributions are to normalized switch-level port-sum telemetry, not raw counters or individual ports.",
+      "IG baseline is the training-mean fault-window state; a different baseline changes attributions.",
+      "GNNExplainer (PyG) was not applied: it expects a single-graph forward(x, edge_index); these models consume a graph sequence.",
+      "Explanations describe the ensemble's score function, not a causal mechanism in the network."
+    ],
+    "method": "graph_only",
+    "occlusion": {
+      "edge_removed_delta": {
+        "s1-s2": 0.16690266132354736,
+        "s2-s3": 0.011514425277709961,
+        "s3-s4": 0.20662778615951538,
+        "s4-s5": -0.00041919946670532227,
+        "s5-s6": -0.000479280948638916,
+        "s6-s7": 6.175041198730469e-05,
+        "s7-s8": 0.00014728307723999023
+      },
+      "original_score": 0.9985184073448181,
+      "switch_zeroed_delta": {
+        "s1": 0.425933837890625,
+        "s2": 0.2181684374809265,
+        "s3": 0.20827734470367432,
+        "s4": 0.04377388954162598,
+        "s5": 0.0034748315811157227,
+        "s6": 0.00041604042053222656,
+        "s7": 0.0009113550186157227,
+        "s8": 0.001835465431213379
+      },
+      "timestep_removed_delta": [
+        -0.0006704926490783691,
+        0.00014704465866088867,
+        0.00012135505676269531,
+        0.0001016855239868164,
+        0.00014472007751464844,
+        0.00013649463653564453,
+        0.00015163421630859375,
+        0.00014585256576538086
+      ]
+    },
+    "rank_of_truth": 1,
+    "ranking": [
+      "s2-s3",
+      "s3-s4",
+      "s1-s2",
+      "s5-s6",
+      "s4-s5",
+      "s6-s7",
+      "s7-s8"
+    ],
+    "relevant_switches_ports": {
+      "ground_truth": {
+        "endpoints": [
+          "s2 port 2",
+          "s3 port 1"
+        ],
+        "link": "s2-s3"
+      },
+      "predicted": {
+        "endpoints": [
+          "s2 port 2",
+          "s3 port 1"
+        ],
+        "link": "s2-s3"
+      }
+    },
+    "score_semantics": "Mean softmax over seeds; uncalibrated ranking scores, not calibrated probabilities",
+    "scores": {
+      "s1-s2": 0.00016819695883896202,
+      "s2-s3": 0.9985184073448181,
+      "s3-s4": 0.0013116806512698531,
+      "s4-s5": 6.476917491227141e-08,
+      "s5-s6": 1.7603006199351512e-06,
+      "s6-s7": 1.683196693136324e-09,
+      "s7-s8": 4.1350023405328784e-10
+    },
+    "top1_correct": true,
+    "top_switch_feature_attributions": [
+      {
+        "feature": "tx_throughput_mbps",
+        "ig": 0.10808102786540985,
+        "switch": "s1"
+      },
+      {
+        "feature": "tx_packet_rate",
+        "ig": 0.10255119949579239,
+        "switch": "s1"
+      },
+      {
+        "feature": "rx_throughput_mbps",
+        "ig": 0.10013312101364136,
+        "switch": "s4"
+      },
+      {
+        "feature": "rx_packet_rate",
+        "ig": 0.08923319727182388,
+        "switch": "s4"
+      },
+      {
+        "feature": "rx_throughput_mbps",
+        "ig": 0.08203091472387314,
+        "switch": "s5"
+      },
+      {
+        "feature": "rx_packet_rate",
+        "ig": 0.07493146508932114,
+        "switch": "s5"
+      }
+    ],
+    "validation": {
+      "checkpoint_policy_matches_fold": true,
+      "completeness_abs_gap": 0.001095462590456009,
+      "completeness_f_baseline": 0.03276432678103447,
+      "completeness_f_x": 0.9985184073448181,
+      "completeness_pass": true,
+      "completeness_relative_gap": 0.0011343080112242493,
+      "completeness_sum_attributions": 0.9646586179733276,
+      "ensemble_scores_match_saved": true,
+      "ig_baseline": "all-zero normalized features (training-mean fault-window telemetry)",
+      "ig_steps": 512,
+      "perturbation_pass": true,
+      "perturbation_top_k_nodes": [
+        "s1",
+        "s4"
+      ],
+      "random_k_drop_max": 0.8462871015071869,
+      "random_k_drop_mean": 0.258802504837513,
+      "top1_after_top_k_nodes_zeroed": "s2-s3",
+      "top_k_drop": 0.42464709281921387
+    }
+  },
+  "graph_temporal": {
+    "attribution_concentrated_on_predicted_endpoints": false,
+    "explained_class": "s2-s3",
+    "explanation_method": "Integrated gradients (512 steps) on the normalized fault-window graph sequence through the 3-seed mean-softmax ensemble; node/edge/timestep occlusion",
+    "fault_window_snapshots": 8,
+    "fold": {
+      "active_features": [
+        "rx_packet_rate",
+        "tx_packet_rate",
+        "rx_throughput_mbps",
+        "tx_throughput_mbps"
+      ],
+      "train_experiment_ids": [
+        101,
+        103,
+        104,
+        105,
+        106,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        123,
+        125,
+        126,
+        127
+      ]
+    },
+    "ground_truth": "s2-s3",
+    "ig_per_feature_signed": {
+      "rx_packet_rate": 0.293901652097702,
+      "rx_throughput_mbps": 0.34895968437194824,
+      "tx_packet_rate": 0.14116686582565308,
+      "tx_throughput_mbps": 0.1619940996170044
+    },
+    "ig_per_switch_abs": {
+      "s1": 0.2173442542552948,
+      "s2": 0.24121029675006866,
+      "s3": 0.3183639645576477,
+      "s4": 0.3132842779159546,
+      "s5": 0.2210065871477127,
+      "s6": 0.132705956697464,
+      "s7": 0.07308347523212433,
+      "s8": 0.05014140531420708
+    },
+    "ig_per_switch_signed": {
+      "s1": -0.15080155432224274,
+      "s2": -0.011761805042624474,
+      "s3": 0.3183639645576477,
+      "s4": 0.3132842779159546,
+      "s5": 0.2210065871477127,
+      "s6": 0.132705956697464,
+      "s7": 0.07308347523212433,
+      "s8": 0.05014140531420708
+    },
+    "ig_per_timestep_signed": [
+      0.054214540868997574,
+      0.04825707525014877,
+      0.04932987317442894,
+      0.05583604425191879,
+      0.06760267168283463,
+      0.08884843438863754,
+      0.13597959280014038,
+      0.4459540843963623
+    ],
+    "label": "GCN+LSTM",
+    "limitations": [
+      "Attributions are to normalized switch-level port-sum telemetry, not raw counters or individual ports.",
+      "IG baseline is the training-mean fault-window state; a different baseline changes attributions.",
+      "GNNExplainer (PyG) was not applied: it expects a single-graph forward(x, edge_index); these models consume a graph sequence.",
+      "Explanations describe the ensemble's score function, not a causal mechanism in the network."
+    ],
+    "method": "graph_temporal",
+    "occlusion": {
+      "edge_removed_delta": {
+        "s1-s2": 0.019125044345855713,
+        "s2-s3": 0.011024892330169678,
+        "s3-s4": 0.009977340698242188,
+        "s4-s5": 0.0017271637916564941,
+        "s5-s6": -0.00020456314086914062,
+        "s6-s7": -0.0003688335418701172,
+        "s7-s8": 6.020069122314453e-06
+      },
+      "original_score": 0.9702677726745605,
+      "switch_zeroed_delta": {
+        "s1": 0.5954534709453583,
+        "s2": 0.03603172302246094,
+        "s3": 0.10981541872024536,
+        "s4": 0.0655863881111145,
+        "s5": 0.01318979263305664,
+        "s6": 0.0039847493171691895,
+        "s7": 0.0020194053649902344,
+        "s8": 0.0018993020057678223
+      },
+      "timestep_removed_delta": [
+        -0.0010992884635925293,
+        0.00015932321548461914,
+        0.00013399124145507812,
+        0.00011515617370605469,
+        0.00018268823623657227,
+        0.00016623735427856445,
+        0.00020247697830200195,
+        0.00020569562911987305
+      ]
+    },
+    "rank_of_truth": 1,
+    "ranking": [
+      "s2-s3",
+      "s3-s4",
+      "s1-s2",
+      "s4-s5",
+      "s5-s6",
+      "s6-s7",
+      "s7-s8"
+    ],
+    "relevant_switches_ports": {
+      "ground_truth": {
+        "endpoints": [
+          "s2 port 2",
+          "s3 port 1"
+        ],
+        "link": "s2-s3"
+      },
+      "predicted": {
+        "endpoints": [
+          "s2 port 2",
+          "s3 port 1"
+        ],
+        "link": "s2-s3"
+      }
+    },
+    "score_semantics": "Mean softmax over seeds; uncalibrated ranking scores, not calibrated probabilities",
+    "scores": {
+      "s1-s2": 0.008358869701623917,
+      "s2-s3": 0.9702677726745605,
+      "s3-s4": 0.017366604879498482,
+      "s4-s5": 0.0028859858866780996,
+      "s5-s6": 0.0005910419276915491,
+      "s6-s7": 0.0003434788959566504,
+      "s7-s8": 0.00018618936883285642
+    },
+    "top1_correct": true,
+    "top_switch_feature_attributions": [
+      {
+        "feature": "rx_throughput_mbps",
+        "ig": 0.1186806932091713,
+        "switch": "s4"
+      },
+      {
+        "feature": "rx_throughput_mbps",
+        "ig": 0.10682330280542374,
+        "switch": "s3"
+      },
+      {
+        "feature": "rx_packet_rate",
+        "ig": 0.09994287043809891,
+        "switch": "s4"
+      },
+      {
+        "feature": "rx_packet_rate",
+        "ig": 0.0913461297750473,
+        "switch": "s3"
+      },
+      {
+        "feature": "rx_throughput_mbps",
+        "ig": 0.08953690528869629,
+        "switch": "s5"
+      },
+      {
+        "feature": "rx_packet_rate",
+        "ig": 0.0748199075460434,
+        "switch": "s5"
+      }
+    ],
+    "validation": {
+      "checkpoint_policy_matches_fold": true,
+      "completeness_abs_gap": 0.0003316979855298996,
+      "completeness_f_baseline": 0.024577079340815544,
+      "completeness_f_x": 0.9702677726745605,
+      "completeness_pass": true,
+      "completeness_relative_gap": 0.00035074680111379675,
+      "completeness_sum_attributions": 0.9460223913192749,
+      "ensemble_scores_match_saved": true,
+      "ig_baseline": "all-zero normalized features (training-mean fault-window telemetry)",
+      "ig_steps": 512,
+      "perturbation_pass": true,
+      "perturbation_top_k_nodes": [
+        "s3",
+        "s4"
+      ],
+      "random_k_drop_max": 0.6264509856700897,
+      "random_k_drop_mean": 0.20098350942134857,
+      "top1_after_top_k_nodes_zeroed": "s3-s4",
+      "top_k_drop": 0.8570516332983971
+    }
+  },
+  "rf_baseline": {
+    "all_shap_values": {
+      "s1_first_anomaly_seconds": {
+        "s1-s2": -0.023783257160729456,
+        "s2-s3": 0.020366554336086036,
+        "s3-s4": 0.002318583665315364,
+        "s4-s5": 0.0012634371928040883,
+        "s5-s6": -0.0010856859045032083,
+        "s6-s7": 0.0005585327860196618,
+        "s7-s8": 0.00036183508500750616
+      },
+      "s1_max_anomaly": {
+        "s1-s2": -0.011675247495272063,
+        "s2-s3": 0.013699440164831055,
+        "s3-s4": -0.0013790456527852965,
+        "s4-s5": 0.0023125103054159233,
+        "s5-s6": -0.003142263770286272,
+        "s6-s7": -6.582615922421642e-05,
+        "s7-s8": 0.00025043260732087174
+      },
+      "s1_mean_anomaly": {
+        "s1-s2": -0.03341025188541145,
+        "s2-s3": 0.015753200879815236,
+        "s3-s4": 0.009185418419279242,
+        "s4-s5": 0.0048988464088325565,
+        "s5-s6": 0.0006707483955014284,
+        "s6-s7": 0.003008465925033655,
+        "s7-s8": -0.00010642814305066958
+      },
+      "s1_persistence": {
+        "s1-s2": -0.034643624491035536,
+        "s2-s3": 0.02630002450565387,
+        "s3-s4": 0.0047513926028564,
+        "s4-s5": 0.0024431520187887476,
+        "s5-s6": -0.00047589542264352716,
+        "s6-s7": 0.0007545093106603739,
+        "s7-s8": 0.0008704414757196835
+      },
+      "s2_first_anomaly_seconds": {
+        "s1-s2": 0.01641689141752362,
+        "s2-s3": 0.041032294107593896,
+        "s3-s4": -0.03789616213021102,
+        "s4-s5": -0.00822701282604365,
+        "s5-s6": -0.007308542566957459,
+        "s6-s7": -0.0023058519386227245,
+        "s7-s8": -0.0017116160632826738
+      },
+      "s2_max_anomaly": {
+        "s1-s2": -0.042081096885146545,
+        "s2-s3": 0.03688619584385973,
+        "s3-s4": 0.006708699742333045,
+        "s4-s5": -0.0034367850614538714,
+        "s5-s6": 0.00198476092377339,
+        "s6-s7": -0.001517064162613418,
+        "s7-s8": 0.0014552895992476804
+      },
+      "s2_mean_anomaly": {
+        "s1-s2": -0.027879469573842026,
+        "s2-s3": 0.046518914095328726,
+        "s3-s4": -0.011125900175752153,
+        "s4-s5": -0.005929891305413098,
+        "s5-s6": -0.0008126200769238198,
+        "s6-s7": 2.8113980916623596e-05,
+        "s7-s8": -0.0007991469443142501
+      },
+      "s2_persistence": {
+        "s1-s2": 0.014408717239095585,
+        "s2-s3": 0.043045805381442835,
+        "s3-s4": -0.038784999283646204,
+        "s4-s5": -0.009585616977978556,
+        "s5-s6": -0.004695895809982218,
+        "s6-s7": -0.002203289673993168,
+        "s7-s8": -0.002184720874938266
+      },
+      "s3_first_anomaly_seconds": {
+        "s1-s2": 0.00827915323814099,
+        "s2-s3": 0.043609842110081586,
+        "s3-s4": -0.0037662685471675696,
+        "s4-s5": -0.02279406985738487,
+        "s5-s6": -0.015993248130625304,
+        "s6-s7": -0.004850107678784093,
+        "s7-s8": -0.00448530113426073
+      },
+      "s3_max_anomaly": {
+        "s1-s2": 0.014219209218408113,
+        "s2-s3": 0.061565143816557,
+        "s3-s4": -0.027967623515127063,
+        "s4-s5": -0.022614617871309306,
+        "s5-s6": -0.014624666050765497,
+        "s6-s7": -0.005400125385043722,
+        "s7-s8": -0.005177320212719524
+      },
+      "s3_mean_anomaly": {
+        "s1-s2": 0.01606009248714358,
+        "s2-s3": 0.04278601393253842,
+        "s3-s4": 4.699554693824489e-05,
+        "s4-s5": -0.030371743435868553,
+        "s5-s6": -0.018049829932957524,
+        "s6-s7": -0.004646929080684185,
+        "s7-s8": -0.0058245995171100065
+      },
+      "s3_persistence": {
+        "s1-s2": 0.003908062972763621,
+        "s2-s3": 0.015468239640555343,
+        "s3-s4": 0.012479033791197806,
+        "s4-s5": -0.019541925732061677,
+        "s5-s6": -0.007823110987433955,
+        "s6-s7": -0.002523960323354309,
+        "s7-s8": -0.001966339361666826
+      },
+      "s4_first_anomaly_seconds": {
+        "s1-s2": 0.002556023969574937,
+        "s2-s3": 0.02455959546194848,
+        "s3-s4": 0.005835923423687125,
+        "s4-s5": 0.007178815360682126,
+        "s5-s6": -0.023551185758611058,
+        "s6-s7": -0.009538419453720972,
+        "s7-s8": -0.007040753003560638
+      },
+      "s4_max_anomaly": {
+        "s1-s2": 0.012222853938704299,
+        "s2-s3": 0.0301487768215641,
+        "s3-s4": 0.016857098039361612,
+        "s4-s5": -0.02847624880695066,
+        "s5-s6": -0.015181290175789118,
+        "s6-s7": -0.012149023142909712,
+        "s7-s8": -0.003422166673980511
+      },
+      "s4_mean_anomaly": {
+        "s1-s2": 0.019368778494142928,
+        "s2-s3": 0.032619022783656824,
+        "s3-s4": 0.005369090021509239,
+        "s4-s5": -0.01244470131513015,
+        "s5-s6": -0.029220420366372245,
+        "s6-s7": -0.008936240339548828,
+        "s7-s8": -0.006755529278257773
+      },
+      "s4_persistence": {
+        "s1-s2": 0.005307522386463615,
+        "s2-s3": 0.02346823925151741,
+        "s3-s4": 0.005916118001118038,
+        "s4-s5": 0.01058390322200241,
+        "s5-s6": -0.024317054667152633,
+        "s6-s7": -0.013048403698672918,
+        "s7-s8": -0.007910324495275926
+      },
+      "s5_first_anomaly_seconds": {
+        "s1-s2": 0.004967572464924696,
+        "s2-s3": 0.015320302774915771,
+        "s3-s4": -0.00988411667567262,
+        "s4-s5": 0.00017762657322948486,
+        "s5-s6": 0.0020842343807104657,
+        "s6-s7": -0.014200802649838246,
+        "s7-s8": 0.0015351831317304467
+      },
+      "s5_max_anomaly": {
+        "s1-s2": 0.0048979219317323375,
+        "s2-s3": 0.012753150175458888,
+        "s3-s4": 0.007294591778056553,
+        "s4-s5": 0.009140469589207457,
+        "s5-s6": -0.012409907599266365,
+        "s6-s7": -0.017934304192464785,
+        "s7-s8": -0.0037419216827240874
+      },
+      "s5_mean_anomaly": {
+        "s1-s2": 0.004439074188176238,
+        "s2-s3": 0.026904476468961,
+        "s3-s4": 0.006974453739493529,
+        "s4-s5": 0.006613103146681253,
+        "s5-s6": -0.019095327470419223,
+        "s6-s7": -0.017355821519925593,
+        "s7-s8": -0.008479958552967199
+      },
+      "s5_persistence": {
+        "s1-s2": 0.003054609778217654,
+        "s2-s3": 0.016854012508877043,
+        "s3-s4": -0.00732345491525376,
+        "s4-s5": 0.0035245536065219817,
+        "s5-s6": 0.004489603456610101,
+        "s6-s7": -0.012904050190987646,
+        "s7-s8": -0.007695274243985378
+      },
+      "s6_first_anomaly_seconds": {
+        "s1-s2": 0.0010711520174435775,
+        "s2-s3": 0.00817557965292657,
+        "s3-s4": -0.004254846724451647,
+        "s4-s5": -0.004178260375127383,
+        "s5-s6": 0.0007948697508038903,
+        "s6-s7": -0.0006646689387614593,
+        "s7-s8": -0.0009438253828335491
+      },
+      "s6_max_anomaly": {
+        "s1-s2": 0.0018925448505416917,
+        "s2-s3": 0.0065846552731618395,
+        "s3-s4": 0.004678070999799759,
+        "s4-s5": 0.003614642350029914,
+        "s5-s6": 0.0052450565412456495,
+        "s6-s7": -0.012671822621905634,
+        "s7-s8": -0.009343147392873223
+      },
+      "s6_mean_anomaly": {
+        "s1-s2": 0.004445539547790675,
+        "s2-s3": 0.013488933189254381,
+        "s3-s4": -0.004563986072939069,
+        "s4-s5": 0.0006780427125497501,
+        "s5-s6": 0.009817516695302418,
+        "s6-s7": -0.003063674120811128,
+        "s7-s8": -0.020802371951147033
+      },
+      "s6_persistence": {
+        "s1-s2": 0.0015719584065379821,
+        "s2-s3": 0.0033492301628786276,
+        "s3-s4": 0.0003697802710169793,
+        "s4-s5": -0.0004588832162782786,
+        "s5-s6": 0.006822281298460984,
+        "s6-s7": 0.0030634104794501557,
+        "s7-s8": -0.014717777402066451
+      },
+      "s7_first_anomaly_seconds": {
+        "s1-s2": 0.001987173684237836,
+        "s2-s3": 0.003957725733493277,
+        "s3-s4": -0.004226500173178169,
+        "s4-s5": -0.00347988048507017,
+        "s5-s6": 0.006220507958883189,
+        "s6-s7": -0.0016506491701689576,
+        "s7-s8": -0.002808377548197005
+      },
+      "s7_max_anomaly": {
+        "s1-s2": 0.0022879759019081643,
+        "s2-s3": 0.004308966471139139,
+        "s3-s4": 0.0017124943856592087,
+        "s4-s5": 0.001719765939659076,
+        "s5-s6": 0.0017266678630238855,
+        "s6-s7": 0.004632742676476693,
+        "s7-s8": -0.01638861323786616
+      },
+      "s7_mean_anomaly": {
+        "s1-s2": 0.006787669983124041,
+        "s2-s3": 0.005705385561695798,
+        "s3-s4": -0.0071604954731214815,
+        "s4-s5": -0.003161155514932381,
+        "s5-s6": 0.008094574843551826,
+        "s6-s7": 0.0012179099485937553,
+        "s7-s8": -0.01148388934891156
+      },
+      "s7_persistence": {
+        "s1-s2": -0.00011543288813109787,
+        "s2-s3": 0.000519168053694908,
+        "s3-s4": -0.0010568095786496648,
+        "s4-s5": -0.0018573427162472905,
+        "s5-s6": 0.0037811946432372585,
+        "s6-s7": -0.0008392105835893133,
+        "s7-s8": -0.00043156693031479914
+      },
+      "s8_first_anomaly_seconds": {
+        "s1-s2": 0.002012084260415687,
+        "s2-s3": 0.009672685016035399,
+        "s3-s4": -0.00814375225463528,
+        "s4-s5": -0.007654828501888635,
+        "s5-s6": 0.005260703073628398,
+        "s6-s7": -0.0015332429416054397,
+        "s7-s8": 0.0003863513480498717
+      },
+      "s8_max_anomaly": {
+        "s1-s2": 0.0,
+        "s2-s3": 0.0,
+        "s3-s4": 0.0,
+        "s4-s5": 0.0,
+        "s5-s6": 0.0,
+        "s6-s7": 0.0,
+        "s7-s8": 0.0
+      },
+      "s8_mean_anomaly": {
+        "s1-s2": 0.007164928437338925,
+        "s2-s3": 0.0007222140855420153,
+        "s3-s4": -0.005197047575251983,
+        "s4-s5": -0.008089316183462154,
+        "s5-s6": 0.008875578864882981,
+        "s6-s7": -0.0018424251535939407,
+        "s7-s8": -0.0016339324754558412
+      },
+      "s8_persistence": {
+        "s1-s2": 0.0,
+        "s2-s3": 0.0010784339611570736,
+        "s3-s4": -0.00032781228433402353,
+        "s4-s5": -0.0021847524950118396,
+        "s5-s6": 0.002436244344758838,
+        "s6-s7": -0.0006931343051671047,
+        "s7-s8": -0.00030897922140294375
+      }
+    },
+    "explanation_method": "shap.TreeExplainer exact Shapley values on the refit held-out-fold RandomForest (32 features)",
+    "feature_importance_impurity": {
+      "s1_first_anomaly_seconds": 0.024023253464511476,
+      "s1_max_anomaly": 0.028680197278129663,
+      "s1_mean_anomaly": 0.0485079186808894,
+      "s1_persistence": 0.02871231491468251,
+      "s2_first_anomaly_seconds": 0.02709612061277697,
+      "s2_max_anomaly": 0.044339838706134956,
+      "s2_mean_anomaly": 0.04404923317381764,
+      "s2_persistence": 0.031207270824309668,
+      "s3_first_anomaly_seconds": 0.03622210763547159,
+      "s3_max_anomaly": 0.04636217421311723,
+      "s3_mean_anomaly": 0.05049999665058977,
+      "s3_persistence": 0.02769673202185975,
+      "s4_first_anomaly_seconds": 0.03282914485092928,
+      "s4_max_anomaly": 0.042845341023995204,
+      "s4_mean_anomaly": 0.05649519745041214,
+      "s4_persistence": 0.037559371512813515,
+      "s5_first_anomaly_seconds": 0.025495539398960525,
+      "s5_max_anomaly": 0.03954773518063553,
+      "s5_mean_anomaly": 0.05521820984737745,
+      "s5_persistence": 0.027206852300079624,
+      "s6_first_anomaly_seconds": 0.013323363631696394,
+      "s6_max_anomaly": 0.029389039867636673,
+      "s6_mean_anomaly": 0.049981844072781056,
+      "s6_persistence": 0.031514790422673515,
+      "s7_first_anomaly_seconds": 0.01627258615347773,
+      "s7_max_anomaly": 0.024866932814623696,
+      "s7_mean_anomaly": 0.028971652279016605,
+      "s7_persistence": 0.005081204000341816,
+      "s8_first_anomaly_seconds": 0.016557729264045928,
+      "s8_max_anomaly": 0.0,
+      "s8_mean_anomaly": 0.024112536316308338,
+      "s8_persistence": 0.005333771435904305
+    },
+    "feature_values": {
+      "s1_first_anomaly_seconds": 999.0,
+      "s1_max_anomaly": 0.6078496161486775,
+      "s1_mean_anomaly": 0.4737436723296673,
+      "s1_persistence": 0.0,
+      "s2_first_anomaly_seconds": 0.0,
+      "s2_max_anomaly": 1.4775939142552201,
+      "s2_mean_anomaly": 1.3840546852616074,
+      "s2_persistence": 1.0,
+      "s3_first_anomaly_seconds": 0.0,
+      "s3_max_anomaly": 2.3911414641984585,
+      "s3_mean_anomaly": 2.3264152704149654,
+      "s3_persistence": 1.0,
+      "s4_first_anomaly_seconds": 0.0,
+      "s4_max_anomaly": 2.319441658213622,
+      "s4_mean_anomaly": 2.2611178495945383,
+      "s4_persistence": 1.0,
+      "s5_first_anomaly_seconds": 0.0,
+      "s5_max_anomaly": 2.208736659881453,
+      "s5_mean_anomaly": 2.157129027635235,
+      "s5_persistence": 1.0,
+      "s6_first_anomaly_seconds": 0.0,
+      "s6_max_anomaly": 2.1806119185993342,
+      "s6_mean_anomaly": 2.134478174458571,
+      "s6_persistence": 1.0,
+      "s7_first_anomaly_seconds": 0.0,
+      "s7_max_anomaly": 2.1626186668720635,
+      "s7_mean_anomaly": 2.122106592635901,
+      "s7_persistence": 1.0,
+      "s8_first_anomaly_seconds": 0.0,
+      "s8_max_anomaly": 2.149251656627859,
+      "s8_mean_anomaly": 2.114656150364669,
+      "s8_persistence": 1.0
+    },
+    "fold": {
+      "active_metrics": [
+        "rx_packet_rate",
+        "tx_packet_rate",
+        "rx_throughput_mbps",
+        "tx_throughput_mbps"
+      ],
+      "train_experiment_ids": [
+        101,
+        103,
+        104,
+        105,
+        106,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        123,
+        125,
+        126,
+        127
+      ]
+    },
+    "ground_truth": "s2-s3",
+    "label": "Random Forest",
+    "limitations": [
+      "Attribution is to RF anomaly-statistic features, not raw counters; features are z-score summaries per switch.",
+      "SHAP explains the model's vote fraction, not a causal effect of the link on telemetry.",
+      "Classes absent from the training fold cannot receive attribution."
+    ],
+    "method": "rf_baseline",
+    "predicted_class_attribution": {
+      "base_value": 0.1399999999999998,
+      "class": "s2-s3",
+      "score": 0.7872222222222222,
+      "support_by_switch": {
+        "s1": 0.0761192198863862,
+        "s2": 0.1674832094282252,
+        "s3": 0.16342923949973234,
+        "s4": 0.11079563431868682,
+        "s5": 0.07183194192821271,
+        "s6": 0.03159839827822142,
+        "s7": 0.014491245820023122,
+        "s8": 0.011473333062734488
+      },
+      "top_features": [
+        {
+          "feature": "s3_max_anomaly",
+          "shap": 0.061565143816557,
+          "switch": "s3",
+          "value": 2.3911414641984585
+        },
+        {
+          "feature": "s2_mean_anomaly",
+          "shap": 0.046518914095328726,
+          "switch": "s2",
+          "value": 1.3840546852616074
+        },
+        {
+          "feature": "s3_first_anomaly_seconds",
+          "shap": 0.043609842110081586,
+          "switch": "s3",
+          "value": 0.0
+        },
+        {
+          "feature": "s2_persistence",
+          "shap": 0.043045805381442835,
+          "switch": "s2",
+          "value": 1.0
+        },
+        {
+          "feature": "s3_mean_anomaly",
+          "shap": 0.04278601393253842,
+          "switch": "s3",
+          "value": 2.3264152704149654
+        }
+      ]
+    },
+    "rank_of_truth": 1,
+    "ranking": [
+      "s2-s3",
+      "s1-s2",
+      "s3-s4",
+      "s5-s6",
+      "s4-s5",
+      "s6-s7",
+      "s7-s8"
+    ],
+    "relevant_switches_ports": {
+      "ground_truth": {
+        "endpoints": [
+          "s2 port 2",
+          "s3 port 1"
+        ],
+        "link": "s2-s3"
+      },
+      "predicted": {
+        "endpoints": [
+          "s2 port 2",
+          "s3 port 1"
+        ],
+        "link": "s2-s3"
+      }
+    },
+    "score_semantics": "RandomForest predict_proba vote fractions; uncalibrated ranking scores, not calibrated probabilities",
+    "scores": {
+      "s1-s2": 0.12733333333333333,
+      "s2-s3": 0.7872222222222222,
+      "s3-s4": 0.06338095238095237,
+      "s4-s5": 0.007777777777777777,
+      "s5-s6": 0.014285714285714285,
+      "s6-s7": 0.0,
+      "s7-s8": 0.0
+    },
+    "top1_correct": true,
+    "true_class_attribution": {
+      "base_value": 0.1399999999999998,
+      "class": "s2-s3",
+      "score": 0.7872222222222222,
+      "support_by_switch": {
+        "s1": 0.0761192198863862,
+        "s2": 0.1674832094282252,
+        "s3": 0.16342923949973234,
+        "s4": 0.11079563431868682,
+        "s5": 0.07183194192821271,
+        "s6": 0.03159839827822142,
+        "s7": 0.014491245820023122,
+        "s8": 0.011473333062734488
+      },
+      "top_features": [
+        {
+          "feature": "s3_max_anomaly",
+          "shap": 0.061565143816557,
+          "switch": "s3",
+          "value": 2.3911414641984585
+        },
+        {
+          "feature": "s2_mean_anomaly",
+          "shap": 0.046518914095328726,
+          "switch": "s2",
+          "value": 1.3840546852616074
+        },
+        {
+          "feature": "s3_first_anomaly_seconds",
+          "shap": 0.043609842110081586,
+          "switch": "s3",
+          "value": 0.0
+        },
+        {
+          "feature": "s2_persistence",
+          "shap": 0.043045805381442835,
+          "switch": "s2",
+          "value": 1.0
+        },
+        {
+          "feature": "s3_mean_anomaly",
+          "shap": 0.04278601393253842,
+          "switch": "s3",
+          "value": 2.3264152704149654
+        }
+      ]
+    },
+    "validation": {
+      "additivity_max_abs_error": 3.929148673087468e-16,
+      "additivity_pass": true,
+      "perturbation_pass": true,
+      "perturbation_top_k": 3,
+      "random_k_drop_max": 0.2555555555555554,
+      "random_k_drop_mean": 0.11344444444444438,
+      "top1_after_top_k_neutralized": "s2-s3",
+      "top_k_drop": 0.24111111111111105
+    }
+  },
+  "temporal_only": {
+    "attribution_concentrated_on_predicted_endpoints": true,
+    "explained_class": "s2-s3",
+    "explanation_method": "Integrated gradients (512 steps) on the normalized fault-window graph sequence through the 3-seed mean-softmax ensemble; node/edge/timestep occlusion",
+    "fault_window_snapshots": 8,
+    "fold": {
+      "active_features": [
+        "rx_packet_rate",
+        "tx_packet_rate",
+        "rx_throughput_mbps",
+        "tx_throughput_mbps"
+      ],
+      "train_experiment_ids": [
+        101,
+        103,
+        104,
+        105,
+        106,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        123,
+        125,
+        126,
+        127
+      ]
+    },
+    "ground_truth": "s2-s3",
+    "ig_per_feature_signed": {
+      "rx_packet_rate": 0.272347629070282,
+      "rx_throughput_mbps": 0.25358816981315613,
+      "tx_packet_rate": 0.1744425892829895,
+      "tx_throughput_mbps": 0.17801356315612793
+    },
+    "ig_per_switch_abs": {
+      "s1": 0.18072831630706787,
+      "s2": 0.25487658381462097,
+      "s3": 0.22078563272953033,
+      "s4": 0.07350462675094604,
+      "s5": 0.08363531529903412,
+      "s6": 0.0368540994822979,
+      "s7": 0.06016257777810097,
+      "s8": 0.043722521513700485
+    },
+    "ig_per_switch_signed": {
+      "s1": 0.18072831630706787,
+      "s2": 0.25487658381462097,
+      "s3": 0.2196195423603058,
+      "s4": 0.07350462675094604,
+      "s5": 0.05672870948910713,
+      "s6": 0.012592366896569729,
+      "s7": 0.05414269119501114,
+      "s8": 0.02619912475347519
+    },
+    "ig_per_timestep_signed": [
+      0.019340867176651955,
+      0.04351937770843506,
+      0.058458805084228516,
+      0.07692880928516388,
+      0.09759753942489624,
+      0.12779474258422852,
+      0.1681164652109146,
+      0.2866353392601013
+    ],
+    "label": "LSTM",
+    "limitations": [
+      "Attributions are to normalized switch-level port-sum telemetry, not raw counters or individual ports.",
+      "IG baseline is the training-mean fault-window state; a different baseline changes attributions.",
+      "GNNExplainer (PyG) was not applied: it expects a single-graph forward(x, edge_index); these models consume a graph sequence.",
+      "Explanations describe the ensemble's score function, not a causal mechanism in the network."
+    ],
+    "method": "temporal_only",
+    "occlusion": {
+      "edge_removed_delta": "not applicable: model ignores edges",
+      "original_score": 0.9966340065002441,
+      "switch_zeroed_delta": {
+        "s1": 0.025907516479492188,
+        "s2": 0.012741029262542725,
+        "s3": 0.08132797479629517,
+        "s4": 0.002120494842529297,
+        "s5": 0.0015204548835754395,
+        "s6": 0.0015220046043395996,
+        "s7": 0.0023932456970214844,
+        "s8": 0.0030277371406555176
+      },
+      "timestep_removed_delta": [
+        0.0001766681671142578,
+        0.00027251243591308594,
+        0.0002827644348144531,
+        0.000287473201751709,
+        0.00027066469192504883,
+        0.0002745985984802246,
+        0.00026535987854003906,
+        0.00027877092361450195
+      ]
+    },
+    "rank_of_truth": 1,
+    "ranking": [
+      "s2-s3",
+      "s3-s4",
+      "s1-s2",
+      "s4-s5",
+      "s7-s8",
+      "s6-s7",
+      "s5-s6"
+    ],
+    "relevant_switches_ports": {
+      "ground_truth": {
+        "endpoints": [
+          "s2 port 2",
+          "s3 port 1"
+        ],
+        "link": "s2-s3"
+      },
+      "predicted": {
+        "endpoints": [
+          "s2 port 2",
+          "s3 port 1"
+        ],
+        "link": "s2-s3"
+      }
+    },
+    "score_semantics": "Mean softmax over seeds; uncalibrated ranking scores, not calibrated probabilities",
+    "scores": {
+      "s1-s2": 0.0008601343724876642,
+      "s2-s3": 0.9966340065002441,
+      "s3-s4": 0.0011205017799511552,
+      "s4-s5": 0.000851724820677191,
+      "s5-s6": 0.00011885574349435046,
+      "s6-s7": 0.00017585371097084135,
+      "s7-s8": 0.00023899243387859315
+    },
+    "top1_correct": true,
+    "top_switch_feature_attributions": [
+      {
+        "feature": "rx_throughput_mbps",
+        "ig": 0.11088404804468155,
+        "switch": "s3"
+      },
+      {
+        "feature": "rx_packet_rate",
+        "ig": 0.09531325101852417,
+        "switch": "s3"
+      },
+      {
+        "feature": "tx_throughput_mbps",
+        "ig": 0.08769864588975906,
+        "switch": "s2"
+      },
+      {
+        "feature": "tx_packet_rate",
+        "ig": 0.07949325442314148,
+        "switch": "s2"
+      },
+      {
+        "feature": "tx_packet_rate",
+        "ig": 0.06156495213508606,
+        "switch": "s1"
+      },
+      {
+        "feature": "rx_packet_rate",
+        "ig": 0.0527806282043457,
+        "switch": "s2"
+      }
+    ],
+    "validation": {
+      "checkpoint_policy_matches_fold": true,
+      "completeness_abs_gap": 0.0005743280053138733,
+      "completeness_f_baseline": 0.11766775697469711,
+      "completeness_f_x": 0.9966340065002441,
+      "completeness_pass": true,
+      "completeness_relative_gap": 0.0006534130356243906,
+      "completeness_sum_attributions": 0.8783919215202332,
+      "ensemble_scores_match_saved": true,
+      "ig_baseline": "all-zero normalized features (training-mean fault-window telemetry)",
+      "ig_steps": 512,
+      "perturbation_pass": true,
+      "perturbation_top_k_nodes": [
+        "s2",
+        "s3"
+      ],
+      "random_k_drop_max": 0.8524810522794724,
+      "random_k_drop_mean": 0.13099341914057733,
+      "top1_after_top_k_nodes_zeroed": "s3-s4",
+      "top_k_drop": 0.7193661630153656
+    }
+  },
+  "topology_link_ranker": {
+    "component_sensitivity": {
+      "endpoint_imbalance": {
+        "top1_changes": false,
+        "top1_without_component": "s3-s4",
+        "truth_rank_without_component": 2
+      },
+      "link_anomaly": {
+        "top1_changes": true,
+        "top1_without_component": "s1-s2",
+        "truth_rank_without_component": 6
+      },
+      "pair_onset_seconds": {
+        "top1_changes": false,
+        "top1_without_component": "s3-s4",
+        "truth_rank_without_component": 2
+      },
+      "propagation_margin_seconds": {
+        "top1_changes": false,
+        "top1_without_component": "s3-s4",
+        "truth_rank_without_component": 2
+      }
+    },
+    "component_table": {
+      "s1-s2": {
+        "components": {
+          "endpoint_imbalance": 0.003538456850250671,
+          "link_anomaly": 0.34359154340265197,
+          "pair_onset_seconds": 999.0,
+          "propagation_margin_seconds": -10.0
+        },
+        "endpoint_a": "s1:2",
+        "endpoint_a_anomaly": 0.34359154340265197,
+        "endpoint_a_onset_seconds": 999.0,
+        "endpoint_b": "s2:1",
+        "endpoint_b_anomaly": 0.34713000025290264,
+        "endpoint_b_onset_seconds": 999.0,
+        "position": 7,
+        "rank_score": 0.5714285714285714,
+        "remote_onset_seconds": 11.0,
+        "utilities": {
+          "endpoint_imbalance": 1.0,
+          "link_anomaly": 0.14285714285714285,
+          "pair_onset_seconds": 0.5714285714285714,
+          "propagation_margin_seconds": 0.5714285714285714
+        }
+      },
+      "s2-s3": {
+        "components": {
+          "endpoint_imbalance": 0.033169416565233645,
+          "link_anomaly": 1.2503359975379291,
+          "pair_onset_seconds": 999.0,
+          "propagation_margin_seconds": -10.0
+        },
+        "endpoint_a": "s2:2",
+        "endpoint_a_anomaly": 1.2503359975379291,
+        "endpoint_a_onset_seconds": 999.0,
+        "endpoint_b": "s3:1",
+        "endpoint_b_anomaly": 1.2835054141031628,
+        "endpoint_b_onset_seconds": 999.0,
+        "position": 2,
+        "rank_score": 0.5714285714285714,
+        "remote_onset_seconds": 11.0,
+        "utilities": {
+          "endpoint_imbalance": 0.2857142857142857,
+          "link_anomaly": 0.8571428571428571,
+          "pair_onset_seconds": 0.5714285714285714,
+          "propagation_margin_seconds": 0.5714285714285714
+        }
+      },
+      "s3-s4": {
+        "components": {
+          "endpoint_imbalance": 0.03718015511603756,
+          "link_anomaly": 1.2560269627559069,
+          "pair_onset_seconds": 999.0,
+          "propagation_margin_seconds": -10.0
+        },
+        "endpoint_a": "s3:2",
+        "endpoint_a_anomaly": 1.2560269627559069,
+        "endpoint_a_onset_seconds": 999.0,
+        "endpoint_b": "s4:1",
+        "endpoint_b_anomaly": 1.2932071178719444,
+        "endpoint_b_onset_seconds": 999.0,
+        "position": 1,
+        "rank_score": 0.5714285714285714,
+        "remote_onset_seconds": 11.0,
+        "utilities": {
+          "endpoint_imbalance": 0.14285714285714285,
+          "link_anomaly": 1.0,
+          "pair_onset_seconds": 0.5714285714285714,
+          "propagation_margin_seconds": 0.5714285714285714
+        }
+      },
+      "s4-s5": {
+        "components": {
+          "endpoint_imbalance": 0.019599893609085983,
+          "link_anomaly": 1.1810387848810795,
+          "pair_onset_seconds": 999.0,
+          "propagation_margin_seconds": -10.0
+        },
+        "endpoint_a": "s4:2",
+        "endpoint_a_anomaly": 1.1810387848810795,
+        "endpoint_a_onset_seconds": 999.0,
+        "endpoint_b": "s5:1",
+        "endpoint_b_anomaly": 1.2006386784901655,
+        "endpoint_b_onset_seconds": 999.0,
+        "position": 3,
+        "rank_score": 0.5714285714285714,
+        "remote_onset_seconds": 11.0,
+        "utilities": {
+          "endpoint_imbalance": 0.42857142857142855,
+          "link_anomaly": 0.7142857142857143,
+          "pair_onset_seconds": 0.5714285714285714,
+          "propagation_margin_seconds": 0.5714285714285714
+        }
+      },
+      "s5-s6": {
+        "components": {
+          "endpoint_imbalance": 0.012173857709621538,
+          "link_anomaly": 1.1696141675710952,
+          "pair_onset_seconds": 999.0,
+          "propagation_margin_seconds": -10.0
+        },
+        "endpoint_a": "s5:2",
+        "endpoint_a_anomaly": 1.1696141675710952,
+        "endpoint_a_onset_seconds": 999.0,
+        "endpoint_b": "s6:1",
+        "endpoint_b_anomaly": 1.1817880252807167,
+        "endpoint_b_onset_seconds": 999.0,
+        "position": 4,
+        "rank_score": 0.5714285714285714,
+        "remote_onset_seconds": 11.0,
+        "utilities": {
+          "endpoint_imbalance": 0.5714285714285714,
+          "link_anomaly": 0.5714285714285714,
+          "pair_onset_seconds": 0.5714285714285714,
+          "propagation_margin_seconds": 0.5714285714285714
+        }
+      },
+      "s6-s7": {
+        "components": {
+          "endpoint_imbalance": 0.009407435881132464,
+          "link_anomaly": 1.1658057073475296,
+          "pair_onset_seconds": 999.0,
+          "propagation_margin_seconds": -10.0
+        },
+        "endpoint_a": "s6:2",
+        "endpoint_a_anomaly": 1.1658057073475296,
+        "endpoint_a_onset_seconds": 999.0,
+        "endpoint_b": "s7:1",
+        "endpoint_b_anomaly": 1.175213143228662,
+        "endpoint_b_onset_seconds": 999.0,
+        "position": 5,
+        "rank_score": 0.5714285714285714,
+        "remote_onset_seconds": 11.0,
+        "utilities": {
+          "endpoint_imbalance": 0.7142857142857143,
+          "link_anomaly": 0.42857142857142855,
+          "pair_onset_seconds": 0.5714285714285714,
+          "propagation_margin_seconds": 0.5714285714285714
+        }
+      },
+      "s7-s8": {
+        "components": {
+          "endpoint_imbalance": 0.006081818133553796,
+          "link_anomaly": 1.1600069770723263,
+          "pair_onset_seconds": 999.0,
+          "propagation_margin_seconds": -10.0
+        },
+        "endpoint_a": "s7:2",
+        "endpoint_a_anomaly": 1.1600069770723263,
+        "endpoint_a_onset_seconds": 999.0,
+        "endpoint_b": "s8:1",
+        "endpoint_b_anomaly": 1.16608879520588,
+        "endpoint_b_onset_seconds": 999.0,
+        "position": 6,
+        "rank_score": 0.5714285714285714,
+        "remote_onset_seconds": 11.0,
+        "utilities": {
+          "endpoint_imbalance": 0.8571428571428571,
+          "link_anomaly": 0.2857142857142857,
+          "pair_onset_seconds": 0.5714285714285714,
+          "propagation_margin_seconds": 0.5714285714285714
+        }
+      }
+    },
+    "deciding_components_for_top1": [
+      "link_anomaly"
+    ],
+    "explanation_method": "Transparent heuristic: four components ranked across all candidates with equal-weight utilities; leave-one-component-out sensitivity",
+    "ground_truth": "s2-s3",
+    "label": "Topology ranker",
+    "limitations": [
+      "Exposure of a fixed heuristic, not a learned attribution.",
+      "Onset times are relative to the annotated fault start (oracle window).",
+      "Component ties produce averaged ranks; ties are listed in the evaluation's score_ties column."
+    ],
+    "main_supporting_evidence": {
+      "endpoint_anomaly_scores": {
+        "s3:2": 1.2560269627559069,
+        "s4:1": 1.2932071178719444
+      },
+      "pair_onset_seconds": 999.0,
+      "remote_onset_seconds": 11.0,
+      "strongest_utility_components": [
+        "link_anomaly",
+        "pair_onset_seconds"
+      ]
+    },
+    "method": "topology_link_ranker",
+    "predicted_link_components": {
+      "components": {
+        "endpoint_imbalance": 0.03718015511603756,
+        "link_anomaly": 1.2560269627559069,
+        "pair_onset_seconds": 999.0,
+        "propagation_margin_seconds": -10.0
+      },
+      "endpoint_a": "s3:2",
+      "endpoint_a_anomaly": 1.2560269627559069,
+      "endpoint_a_onset_seconds": 999.0,
+      "endpoint_b": "s4:1",
+      "endpoint_b_anomaly": 1.2932071178719444,
+      "endpoint_b_onset_seconds": 999.0,
+      "position": 1,
+      "rank_score": 0.5714285714285714,
+      "remote_onset_seconds": 11.0,
+      "utilities": {
+        "endpoint_imbalance": 0.14285714285714285,
+        "link_anomaly": 1.0,
+        "pair_onset_seconds": 0.5714285714285714,
+        "propagation_margin_seconds": 0.5714285714285714
+      }
+    },
+    "rank_of_truth": 2,
+    "ranking": [
+      "s3-s4",
+      "s2-s3",
+      "s4-s5",
+      "s5-s6",
+      "s6-s7",
+      "s7-s8",
+      "s1-s2"
+    ],
+    "relevant_switches_ports": {
+      "ground_truth": {
+        "endpoints": [
+          "s2 port 2",
+          "s3 port 1"
+        ],
+        "link": "s2-s3"
+      },
+      "predicted": {
+        "endpoints": [
+          "s3 port 2",
+          "s4 port 1"
+        ],
+        "link": "s3-s4"
+      }
+    },
+    "score_semantics": "Equal-weight mean of rank utilities in (0, 1]; not a probability",
+    "scores": {
+      "s1-s2": 0.5714285714285714,
+      "s2-s3": 0.5714285714285714,
+      "s3-s4": 0.5714285714285714,
+      "s4-s5": 0.5714285714285714,
+      "s5-s6": 0.5714285714285714,
+      "s6-s7": 0.5714285714285714,
+      "s7-s8": 0.5714285714285714
+    },
+    "top1_correct": false,
+    "true_link_components": {
+      "components": {
+        "endpoint_imbalance": 0.033169416565233645,
+        "link_anomaly": 1.2503359975379291,
+        "pair_onset_seconds": 999.0,
+        "propagation_margin_seconds": -10.0
+      },
+      "endpoint_a": "s2:2",
+      "endpoint_a_anomaly": 1.2503359975379291,
+      "endpoint_a_onset_seconds": 999.0,
+      "endpoint_b": "s3:1",
+      "endpoint_b_anomaly": 1.2835054141031628,
+      "endpoint_b_onset_seconds": 999.0,
+      "position": 2,
+      "rank_score": 0.5714285714285714,
+      "remote_onset_seconds": 11.0,
+      "utilities": {
+        "endpoint_imbalance": 0.2857142857142857,
+        "link_anomaly": 0.8571428571428571,
+        "pair_onset_seconds": 0.5714285714285714,
+        "propagation_margin_seconds": 0.5714285714285714
+      }
+    },
+    "validation": {
+      "decided_by_single_component": true,
+      "rank_score_recomputed_pass": true,
+      "ranking_matches_saved": true
+    }
+  }
+}

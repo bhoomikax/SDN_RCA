@@ -1,0 +1,1082 @@
+{
+  "candidate_sha256": "07ad31e771146c1d38de63a919631cf0a1610c114f087c5ccc0aff0f46ad0d60",
+  "experiments_explained": [
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    220,
+    224,
+    228,
+    229,
+    230,
+    231,
+    232,
+    233,
+    234,
+    235,
+    236,
+    237,
+    238,
+    239,
+    240,
+    241,
+    242,
+    243,
+    244
+  ],
+  "global_feature_importance": {
+    "neural_mean_abs_ig_per_switch": {
+      "graph_only": {
+        "s1": 0.36923790049667543,
+        "s10": 0.14539594948291779,
+        "s11": 0.16136753666572845,
+        "s12": 0.19631166455264276,
+        "s2": 0.24588386843410823,
+        "s3": 0.2047809071910496,
+        "s4": 0.20023825205862522,
+        "s5": 0.14895423028904659,
+        "s6": 0.1330579208711592,
+        "s7": 0.14018246008513066,
+        "s8": 0.1711640226869629,
+        "s9": 0.15889034126527035
+      },
+      "graph_temporal": {
+        "s1": 0.16805594511186847,
+        "s10": 0.10943636373401834,
+        "s11": 0.09323806833260907,
+        "s12": 0.09150218275877145,
+        "s2": 0.1326718104716677,
+        "s3": 0.14208694260853988,
+        "s4": 0.15096128481225327,
+        "s5": 0.16227970684233767,
+        "s6": 0.15066404511722234,
+        "s7": 0.13650406775279686,
+        "s8": 0.1381580219962276,
+        "s9": 0.1245105334629233
+      },
+      "temporal_only": {
+        "s1": 0.1566856516381869,
+        "s10": 0.13551862795765585,
+        "s11": 0.10026888821560603,
+        "s12": 0.07299725410456841,
+        "s2": 0.18450445438233706,
+        "s3": 0.1572275200428871,
+        "s4": 0.14712456470498672,
+        "s5": 0.12683170532377866,
+        "s6": 0.14087995442633444,
+        "s7": 0.1531005738159785,
+        "s8": 0.1220178810449747,
+        "s9": 0.1305162260452142
+      }
+    },
+    "rf_mean_abs_shap_predicted_class": {
+      "s10_first_anomaly_seconds": 0.006247449698796665,
+      "s10_max_anomaly": 0.006903722622642456,
+      "s10_mean_anomaly": 0.010416645865240758,
+      "s10_persistence": 0.004553297305785889,
+      "s11_first_anomaly_seconds": 0.0025516384236184565,
+      "s11_max_anomaly": 0.003327114296249582,
+      "s11_mean_anomaly": 0.007280388660829831,
+      "s11_persistence": 0.0015913540319852327,
+      "s12_first_anomaly_seconds": 0.002159334226903863,
+      "s12_max_anomaly": 0.0,
+      "s12_mean_anomaly": 0.003485238446542923,
+      "s12_persistence": 0.0017873675434623723,
+      "s1_first_anomaly_seconds": 0.01007291864750521,
+      "s1_max_anomaly": 0.008341376647862102,
+      "s1_mean_anomaly": 0.009199870165187541,
+      "s1_persistence": 0.011246756073267647,
+      "s2_first_anomaly_seconds": 0.009114859983568492,
+      "s2_max_anomaly": 0.01236570764795952,
+      "s2_mean_anomaly": 0.011728822190432624,
+      "s2_persistence": 0.010436341649176707,
+      "s3_first_anomaly_seconds": 0.010384404845330321,
+      "s3_max_anomaly": 0.010786914456737713,
+      "s3_mean_anomaly": 0.013505526909806505,
+      "s3_persistence": 0.00844822554319422,
+      "s4_first_anomaly_seconds": 0.009068035794689686,
+      "s4_max_anomaly": 0.01058739540738122,
+      "s4_mean_anomaly": 0.015625219571624768,
+      "s4_persistence": 0.008924579973664077,
+      "s5_first_anomaly_seconds": 0.004912459863928854,
+      "s5_max_anomaly": 0.007865715166559463,
+      "s5_mean_anomaly": 0.01674646729576817,
+      "s5_persistence": 0.004324475117721049,
+      "s6_first_anomaly_seconds": 0.009053840500279187,
+      "s6_max_anomaly": 0.009113800891174414,
+      "s6_mean_anomaly": 0.015453199576706263,
+      "s6_persistence": 0.006886694821317456,
+      "s7_first_anomaly_seconds": 0.008312002462578452,
+      "s7_max_anomaly": 0.01204552817709157,
+      "s7_mean_anomaly": 0.019168586308868002,
+      "s7_persistence": 0.008807610045493105,
+      "s8_first_anomaly_seconds": 0.009261901451114175,
+      "s8_max_anomaly": 0.009768979287095155,
+      "s8_mean_anomaly": 0.016594369908106067,
+      "s8_persistence": 0.00927309529027236,
+      "s9_first_anomaly_seconds": 0.008169968212914573,
+      "s9_max_anomaly": 0.011462974331179073,
+      "s9_mean_anomaly": 0.01690665671637678,
+      "s9_persistence": 0.0058360034254415355
+    },
+    "rf_mean_impurity_importance": {
+      "s10_first_anomaly_seconds": 0.015152202219312245,
+      "s10_max_anomaly": 0.014658601392290279,
+      "s10_mean_anomaly": 0.029608906970592305,
+      "s10_persistence": 0.012053685999249,
+      "s11_first_anomaly_seconds": 0.007245125225332036,
+      "s11_max_anomaly": 0.008406525902335975,
+      "s11_mean_anomaly": 0.021711819225755866,
+      "s11_persistence": 0.003185252294683264,
+      "s12_first_anomaly_seconds": 0.006484440888739993,
+      "s12_max_anomaly": 0.0,
+      "s12_mean_anomaly": 0.01368064438345943,
+      "s12_persistence": 0.0035388930152754437,
+      "s1_first_anomaly_seconds": 0.01825359544157011,
+      "s1_max_anomaly": 0.02229418632825522,
+      "s1_mean_anomaly": 0.027607835054321742,
+      "s1_persistence": 0.02289506901567623,
+      "s2_first_anomaly_seconds": 0.020286283225208153,
+      "s2_max_anomaly": 0.03466889060241626,
+      "s2_mean_anomaly": 0.03240569574723539,
+      "s2_persistence": 0.020762197937958197,
+      "s3_first_anomaly_seconds": 0.023853707626455885,
+      "s3_max_anomaly": 0.026569072534553376,
+      "s3_mean_anomaly": 0.0356675028458523,
+      "s3_persistence": 0.01914548723970351,
+      "s4_first_anomaly_seconds": 0.019722173769491685,
+      "s4_max_anomaly": 0.027015857392512922,
+      "s4_mean_anomaly": 0.03677846346153621,
+      "s4_persistence": 0.02003192915993427,
+      "s5_first_anomaly_seconds": 0.009779765061240548,
+      "s5_max_anomaly": 0.02061682866677598,
+      "s5_mean_anomaly": 0.037442888629742516,
+      "s5_persistence": 0.00997746773867537,
+      "s6_first_anomaly_seconds": 0.01796796742229686,
+      "s6_max_anomaly": 0.021189576072456646,
+      "s6_mean_anomaly": 0.03402046943386537,
+      "s6_persistence": 0.013439644778237721,
+      "s7_first_anomaly_seconds": 0.017294620564546927,
+      "s7_max_anomaly": 0.02418610268247349,
+      "s7_mean_anomaly": 0.043313857030913075,
+      "s7_persistence": 0.01517988614968661,
+      "s8_first_anomaly_seconds": 0.018654733046689468,
+      "s8_max_anomaly": 0.0200319179953723,
+      "s8_mean_anomaly": 0.03429767061428454,
+      "s8_persistence": 0.017848451987265233,
+      "s9_first_anomaly_seconds": 0.01844443392479432,
+      "s9_max_anomaly": 0.027216448063115257,
+      "s9_mean_anomaly": 0.042060694275263745,
+      "s9_persistence": 0.013352530962596766
+    }
+  },
+  "ig_steps": 512,
+  "link_port_mapping_basis": "recorded runtime OVS mapping: results\\topology_12_switches\\candidate\\link_port_mapping.csv",
+  "methods": {
+    "graph_only": {
+      "attribution_on_predicted_endpoints_rate": 0.2692307692307692,
+      "explained": 26,
+      "label": "GCN",
+      "per_experiment": [
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 201,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 202,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 203,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 204,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 205,
+          "top1_correct": true,
+          "validation_pass": false
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 206,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 207,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 220,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 224,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 228,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 229,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 230,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 231,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 232,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 233,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 234,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 235,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 236,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 237,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 238,
+          "top1_correct": true,
+          "validation_pass": false
+        },
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 239,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 240,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 241,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 242,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 243,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 244,
+          "top1_correct": true,
+          "validation_pass": true
+        }
+      ],
+      "top1_correct": 25,
+      "validation_pass_count": 24,
+      "validation_pass_rate": 0.9230769230769231
+    },
+    "graph_temporal": {
+      "attribution_on_predicted_endpoints_rate": 0.11538461538461539,
+      "explained": 26,
+      "label": "GCN+LSTM",
+      "per_experiment": [
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 201,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 202,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 203,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 204,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 205,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 206,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 207,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 220,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 224,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 228,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 229,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 230,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 231,
+          "top1_correct": true,
+          "validation_pass": false
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 232,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 233,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 234,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 235,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 236,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 237,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 238,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 239,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 240,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 241,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 242,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 243,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 244,
+          "top1_correct": true,
+          "validation_pass": true
+        }
+      ],
+      "top1_correct": 20,
+      "validation_pass_count": 25,
+      "validation_pass_rate": 0.9615384615384616
+    },
+    "rf_baseline": {
+      "attribution_on_predicted_endpoints_rate": null,
+      "explained": 26,
+      "label": "Random Forest",
+      "per_experiment": [
+        {
+          "experiment_id": 201,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 202,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 203,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 204,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 205,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 206,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 207,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 220,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 224,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 228,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 229,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 230,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 231,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 232,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 233,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 234,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 235,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 236,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 237,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 238,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 239,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 240,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 241,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 242,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 243,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 244,
+          "top1_correct": true,
+          "validation_pass": true
+        }
+      ],
+      "top1_correct": 19,
+      "validation_pass_count": 26,
+      "validation_pass_rate": 1.0
+    },
+    "temporal_only": {
+      "attribution_on_predicted_endpoints_rate": 0.19230769230769232,
+      "explained": 26,
+      "label": "LSTM",
+      "per_experiment": [
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 201,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 202,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 203,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 204,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 205,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 206,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 207,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 220,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 224,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 228,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 229,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 230,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 231,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 232,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 233,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": true,
+          "experiment_id": 234,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 235,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 236,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 237,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 238,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 239,
+          "top1_correct": true,
+          "validation_pass": false
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 240,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 241,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 242,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 243,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "attribution_on_predicted_endpoints": false,
+          "experiment_id": 244,
+          "top1_correct": true,
+          "validation_pass": true
+        }
+      ],
+      "top1_correct": 22,
+      "validation_pass_count": 25,
+      "validation_pass_rate": 0.9615384615384616
+    },
+    "topology_link_ranker": {
+      "attribution_on_predicted_endpoints_rate": null,
+      "explained": 26,
+      "label": "Topology ranker",
+      "per_experiment": [
+        {
+          "experiment_id": 201,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 202,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 203,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 204,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 205,
+          "top1_correct": true,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 206,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 207,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 220,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 224,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 228,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 229,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 230,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 231,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 232,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 233,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 234,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 235,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 236,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 237,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 238,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 239,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 240,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 241,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 242,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 243,
+          "top1_correct": false,
+          "validation_pass": true
+        },
+        {
+          "experiment_id": 244,
+          "top1_correct": false,
+          "validation_pass": true
+        }
+      ],
+      "top1_correct": 1,
+      "validation_pass_count": 26,
+      "validation_pass_rate": 1.0
+    }
+  },
+  "runtime_seconds": 684.9,
+  "score_semantics": "All methods output uncalibrated ranking scores: RF vote fractions, softmax ensembles, and rank utilities.",
+  "software": {
+    "python": "3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)]",
+    "shap": "0.54.1",
+    "torch": "2.14.0+cpu"
+  },
+  "topology": {
+    "bottleneck_link": "s6-s7",
+    "bottleneck_params": {
+      "bw": 10,
+      "delay": "5ms"
+    },
+    "candidate_count": 11,
+    "candidate_links": [
+      "s1-s2",
+      "s2-s3",
+      "s3-s4",
+      "s4-s5",
+      "s5-s6",
+      "s6-s7",
+      "s7-s8",
+      "s8-s9",
+      "s9-s10",
+      "s10-s11",
+      "s11-s12"
+    ],
+    "hosts": [
+      "h1",
+      "h2"
+    ],
+    "kind": "linear",
+    "link_definitions": [
+      {
+        "left": "h1",
+        "params": {},
+        "right": "s1"
+      },
+      {
+        "left": "s1",
+        "params": {},
+        "right": "s2"
+      },
+      {
+        "left": "s2",
+        "params": {},
+        "right": "s3"
+      },
+      {
+        "left": "s3",
+        "params": {},
+        "right": "s4"
+      },
+      {
+        "left": "s4",
+        "params": {},
+        "right": "s5"
+      },
+      {
+        "left": "s5",
+        "params": {},
+        "right": "s6"
+      },
+      {
+        "left": "s6",
+        "params": {
+          "bw": 10,
+          "delay": "5ms"
+        },
+        "right": "s7"
+      },
+      {
+        "left": "s7",
+        "params": {},
+        "right": "s8"
+      },
+      {
+        "left": "s8",
+        "params": {},
+        "right": "s9"
+      },
+      {
+        "left": "s9",
+        "params": {},
+        "right": "s10"
+      },
+      {
+        "left": "s10",
+        "params": {},
+        "right": "s11"
+      },
+      {
+        "left": "s11",
+        "params": {},
+        "right": "s12"
+      },
+      {
+        "left": "s12",
+        "params": {},
+        "right": "h2"
+      }
+    ],
+    "switch_count": 12,
+    "switches": [
+      "s1",
+      "s2",
+      "s3",
+      "s4",
+      "s5",
+      "s6",
+      "s7",
+      "s8",
+      "s9",
+      "s10",
+      "s11",
+      "s12"
+    ]
+  },
+  "validation_criteria": {
+    "neural": "IG completeness relative gap < 5% (or abs < 1e-3) and zeroing top-2 |IG| switches drops the score >= mean random-2 drop (20 draws)",
+    "rf": "additivity |base+sum(SHAP)-proba| < 1e-6 and top-3 neutralization drop >= mean random-3 drop (20 draws)",
+    "topology_ranker": "rank_score recomputed as the mean of component utilities and ranking identical to the saved evaluation"
+  }
+}
