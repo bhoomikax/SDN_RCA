@@ -16,3 +16,6 @@ __pycache__/
 *_results.csv
 fault_pattern_analysis.csv
 review2_*.png
+
+# dashboard runtime state (run lock); fetched demo runs stay in dashboard_runs/ deliberately
+dashboard/backend/state/

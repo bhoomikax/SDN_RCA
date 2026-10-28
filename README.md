@@ -113,3 +113,16 @@ This is offline held-out inference, not online detection. The fault window is se
 The v3 online q99 detector remains unsuccessful: it detected 0/25 held-out fault windows and generated 21.6581 false-alarm episodes per observed nonfault hour after correcting the nonfault exposure denominator. An always-no-alarm comparator also detects 0/25, with no false alarms; the detector does not improve on this operating point. The corrected audit output is `evaluations/online_fault_detection_v3_exposure_audit/`. See the updated [results](docs/RESULTS_BALANCED_V3.md) and [limitations](docs/LIMITATIONS.md).
 
 **Live-run status:** the live → candidate → graph → inference path was exercised once on logical 41 / physical 45 (valid; Top-1 hit on `s2-s3`). Reproduce its derived artifacts and inference with the commands in [its report](reports/live_demo_physical45_logical41/README.md); the inference reads only preserved evidence and does not need the VM. Logical 40 / physical 44 remains `FAILED_INVALID`. All registered runner IDs are now consumed and no further physical run is authorized. A repeatability cohort still needs normal-only controls and phase-resolved receiver intervals.
+
+## Research demo dashboard
+
+`dashboard/` contains a Next.js frontend and a FastAPI backend that drive the
+existing runner on the Mininet VM over SSH, show live telemetry and phase
+progress from the runner's own files, rank candidate links on a newly
+collected run with the repository's RF / topology-ranker / GCN / LSTM /
+GCN+LSTM code, and display the saved evaluation and XAI results with their
+provenance. Runs fetched by the dashboard are stored in `dashboard_runs/` and
+are never merged into the research datasets. Installation, start commands,
+the 12-switch demonstration procedure, live-versus-saved feature list and
+limitations: [dashboard/README.md](dashboard/README.md); presenter notes:
+[dashboard/DEMO_SCRIPT.md](dashboard/DEMO_SCRIPT.md).
